@@ -43,6 +43,8 @@ STEPS = [  # name, command after "python", required
     ("topdonors",  ["pipeline/member_top_donors.py"], False),
     ("countrypacs", ["pipeline/country_pacs.py"], False),
     ("fara",       ["pipeline/fara.py"], False),
+    ("firms",      ["pipeline/firm_profiles.py"], False),
+    ("firmbase",   ["pipeline/firm_base.py"], False),
     ("sec",        ["pipeline/sec_watch.py"], False),
     ("social",     ["pipeline/social_check.py"], False),
     ("officials",  ["pipeline/officials_check.py"], False),

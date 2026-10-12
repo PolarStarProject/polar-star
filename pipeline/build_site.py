@@ -7,6 +7,7 @@ for _s in (sys.stdout, sys.stderr):
 if hasattr(time, "tzset"): time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too (Windows has no tzset; see utc_today)
 from pathlib import Path
 from flights import STAGING, km
+from firm_profiles import core
 
 ROOT = Path(__file__).parent.parent
 NEAR_AIRPORT_KM = 5      # "next to" the airport
@@ -1317,10 +1318,10 @@ def state_officials(site, ref):
         out["cpac"] = {"pacs": [[r["committee_id"], r["name"], r["country"], r["basis"], r["source"]] for r in cp], "money": money, "read": meta.get("read", ""), "cycle": meta.get("cycle", 0), "held": len(held)}
     fa = rd_pipe(ref / "fara_principals.csv")
     if fa:
-        firms = {re.sub(r"[^A-Z0-9]+", " ", r["firm"].upper()).strip() for r in rd_pipe(ref / "lobbying_firms.csv") if "personal name" not in r["firm"]}
-        both = sorted({r["registrant"] for r in fa if re.sub(r"[^A-Z0-9]+", " ", r["registrant"].upper()).strip() in firms})
+        firms = {core(r["firm"]): r["firm"] for r in rd_pipe(ref / "lobbying_firms.csv") if "personal name" not in r["firm"]}
+        fmap = {r["registrant"]: firms[core(r["registrant"])] for r in fa if core(r["registrant"]) in firms}     # registered foreign agent -> the same firm's name in the lobbying records
         meta = json.loads((ref / "fara_meta.json").read_text(encoding="utf-8")) if (ref / "fara_meta.json").exists() else {}
-        out["fara"] = {"rows": [[r["country"], r["principal"].strip("'\" "), r["registrant"], int(r["reg_number"]), r["since"], r["exhibit_url"]] for r in fa], "both": both, "read": meta.get("read", "")}
+        out["fara"] = {"rows": [[r["country"], r["principal"].strip("'\" "), r["registrant"], int(r["reg_number"]), r["since"], r["exhibit_url"]] for r in fa], "both": sorted(fmap), "fmap": fmap, "read": meta.get("read", "")}
     rev = rd_pipe(ref / "lobbying_former_officials.csv")
     if rev:                                # one entry per person and company: the newest wording of the post they filed, every firm, the full span
         g = {}
@@ -1333,6 +1334,136 @@ def state_officials(site, ref):
         order = ["GEO", "CC", "MTC", "CSI"]
         out["rev"] = [[c, n, o["cp"], " and ".join(o["firms"]), o["y1"], o["y2"]] for (c, n), o in sorted(g.items(), key=lambda kv: (order.index(kv[0][0]) if kv[0][0] in order else 9, -kv[1]["y2"], kv[0][1]))]
     return out
+
+def firm_cards(ref):
+    """One card per lobbying firm hired by a detention or ICE flight company: who paid it for that work, its foreign clients
+    (FARA), the countries among them that ICE pays to take deportees, its other clients and political money (lda.gov,
+    when firm_profiles.py has run), and its lobbyists who list a past government post. Built from public filings only;
+    private contributors are never named (firm_profiles.py does not keep them)."""
+    lf = [r for r in rd_pipe(ref / "lobbying_firms.csv") if "personal name" not in r["firm"]]
+    if not lf: return {}
+    CO = {"GEO": "GEO Group", "CC": "CoreCivic", "MTC": "Management & Training Corp", "CSI": "CSI Aviation"}
+    names = {}
+    for r in lf: names.setdefault(core(r["firm"]), r["firm"])
+    out = {n: {"det": [], "fara": [], "via": [], "reg": "", "pay": [], "former": [], "clients": [], "n_clients": 0, "money": [], "m_kind": {}, "partial": False} for n in names.values()}
+    for r in lf: out[names[core(r["firm"])]]["det"].append([CO.get(r["company"], r["company"]), int(r["usd"])])
+    pay = {r["country"]: float(r["paid_musd"] or 0) for r in rd_pipe(ref / "third_country_payments.csv")}
+    for r in rd_pipe(ref / "fara_principals.csv"):
+        pc = f' {core(r["principal"])} '
+        for k, m in names.items():                # another registered agent hired through this firm ("X on behalf of ...", "... via X")
+            if f" {k} " in pc and core(r["registrant"]) != k: out[m]["via"].append([r["registrant"], r["country"], r["principal"].strip("'\" "), r["since"], r["exhibit_url"]])
+        n = names.get(core(r["registrant"]))
+        if not n: continue
+        o = out[n]; o["reg"] = o["reg"] or f'{r["registrant"]} (No. {r["reg_number"]})'
+        o["fara"].append([r["country"], r["principal"].strip("'\" "), r["since"], r["exhibit_url"]])
+        if r["country"] in pay and r["country"] not in o["pay"]: o["pay"].append(r["country"])
+    seen = {}
+    for r in rd_pipe(ref / "lobbying_former_officials.csv") + [dict(x, company="") for x in rd_pipe(ref / "firm_former.csv")]:
+        n = names.get(core(r["firm"]))
+        if not n: continue
+        k = (n, r["lobbyist"]); o = seen.setdefault(k, [r["covered_position"], set()])
+        if len(r["covered_position"]) > len(o[0]): o[0] = r["covered_position"]
+        if r.get("company"): o[1].add(CO.get(r["company"], r["company"]))
+    for (n, who), (cp, cos) in sorted(seen.items()): out[n]["former"].append([who, cp, sorted(cos)])
+    awards = {}
+    for r in rd_pipe(ref / "ice_awards.csv"):
+        k = core(r["recipient"]); awards[k] = awards.get(k, 0) + int(float(r.get("window_usd") or r["amount_usd"] or 0))      # what ICE committed to it in the contract window (ice_awards_meta.json)
+    for r in rd_pipe(ref / "firm_clients.csv"):
+        n = names.get(core(r["firm"]))
+        if not n: continue
+        o = out[n]; o["n_clients"] += 1
+        o["clients"].append([r["client"], int(r["usd"]), int(r["filings"]), int(r["ice"]), int(r["dhs"]), int(r["imm"]), r["first"], r["last"], awards.get(core(r["client"]), 0)])
+    for r in rd_pipe(ref / "firm_money.csv"):
+        n = names.get(core(r["firm"]))
+        if not n: continue
+        o = out[n]; o["money"].append([r["recipient"], r["kind"], int(r["usd"]), int(r["gifts"])]); o["m_kind"][r["kind"]] = o["m_kind"].get(r["kind"], 0) + int(r["usd"])
+    meta = json.loads((ref / "firm_meta.json").read_text(encoding="utf-8")) if (ref / "firm_meta.json").exists() else {}
+    for n, o in out.items():
+        o["partial"] = bool((meta.get("firms") or {}).get(n, {}).get("partial"))
+        o["clients"].sort(key=lambda c: (-(c[3] + c[4] + c[5] > 0 or c[8] > 0), -c[1]))       # clients that lobbied ICE/DHS or on immigration, or hold ICE contracts, first
+        o["n_ice"] = sum(1 for c in o["clients"] if c[3] or c[4] or c[5]); o["n_con"] = sum(1 for c in o["clients"] if c[8])
+        o["c_usd"] = sum(c[1] for c in o["clients"]); o["m_usd"] = sum(m[2] for m in o["money"]); o["n_rec"] = len(o["money"])
+        o["clients"] = o["clients"][:60]; o["money"].sort(key=lambda m: -m[2]); o["money"] = o["money"][:40]
+        o["fara"].sort(key=lambda f: (f[0], f[1]))
+    am = json.loads((ref / "ice_awards_meta.json").read_text(encoding="utf-8")) if (ref / "ice_awards_meta.json").exists() else {}
+    return {"cards": out, "read": meta.get("read", ""), "years": meta.get("years", []), "cw": [am.get("from", "")[:7], am.get("to", "")[:7]], "pat": firm_patterns(ref, lf, out, names, awards)}
+
+
+def _first_last(n):
+    """'Adam B. Schiff' / 'John Cornyn Jr.' -> ('ADAM', 'SCHIFF'): first and last name, without middle names, initials or suffixes."""
+    w = [x for x in re.sub(r"[^A-Za-z' -]", " ", n or "").upper().split() if x not in ("JR", "SR", "II", "III", "IV")]
+    return (w[0], w[-1]) if len(w) >= 2 else None
+
+
+def firm_patterns(ref, lf, cards, names, awards):
+    """Patterns across the firms, each set beside a comparison where the records allow one. Counts only; no judgment.
+      fara      the share of the detention companies' outside lobbying fees paid to firms that are also registered foreign
+                agents, by company, and (base) the same share of every firm's fees in one quarter, from firm_base.py
+      former    lobbyists listing a past government post on detention-company accounts: how many work at those firms
+      pay       each country the U.S. paid to take deported people: its registered foreign agents, and which of them also
+                lobby for a detention company
+      members   (after firm_profiles.py) the firms' reported political money matched to members of Congress, members on the
+                committees that oversee ICE set beside the other members
+      shared    (after firm_profiles.py) ICE contractors that hire one of the firms the detention companies hire"""
+    fa = rd_pipe(ref / "fara_principals.csv"); regs = {core(r["registrant"]) for r in fa}
+    CO = {"GEO": "GEO Group", "CC": "CoreCivic", "MTC": "Management & Training Corp", "CSI": "CSI Aviation"}
+    out = {}
+    by, allf = {}, rd_pipe(ref / "lobbying_firms.csv")                 # the personal-name registrants count in the totals, never as a foreign agent
+    isf = lambda r: "personal name" not in r["firm"] and core(r["firm"]) in regs
+    for r in allf: o = by.setdefault(CO.get(r["company"], r["company"]), [0, 0]); o[0] += int(r["usd"]); o[1] += int(r["usd"]) if isf(r) else 0
+    tot = sum(int(r["usd"]) for r in allf); fara = sum(int(r["usd"]) for r in allf if "personal name" not in r["firm"] and core(r["firm"]) in regs)
+    out["fara"] = {"tot": tot, "fara": fara, "firms": sorted(n for n in cards if core(n) in regs), "by": [[k, v[0], v[1]] for k, v in sorted(by.items(), key=lambda kv: -kv[1][0])]}
+    bm = json.loads((ref / "firm_base.json").read_text(encoding="utf-8")) if (ref / "firm_base.json").exists() else {}
+    base = rd_pipe(ref / "firm_income_all.csv")
+    if bm and base:
+        bt = sum(int(r["usd"]) for r in base); bf = sum(int(r["usd"]) for r in base if core(r["firm"]) in regs)
+        out["fara"]["base"] = {"tot": bt, "fara": bf, "firms": len(base), "fara_firms": sum(1 for r in base if core(r["firm"]) in regs), "q": f'{bm["year"]} Q{["first_quarter", "second_quarter", "third_quarter", "fourth_quarter"].index(bm["period"]) + 1}'}
+    rev = rd_pipe(ref / "lobbying_former_officials.csv")
+    ppl = {}
+    for r in rev: ppl.setdefault(r["lobbyist"], set()).add(core(r["firm"]))
+    out["former"] = {"all": len(ppl), "fara": sum(1 for v in ppl.values() if v & regs)}
+    pay = rd_pipe(ref / "third_country_payments.csv")
+    if pay:
+        rows = []
+        for p in pay:
+            ag = sorted({r["registrant"] for r in fa if r["country"] == p["country"]})
+            rows.append([p["country"], len(ag), [names[core(a)] for a in ag if core(a) in names]])
+        out["pay"] = rows
+    fm = rd_pipe(ref / "firm_money.csv")
+    out["_money"] = [[r["firm"], r["recipient"], r["kind"], int(r["usd"])] for r in fm if r["kind"] == "campaign"]        # matched to members after the member list is built (firm_members)
+    fc = rd_pipe(ref / "firm_clients.csv")
+    if fc:
+        sh = {}
+        for r in fc:
+            n = names.get(core(r["firm"])); a = awards.get(core(r["client"]), 0)
+            if n and a and core(r["client"]) not in ("GEO GROUP", "CORECIVIC", "MANAGEMENT TRAINING", "CSI AVIATION"):
+                o = sh.setdefault(r["client"], [a, set()]); o[1].add(n)
+        out["shared"] = [[c, a, sorted(f)] for c, (a, f) in sorted(sh.items(), key=lambda kv: -kv[1][0])]
+    return out
+
+
+def firm_members(pat, members):
+    """Match the firms' campaign money to members of Congress by first and last name; a name that fits more than one member,
+    or none, is left unmatched and counted. members: the Politicians list (bioguide, name, chamber, party, ..., [oversight
+    committees] at 7, serving at 11). Returns per-member totals and the committee/other comparison."""
+    money = pat.pop("_money", [])
+    if not money: return
+    idx = {}
+    for m in members:
+        k = _first_last(m[1])
+        if k: idx.setdefault(k, []).append(m)
+    got, un, un_usd = {}, set(), 0
+    for firm, rec, kind, usd in money:
+        k = _first_last(rec); hit = idx.get(k, []) if k else []
+        if len(hit) != 1: un.add(rec); un_usd += usd; continue
+        o = got.setdefault(hit[0][0], [0, set()]); o[0] += usd; o[1].add(firm)
+    serving = [m for m in members if m[11]]
+    grp = lambda f: [m for m in serving if f(m)]
+    on, off = grp(lambda m: bool(m[7])), grp(lambda m: not m[7])
+    stat = lambda L: [len(L), sum(1 for m in L if m[0] in got), sum(got[m[0]][0] for m in L if m[0] in got)]
+    pat["members"] = {"on": stat(on), "off": stat(off), "top": [[b, v[0], sorted(v[1])] for b, v in sorted(got.items(), key=lambda kv: -kv[1][0])[:15]],
+                      "matched_usd": sum(v[0] for v in got.values()), "un_n": len(un), "un_usd": un_usd}
+
 
 VENDOR_CATS = [("tech", ("D", "7")), ("gear", ("10", "12", "13", "58", "63", "66", "84")), ("move", ("V", "23")), ("med", ("Q", "65")),
                ("prof", ("R", "B", "U")), ("guard", ("S",)), ("build", ("Y", "Z", "X"))]
@@ -1803,6 +1934,10 @@ def main():
     site["hotlines"] = hotlines(ref)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
+    fc = firm_cards(ref)
+    if fc:
+        firm_members(fc["pat"], (site.get("pol") or {}).get("m") or []); fc["pat"].pop("_money", None)
+        site["firms"] = fc
     hp = ROOT / "data" / "headline_history.json"                   # what the headline counts were at each update, so the page can say what changed
     hist, site["changes"] = record_changes(json.loads(hp.read_text(encoding="utf-8")) if hp.exists() else [], today, headline(site))
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")

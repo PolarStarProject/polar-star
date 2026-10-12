@@ -109,3 +109,27 @@ def test_other_political_money_has_tiles_that_open_charts():
         b.close()
         assert not errs, errs
         assert n == 0 or bars > 0, (n, bars)
+
+
+def test_a_lobbying_firm_opens_its_card_from_money_and_foreign_agents_in_both_languages():
+    try: from playwright.sync_api import sync_playwright
+    except ImportError: return
+    if not PAGE.exists(): return
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={"width": 390, "height": 844}); errs = []
+        pg.on("pageerror", lambda e: errs.append(str(e)))
+        pg.goto(PAGE.as_uri()); pg.wait_for_timeout(1000)
+        names = pg.evaluate("Object.keys((DATA.firms || {}).cards || {})")
+        if not names: b.close(); return
+        out = []
+        for lg in ("en", "es"):
+            pg.evaluate(f"setLang && setLang('{lg}')") if pg.evaluate("typeof setLang === 'function'") else None
+            for n in names:
+                pg.evaluate("n => firmCard(n)", n); pg.wait_for_timeout(50)
+                out.append(pg.evaluate("[document.querySelector('#snap h2').textContent, document.querySelectorAll('#snap .fcard .tiles button').length, document.querySelectorAll('#snap .fcard details').length]"))
+        both = pg.evaluate("((DATA.pol || {}).fara || {}).both || []")
+        fm = pg.evaluate("((DATA.pol || {}).fara || {}).fmap || {}")
+        b.close()
+        assert not errs, errs
+        assert all(h and t >= 1 and d >= 1 for h, t, d in out), out
+        assert all(fm.get(x) in names for x in both), (both, fm)
