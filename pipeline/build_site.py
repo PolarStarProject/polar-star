@@ -1,7 +1,10 @@
 """data/site_data.json + data/flights/legs_*.json -> site/index.html (facility pages and flights in one page)."""
 import csv, glob, json, math, os, re, sys, time
 import datetime as dt
-os.environ["TZ"] = "UTC"; time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too
+os.environ["TZ"] = "UTC"
+for _s in (sys.stdout, sys.stderr):
+    if hasattr(_s, "reconfigure"): _s.reconfigure(errors="replace")      # a Windows console cannot print every character in the build notes
+if hasattr(time, "tzset"): time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too (Windows has no tzset; see utc_today)
 from pathlib import Path
 from flights import STAGING, km
 
@@ -1250,7 +1253,7 @@ def prefill_text(html, hot=None):
     if a < 0: return html
     b = html.find("\n};", a) + 3
     js = "const T=(" + html[a + 10:b - 1] + ");const o={};for(const[k,v]of Object.entries(T.en))if(typeof v==='string')o[k]=v;process.stdout.write(JSON.stringify(o));"
-    try: en = json.loads(subprocess.run(["node"], input=js, capture_output=True, text=True, timeout=60, check=True).stdout)
+    try: en = json.loads(subprocess.run(["node"], input=js, capture_output=True, text=True, encoding="utf-8", timeout=60, check=True).stdout)
     except Exception as e:
         print(f"prefill skipped: {e}"); return html
     import html as H
@@ -1481,7 +1484,7 @@ def future_dates(ref, today):
 
 def main():
     site = json.loads((ROOT / "data" / "site_data.json").read_text(encoding="utf-8"))
-    legs = [l for f in sorted(glob.glob(str(ROOT / "data" / "flights" / "legs_*.json"))) for l in json.load(open(f))]
+    legs = [l for f in sorted(glob.glob(str(ROOT / "data" / "flights" / "legs_*.json"))) for l in json.load(open(f, encoding="utf-8"))]
     import gzip
     from flights import fleet_extra
     every = [l for f in sorted(glob.glob(str(ROOT / "data" / "flights" / "all_*.json.gz"))) for l in json.load(gzip.open(f, "rt", encoding="utf-8"))]
@@ -1715,7 +1718,7 @@ def main():
                        for l in sorted(all_legs, key=lambda l: (l["date"], l["departed_utc"]), reverse=True)],     # every flight on record, newest first, no tracks
                "legs": [{k: l[k] for k in ("date", "registration", "aircraft_type", "callsign", "departed_utc", "arrived_utc", "origin", "origin_certain",
                                            "dest", "dest_certain", "kind", "via", "track")} for l in legs]} if legs else None
-    today = str(dt.date.today()); site["built"] = today; stale = []
+    today = str(dt.datetime.now(dt.timezone.utc).date()); site["built"] = today; stale = []      # the UTC date on every machine, Windows included
     future = future_dates(ref, today)
     if future: raise SystemExit("Dates later than the build date: " + ", ".join(future))
     rd0 = lambda name: list(csv.DictReader(open(ref / name, encoding="utf-8"))) if (ref / name).exists() else []
@@ -1811,13 +1814,13 @@ def main():
     if flights:      # the long lists and the world map go in a second file the page fetches when the flights tab opens; both carry one stamp
         import hashlib
         flights["n_all"] = len(flights["all"])
-        heavy = json.dumps({"all": flights.pop("all"), "legs": flights.pop("legs"), "world": json.loads((ROOT / "site" / "vendor" / "countries-110m.json").read_text())}, separators=(",", ":"))
+        heavy = json.dumps({"all": flights.pop("all"), "legs": flights.pop("legs"), "world": json.loads((ROOT / "site" / "vendor" / "countries-110m.json").read_text(encoding="utf-8"))}, separators=(",", ":"))
         flights["more"] = hashlib.sha1(heavy.encode()).hexdigest()[:12]
         (ROOT / "site" / "flights-data.js").write_text(f'window.FLIGHTS_MORE={{"v":"{flights["more"]}","d":{heavy}}};', encoding="utf-8")
     html = prefill_text(html, site.get("hotlines") or {})
     html = (html.replace("/*__DATA__*/null", json.dumps(site, separators=(",", ":")))
                 .replace("/*__FLIGHTS__*/null", json.dumps(flights, separators=(",", ":")))
-                .replace("/*__US__*/null", (ROOT / "site" / "vendor" / "us-states-10m.json").read_text()))
+                .replace("/*__US__*/null", (ROOT / "site" / "vendor" / "us-states-10m.json").read_text(encoding="utf-8")))
     (ROOT / "site" / "index.html").write_text(html, encoding="utf-8")
     print("; ".join(extra))
     print("STALE SOURCES: " + "; ".join(stale) if stale else "all sources within their expected age")
