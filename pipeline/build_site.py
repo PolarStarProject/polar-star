@@ -7,7 +7,7 @@ for _s in (sys.stdout, sys.stderr):
 if hasattr(time, "tzset"): time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too (Windows has no tzset; see utc_today)
 from pathlib import Path
 from flights import STAGING, km
-from firm_profiles import core
+from firm_profiles import core, is_person, recipient, PERSONAL
 
 ROOT = Path(__file__).parent.parent
 NEAR_AIRPORT_KM = 5      # "next to" the airport
@@ -1368,15 +1368,24 @@ def firm_cards(ref):
     awards = {}
     for r in rd_pipe(ref / "ice_awards.csv"):
         k = core(r["recipient"]); awards[k] = awards.get(k, 0) + int(float(r.get("window_usd") or r["amount_usd"] or 0))      # what ICE committed to it in the contract window (ice_awards_meta.json)
+    pc = {}
     for r in rd_pipe(ref / "firm_clients.csv"):
         n = names.get(core(r["firm"]))
         if not n: continue
-        o = out[n]; o["n_clients"] += 1
+        o = out[n]
+        if r["client"] == PERSONAL or is_person(r["client"]):           # private people are counted, never named
+            k = pc.setdefault(n, [PERSONAL, 0, 0, 0, 0, 0, r["first"], r["last"], 0, 0]); k[1] += int(r["usd"]); k[2] += int(r["filings"]); k[9] += 1
+            k[6], k[7] = min(k[6], r["first"]), max(k[7], r["last"]); continue
+        o["n_clients"] += 1
         o["clients"].append([r["client"], int(r["usd"]), int(r["filings"]), int(r["ice"]), int(r["dhs"]), int(r["imm"]), r["first"], r["last"], awards.get(core(r["client"]), 0)])
+    for n, k in pc.items(): out[n]["n_clients"] += k[9]; out[n]["clients"].append(k[:9] + [k[9]])
+    mm = {}
     for r in rd_pipe(ref / "firm_money.csv"):
         n = names.get(core(r["firm"]))
         if not n: continue
-        o = out[n]; o["money"].append([r["recipient"], r["kind"], int(r["usd"]), int(r["gifts"])]); o["m_kind"][r["kind"]] = o["m_kind"].get(r["kind"], 0) + int(r["usd"])
+        k = mm.setdefault((n, recipient(r["recipient"]), r["kind"]), [0, 0]); k[0] += int(r["usd"]); k[1] += int(r["gifts"])      # one spelling per official
+        out[n]["m_kind"][r["kind"]] = out[n]["m_kind"].get(r["kind"], 0) + int(r["usd"])
+    for (n, to, kind), (u, g) in mm.items(): out[n]["money"].append([to, kind, u, g])
     meta = json.loads((ref / "firm_meta.json").read_text(encoding="utf-8")) if (ref / "firm_meta.json").exists() else {}
     for n, o in out.items():
         o["partial"] = bool((meta.get("firms") or {}).get(n, {}).get("partial"))
@@ -1391,7 +1400,7 @@ def firm_cards(ref):
 
 def _first_last(n):
     """'Adam B. Schiff' / 'John Cornyn Jr.' -> ('ADAM', 'SCHIFF'): first and last name, without middle names, initials or suffixes."""
-    w = [x for x in re.sub(r"[^A-Za-z' -]", " ", n or "").upper().split() if x not in ("JR", "SR", "II", "III", "IV")]
+    w = [x for x in re.sub(r"[^A-Za-z' -]", " ", re.sub(r"\(.*?\)", " ", n or "")).upper().split() if x not in ("JR", "SR", "II", "III", "IV")]
     return (w[0], w[-1]) if len(w) >= 2 else None
 
 
@@ -1430,15 +1439,15 @@ def firm_patterns(ref, lf, cards, names, awards):
             rows.append([p["country"], len(ag), [names[core(a)] for a in ag if core(a) in names]])
         out["pay"] = rows
     fm = rd_pipe(ref / "firm_money.csv")
-    out["_money"] = [[r["firm"], r["recipient"], r["kind"], int(r["usd"])] for r in fm if r["kind"] == "campaign"]        # matched to members after the member list is built (firm_members)
+    out["_money"] = [[r["firm"], recipient(r["recipient"]), r["kind"], int(r["usd"])] for r in fm if r["kind"] == "campaign"]        # matched to members after the member list is built (firm_members)
     fc = rd_pipe(ref / "firm_clients.csv")
     if fc:
         sh = {}
         for r in fc:
             n = names.get(core(r["firm"])); a = awards.get(core(r["client"]), 0)
             if n and a and core(r["client"]) not in ("GEO GROUP", "CORECIVIC", "MANAGEMENT TRAINING", "CSI AVIATION"):
-                o = sh.setdefault(r["client"], [a, set()]); o[1].add(n)
-        out["shared"] = [[c, a, sorted(f)] for c, (a, f) in sorted(sh.items(), key=lambda kv: -kv[1][0])]
+                o = sh.setdefault(core(r["client"]), [r["client"], a, set()]); o[2].add(n)          # one row per company, however each firm spelled it
+        out["shared"] = [[c, a, sorted(f)] for c, a, f in sorted(sh.values(), key=lambda v: -v[1])]
     return out
 
 

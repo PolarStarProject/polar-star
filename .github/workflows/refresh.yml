@@ -40,6 +40,7 @@ jobs:
       - name: Refresh
         env:
           FEC_API_KEY: ${{ secrets.FEC_API_KEY }}      # optional: without it the political committee figures are left as they are
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
           ONLY: ${{ github.event.inputs.only }}
           SKIP: ${{ github.event.inputs.skip }}
         run: |
@@ -66,6 +67,9 @@ jobs:
           mkdir -p _site && cp -r site/layers _site/ 2>/dev/null || true
           cp site/flights-data.js _site/
           cp site/more-data.js _site/
+          cp site/watch.xml _site/
+          printf 'User-agent: *\nAllow: /\nSitemap: https://polarstarproject.org/sitemap.xml\n' > _site/robots.txt
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://polarstarproject.org/</loc></url></urlset>\n' > _site/sitemap.xml
           mkdir -p _site/vendor && cp site/vendor/d3.min.js site/vendor/topojson.min.js _site/vendor/ && cp -r site/vendor/fonts _site/vendor/
           { printf '<!doctype html>\n<html lang="en">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'; cat site/index.html; } > _site/index.html
       - if: steps.pages.outcome == 'success'

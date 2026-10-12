@@ -51,3 +51,18 @@ def test_former_officials_keep_post_only():
            {"covered_position": "", "lobbyist": {"first_name": "PAT", "last_name": "POE"}}]
     f = former_of([filing("ACME CORP", 1, "first_quarter", "2026-04-10", "1", lob=lob)], KEY)
     assert f == {"John Doe": "Former Chief of Staff, Rep. A"}
+
+
+def test_private_people_are_never_named():
+    from firm_profiles import is_person, PERSONAL
+    for n in ["SMITH, JOHN A.", "KAREN BACARDI", "STEVE POLLOCK", "TRISTAN THOMPSON"]: assert is_person(n), n
+    for n in ["MORGAN STANLEY", "PALANTIR TECHNOLOGIES, INC.", "DENVER WATER", "GILA RIVER INDIAN COMMUNITY", "STANLEY BLACK & DECKER", "HOUSTON AIRPORT SYSTEM", "SHERPA 6", "ISSUE ONE"]: assert not is_person(n), n
+    assert is_person("NOBODY KNOWNNAME", "Individual")
+    fl = [filing("SMITH, JOHN", 9, "first_quarter", "2026-04-10", "30000"), filing("DOE, JANE", 8, "first_quarter", "2026-04-10", "10000")]
+    c = clients_of(fl, KEY)
+    assert all(k.startswith(PERSONAL) for k in c) and len(c) == 2 and not any("SMITH" in k or "DOE" in k for k in c)
+
+
+def test_recipient_last_first_and_acronyms():
+    assert recipient("Cornyn, John") == "John Cornyn" and recipient("King Jr., Angus") == "Angus King Jr."
+    assert recipient("NRSC") == "NRSC" and recipient("DSCC") == "DSCC"

@@ -18,7 +18,7 @@ A firm with very many filings is read up to PAGE_CAP pages a year, and the profi
 Writes data/reference/firm_clients.csv, firm_money.csv, firm_former.csv and firm_meta.json. Nothing is written unless
 most requests succeed.
 """
-import csv, datetime as dt, json, re, sys, time, urllib.parse, urllib.request
+import csv, datetime as dt, hashlib, json, os, re, sys, time, urllib.parse, urllib.request
 from pathlib import Path
 from identity import USER_AGENT
 
@@ -50,7 +50,50 @@ TITLE = re.compile(r"^(?:the\s+)?(?:hon(?:orable)?\.?\s+|rep(?:resentative)?\.?\
 def recipient(name):
     """One spelling per official: titles dropped ("Senator John Cornyn" -> "John Cornyn"), spaces and case tidied."""
     n = TITLE.sub("", re.sub(r"\s+", " ", (name or "")).strip().strip(",;. "))
-    return n.title() if n.isupper() or n.islower() else n
+    m = re.fullmatch(r"([^,;]+), ([^,;]+)", n)                        # "Cornyn, John" -> "John Cornyn"; "King Jr., Angus" -> "Angus King Jr."
+    if m and len(m.group(2).split()) <= 3 and not ORGWORD.search(n):
+        last, first = m.group(1).strip(), m.group(2).strip()
+        sfx = re.search(r"\s+(Jr\.?|Sr\.?|II|III|IV)$", last, re.I)
+        n = f"{first} {last[:sfx.start()]}{sfx.group(0)}" if sfx else f"{first} {last}"
+    if not (n.isupper() or n.islower()): return n
+    keep = lambda w: w.upper() in ("PAC", "PACS", "USA") or (len(w) <= 5 and not re.search(r"[AEIOUY]", w.upper()))      # NRSC, DSCC, PAC stay as written
+    return " ".join(w.upper() if keep(w) else w.title() for w in n.split())
+
+
+ORGWORD = re.compile(r"\b(?:INC|INCORPORATED|LLC|LLP|LP|PLLC|PC|PBC|CORP|CORPORATION|CO|COMPANY|COMPANIES|GROUP|LTD|LIMITED|PLC|SA|S\.A|AG|NV|GMBH|SPA|AB|"
+                     r"ASSOCIATION|ASSN|ASSOCIATES|COUNCIL|FOUNDATION|UNIVERSITY|COLLEGE|SCHOOL|CITY|COUNTY|STATE|TOWN|VILLAGE|BOROUGH|PORT|TRIBE|NATION|BAND|INSTITUTE|SOCIETY|"
+                     r"COALITION|ALLIANCE|PARTNERS|PARTNERSHIP|HOLDINGS|TECHNOLOGIES|TECHNOLOGY|SYSTEMS|SERVICES|HEALTH|HEALTHCARE|HOSPITAL|MEDICAL|BANK|FUND|FUNDS|TRUST|AUTHORITY|"
+                     r"DISTRICT|DEPARTMENT|AGENCY|BUREAU|CENTER|CENTRE|NETWORK|INDUSTRIES|ENERGY|POWER|WATER|GAS|OIL|AIR|AIRLINES|AVIATION|USA|US|AMERICA|AMERICAN|NATIONAL|INTERNATIONAL|"
+                     r"GLOBAL|WORLD|PROJECT|CAMPAIGN|FORUM|LEAGUE|UNION|FEDERATION|CONFERENCE|COMMITTEE|COMMISSION|BOARD|CLUB|CHURCH|MINISTRIES|ACTION|FRONT|PARTY|CAPITAL|VENTURES|"
+                     r"MANAGEMENT|RESEARCH|LABS|LABORATORIES|SOLUTIONS|PRODUCTS|BRANDS|FOODS|FARMS|MOTORS|STEEL|GOLD|MINING|RESOURCES|SPACE|SECURITY|DEFENSE|MEDIA|NEWS|SOCIAL|"
+                     r"CLOUD|TOUR|CASINOS|RACING|CONSULTING|CONSULTANTS|ADVISORS|SYSTEM|MARITIME|SHIPPING|HOUSING|DEVELOPMENT|ENTERPRISES|CONNECTIVITY|READER|COMMUNITY|HOME|HOMES|CHILDREN|CHILDREN'S|INDIAN|PUEBLO|OUR|OF|THE|AND|FOR)\b", re.I)
+PERSON_DESC = re.compile(r"\b(?:individual|private citizen|private person|philanthropist|entrepreneur|businessman|businesswoman|investor|self\b|personal capacity|on (?:his|her) own behalf)", re.I)
+PERSONAL = "A client filing under a personal name"
+NAMED_FOR_PEOPLE = {"MORGAN STANLEY", "WOOD MACKENZIE", "THOMSON REUTERS", "HUI HULIAU", "RELATED ROSS", "LIBERTY MARITIME", "JUST RIGHT READER", "SAVE OUR SIMULATION"}      # companies whose names read like a person's
+PEOPLE = {'6a49206e1f24', '93da670413ec'}      # people found by review whose first name the name list does not know; kept as short hashes so no name is stored here
+_given = None
+
+
+def is_person(name, desc=""):
+    """Is this lobbying client a person rather than an organization? Private people are never named on the page (the same
+    rule as lobbying_firms.csv). A person: a short name with no organization word, and either a first name that is a known
+    given name ("SMITH, JOHN" or "JOHN SMITH") with a last name that is not one, or a description such as "Individual"."""
+    global _given
+    n = re.sub(r"\s+", " ", (name or "")).strip()
+    if not n or re.search(r"[\d&/]", n) or ORGWORD.search(n): return False
+    if "," in n: last, first = [x.strip() for x in n.split(",", 1)]; w = first.split() + last.split()
+    else: w = n.split()
+    w = [x.strip(".") for x in w if x.strip(".").upper() not in ("JR", "SR", "II", "III", "IV", "MR", "MS", "MRS", "DR") and len(x.strip(".")) > 1]
+    if not 2 <= len(w) <= 4 or len(w[0]) < 3 or not all(re.fullmatch(r"[A-Za-z'\-]+", x) for x in w): return False
+    if PERSON_DESC.search(desc or ""): return True
+    if _given is None:
+        try:
+            import gender_guesser.detector as gg; _given = gg.Detector(case_sensitive=False).get_gender
+        except ImportError: _given = False
+    if not _given: return False
+    known = lambda x: _given(x.capitalize()) != "unknown"
+    if hashlib.sha1(" ".join(w).upper().encode()).hexdigest()[:12] in PEOPLE: return True
+    return known(w[0]) and " ".join(w).upper() not in NAMED_FOR_PEOPLE
 
 
 def clients_of(filings, key):
@@ -64,8 +107,10 @@ def clients_of(filings, key):
         if k not in keep or (f.get("dt_posted") or "") > (keep[k].get("dt_posted") or ""): keep[k] = f
     out = {}
     for f in keep.values():
-        name = re.sub(r"\s+", " ", ((f.get("client") or {}).get("name") or "")).strip()
+        c = f.get("client") or {}
+        name = re.sub(r"\s+", " ", (c.get("name") or "")).strip()
         if not name: continue
+        if is_person(name, c.get("general_description") or ""): name = PERSONAL + "#" + hashlib.sha1(name.upper().encode()).hexdigest()[:8]     # one row per person, never named
         acts = f.get("lobbying_activities") or []
         ents = {g.get("name") or "" for a in acts for g in a.get("government_entities") or []}
         q = f"{f.get('filing_year')} {QUARTER.get(f.get('filing_period'), '')}".strip()
@@ -115,13 +160,16 @@ def former_of(filings, key):
 
 def main():
     asked = failed = 0
+    key = os.environ.get("LDA_API_KEY", "").strip()                   # optional, free from lda.gov: 120 requests a minute instead of 15
+    head = {"Accept": "application/json", "User-Agent": USER_AGENT, **({"Authorization": f"Token {key}"} if key else {})}
+    pause = 0.6 if key else 4.2
     def fetch(url):
         nonlocal asked, failed
         asked += 1
         for i in range(5):
             try:
-                with urllib.request.urlopen(urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": USER_AGENT}), timeout=90) as r:
-                    time.sleep(4.2); return json.loads(r.read().decode("utf-8"))      # about 15 requests a minute without a key
+                with urllib.request.urlopen(urllib.request.Request(url, headers=head), timeout=90) as r:
+                    time.sleep(pause); return json.loads(r.read().decode("utf-8"))
             except Exception as e:
                 err = str(e); time.sleep(30 if "429" in err else 8)
         failed += 1; return None
@@ -149,7 +197,7 @@ def main():
             rp, full = pages("contributions", {"registrant_name": qname(firm), "filing_year": y}); partial |= not full
             for k, (usd, n) in money_of(rp, key).items():
                 o = mo.setdefault(k, [0.0, 0]); o[0] += usd; o[1] += n
-        rows_c += [{"firm": firm, "client": k, **v} for k, v in sorted(cl.items(), key=lambda kv: -kv[1]["usd"])]
+        rows_c += [{"firm": firm, "client": k.split("#")[0] if k.startswith(PERSONAL) else k, **v} for k, v in sorted(cl.items(), key=lambda kv: -kv[1]["usd"])]
         rows_m += [{"firm": firm, "recipient": k[0], "kind": k[1], "usd": round(v[0]), "gifts": v[1]} for k, v in sorted(mo.items(), key=lambda kv: -kv[1][0])]
         rows_f += [{"firm": firm, "lobbyist": k, "covered_position": v} for k, v in sorted(fo.items())]
         meta["firms"][firm] = {"clients": len(cl), "partial": partial}
