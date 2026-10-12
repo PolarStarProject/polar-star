@@ -49,5 +49,18 @@
    "refusals": 48,
    "inspections": 176
   }
+ },
+ {
+  "date": "2026-10-12",
+  "v": {
+   "held": 63084,
+   "deaths": 76,
+   "agreements": 2654,
+   "contract_musd": 16135,
+   "facilities": 208,
+   "allegations": 1126,
+   "refusals": 48,
+   "inspections": 176
+  }
  }
 ]

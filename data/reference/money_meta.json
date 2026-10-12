@@ -1,8 +1,8 @@
 {
  "from": "2023-10-01",
  "to": "2026-09-30",
- "read": "2026-10-08",
- "total_musd": 16136,
+ "read": "2026-10-12",
+ "total_musd": 16135,
  "by_fy_musd": [
   [
    2024,
@@ -14,9 +14,9 @@
   ],
   [
    2026,
-   8934
+   8933
   ]
  ],
- "subs_total_musd": 480.281,
- "subs_records": 229
+ "subs_total_musd": 479.843,
+ "subs_records": 232
 }

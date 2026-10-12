@@ -1,23 +1,27 @@
 {
  "encounters": {
   "file": "https://www.cbp.gov/sites/default/files/2026-09/nationwide-encounters-fy23-fy26-aug-state.csv",
-  "read": "2026-10-08",
+  "read": "2026-10-12",
   "to": "2026-08"
  },
  "custody": {
-  "read": "2026-10-08",
+  "read": "2026-10-12",
   "to": "2026-08"
  },
  "repatriations": {
   "yearbook": 2023,
   "url": "https://ohss.dhs.gov/topics/immigration/yearbook/2023/table39",
-  "read": "2026-10-08",
+  "read": "2026-10-12",
   "to": 2023
  },
  "orr": {
   "ops": "https://acf.gov/sites/default/files/documents/orr/UAC-Operational-Data_Sep2026.xlsx",
   "rel": "https://acf.gov/sites/default/files/documents/orr/UAC-Monthly-Released-to-Sponsor-Data_Sep2026.xlsx",
-  "read": "2026-10-08",
+  "read": "2026-10-12",
   "to": "2026-09"
+ },
+ "notices": {
+  "read": "2026-10-12",
+  "listed": 4
  }
 }
