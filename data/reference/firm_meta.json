@@ -1,0 +1,93 @@
+{
+ "read": "2026-10-12",
+ "years": [
+  2025,
+  2026
+ ],
+ "firms": {
+  "Akin Gump Strauss Hauer & Feld": {
+   "clients": 382,
+   "partial": true
+  },
+  "Avant Bishop Washington & Black LLC": {
+   "clients": 3,
+   "partial": false
+  },
+  "Bradley Arant Boult Cummings LLP": {
+   "clients": 24,
+   "partial": false
+  },
+  "Capitol Counsel LLC": {
+   "clients": 207,
+   "partial": false
+  },
+  "Checkmate Government Relations": {
+   "clients": 144,
+   "partial": false
+  },
+  "Continental Strategy, LLC": {
+   "clients": 186,
+   "partial": false
+  },
+  "Da Vinci Group": {
+   "clients": 16,
+   "partial": false
+  },
+  "Greenberg Traurig, LLP": {
+   "clients": 90,
+   "partial": false
+  },
+  "Holland & Knight LLP": {
+   "clients": 447,
+   "partial": true
+  },
+  "Liberty Government Affairs": {
+   "clients": 6,
+   "partial": false
+  },
+  "Miller Strategies, LLC": {
+   "clients": 207,
+   "partial": false
+  },
+  "Navigators Global LLC": {
+   "clients": 67,
+   "partial": false
+  },
+  "Peter Damon Group LLC": {
+   "clients": 11,
+   "partial": false
+  },
+  "Squire Patton Boggs": {
+   "clients": 231,
+   "partial": false
+  },
+  "State Federal Strategies": {
+   "clients": 10,
+   "partial": false
+  },
+  "TSG Advocates DC, LLC": {
+   "clients": 112,
+   "partial": false
+  },
+  "The Simmons & Russell Group, LLC": {
+   "clients": 12,
+   "partial": false
+  },
+  "The Vogel Group": {
+   "clients": 184,
+   "partial": false
+  },
+  "Tower 19": {
+   "clients": 13,
+   "partial": false
+  },
+  "Upstream Consulting": {
+   "clients": 5,
+   "partial": false
+  },
+  "Venture Government Strategies, LLC": {
+   "clients": 118,
+   "partial": false
+  }
+ }
+}
