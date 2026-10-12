@@ -740,7 +740,7 @@ is skipped and the page keeps the filings already read. Fill both in when the ac
 ## Licences (9 October 2026)
 
 - `LICENSE`: PolyForm Noncommercial 1.0.0 for the software (official text, with the Required Notice for the Polar Star Project).
-- `LICENSE-CONTENT`: CC BY-NC-SA 4.0 for the page's text, design and charts.
+- `LICENSE-CONTENT`: CC BY-NC-SA 4.0 for the page's text, design and charts. The Polar Star names, logo and seal are excluded: all rights reserved (unaltered use to refer to the project is allowed).
 - `LICENSE-DATA`: CC BY 4.0 for the data files; flight data under ODbL 1.0 (required by adsb.lol's licence); government records public domain; other projects' data keeps its own terms.
 - The page footer carries the licence line in both languages, and the For researchers tab has "What you may reuse".
 
