@@ -93,3 +93,19 @@ def test_share_offers_ways_to_send_the_public_link_and_loads_nothing_until_tappe
         assert any(u.startswith("mailto:") for u in links) and any(u.startswith("sms:") for u in links)
         assert all("polarstarproject.org" in u and "find%2FADLNTCA" in u for u in links), links
         assert all(u.startswith("file:") for u in reqs[n0:]), reqs[n0:]       # nothing fetched from another site
+
+
+def test_other_political_money_has_tiles_that_open_charts():
+    try: from playwright.sync_api import sync_playwright
+    except ImportError: return
+    if not PAGE.exists(): return
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={"width": 390, "height": 844}); errs = []
+        pg.on("pageerror", lambda e: errs.append(str(e)))
+        pg.goto(PAGE.as_uri()); pg.wait_for_timeout(1000); pg.evaluate("showView('opm')"); pg.wait_for_timeout(400)
+        n = pg.evaluate("document.querySelectorAll('#opm-tiles button').length")
+        if n: pg.click("#opm-tiles button"); pg.wait_for_timeout(300)
+        bars = pg.evaluate("document.querySelectorAll('#snap .mgl li').length")
+        b.close()
+        assert not errs, errs
+        assert n == 0 or bars > 0, (n, bars)
