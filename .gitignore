@@ -1,0 +1,18 @@
+# large downloads that are fetched again on every refresh
+data/raw/
+data/flights/tmp/
+data/legs_bundle.tgz
+*.part
+# local only
+.venv/
+__pycache__/
+site/index.previous.html
+data/refresh_log.txt
+data/flights_backfill_log.txt
+# unsent draft letters; keep private until sent
+outreach/
+# saved source pages for writing parsers; not for the repository
+data/probe/
+data/watch/candidates.json
+data/watch/officials_candidates.json
+*.png

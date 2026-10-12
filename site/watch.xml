@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Polar Star Project: alerts from the records</title>
+<id>tag:polar-star,2026:watch</id>
+<updated>2026-10-12T00:00:00Z</updated>
+<link rel="alternate" href="./"/>
+<author><name>Polar Star Project</name></author>
+<entry>
+<title>ICE has not posted its required detention statistics</title>
+<id>tag:polar-star,2026:watch/ice-detention-stats/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>ICE's last detention statistics file is dated July 20, 2026: 80 days with no new file when ICE's page was checked on October 8, 2026. Congress asked for this file every two weeks, so about 5 updates have been missed. The requirement was added in the fiscal 2020 DHS appropriations law; reporting has noted debate over whether it still binds ICE.</summary>
+</entry>
+<entry>
+<title>Share of people in ICE detention held more than a year</title>
+<id>tag:polar-star,2026:watch/long-detention/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>4,161 people in ICE detention on August 6, 2026 had been held more than a year, and 12,736 more than six months (6.3% and 19.3% of the 65,890 held). Long stays often come from cases still before a judge or on appeal, which can take more than a year. ICE's records do not say why any one stay has lasted this long, whether it has been reviewed, or whether the person has a final removal order. ICE's own twice-monthly file gives a lower figure, 2,112 held more than a year on June 30, 2026. This count runs from the start of each continuous stay in ICE detention, across transfers; ICE's file does not say how it measures, so the two are not directly comparable. For people with a final removal order, the Supreme Court set six months as the presumptively reasonable limit when removal is not reasonably foreseeable (Zadvydas v. Davis, 2001). The records cannot show how many of these stays that applies to; that is the question for the bodies below.</summary>
+</entry>
+<entry>
+<title>Adams County Correctional Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-adamsms/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>422 of the 2,415 people held here on August 6, 2026 had been in ICE detention more than a year (17%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>Adelanto ICE Processing Center: deaths well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-adlntca/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>4 deaths ICE reported here from August 2025 to July 2026: 24.4 for every 10,000 people held for a year, against 6.2 across all facilities on ICE's list over the same months. At the overall rate, a count this high would come up by chance about 2 times in 100. Officials were refused entry here 1 time since August 2025. This is listed beside the figures above as a fact; it does not show that one caused the other. About 1,635 people a day were held here from August 2025 to July 2026. Rates from a handful of deaths move a lot with one event.</summary>
+</entry>
+<entry>
+<title>Allen Parish Public Safety Complex: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-appscla/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>11 of the 64 people held here on August 6, 2026 had been in ICE detention more than a year (17%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>Central Arizona Florence Correctional Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-ccaflaz/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>57 of the 338 people held here on August 6, 2026 had been in ICE detention more than a year (17%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>Cibola County Correctional Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-cibocnm/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>40 of the 254 people held here on August 6, 2026 had been in ICE detention more than a year (16%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>El Paso Service Processing Center: sexual abuse allegations well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-epc/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>ICE's audit of July 16, 2024 counted 28 sexual abuse allegations (reports made, not findings that abuse happened): 36.7 for every 1,000 people held for a year, against 9.4 across audited facilities. At the overall rate, a count this high would come up by chance less than once in 100. About 759 people a day were held here over the audit's period.</summary>
+</entry>
+<entry>
+<title>Imperial Regional Detention Facility: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-iradfca/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>77 of the 596 people held here on August 6, 2026 had been in ICE detention more than a year (13%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>Louisiana ICE Processing Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-licepla/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>67 of the 234 people held here on August 6, 2026 had been in ICE detention more than a year (29%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>CoreCivic Laredo Processing Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-lrdicdf/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>44 of the 236 people held here on August 6, 2026 had been in ICE detention more than a year (19%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>IAH Polk Adult Detention Facility: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-polkctx/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>165 of the 889 people held here on August 6, 2026 had been in ICE detention more than a year (19%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>Rio Grande Processing Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-rgrndtx/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>94 of the 648 people held here on August 6, 2026 had been in ICE detention more than a year (15%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>San Luis Regional Detention Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-slrdcaz/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>43 of the 109 people held here on August 6, 2026 had been in ICE detention more than a year (39%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>South Texas ICE Processing Center: sexual abuse allegations well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-stcdftx/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>ICE's audit of January 9, 2024 counted 43 sexual abuse allegations (reports made, not findings that abuse happened): 31.5 for every 1,000 people held for a year, against 9.4 across audited facilities. At the overall rate, a count this high would come up by chance less than once in 100. About 1,363 people a day were held here over the audit's period.</summary>
+</entry>
+<entry>
+<title>Torrance County Detention Facility: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-tooranm/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>85 of the 425 people held here on August 6, 2026 had been in ICE detention more than a year (20%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>CoreCivic Webb County Detention Center: share held more than a year well above other facilities</title>
+<id>tag:polar-star,2026:watch/facility-webdctx/2026-10-09</id>
+<updated>2026-10-09T00:00:00Z</updated>
+<link href="./"/>
+<summary>54 of the 281 people held here on August 6, 2026 had been in ICE detention more than a year (19%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+</feed>

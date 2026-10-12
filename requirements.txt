@@ -1,0 +1,11 @@
+pandas
+pyarrow
+numpy
+openpyxl
+requests
+phonenumbers
+playwright
+beautifulsoup4
+pymupdf
+pytesseract
+pillow

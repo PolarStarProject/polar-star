@@ -1,0 +1,3232 @@
+fips,county,state,lat,lon
+04015,"Mohave","Arizona",35.6985,-113.7623
+22105,"Tangipahoa","Louisiana",30.6259,-90.4049
+16063,"Lincoln","Idaho",43.0025,-114.1381
+27119,"Polk","Minnesota",47.7747,-96.4001
+38017,"Cass","North Dakota",46.9330,-97.2482
+46081,"Lawrence","South Dakota",44.3581,-103.7925
+36095,"Schoharie","New York",42.5872,-74.4432
+02275,"Wrangell","Alaska",56.3255,-132.0284
+13143,"Haralson","Georgia",33.7943,-85.2115
+13023,"Bleckley","Georgia",32.4347,-83.3282
+18093,"Lawrence","Indiana",38.8412,-86.4840
+18079,"Jennings","Indiana",38.9969,-85.6288
+26087,"Lapeer","Michigan",43.0902,-83.2223
+28017,"Chickasaw","Mississippi",33.9207,-88.9477
+39033,"Crawford","Ohio",40.8507,-82.9202
+46099,"Minnehaha","South Dakota",43.6744,-96.7908
+46125,"Turner","South Dakota",43.3109,-97.1478
+48471,"Walker","Texas",30.7394,-95.5718
+72133,"Santa Isabel","Puerto Rico",17.9954,-66.3875
+46003,"Aurora","South Dakota",43.7181,-98.5607
+48047,"Brooks","Texas",27.0310,-98.2185
+72025,"Caguas","Puerto Rico",18.2165,-66.0522
+72033,"Cataño","Puerto Rico",18.4450,-66.1388
+72101,"Morovis","Puerto Rico",18.3192,-66.4187
+31029,"Chase","Nebraska",40.5242,-101.6987
+72054,"Florida","Puerto Rico",18.3701,-66.5632
+08021,"Conejos","Colorado",37.2006,-106.1909
+24043,"Washington","Maryland",39.6050,-77.8155
+20137,"Norton","Kansas",39.7846,-99.9028
+17053,"Ford","Illinois",40.5964,-88.2246
+48117,"Deaf Smith","Texas",34.9658,-102.6056
+13261,"Sumter","Georgia",32.0391,-84.1962
+55075,"Marinette","Wisconsin",45.3827,-88.0330
+06069,"San Benito","California",36.6060,-121.0737
+13199,"Meriwether","Georgia",33.0415,-84.6895
+19013,"Black Hawk","Iowa",42.4699,-92.3090
+19081,"Hancock","Iowa",43.0818,-93.7339
+27125,"Red Lake","Minnesota",47.8724,-96.0960
+31125,"Nance","Nebraska",41.3968,-97.9928
+42075,"Lebanon","Pennsylvania",40.3676,-76.4586
+48219,"Hockley","Texas",33.6078,-102.3430
+48417,"Shackelford","Texas",32.7357,-99.3537
+48451,"Tom Green","Texas",31.4046,-100.4621
+48497,"Wise","Texas",33.2155,-97.6549
+46079,"Lake","South Dakota",44.0220,-97.1282
+46069,"Hyde","South Dakota",44.5461,-99.4869
+48101,"Cottle","Texas",34.0776,-100.2790
+04023,"Santa Cruz","Arizona",31.5258,-110.8465
+19179,"Wapello","Iowa",41.0308,-92.4092
+19031,"Cedar","Iowa",41.7726,-91.1330
+30033,"Garfield","Montana",47.2778,-106.9941
+29185,"St. Clair","Missouri",38.0372,-93.7761
+12091,"Okaloosa","Florida",30.6908,-86.5916
+21219,"Todd","Kentucky",36.8350,-87.1790
+23003,"Aroostook","Maine",46.6573,-68.5945
+24001,"Allegany","Maryland",39.6197,-78.6967
+28075,"Lauderdale","Mississippi",32.4046,-88.6621
+38021,"Dickey","North Dakota",46.1103,-98.5048
+27093,"Meeker","Minnesota",45.1231,-94.5297
+46007,"Bennett","South Dakota",43.1953,-101.6639
+49043,"Summit","Utah",40.8679,-110.9567
+36099,"Seneca","New York",42.7805,-76.8227
+20073,"Greenwood","Kansas",37.8772,-96.2324
+20101,"Lane","Kansas",38.4811,-100.4664
+26123,"Newaygo","Michigan",43.5540,-85.8015
+31035,"Clay","Nebraska",40.5244,-98.0508
+36073,"Orleans","New York",43.2519,-78.2312
+38063,"Nelson","North Dakota",47.9216,-98.1919
+40011,"Blaine","Oklahoma",35.8749,-98.4327
+48441,"Taylor","Texas",32.3018,-99.8897
+48011,"Armstrong","Texas",34.9647,-101.3576
+48233,"Hutchinson","Texas",35.8402,-101.3549
+48235,"Irion","Texas",31.3037,-100.9819
+55137,"Waushara","Wisconsin",44.1134,-89.2437
+47151,"Scott","Tennessee",36.4278,-84.5044
+55113,"Sawyer","Wisconsin",45.8800,-91.1448
+26073,"Isabella","Michigan",43.6406,-84.8474
+28131,"Stone","Mississippi",30.7900,-89.1164
+28013,"Calhoun","Mississippi",33.9363,-89.3368
+31171,"Thomas","Nebraska",41.9136,-100.5563
+48335,"Mitchell","Texas",32.3062,-100.9205
+08057,"Jackson","Colorado",40.6664,-106.3428
+19089,"Howard","Iowa",43.3569,-92.3168
+26151,"Sanilac","Michigan",43.4238,-82.8202
+18075,"Jay","Indiana",40.4380,-85.0055
+38075,"Renville","North Dakota",48.7191,-101.6564
+41021,"Gilliam","Oregon",45.3769,-120.2121
+29119,"McDonald","Missouri",36.6290,-94.3489
+48501,"Yoakum","Texas",33.1730,-102.8276
+48075,"Childress","Texas",34.5293,-100.2065
+13097,"Douglas","Georgia",33.7015,-84.7703
+02158,"Kusilvak","Alaska",62.1539,-163.3982
+19181,"Warren","Iowa",41.3337,-93.5611
+40031,"Comanche","Oklahoma",34.6619,-98.4716
+40009,"Beckham","Oklahoma",35.2682,-99.6805
+46017,"Buffalo","South Dakota",44.0761,-99.2050
+48171,"Gillespie","Texas",30.3183,-98.9477
+48125,"Dickens","Texas",33.6163,-100.7785
+48283,"La Salle","Texas",28.3449,-99.1000
+54093,"Tucker","West Virginia",39.1131,-79.5667
+06089,"Shasta","California",40.7640,-122.0410
+17165,"Saline","Illinois",37.7534,-88.5410
+26101,"Manistee","Michigan",44.3330,-86.0570
+31071,"Garfield","Nebraska",41.9144,-98.9902
+31041,"Custer","Nebraska",41.3937,-99.7262
+46097,"Miner","South Dakota",44.0221,-97.6092
+46025,"Clark","South Dakota",44.8580,-97.7290
+05037,"Cross","Arkansas",35.2961,-90.7719
+08007,"Archuleta","Colorado",37.1939,-107.0494
+12043,"Glades","Florida",26.9563,-81.1899
+46053,"Gregory","South Dakota",43.1927,-99.1854
+48195,"Hansford","Texas",36.2779,-101.3539
+53053,"Pierce","Washington",47.0272,-122.1136
+13077,"Coweta","Georgia",33.3537,-84.7627
+13059,"Clarke","Georgia",33.9510,-83.3653
+18081,"Johnson","Indiana",39.4899,-86.1021
+20115,"Marion","Kansas",38.3589,-97.0971
+27059,"Isanti","Minnesota",45.5624,-93.2946
+31003,"Antelope","Nebraska",42.1764,-98.0667
+39103,"Medina","Ohio",41.1178,-81.8989
+47153,"Sequatchie","Tennessee",35.3692,-85.4082
+48375,"Potter","Texas",35.4014,-101.8940
+48145,"Falls","Texas",31.2537,-96.9371
+38039,"Griggs","North Dakota",47.4573,-98.2365
+46043,"Douglas","South Dakota",43.3872,-98.3649
+48193,"Hamilton","Texas",31.7050,-98.1107
+19185,"Wayne","Iowa",40.7397,-93.3278
+38087,"Slope","North Dakota",46.4476,-103.4605
+48399,"Runnels","Texas",31.8318,-99.9767
+04005,"Coconino","Arizona",35.8355,-111.7687
+16009,"Benewah","Idaho",47.2173,-116.6605
+20007,"Barber","Kansas",37.2291,-98.6850
+27133,"Rock","Minnesota",43.6747,-96.2527
+23029,"Washington","Maine",45.0198,-67.6289
+30051,"Liberty","Montana",48.5618,-111.0234
+46091,"Marshall","South Dakota",45.7592,-97.5990
+36117,"Wayne","New York",43.1560,-77.0288
+02060,"Bristol Bay","Alaska",58.7446,-156.6979
+12027,"DeSoto","Florida",27.1869,-81.8099
+13015,"Bartow","Georgia",34.2379,-84.8401
+19127,"Marshall","Iowa",42.0360,-92.9988
+20047,"Edwards","Kansas",37.8877,-99.3116
+26129,"Ogemaw","Michigan",44.3346,-84.1279
+31093,"Howard","Nebraska",41.2202,-98.5166
+39063,"Hancock","Ohio",41.0017,-83.6661
+21209,"Scott","Kentucky",38.2908,-84.5826
+47007,"Bledsoe","Tennessee",35.5971,-85.2055
+37157,"Rockingham","North Carolina",36.3961,-79.7748
+48189,"Hale","Texas",34.0705,-101.8265
+51820,"Waynesboro","Virginia",38.0663,-78.9031
+56025,"Natrona","Wyoming",42.9613,-106.7980
+48407,"San Jacinto","Texas",30.5795,-95.1671
+55135,"Waupaca","Wisconsin",44.4708,-88.9655
+39067,"Harrison","Ohio",40.2937,-81.0908
+13087,"Decatur","Georgia",30.8783,-84.5793
+22001,"Acadia","Louisiana",30.2909,-92.4124
+27019,"Carver","Minnesota",44.8211,-93.8032
+17065,"Hamilton","Illinois",38.0813,-88.5387
+27067,"Kandiyohi","Minnesota",45.1524,-95.0060
+55071,"Manitowoc","Wisconsin",44.1196,-87.8103
+01013,"Butler","Alabama",31.7526,-86.6808
+13169,"Jones","Georgia",33.0247,-83.5606
+19069,"Franklin","Iowa",42.7326,-93.2627
+18113,"Noble","Indiana",41.3982,-85.4169
+20193,"Thomas","Kansas",39.3512,-101.0557
+26035,"Clare","Michigan",43.9879,-84.8482
+26039,"Crawford","Michigan",44.6833,-84.6099
+29225,"Webster","Missouri",37.2806,-92.8757
+31005,"Arthur","Nebraska",41.5692,-101.6958
+31143,"Polk","Nebraska",41.1876,-97.5691
+46029,"Codington","South Dakota",44.9781,-97.1877
+48131,"Duval","Texas",27.6820,-98.5086
+48341,"Moore","Texas",35.8378,-101.8932
+48317,"Martin","Texas",32.3058,-101.9513
+39083,"Knox","Ohio",40.3995,-82.4236
+72073,"Jayuya","Puerto Rico",18.2125,-66.5883
+48293,"Limestone","Texas",31.5455,-96.5812
+19055,"Delaware","Iowa",42.4714,-91.3672
+31159,"Seward","Nebraska",40.8723,-97.1391
+48507,"Zavala","Texas",28.8662,-99.7604
+06091,"Sierra","California",39.5808,-120.5177
+17201,"Winnebago","Illinois",42.3365,-89.1615
+23031,"York","Maine",43.4789,-70.7145
+24011,"Caroline","Maryland",38.8696,-75.8308
+26119,"Montmorency","Michigan",45.0281,-84.1264
+38077,"Richland","North Dakota",46.2640,-96.9490
+42007,"Beaver","Pennsylvania",40.6825,-80.3502
+48079,"Cochran","Texas",33.6039,-102.8292
+26051,"Gladwin","Michigan",43.9907,-84.3891
+08121,"Washington","Colorado",39.9707,-103.2015
+19019,"Buchanan","Iowa",42.4711,-91.8376
+19187,"Webster","Iowa",42.4278,-94.1812
+20057,"Ford","Kansas",37.6919,-99.8873
+26135,"Oscoda","Michigan",44.6818,-84.1298
+28099,"Neshoba","Mississippi",32.7533,-89.1180
+31137,"Phelps","Nebraska",40.5117,-99.4132
+31039,"Cuming","Nebraska",41.9162,-96.7873
+45045,"Greenville","South Carolina",34.8927,-82.3696
+48151,"Fisher","Texas",32.7432,-100.4019
+37069,"Franklin","North Carolina",36.0825,-78.2845
+39039,"Defiance","Ohio",41.3240,-84.4901
+47055,"Giles","Tennessee",35.2025,-87.0351
+48023,"Baylor","Texas",33.6168,-99.2138
+48365,"Panola","Texas",32.1622,-94.3053
+53001,"Adams","Washington",46.9842,-118.5622
+19015,"Boone","Iowa",42.0366,-93.9304
+48237,"Jack","Texas",33.2337,-98.1731
+72009,"Aibonito","Puerto Rico",18.1295,-66.2637
+20017,"Chase","Kansas",38.3021,-96.5936
+48099,"Coryell","Texas",31.3912,-97.7997
+26037,"Clinton","Michigan",42.9440,-84.6026
+20207,"Woodson","Kansas",37.8863,-95.7411
+17037,"DeKalb","Illinois",41.8929,-88.7691
+19159,"Ringgold","Iowa",40.7353,-94.2451
+19165,"Shelby","Iowa",41.6849,-95.3103
+06019,"Fresno","California",36.7584,-119.6545
+19175,"Union","Iowa",41.0281,-94.2432
+17123,"Marshall","Illinois",41.0331,-89.3451
+17147,"Piatt","Illinois",40.0098,-88.5915
+19003,"Adams","Iowa",41.0292,-94.7002
+17159,"Richland","Illinois",38.7126,-88.0852
+47023,"Chester","Tennessee",35.4220,-88.6137
+26023,"Branch","Michigan",41.9159,-85.0593
+37151,"Randolph","North Carolina",35.7103,-79.8056
+20199,"Wallace","Kansas",38.9170,-101.7641
+18177,"Wayne","Indiana",39.8644,-85.0101
+51595,"Emporia","Virginia",36.6951,-77.5360
+48295,"Lipscomb","Texas",36.2779,-100.2725
+47169,"Trousdale","Tennessee",36.3928,-86.1558
+49037,"San Juan","Utah",37.6249,-109.8058
+19123,"Mahaska","Iowa",41.3349,-92.6408
+16021,"Boundary","Idaho",48.7669,-116.4615
+17107,"Logan","Illinois",40.1243,-89.3670
+20059,"Franklin","Kansas",38.5645,-95.2866
+22013,"Bienville","Louisiana",32.3472,-93.0575
+06005,"Amador","California",38.4479,-120.6487
+06017,"El Dorado","California",38.7790,-120.5249
+05065,"Izard","Arkansas",36.0949,-91.9122
+51530,"Buena Vista","Virginia",37.7326,-79.3567
+51590,"Danville","Virginia",36.5814,-79.4058
+51640,"Galax","Virginia",36.6768,-80.9100
+51660,"Harrisonburg","Virginia",38.4363,-78.8743
+51690,"Martinsville","Virginia",36.6807,-79.8626
+18049,"Fulton","Indiana",41.0473,-86.2640
+19001,"Adair","Iowa",41.3309,-94.4714
+06053,"Monterey","California",36.2176,-121.2376
+29219,"Warren","Missouri",38.7641,-91.1597
+37197,"Yadkin","North Carolina",36.1594,-80.6658
+26057,"Gratiot","Michigan",43.2928,-84.6048
+21129,"Lee","Kentucky",37.5943,-83.7155
+20133,"Neosho","Kansas",37.5581,-95.3068
+26067,"Ionia","Michigan",42.9449,-85.0747
+26077,"Kalamazoo","Michigan",42.2452,-85.5309
+21149,"McLean","Kentucky",37.5286,-87.2615
+27033,"Cottonwood","Minnesota",44.0072,-95.1817
+26085,"Lake","Michigan",43.9907,-85.8025
+26105,"Mason","Michigan",43.9950,-86.2504
+26107,"Mecosta","Michigan",43.6407,-85.3258
+26121,"Muskegon","Michigan",43.2913,-86.1521
+27047,"Freeborn","Minnesota",43.6737,-93.3489
+17051,"Fayette","Illinois",39.0003,-89.0240
+17049,"Effingham","Illinois",39.0594,-88.5901
+27009,"Benton","Minnesota",45.6981,-93.9981
+48129,"Donley","Texas",34.9654,-100.8144
+27041,"Douglas","Minnesota",45.9338,-95.4538
+40073,"Kingfisher","Oklahoma",35.9451,-97.9405
+47053,"Gibson","Tennessee",35.9965,-88.9313
+47005,"Benton","Tennessee",36.0701,-88.0679
+45009,"Bamberg","South Carolina",33.2147,-81.0532
+48013,"Atascosa","Texas",28.8934,-98.5269
+46067,"Hutchinson","South Dakota",43.3346,-97.7539
+46019,"Butte","South Dakota",44.9059,-103.5089
+02105,"Hoonah-Angoon","Alaska",58.2846,-135.6125
+46059,"Hand","South Dakota",44.5476,-99.0047
+46077,"Kingsbury","South Dakota",44.3697,-97.4913
+47101,"Lewis","Tennessee",35.5276,-87.4945
+55069,"Lincoln","Wisconsin",45.3374,-89.7351
+47113,"Madison","Tennessee",35.6082,-88.8398
+51540,"Charlottesville","Virginia",38.0381,-78.4829
+30037,"Golden Valley","Montana",46.3806,-109.1759
+56009,"Converse","Wyoming",42.9710,-105.5075
+47179,"Washington","Tennessee",36.2925,-82.4976
+55119,"Taylor","Wisconsin",45.2115,-90.5017
+56029,"Park","Wyoming",44.5203,-109.5865
+27101,"Murray","Minnesota",44.0222,-95.7637
+55133,"Waukesha","Wisconsin",43.0180,-88.3045
+27117,"Pipestone","Minnesota",44.0233,-96.2588
+51099,"King George","Virginia",38.2733,-77.1572
+30001,"Beaverhead","Montana",45.1310,-112.8937
+30107,"Wheatland","Montana",46.4661,-109.8450
+29043,"Christian","Missouri",36.9694,-93.1888
+29053,"Cooper","Missouri",38.8435,-92.8100
+20029,"Cloud","Kansas",39.4806,-97.6493
+51159,"Richmond","Virginia",37.9437,-76.7284
+47033,"Crockett","Tennessee",35.8134,-89.1407
+18063,"Hendricks","Indiana",39.7697,-86.5099
+20135,"Ness","Kansas",38.4800,-99.9147
+17093,"Kendall","Illinois",41.5907,-88.4292
+18149,"Starke","Indiana",41.2809,-86.6490
+18145,"Shelby","Indiana",39.5229,-85.7915
+29105,"Laclede","Missouri",37.6587,-92.5908
+29117,"Livingston","Missouri",39.7818,-93.5478
+26137,"Otsego","Michigan",45.0211,-84.5989
+31087,"Hitchcock","Nebraska",40.1764,-101.0417
+26143,"Roscommon","Michigan",44.3354,-84.6126
+29011,"Barton","Missouri",37.5021,-94.3461
+48045,"Briscoe","Texas",34.5303,-101.2084
+26161,"Washtenaw","Michigan",42.2535,-83.8381
+26015,"Barry","Michigan",42.5950,-85.3085
+35029,"Luna","New Mexico",32.1823,-107.7496
+51169,"Scott","Virginia",36.7138,-82.6019
+33007,"Coos","New Hampshire",44.6871,-71.3070
+38095,"Towner","North Dakota",48.6852,-99.2452
+29145,"Newton","Missouri",36.9056,-94.3405
+02195,"Petersburg","Alaska",57.1186,-132.9338
+31167,"Stanton","Nebraska",41.9170,-97.1949
+31179,"Wayne","Nebraska",42.2095,-97.1195
+26109,"Menominee","Michigan",45.5780,-87.5562
+48175,"Goliad","Texas",28.6577,-97.4252
+38073,"Ransom","North Dakota",46.4565,-97.6562
+48179,"Gray","Texas",35.4008,-100.8139
+42121,"Venango","Pennsylvania",41.4010,-79.7579
+48191,"Hall","Texas",34.5304,-100.6811
+29209,"Stone","Missouri",36.7470,-93.4566
+39057,"Greene","Ohio",39.6915,-83.8905
+29061,"Daviess","Missouri",39.9613,-93.9851
+29199,"Scotland","Missouri",40.4523,-92.1469
+48049,"Brown","Texas",31.7749,-98.9984
+48165,"Gaines","Texas",32.7410,-102.6356
+48027,"Bell","Texas",31.0374,-97.4790
+53051,"Pend Oreille","Washington",48.5311,-117.2737
+13277,"Tift","Georgia",31.4571,-83.5253
+48435,"Sutton","Texas",30.4991,-100.5380
+51023,"Botetourt","Virginia",37.5558,-79.8128
+48405,"San Augustine","Texas",31.3929,-94.1679
+72129,"San Lorenzo","Puerto Rico",18.1488,-65.9771
+72143,"Vega Alta","Puerto Rico",18.4140,-66.3363
+27017,"Carlton","Minnesota",46.5926,-92.6765
+12029,"Dixie","Florida",29.6088,-83.1579
+13211,"Morgan","Georgia",33.5903,-83.4910
+02188,"Northwest Arctic","Alaska",67.0511,-159.7436
+38007,"Billings","North Dakota",47.0228,-103.3769
+27001,"Aitkin","Minnesota",46.6076,-93.4155
+08045,"Garfield","Colorado",39.6009,-107.9051
+20003,"Anderson","Kansas",38.2142,-95.2935
+48269,"King","Texas",33.6167,-100.2565
+40039,"Custer","Oklahoma",35.6391,-99.0015
+39101,"Marion","Ohio",40.5877,-83.1599
+17095,"Knox","Illinois",40.9315,-90.2132
+13013,"Barrow","Georgia",33.9944,-83.7123
+17099,"LaSalle","Illinois",41.3434,-88.8870
+01031,"Coffee","Alabama",31.4021,-85.9879
+12085,"Martin","Florida",27.0777,-80.4318
+19079,"Hamilton","Iowa",42.3838,-93.7065
+19083,"Hardin","Iowa",42.3839,-93.2407
+16037,"Custer","Idaho",44.2413,-114.2801
+13037,"Calhoun","Georgia",31.5282,-84.6231
+19093,"Ida","Iowa",42.3870,-95.5134
+08105,"Rio Grande","Colorado",37.5823,-106.3830
+19125,"Marion","Iowa",41.3347,-93.0993
+08087,"Morgan","Colorado",40.2627,-103.8095
+19157,"Poweshiek","Iowa",41.6868,-92.5319
+17179,"Tazewell","Illinois",40.5078,-89.5140
+08039,"Elbert","Colorado",39.2871,-104.1369
+19153,"Polk","Iowa",41.6849,-93.5738
+39149,"Shelby","Ohio",40.3321,-84.2042
+19121,"Madison","Iowa",41.3312,-94.0164
+39153,"Summit","Ohio",41.1256,-81.5321
+12049,"Hardee","Florida",27.4932,-81.8094
+39161,"Van Wert","Ohio",40.8554,-84.5861
+39165,"Warren","Ohio",39.4265,-84.1661
+48463,"Uvalde","Texas",29.3574,-99.7621
+13195,"Madison","Georgia",34.1281,-83.2086
+39059,"Guernsey","Ohio",40.0519,-81.4942
+48493,"Wilson","Texas",29.1747,-98.0865
+39041,"Delaware","Ohio",40.2784,-83.0041
+39055,"Geauga","Ohio",41.4993,-81.1791
+40055,"Greer","Oklahoma",34.9347,-99.5598
+27131,"Rice","Minnesota",44.3543,-93.2965
+05025,"Cleveland","Arkansas",33.8988,-92.1858
+13093,"Dooly","Georgia",32.1571,-83.7985
+48413,"Schleicher","Texas",30.8977,-100.5382
+27165,"Watonwan","Minnesota",43.9784,-94.6141
+31001,"Adams","Nebraska",40.5244,-98.5013
+37003,"Alexander","North Carolina",35.9228,-81.1764
+29039,"Cedar","Missouri",37.7237,-93.8571
+48437,"Swisher","Texas",34.5304,-101.7352
+30049,"Lewis and Clark","Montana",47.1208,-112.3874
+29159,"Pettis","Missouri",38.7279,-93.2857
+48345,"Motley","Texas",34.0743,-100.7796
+30081,"Ravalli","Montana",46.0809,-114.1203
+06071,"San Bernardino","California",34.8421,-116.1763
+13189,"McDuffie","Georgia",33.4838,-82.4803
+02100,"Haines","Alaska",59.1094,-135.4835
+55073,"Marathon","Wisconsin",44.8986,-89.7596
+02013,"Aleutians East","Alaska",55.3674,-162.0044
+02150,"Kodiak Island","Alaska",57.6752,-153.7811
+02164,"Lake and Peninsula","Alaska",58.6032,-156.2941
+02261,"Valdez-Cordova","Alaska",61.5435,-144.5092
+46035,"Davison","South Dakota",43.6746,-98.1450
+41023,"Grant","Oregon",44.4905,-119.0074
+39129,"Pickaway","Ohio",39.6416,-83.0245
+39133,"Portage","Ohio",41.1681,-81.1973
+13131,"Grady","Georgia",30.8749,-84.2342
+72093,"Maricao","Puerto Rico",18.1718,-66.9444
+54075,"Pocahontas","West Virginia",38.3309,-80.0098
+72117,"Rincón","Puerto Rico",18.3355,-67.2292
+27111,"Otter Tail","Minnesota",46.4089,-95.7076
+13111,"Fannin","Georgia",34.8639,-84.3179
+27113,"Pennington","Minnesota",48.0667,-96.0352
+17021,"Christian","Illinois",39.5460,-89.2775
+18169,"Wabash","Indiana",40.8460,-85.7946
+08085,"Montrose","Colorado",38.4035,-108.2696
+28113,"Pike","Mississippi",31.1746,-90.4047
+38049,"McHenry","North Dakota",48.2338,-100.6357
+19177,"Van Buren","Iowa",40.7533,-91.9498
+17171,"Scott","Illinois",39.6444,-90.4741
+13021,"Bibb","Georgia",32.8062,-83.6992
+72035,"Cayey","Puerto Rico",18.1048,-66.1493
+26111,"Midland","Michigan",43.6464,-84.3882
+20051,"Ellis","Kansas",38.9145,-99.3165
+38009,"Bottineau","North Dakota",48.7928,-100.8333
+60020,"Manu'a","American Samoa",-14.2191,-169.5153
+60050,"Western","American Samoa",-14.3235,-170.7678
+18003,"Allen","Indiana",41.0911,-85.0659
+20085,"Jackson","Kansas",39.4166,-95.7940
+19087,"Henry","Iowa",40.9875,-91.5446
+18011,"Boone","Indiana",40.0512,-86.4675
+06103,"Tehama","California",40.1258,-122.2354
+18103,"Miami","Indiana",40.7690,-86.0463
+38047,"Logan","North Dakota",46.4578,-99.4783
+40021,"Cherokee","Oklahoma",35.9062,-95.0000
+46085,"Lyman","South Dakota",43.8957,-99.8473
+27087,"Mahnomen","Minnesota",47.3256,-95.8091
+55019,"Clark","Wisconsin",44.7344,-90.6120
+20171,"Scott","Kansas",38.4817,-100.9071
+27135,"Roseau","Minnesota",48.7754,-95.8112
+05115,"Pope","Arkansas",35.4479,-93.0339
+26095,"Luce","Michigan",46.4704,-85.5439
+29015,"Benton","Missouri",38.2950,-93.2877
+05141,"Van Buren","Arkansas",35.5808,-92.5159
+51199,"York","Virginia",37.2447,-76.5617
+29067,"Douglas","Missouri",36.9329,-92.4997
+30029,"Flathead","Montana",48.2942,-114.0453
+48305,"Lynn","Texas",33.1767,-101.8157
+29065,"Dent","Missouri",37.6069,-91.5079
+48327,"Menard","Texas",30.8899,-99.8202
+48353,"Nolan","Texas",32.3041,-100.4053
+29203,"Shannon","Missouri",37.1576,-91.3996
+48431,"Sterling","Texas",31.8278,-101.0498
+08089,"Otero","Colorado",37.9022,-103.7168
+48169,"Garza","Texas",33.1800,-101.2978
+08119,"Teller","Colorado",38.8817,-105.1621
+30089,"Sanders","Montana",47.6750,-115.1307
+48059,"Callahan","Texas",32.2978,-99.3732
+48433,"Stonewall","Texas",33.1790,-100.2544
+40051,"Grady","Oklahoma",35.0155,-97.8843
+48159,"Franklin","Texas",33.1747,-95.2185
+48467,"Van Zandt","Texas",32.5637,-95.8370
+31073,"Gosper","Nebraska",40.5145,-99.8302
+31059,"Fillmore","Nebraska",40.5248,-97.5968
+48231,"Hunt","Texas",33.1238,-96.0852
+48313,"Madison","Texas",30.9668,-95.9278
+40019,"Carter","Oklahoma",34.2512,-97.2859
+51157,"Rappahannock","Virginia",38.6850,-78.1598
+01103,"Morgan","Alabama",34.4544,-86.8534
+51079,"Greene","Virginia",38.2979,-78.4652
+02290,"Yukon-Koyukuk","Alaska",65.4990,-151.8506
+42059,"Greene","Pennsylvania",39.8539,-80.2217
+05043,"Drew","Arkansas",33.5902,-91.7187
+28043,"Grenada","Mississippi",33.7699,-89.8008
+51750,"Radford","Virginia",37.1223,-80.5659
+29211,"Sullivan","Missouri",40.2101,-93.1114
+54047,"McDowell","West Virginia",37.3778,-81.6536
+37133,"Onslow","North Carolina",34.7291,-77.4265
+29049,"Clinton","Missouri",39.6013,-94.4042
+12005,"Bay","Florida",30.2647,-85.6204
+72061,"Guaynabo","Puerto Rico",18.3388,-66.1152
+72029,"Canóvanas","Puerto Rico",18.3286,-65.8860
+72047,"Corozal","Puerto Rico",18.3032,-66.3303
+53033,"King","Washington",47.4892,-121.8072
+53007,"Chelan","Washington",47.8666,-120.6178
+12035,"Flagler","Florida",29.4614,-81.3126
+53037,"Kittitas","Washington",47.1243,-120.6764
+12095,"Orange","Florida",28.5140,-81.3231
+13235,"Pulaski","Georgia",32.2335,-83.4760
+28005,"Amite","Mississippi",31.1743,-90.8044
+46045,"Edmunds","South Dakota",45.4194,-99.2158
+17063,"Grundy","Illinois",41.2860,-88.4192
+20151,"Pratt","Kansas",37.6477,-98.7389
+19033,"Cerro Gordo","Iowa",43.0814,-93.2617
+31155,"Saunders","Nebraska",41.2251,-96.6367
+05125,"Saline","Arkansas",34.6461,-92.6763
+55097,"Portage","Wisconsin",44.4763,-89.5019
+20037,"Crawford","Kansas",37.5068,-94.8524
+48221,"Hood","Texas",32.4301,-97.8328
+20111,"Lyon","Kansas",38.4551,-96.1528
+46047,"Fall River","South Dakota",43.2398,-103.5266
+30069,"Petroleum","Montana",47.1181,-108.2510
+18023,"Clinton","Indiana",40.3023,-86.4744
+38003,"Barnes","North Dakota",46.9356,-98.0712
+50015,"Lamoille","Vermont",44.6052,-72.6423
+13035,"Butts","Georgia",33.2871,-83.9565
+55141,"Wood","Wisconsin",44.4548,-90.0416
+19197,"Wright","Iowa",42.7327,-93.7355
+48319,"Mason","Texas",30.7178,-99.2260
+48183,"Gregg","Texas",32.4808,-94.8175
+28105,"Oktibbeha","Mississippi",33.4248,-88.8792
+06057,"Nevada","California",39.3016,-120.7708
+31045,"Dawes","Nebraska",42.7201,-103.1362
+41033,"Josephine","Oregon",42.3648,-123.5540
+31151,"Saline","Nebraska",40.5246,-97.1414
+48211,"Hemphill","Texas",35.8376,-100.2709
+13171,"Lamar","Georgia",33.0768,-84.1387
+28065,"Jefferson Davis","Mississippi",31.5694,-89.8239
+39089,"Licking","Ohio",40.0917,-82.4829
+48069,"Castro","Texas",34.5303,-102.2628
+26009,"Antrim","Michigan",44.9996,-85.1407
+20147,"Phillips","Kansas",39.7849,-99.3467
+20067,"Grant","Kansas",37.5628,-101.3089
+30007,"Broadwater","Montana",46.3310,-111.4960
+31019,"Buffalo","Nebraska",40.8552,-99.0747
+32009,"Esmeralda","Nevada",37.7840,-117.6305
+37135,"Orange","North Carolina",36.0610,-79.1205
+16051,"Jefferson","Idaho",43.8202,-112.3111
+18087,"LaGrange","Indiana",41.6423,-85.4267
+19105,"Jones","Iowa",42.1211,-91.1316
+19027,"Carroll","Iowa",42.0363,-94.8608
+38093,"Stutsman","North Dakota",46.9789,-98.9585
+19073,"Greene","Iowa",42.0361,-94.3970
+01003,"Baldwin","Alabama",30.7265,-87.7232
+26075,"Jackson","Michigan",42.2482,-84.4235
+47067,"Hancock","Tennessee",36.5257,-83.2229
+20065,"Graham","Kansas",39.3499,-99.8833
+20001,"Allen","Kansas",37.8854,-95.3014
+40127,"Pushmataha","Oklahoma",34.4165,-95.3761
+48461,"Upton","Texas",31.3684,-102.0434
+46107,"Potter","South Dakota",45.0650,-99.9571
+31083,"Harlan","Nebraska",40.1767,-99.4031
+19063,"Emmet","Iowa",43.3782,-94.6786
+38019,"Cavalier","North Dakota",48.7729,-98.4643
+06109,"Tuolumne","California",38.0276,-119.9553
+20195,"Trego","Kansas",38.9146,-99.8722
+48247,"Jim Hogg","Texas",27.0442,-98.6974
+72069,"Humacao","Puerto Rico",18.1455,-65.8120
+55078,"Menominee","Wisconsin",45.0043,-88.7095
+27091,"Martin","Minnesota",43.6745,-94.5494
+01085,"Lowndes","Alabama",32.1558,-86.6498
+21073,"Franklin","Kentucky",38.2387,-84.8766
+29205,"Shelby","Missouri",39.7975,-92.0769
+40037,"Creek","Oklahoma",35.9018,-96.3720
+48285,"Lavaca","Texas",29.3835,-96.9307
+55047,"Green Lake","Wisconsin",43.8000,-89.0455
+31047,"Dawson","Nebraska",40.8703,-99.8195
+26149,"St. Joseph","Michigan",41.9142,-85.5284
+17081,"Jefferson","Illinois",38.3004,-88.9237
+19131,"Mitchell","Iowa",43.3568,-92.7897
+02240,"Southeast Fairbanks","Alaska",63.8652,-143.2131
+17155,"Putnam","Illinois",41.2051,-89.2859
+19137,"Montgomery","Iowa",41.0302,-95.1562
+19017,"Bremer","Iowa",42.7748,-92.3187
+17121,"Marion","Illinois",38.6500,-88.9182
+37025,"Cabarrus","North Carolina",35.3869,-80.5496
+48329,"Midland","Texas",31.8689,-102.0313
+48267,"Kimble","Texas",30.4870,-99.7477
+55103,"Richland","Wisconsin",43.3761,-90.4296
+48065,"Carson","Texas",35.4036,-101.3546
+21061,"Edmonson","Kentucky",37.2092,-86.2379
+18047,"Franklin","Indiana",39.4144,-85.0616
+16085,"Valley","Idaho",44.7665,-115.5681
+51109,"Louisa","Virginia",37.9784,-77.9608
+48363,"Palo Pinto","Texas",32.7532,-98.3120
+48279,"Lamb","Texas",34.0689,-102.3516
+12131,"Walton","Florida",30.6428,-86.1693
+36039,"Greene","New York",42.2771,-74.1243
+39037,"Darke","Ohio",40.1339,-84.6195
+27007,"Beltrami","Minnesota",47.9722,-94.9363
+26133,"Osceola","Michigan",43.9899,-85.3258
+20049,"Elk","Kansas",37.4535,-96.2439
+20075,"Hamilton","Kansas",37.9993,-101.7919
+27137,"St. Louis","Minnesota",47.5990,-92.4690
+19183,"Washington","Iowa",41.3354,-91.7174
+48133,"Eastland","Texas",32.3271,-98.8323
+48265,"Kerr","Texas",30.0615,-99.3498
+36003,"Allegany","New York",42.2576,-78.0276
+48303,"Lubbock","Texas",33.6103,-101.8204
+51775,"Salem","Virginia",37.2875,-80.0613
+51670,"Hopewell","Virginia",37.2908,-77.3004
+17073,"Henry","Illinois",41.3532,-90.1311
+28079,"Leake","Mississippi",32.7540,-89.5242
+35057,"Torrance","New Mexico",34.6405,-105.8508
+08095,"Phillips","Colorado",40.5945,-102.3579
+08125,"Yuma","Colorado",40.0023,-102.4246
+19141,"O'Brien","Iowa",43.0833,-95.6246
+28123,"Scott","Mississippi",32.4060,-89.5374
+31175,"Valley","Nebraska",41.5673,-98.9823
+37097,"Iredell","North Carolina",35.8084,-80.8735
+01057,"Fayette","Alabama",33.7216,-87.7385
+20039,"Decatur","Kansas",39.7846,-100.4592
+41001,"Baker","Oregon",44.7091,-117.6766
+01133,"Winston","Alabama",34.1494,-87.3725
+29221,"Washington","Missouri",37.9611,-90.8768
+72015,"Arroyo","Puerto Rico",17.9962,-66.0540
+18007,"Benton","Indiana",40.6061,-87.3117
+06083,"Santa Barbara","California",34.6738,-120.0165
+06105,"Trinity","California",40.6487,-123.1150
+17117,"Macoupin","Illinois",39.2609,-89.9243
+26145,"Saginaw","Michigan",43.3352,-84.0520
+48143,"Erath","Texas",32.2358,-98.2173
+12101,"Pasco","Florida",28.3085,-82.3963
+37169,"Stokes","North Carolina",36.4020,-80.2402
+16045,"Gem","Idaho",44.0618,-116.3989
+54021,"Gilmer","West Virginia",38.9234,-80.8566
+40003,"Alfalfa","Oklahoma",36.7305,-98.3222
+20201,"Washington","Kansas",39.7842,-97.0871
+13109,"Evans","Georgia",32.1572,-81.8874
+18065,"Henry","Indiana",39.9312,-85.3953
+45023,"Chester","South Carolina",34.6923,-81.1595
+04012,"La Paz","Arizona",33.7283,-113.9828
+31009,"Blaine","Nebraska",41.9128,-99.9774
+16059,"Lemhi","Idaho",44.9421,-113.9286
+20069,"Gray","Kansas",37.7383,-100.4378
+28097,"Montgomery","Mississippi",33.4943,-89.6163
+48459,"Upshur","Texas",32.7360,-94.9421
+48031,"Blanco","Texas",30.2663,-98.4007
+20061,"Geary","Kansas",39.0029,-96.7525
+21041,"Carroll","Kentucky",38.6666,-85.1215
+18099,"Marshall","Indiana",41.3246,-86.2627
+37081,"Guilford","North Carolina",36.0797,-79.7887
+51610,"Falls Church","Virginia",38.8844,-77.1611
+51678,"Lexington","Virginia",37.7799,-79.4439
+26059,"Hillsdale","Michigan",41.8875,-84.5938
+20203,"Wichita","Kansas",38.4820,-101.3476
+27039,"Dodge","Minnesota",44.0224,-92.8618
+17039,"De Witt","Illinois",40.1741,-88.9042
+48003,"Andrews","Texas",32.3048,-102.6379
+46111,"Sanborn","South Dakota",44.0237,-98.0899
+27079,"Le Sueur","Minnesota",44.3718,-93.7299
+55105,"Rock","Wisconsin",42.6712,-89.0713
+27147,"Steele","Minnesota",44.0220,-93.2258
+42065,"Jefferson","Pennsylvania",41.1267,-78.9996
+19151,"Pocahontas","Iowa",42.7344,-94.6787
+27105,"Nobles","Minnesota",43.6747,-95.7531
+02198,"Prince of Wales-Hyder","Alaska",55.8095,-133.0414
+46121,"Todd","South Dakota",43.1937,-100.7184
+13003,"Atkinson","Georgia",31.2971,-82.8788
+02220,"Sitka","Alaska",57.2297,-135.3098
+28015,"Carroll","Mississippi",33.4482,-89.9200
+12111,"St. Lucie","Florida",27.3777,-80.4710
+19051,"Davis","Iowa",40.7476,-92.4097
+17109,"McDonough","Illinois",40.4568,-90.6770
+39143,"Sandusky","Ohio",41.3574,-83.1446
+17191,"Wayne","Illinois",38.4296,-88.4261
+48243,"Jeff Davis","Texas",30.7157,-104.1396
+27143,"Sibley","Minnesota",44.5800,-94.2337
+48275,"Knox","Texas",33.6062,-99.7420
+17163,"St. Clair","Illinois",38.4699,-89.9280
+26011,"Arenac","Michigan",44.0652,-83.8946
+17079,"Jasper","Illinois",39.0104,-88.1550
+20027,"Clay","Kansas",39.3496,-97.1659
+16049,"Idaho","Idaho",45.8429,-115.4708
+38079,"Rolette","North Dakota",48.7724,-99.8413
+20179,"Sheridan","Kansas",39.3503,-100.4422
+48299,"Llano","Texas",30.7063,-98.6844
+08101,"Pueblo","Colorado",38.1734,-104.5125
+41015,"Curry","Oregon",42.4566,-124.1560
+28159,"Winston","Mississippi",33.0888,-89.0338
+31099,"Kearney","Nebraska",40.5069,-98.9480
+72019,"Barranquitas","Puerto Rico",18.2010,-66.3093
+54103,"Wetzel","West Virginia",39.6055,-80.6400
+13201,"Miller","Georgia",31.1654,-84.7311
+08003,"Alamosa","Colorado",37.5724,-105.7886
+20097,"Kiowa","Kansas",37.5588,-99.2851
+38041,"Hettinger","North Dakota",46.4333,-102.4602
+27109,"Olmsted","Minnesota",44.0037,-92.4012
+72077,"Juncos","Puerto Rico",18.2249,-65.9081
+19047,"Crawford","Iowa",42.0375,-95.3815
+20139,"Osage","Kansas",38.6524,-95.7285
+19075,"Grundy","Iowa",42.4018,-92.7917
+20181,"Sherman","Kansas",39.3517,-101.7198
+72121,"Sabana Grande","Puerto Rico",18.0845,-66.9436
+19009,"Audubon","Iowa",41.6849,-94.9063
+23009,"Hancock","Maine",44.6456,-68.3583
+05081,"Little River","Arkansas",33.7004,-94.2337
+05143,"Washington","Arkansas",35.9780,-94.2160
+05119,"Pulaski","Arkansas",34.7702,-92.3128
+05085,"Lonoke","Arkansas",34.7541,-91.8896
+08009,"Baca","Colorado",37.3193,-102.5603
+16031,"Cassia","Idaho",42.2840,-113.6010
+01021,"Chilton","Alabama",32.8488,-86.7192
+13081,"Crisp","Georgia",31.9229,-83.7673
+27083,"Lyon","Minnesota",44.4135,-95.8391
+51049,"Cumberland","Virginia",37.5108,-78.2454
+31133,"Pawnee","Nebraska",40.1316,-96.2373
+48483,"Wheeler","Texas",35.4015,-100.2698
+38091,"Steele","North Dakota",47.4558,-97.7241
+31185,"York","Nebraska",40.8728,-97.5968
+26079,"Kalkaska","Michigan",44.6854,-85.0904
+20163,"Rooks","Kansas",39.3503,-99.3250
+17035,"Cumberland","Illinois",39.2747,-88.2401
+54101,"Webster","West Virginia",38.4943,-80.4220
+28139,"Tippah","Mississippi",34.7681,-88.9086
+13069,"Coffee","Georgia",31.5499,-82.8493
+20169,"Saline","Kansas",38.7843,-97.6500
+28119,"Quitman","Mississippi",34.2514,-90.2897
+38045,"LaMoure","North Dakota",46.4572,-98.5354
+20053,"Ellsworth","Kansas",38.6969,-98.2054
+18055,"Greene","Indiana",39.0365,-86.9624
+29001,"Adair","Missouri",40.1906,-92.6011
+39075,"Holmes","Ohio",40.5614,-81.9306
+05029,"Conway","Arkansas",35.2614,-92.7006
+18131,"Pulaski","Indiana",41.0417,-86.6994
+72045,"Comerío","Puerto Rico",18.2230,-66.2237
+31077,"Greeley","Nebraska",41.5675,-98.5209
+48107,"Crosby","Texas",33.6146,-101.3000
+21083,"Graves","Kentucky",36.7226,-88.6499
+21171,"Monroe","Kentucky",36.7123,-85.7163
+17005,"Bond","Illinois",38.8873,-89.4351
+05097,"Montgomery","Arkansas",34.5387,-93.6593
+47159,"Smith","Tennessee",36.2499,-85.9578
+17045,"Edgar","Illinois",39.6785,-87.7448
+42021,"Cambria","Pennsylvania",40.4941,-78.7144
+41043,"Linn","Oregon",44.4899,-122.5344
+27129,"Renville","Minnesota",44.7268,-94.9471
+27153,"Todd","Minnesota",46.0695,-94.8985
+41047,"Marion","Oregon",44.9043,-122.5850
+42071,"Lancaster","Pennsylvania",40.0418,-76.2475
+05023,"Cleburne","Arkansas",35.5381,-92.0265
+13017,"Ben Hill","Georgia",31.7597,-83.2208
+15009,"Maui","Hawaii",20.8645,-156.5697
+29169,"Pulaski","Missouri",37.8241,-92.2068
+48311,"McMullen","Texas",28.3525,-98.5678
+19113,"Linn","Iowa",42.0792,-91.5993
+48393,"Roberts","Texas",35.8381,-100.8147
+19107,"Keokuk","Iowa",41.3365,-92.1779
+39073,"Hocking","Ohio",39.4971,-82.4796
+13053,"Chattahoochee","Georgia",32.3470,-84.7867
+30065,"Musselshell","Montana",46.4966,-108.3990
+13149,"Heard","Georgia",33.2970,-85.1288
+27031,"Cook","Minnesota",47.9034,-90.5327
+19161,"Sac","Iowa",42.3866,-95.1057
+37145,"Person","North Carolina",36.3900,-78.9714
+02185,"North Slope","Alaska",69.4010,-153.4753
+72095,"Maunabo","Puerto Rico",18.0152,-65.9189
+18069,"Huntington","Indiana",40.8286,-85.4881
+29093,"Iron","Missouri",37.5540,-90.7728
+48263,"Kent","Texas",33.1812,-100.7775
+51155,"Pulaski","Virginia",37.0630,-80.7159
+29025,"Caldwell","Missouri",39.6564,-93.9826
+01073,"Jefferson","Alabama",33.5546,-86.8958
+15001,"Hawaii","Hawaii",19.6012,-155.5210
+53023,"Garfield","Washington",46.4308,-117.5458
+01027,"Clay","Alabama",33.2703,-85.8605
+19193,"Woodbury","Iowa",42.3898,-96.0454
+19155,"Pottawattamie","Iowa",41.3367,-95.5431
+16013,"Blaine","Idaho",43.4134,-113.9787
+23027,"Waldo","Maine",44.5009,-69.1439
+25025,"Suffolk","Massachusetts",42.3369,-71.0679
+25011,"Franklin","Massachusetts",42.5832,-72.5911
+26017,"Bay","Michigan",43.7070,-83.9899
+27081,"Lincoln","Minnesota",44.4123,-96.2682
+28011,"Bolivar","Mississippi",33.7953,-90.8815
+26007,"Alpena","Michigan",45.0341,-83.6253
+26053,"Gogebic","Michigan",46.4101,-89.6952
+23025,"Somerset","Maine",45.5102,-69.9577
+28149,"Warren","Mississippi",32.3572,-90.8480
+36075,"Oswego","New York",43.4280,-76.1427
+27127,"Redwood","Minnesota",44.4036,-95.2547
+39095,"Lucas","Ohio",41.6210,-83.6552
+19139,"Muscatine","Iowa",41.4842,-91.1123
+40033,"Cotton","Oklahoma",34.2904,-98.3741
+19129,"Mills","Iowa",41.0336,-95.6212
+36059,"Nassau","New York",40.7383,-73.5861
+30109,"Wibaux","Montana",46.9660,-104.2489
+29155,"Pemiscot","Missouri",36.2119,-89.7850
+29127,"Marion","Missouri",39.8060,-91.6228
+35017,"Grant","New Mexico",32.7379,-108.3825
+51107,"Loudoun","Virginia",39.0912,-77.6356
+46105,"Perkins","South Dakota",45.4899,-102.4741
+48091,"Comal","Texas",29.8087,-98.2784
+48505,"Zapata","Texas",27.0015,-99.1690
+48007,"Aransas","Texas",28.1201,-96.9981
+48361,"Orange","Texas",30.1195,-93.8930
+48495,"Winkler","Texas",31.8500,-103.0491
+51011,"Appomattox","Virginia",37.3723,-78.8105
+53025,"Grant","Washington",47.2053,-119.4525
+54017,"Doddridge","West Virginia",39.2687,-80.7087
+54083,"Randolph","West Virginia",38.7748,-79.8767
+19143,"Osceola","Iowa",43.3787,-95.6240
+21189,"Owsley","Kentucky",37.4199,-83.6842
+37181,"Vance","North Carolina",36.3657,-78.4079
+04007,"Gila","Arizona",33.8000,-110.8106
+05129,"Searcy","Arkansas",35.9111,-92.6994
+05095,"Monroe","Arkansas",34.6778,-91.2026
+12133,"Washington","Florida",30.6114,-85.6631
+13217,"Newton","Georgia",33.5535,-83.8491
+12119,"Sumter","Florida",28.7042,-82.0804
+18031,"Decatur","Indiana",39.3073,-85.5015
+19065,"Fayette","Iowa",42.8628,-91.8443
+19099,"Jasper","Iowa",41.6863,-93.0540
+21109,"Jackson","Kentucky",37.4178,-84.0057
+22035,"East Carroll","Louisiana",32.7327,-91.2377
+22113,"Vermilion","Louisiana",29.8462,-92.3236
+22039,"Evangeline","Louisiana",30.7282,-92.4051
+29063,"DeKalb","Missouri",39.8929,-94.4043
+29071,"Franklin","Missouri",38.4106,-91.0751
+31097,"Johnson","Nebraska",40.3928,-96.2650
+31183,"Wheeler","Nebraska",41.9150,-98.5273
+35051,"Sierra","New Mexico",33.1311,-107.1930
+37107,"Lenoir","North Carolina",35.2383,-77.6428
+37045,"Cleveland","North Carolina",35.3325,-81.5551
+31105,"Kimball","Nebraska",41.1979,-103.7147
+40145,"Wagoner","Oklahoma",35.9616,-95.5220
+40027,"Cleveland","Oklahoma",35.2034,-97.3272
+40099,"Murray","Oklahoma",34.4822,-97.0670
+42003,"Allegheny","Pennsylvania",40.4697,-79.9820
+45087,"Union","South Carolina",34.6893,-81.6187
+46065,"Hughes","South Dakota",44.3905,-99.9952
+21235,"Whitley","Kentucky",36.7583,-84.1467
+37175,"Transylvania","North Carolina",35.2024,-82.7969
+37049,"Craven","North Carolina",35.1244,-77.0918
+48253,"Jones","Texas",32.7401,-99.8787
+51720,"Norton","Virginia",36.9320,-82.6270
+39105,"Meigs","Ohio",39.0828,-82.0256
+39053,"Gallia","Ohio",38.8237,-82.3165
+54025,"Greenbrier","West Virginia",37.9470,-80.4531
+78030,"St. Thomas","United States Virgin Islands",18.3448,-64.9398
+05111,"Poinsett","Arkansas",35.5745,-90.6633
+06099,"Stanislaus","California",37.5582,-120.9985
+06011,"Colusa","California",39.1768,-122.2356
+13089,"DeKalb","Georgia",33.7685,-84.2253
+13311,"White","Georgia",34.6459,-83.7470
+13115,"Floyd","Georgia",34.2628,-85.2147
+16047,"Gooding","Idaho",42.9697,-114.8114
+17141,"Ogle","Illinois",42.0430,-89.3198
+30083,"Richland","Montana",47.7879,-104.5622
+37065,"Edgecombe","North Carolina",35.9132,-77.5962
+48421,"Sherman","Texas",36.2779,-101.8933
+01017,"Chambers","Alabama",32.9133,-85.3921
+06003,"Alpine","California",38.5957,-119.8206
+06093,"Siskiyou","California",41.5932,-122.5396
+08083,"Montezuma","Colorado",37.3387,-108.5972
+13213,"Murray","Georgia",34.7902,-84.7477
+16071,"Oneida","Idaho",42.1952,-112.5397
+18129,"Posey","Indiana",38.0196,-87.8689
+21093,"Hardin","Kentucky",37.6978,-85.9648
+22023,"Cameron","Louisiana",29.8754,-93.1934
+20121,"Miami","Kansas",38.5639,-94.8374
+16015,"Boise","Idaho",43.9890,-115.7303
+16019,"Bonneville","Idaho",43.3881,-111.6128
+25023,"Plymouth","Massachusetts",41.9534,-70.8122
+22077,"Pointe Coupee","Louisiana",30.7107,-91.6022
+26043,"Dickinson","Michigan",46.0084,-87.8695
+29097,"Jasper","Missouri",37.2035,-94.3401
+20189,"Stevens","Kansas",37.1925,-101.3121
+17085,"Jo Daviess","Illinois",42.3651,-90.2122
+17057,"Fulton","Illinois",40.4723,-90.2072
+36055,"Monroe","New York",43.1462,-77.6956
+27075,"Lake","Minnesota",47.6390,-91.4442
+41037,"Lake","Oregon",42.7910,-120.3837
+44005,"Newport","Rhode Island",41.5589,-71.2302
+36043,"Herkimer","New York",43.4184,-74.9626
+35059,"Union","New Mexico",36.4809,-103.4701
+48071,"Chambers","Texas",29.7386,-94.6069
+53047,"Okanogan","Washington",48.5490,-119.7419
+01115,"St. Clair","Alabama",33.7146,-86.3159
+55059,"Kenosha","Wisconsin",42.5760,-88.0419
+72075,"Juana Díaz","Puerto Rico",18.0542,-66.4947
+55077,"Marquette","Wisconsin",43.8199,-89.3981
+55099,"Price","Wisconsin",45.6798,-90.3612
+72087,"Loíza","Puerto Rico",18.4278,-65.9027
+16079,"Shoshone","Idaho",47.3517,-115.8915
+37027,"Caldwell","North Carolina",35.9535,-81.5446
+38065,"Oliver","North Dakota",47.1154,-101.3420
+31147,"Richardson","Nebraska",40.1252,-95.7181
+31145,"Red Willow","Nebraska",40.1756,-100.4770
+48199,"Hardin","Texas",30.3317,-94.3903
+01077,"Lauderdale","Alabama",34.9016,-87.6546
+05007,"Benton","Arkansas",36.3389,-94.2541
+17011,"Bureau","Illinois",41.4046,-89.5289
+18053,"Grant","Indiana",40.5159,-85.6547
+26113,"Missaukee","Michigan",44.3379,-85.0948
+26117,"Montcalm","Michigan",43.3105,-85.1529
+29229,"Wright","Missouri",37.2711,-92.4693
+29215,"Texas","Missouri",37.3167,-91.9650
+29123,"Madison","Missouri",37.4787,-90.3451
+28085,"Lincoln","Mississippi",31.5334,-90.4529
+35011,"De Baca","New Mexico",34.3425,-104.4117
+37147,"Pitt","North Carolina",35.5930,-77.3755
+38059,"Morton","North Dakota",46.7157,-101.2777
+39077,"Huron","Ohio",41.1467,-82.5979
+40111,"Okmulgee","Oklahoma",35.6465,-95.9642
+45041,"Florence","South Carolina",34.0234,-79.7035
+45081,"Saluda","South Carolina",34.0065,-81.7272
+21027,"Breckinridge","Kentucky",37.7741,-86.4289
+21225,"Union","Kentucky",37.6586,-87.9461
+21231,"Wayne","Kentucky",36.8009,-84.8264
+21211,"Shelby","Kentucky",38.2149,-85.1938
+37103,"Jones","North Carolina",35.0208,-77.3547
+47105,"Loudon","Tennessee",35.7360,-84.3080
+48217,"Hill","Texas",31.9908,-97.1308
+51087,"Henrico","Virginia",37.5380,-77.4051
+39019,"Carroll","Ohio",40.5789,-81.0893
+38099,"Walsh","North Dakota",48.3700,-97.7213
+55067,"Langlade","Wisconsin",45.2622,-89.0721
+55017,"Chippewa","Wisconsin",45.0695,-91.2798
+22101,"St. Mary","Louisiana",29.7046,-91.4434
+72023,"Cabo Rojo","Puerto Rico",18.0441,-67.1536
+41009,"Columbia","Oregon",45.9434,-123.0886
+41025,"Harney","Oregon",43.0595,-118.9665
+48491,"Williamson","Texas",30.6479,-97.5994
+49009,"Daggett","Utah",40.8865,-109.5072
+48271,"Kinney","Texas",29.3502,-100.4175
+49029,"Morgan","Utah",41.0896,-111.5759
+51620,"Franklin","Virginia",36.6809,-76.9402
+08005,"Arapahoe","Colorado",39.6507,-104.3388
+13295,"Walker","Georgia",34.7352,-85.3010
+18121,"Parke","Indiana",39.7734,-87.2067
+18143,"Scott","Indiana",38.6869,-85.7483
+21227,"Warren","Kentucky",36.9939,-86.4228
+22081,"Red River","Louisiana",32.0929,-93.3403
+27015,"Brown","Minnesota",44.2428,-94.7284
+29139,"Montgomery","Missouri",38.9419,-91.4694
+05093,"Mississippi","Arkansas",35.7630,-90.0546
+05049,"Fulton","Arkansas",36.3820,-91.8176
+01049,"DeKalb","Alabama",34.4611,-85.8030
+05127,"Scott","Arkansas",34.8611,-94.0635
+06015,"Del Norte","California",41.7429,-123.8968
+17177,"Stephenson","Illinois",42.3517,-89.6634
+18025,"Crawford","Indiana",38.2913,-86.4488
+18043,"Floyd","Indiana",38.3178,-85.9085
+13179,"Liberty","Georgia",31.8281,-81.4948
+16053,"Jerome","Idaho",42.6903,-114.2643
+24045,"Wicomico","Maryland",38.3738,-75.6228
+26013,"Baraga","Michigan",46.6622,-88.3659
+32017,"Lincoln","Nevada",37.6418,-114.8784
+34011,"Cumberland","New Jersey",39.3720,-75.1092
+18115,"Ohio","Indiana",38.9488,-84.9650
+36061,"New York","New York",40.7749,-73.9695
+36089,"St. Lawrence","New York",44.4957,-75.0688
+28063,"Jefferson","Mississippi",31.7337,-91.0367
+40023,"Choctaw","Oklahoma",34.0274,-95.5513
+17149,"Pike","Illinois",39.6220,-90.8867
+19057,"Des Moines","Iowa",40.9232,-91.1811
+30085,"Roosevelt","Montana",48.2955,-105.0148
+45007,"Anderson","South Carolina",34.5188,-82.6381
+46033,"Custer","South Dakota",43.6782,-103.4512
+47157,"Shelby","Tennessee",35.1848,-89.8957
+34019,"Hunterdon","New Jersey",40.5661,-74.9128
+51089,"Henry","Virginia",36.6816,-79.8748
+51650,"Hampton","Virginia",37.0559,-76.3613
+30071,"Phillips","Montana",48.2574,-107.9148
+13161,"Jeff Davis","Georgia",31.8053,-82.6362
+56023,"Lincoln","Wyoming",42.2608,-110.6538
+01063,"Greene","Alabama",32.8524,-87.9522
+05061,"Howard","Arkansas",34.0881,-93.9925
+51091,"Highland","Virginia",38.3625,-79.5693
+51101,"King William","Virginia",37.7105,-77.0899
+55007,"Bayfield","Wisconsin",46.5236,-91.2017
+55123,"Vernon","Wisconsin",43.5938,-90.8355
+31011,"Boone","Nebraska",41.7062,-98.0664
+20043,"Doniphan","Kansas",39.7880,-95.1481
+31163,"Sherman","Nebraska",41.2203,-98.9751
+32021,"Mineral","Nevada",38.5384,-118.4352
+47083,"Houston","Tennessee",36.2854,-87.7178
+48057,"Calhoun","Texas",28.5025,-96.6046
+01019,"Cherokee","Alabama",34.1754,-85.6041
+30111,"Yellowstone","Montana",45.9367,-108.2755
+31079,"Hall","Nebraska",40.8723,-98.5034
+31017,"Brown","Nebraska",42.4293,-99.9291
+35061,"Valencia","New Mexico",34.7154,-106.8090
+35047,"San Miguel","New Mexico",35.4816,-104.8157
+37067,"Forsyth","North Carolina",36.1320,-80.2556
+37191,"Wayne","North Carolina",35.3637,-78.0040
+37017,"Bladen","North Carolina",34.6154,-78.5629
+30059,"Meagher","Montana",46.5980,-110.8855
+21203,"Rockcastle","Kentucky",37.3665,-84.3154
+45047,"Greenwood","South Carolina",34.1543,-82.1266
+21091,"Hancock","Kentucky",37.8415,-86.7758
+21045,"Casey","Kentucky",37.3231,-84.9284
+21113,"Jessamine","Kentucky",37.8733,-84.5789
+37149,"Polk","North Carolina",35.2786,-82.1697
+37121,"Mitchell","North Carolina",36.0170,-82.1640
+37053,"Currituck","North Carolina",36.4069,-76.0068
+51121,"Montgomery","Virginia",37.1745,-80.3890
+51760,"Richmond","Virginia",37.5274,-77.4727
+53021,"Franklin","Washington",46.5349,-118.8981
+72105,"Naranjito","Puerto Rico",18.2859,-66.2518
+40067,"Jefferson","Oklahoma",34.1111,-97.8366
+47091,"Johnson","Tennessee",36.4535,-81.8532
+47121,"Meigs","Tennessee",35.5130,-84.8123
+46015,"Brule","South Dakota",43.7182,-99.0810
+48139,"Ellis","Texas",32.3487,-96.7941
+48077,"Clay","Texas",33.7853,-98.2086
+51009,"Amherst","Virginia",37.6053,-79.1451
+08079,"Mineral","Colorado",37.6700,-106.9251
+13107,"Emanuel","Georgia",32.5883,-82.3000
+17125,"Mason","Illinois",40.2386,-89.9169
+19169,"Story","Iowa",42.0360,-93.4636
+19149,"Plymouth","Iowa",42.7377,-96.2147
+20173,"Sedgwick","Kansas",37.6852,-97.4611
+21103,"Henry","Kentucky",38.4493,-85.1220
+22089,"St. Charles","Louisiana",29.9053,-90.3583
+01033,"Colbert","Alabama",34.7011,-87.8041
+04019,"Pima","Arizona",32.0992,-111.7894
+04011,"Greenlee","Arizona",33.2150,-109.2412
+05147,"Woodruff","Arkansas",35.1854,-91.2435
+12099,"Palm Beach","Florida",26.6474,-80.4657
+13127,"Glynn","Georgia",31.2292,-81.5383
+19007,"Appanoose","Iowa",40.7429,-92.8686
+19061,"Dubuque","Iowa",42.4684,-90.8820
+21057,"Cumberland","Kentucky",36.7859,-85.3884
+22045,"Iberia","Louisiana",29.8943,-91.7315
+17101,"Lawrence","Illinois",38.7212,-87.7275
+24037,"St. Mary's","Maryland",38.3011,-76.6042
+22033,"East Baton Rouge","Louisiana",30.5382,-91.0969
+22043,"Grant","Louisiana",31.5999,-92.5582
+26127,"Oceana","Michigan",43.6413,-86.2677
+31131,"Otoe","Nebraska",40.6486,-96.1354
+17111,"McHenry","Illinois",42.3244,-88.4519
+20183,"Smith","Kansas",39.7852,-98.7857
+17089,"Kane","Illinois",41.9393,-88.4281
+35035,"Otero","New Mexico",32.6127,-105.7417
+18123,"Perry","Indiana",38.0818,-86.6370
+18083,"Knox","Indiana",38.6870,-87.4225
+42049,"Erie","Pennsylvania",41.9926,-80.0337
+45019,"Charleston","South Carolina",32.8340,-79.9529
+45091,"York","South Carolina",34.9748,-81.1853
+45053,"Jasper","South Carolina",32.4359,-81.0318
+36071,"Orange","New York",41.4016,-74.3074
+50025,"Windham","Vermont",42.9904,-72.7134
+35023,"Hidalgo","New Mexico",31.9133,-108.7139
+35006,"Cibola","New Mexico",34.9135,-107.9995
+54055,"Mercer","West Virginia",37.4061,-81.1125
+54051,"Marshall","West Virginia",39.8600,-80.6623
+01101,"Montgomery","Alabama",32.2199,-86.2077
+01055,"Etowah","Alabama",34.0441,-86.0351
+01059,"Franklin","Alabama",34.4422,-87.8437
+02050,"Bethel","Alaska",60.9398,-159.9170
+46103,"Pennington","South Dakota",44.0052,-102.8250
+46115,"Spink","South Dakota",44.9385,-98.3459
+46127,"Union","South Dakota",42.8327,-96.6561
+45013,"Beaufort","South Carolina",32.3868,-80.7289
+47029,"Cocke","Tennessee",35.9264,-83.1216
+42017,"Bucks","Pennsylvania",40.3357,-75.1070
+46009,"Bon Homme","South Dakota",42.9891,-97.8841
+47043,"Dickson","Tennessee",36.1495,-87.3561
+40105,"Nowata","Oklahoma",36.7983,-95.6176
+48257,"Kaufman","Texas",32.5990,-96.2880
+48155,"Foard","Texas",33.9745,-99.7786
+72067,"Hormigueros","Puerto Rico",18.1367,-67.1159
+23023,"Sagadahoc","Maine",43.9596,-69.8537
+48085,"Collin","Texas",33.1880,-96.5725
+48093,"Comanche","Texas",31.9484,-98.5576
+48095,"Concho","Texas",31.3268,-99.8648
+48103,"Crane","Texas",31.4291,-102.5151
+35015,"Eddy","New Mexico",32.4708,-104.3043
+29161,"Phelps","Missouri",37.8766,-91.7924
+05083,"Logan","Arkansas",35.2158,-93.7169
+29177,"Ray","Missouri",39.3526,-93.9899
+06027,"Inyo","California",36.5112,-117.4071
+42005,"Armstrong","Pennsylvania",40.8119,-79.4653
+37109,"Lincoln","North Carolina",35.4857,-81.2228
+37087,"Haywood","North Carolina",35.5561,-82.9824
+47057,"Grainger","Tennessee",36.2782,-83.5110
+42023,"Cameron","Pennsylvania",41.4367,-78.2041
+46027,"Clay","South Dakota",42.9143,-96.9759
+42025,"Carbon","Pennsylvania",40.9183,-75.7100
+45025,"Chesterfield","South Carolina",34.6399,-80.1573
+45035,"Dorchester","South Carolina",33.0781,-80.4041
+29041,"Chariton","Missouri",39.5150,-92.9618
+50011,"Franklin","Vermont",44.8572,-72.9107
+42047,"Elk","Pennsylvania",41.4252,-78.6508
+51115,"Mathews","Virginia",37.4379,-76.3431
+29131,"Miller","Missouri",38.2141,-92.4281
+30017,"Custer","Montana",46.2519,-105.5710
+30075,"Powder River","Montana",45.3947,-105.6310
+21107,"Hopkins","Kentucky",37.3082,-87.5409
+26003,"Alger","Michigan",46.4075,-86.6082
+21115,"Johnson","Kentucky",37.8478,-82.8309
+17041,"Douglas","Illinois",39.7697,-88.2172
+21119,"Knott","Kentucky",37.3536,-82.9550
+20079,"Harvey","Kansas",38.0436,-97.4280
+29510,"St. Louis","Missouri",38.6356,-90.2458
+42009,"Bedford","Pennsylvania",40.0060,-78.4906
+20013,"Brown","Kansas",39.8268,-95.5652
+05099,"Nevada","Arkansas",33.6636,-93.3070
+05109,"Pike","Arkansas",34.1635,-93.6559
+51730,"Petersburg","Virginia",37.2036,-77.3936
+29163,"Pike","Missouri",39.3442,-91.1730
+17083,"Jersey","Illinois",39.0855,-90.3567
+45027,"Clarendon","South Carolina",33.6659,-80.2161
+47073,"Hawkins","Tennessee",36.4415,-82.9447
+47077,"Henderson","Tennessee",35.6541,-88.3886
+45031,"Darlington","South Carolina",34.3320,-79.9599
+42029,"Chester","Pennsylvania",39.9730,-75.7483
+45033,"Dillon","South Carolina",34.3905,-79.3802
+42031,"Clarion","Pennsylvania",41.1928,-79.4211
+55037,"Florence","Wisconsin",45.8482,-88.3975
+42053,"Forest","Pennsylvania",41.5121,-79.2363
+13049,"Charlton","Georgia",30.7827,-82.1371
+35039,"Rio Arriba","New Mexico",36.5101,-106.6930
+22031,"De Soto","Louisiana",32.0550,-93.7374
+37063,"Durham","North Carolina",36.0364,-78.8759
+35031,"McKinley","New Mexico",35.5813,-108.2620
+24013,"Carroll","Maryland",39.5635,-77.0223
+10003,"New Castle","Delaware",39.5796,-75.6495
+20023,"Cheyenne","Kansas",39.7860,-101.7317
+13001,"Appling","Georgia",31.7485,-82.2873
+01051,"Elmore","Alabama",32.5973,-86.1501
+08033,"Dolores","Colorado",37.7526,-108.5174
+27069,"Kittson","Minnesota",48.7771,-96.7826
+48241,"Jasper","Texas",30.7454,-94.0265
+45043,"Georgetown","South Carolina",33.4309,-79.3331
+19071,"Fremont","Iowa",40.7458,-95.6051
+17017,"Cass","Illinois",39.9735,-90.2465
+50027,"Windsor","Vermont",43.5778,-72.5863
+38055,"McLean","North Dakota",47.6074,-101.3215
+37079,"Greene","North Carolina",35.4845,-77.6761
+17127,"Massac","Illinois",37.2205,-88.7088
+24019,"Dorchester","Maryland",38.4691,-76.0241
+16055,"Kootenai","Idaho",47.6743,-116.7029
+09007,"Middlesex","Connecticut",41.4633,-72.5335
+18039,"Elkhart","Indiana",41.5975,-85.8586
+20071,"Greeley","Kansas",38.4809,-101.8070
+17137,"Morgan","Illinois",39.7162,-90.2015
+21121,"Knox","Kentucky",36.8891,-83.8554
+19053,"Decatur","Iowa",40.7375,-93.7874
+21127,"Lawrence","Kentucky",38.0690,-82.7360
+54001,"Barbour","West Virginia",39.1334,-80.0041
+25003,"Berkshire","Massachusetts",42.3704,-73.2062
+29027,"Callaway","Missouri",38.8358,-91.9253
+27073,"Lac qui Parle","Minnesota",44.9959,-96.1737
+51075,"Goochland","Virginia",37.7222,-77.9162
+56035,"Sublette","Wyoming",42.7662,-109.9137
+49005,"Cache","Utah",41.7216,-111.7442
+30053,"Lincoln","Montana",48.5408,-115.4043
+12001,"Alachua","Florida",29.6753,-82.3582
+21151,"Madison","Kentucky",37.7203,-84.2769
+48177,"Gonzales","Texas",29.4568,-97.4929
+31089,"Holt","Nebraska",42.4551,-98.7841
+37101,"Johnston","North Carolina",35.5183,-78.3651
+17131,"Mercer","Illinois",41.2059,-90.7426
+19191,"Winneshiek","Iowa",43.2906,-91.8450
+47075,"Haywood","Tennessee",35.5830,-89.2842
+24023,"Garrett","Maryland",39.5293,-79.2722
+54077,"Preston","West Virginia",39.4684,-79.6684
+26061,"Houghton","Michigan",46.8974,-88.6883
+47167,"Tipton","Tennessee",35.4961,-89.7564
+26065,"Ingham","Michigan",42.5971,-84.3739
+20191,"Sumner","Kansas",37.2370,-97.4766
+21135,"Lewis","Kentucky",38.5319,-83.3769
+48245,"Jefferson","Texas",29.8826,-94.1625
+31177,"Washington","Nebraska",41.5309,-96.2215
+53039,"Klickitat","Washington",45.8748,-120.7879
+29173,"Ralls","Missouri",39.5271,-91.5232
+56001,"Albany","Wyoming",41.6528,-105.7246
+51003,"Albemarle","Virginia",38.0241,-78.5559
+29107,"Lafayette","Missouri",39.0657,-93.7855
+29125,"Maries","Missouri",38.1615,-91.9244
+29151,"Osage","Missouri",38.4603,-91.8611
+27161,"Waseca","Minnesota",44.0219,-93.5876
+38105,"Williams","North Dakota",48.3441,-103.4802
+51147,"Prince Edward","Virginia",37.2243,-78.4396
+24029,"Kent","Maryland",39.2538,-76.0406
+17169,"Schuyler","Illinois",40.1581,-90.6158
+24031,"Montgomery","Maryland",39.1368,-77.2022
+47109,"McNairy","Tennessee",35.1752,-88.5635
+22119,"Webster","Louisiana",32.7139,-93.3354
+37129,"New Hanover","North Carolina",34.2338,-77.8852
+26071,"Iron","Michigan",46.2089,-88.5297
+21139,"Livingston","Kentucky",37.2090,-88.3546
+06077,"San Joaquin","California",37.9350,-121.2717
+21145,"McCracken","Kentucky",37.0535,-88.7113
+45049,"Hampton","South Carolina",32.7757,-81.1401
+31037,"Colfax","Nebraska",41.5730,-97.0868
+78010,"St. Croix","United States Virgin Islands",17.7317,-64.7683
+30031,"Gallatin","Montana",45.5360,-111.1703
+47135,"Perry","Tennessee",35.6435,-87.8590
+16039,"Elmore","Idaho",43.3521,-115.4701
+31013,"Box Butte","Nebraska",42.2200,-103.0866
+25005,"Bristol","Massachusetts",41.7965,-71.1138
+17185,"Wabash","Illinois",38.4464,-87.8443
+21095,"Harlan","Kentucky",36.8587,-83.2175
+47119,"Maury","Tennessee",35.6173,-87.0785
+22019,"Calcasieu","Louisiana",30.2295,-93.3578
+37037,"Chatham","North Carolina",35.7028,-79.2559
+48127,"Dimmit","Texas",28.4230,-99.7575
+21153,"Magoffin","Kentucky",37.7061,-83.0637
+49011,"Davis","Utah",40.9906,-112.1139
+49031,"Piute","Utah",38.3361,-112.1270
+21159,"Martin","Kentucky",37.8011,-82.5143
+27055,"Houston","Minnesota",43.6717,-91.4924
+53011,"Clark","Washington",45.7784,-122.4817
+55089,"Ozaukee","Wisconsin",43.3834,-87.9514
+30043,"Jefferson","Montana",46.1489,-112.0938
+47155,"Sevier","Tennessee",35.7862,-83.5249
+72057,"Guayama","Puerto Rico",18.0058,-66.1364
+32011,"Eureka","Nevada",39.9799,-116.2686
+22061,"Lincoln","Louisiana",32.6014,-92.6648
+22111,"Union","Louisiana",32.8314,-92.3744
+33001,"Belknap","New Hampshire",43.5181,-71.4223
+05011,"Bradley","Arkansas",33.4669,-92.1629
+31085,"Hayes","Nebraska",40.5246,-101.0616
+42097,"Northumberland","Pennsylvania",40.8516,-76.7097
+24041,"Talbot","Maryland",38.7704,-76.1028
+19041,"Clay","Iowa",43.0827,-95.1507
+47139,"Polk","Tennessee",35.1198,-84.5238
+20149,"Pottawatomie","Kansas",39.3789,-96.3430
+24510,"Baltimore","Maryland",39.3060,-76.6154
+23001,"Androscoggin","Maine",44.1643,-70.2064
+18153,"Sullivan","Indiana",39.0889,-87.4141
+28145,"Union","Mississippi",34.4906,-89.0052
+27063,"Jackson","Minnesota",43.6741,-95.1534
+49049,"Utah","Utah",40.1200,-111.6693
+54089,"Summers","West Virginia",37.6556,-80.8584
+49039,"Sanpete","Utah",39.3730,-111.5771
+55027,"Dodge","Wisconsin",43.4156,-88.7071
+46051,"Grant","South Dakota",45.1722,-96.7682
+42057,"Fulton","Pennsylvania",39.9252,-78.1135
+55093,"Pierce","Wisconsin",44.7200,-92.4218
+30045,"Judith Basin","Montana",47.0452,-110.2645
+45057,"Lancaster","South Carolina",34.6880,-80.7061
+51033,"Caroline","Virginia",38.0267,-77.3465
+56031,"Platte","Wyoming",42.1318,-104.9664
+27163,"Washington","Minnesota",45.0395,-92.8842
+29133,"Mississippi","Missouri",36.8275,-89.2907
+42095,"Northampton","Pennsylvania",40.7550,-75.3059
+22085,"Sabine","Louisiana",31.5640,-93.5550
+21169,"Metcalfe","Kentucky",36.9907,-85.6278
+04021,"Pinal","Arizona",32.9048,-111.3440
+04017,"Navajo","Arizona",35.3908,-110.3198
+04027,"Yuma","Arizona",32.7689,-113.9066
+27025,"Chisago","Minnesota",45.5023,-92.9070
+47045,"Dyer","Tennessee",36.0586,-89.4139
+21181,"Nicholas","Kentucky",38.3336,-84.0145
+27043,"Faribault","Minnesota",43.6738,-93.9464
+21193,"Perry","Kentucky",37.2463,-83.2229
+48037,"Bowie","Texas",33.4462,-94.4243
+56011,"Crook","Wyoming",44.5880,-104.5700
+45061,"Lee","South Carolina",34.1627,-80.2553
+56015,"Goshen","Wyoming",42.0867,-104.3534
+25021,"Norfolk","Massachusetts",42.1622,-71.2079
+21123,"Larue","Kentucky",37.5448,-85.6992
+16043,"Fremont","Idaho",44.2280,-111.4828
+13233,"Polk","Georgia",34.0025,-85.1868
+31031,"Cherry","Nebraska",42.5452,-101.1181
+13247,"Rockdale","Georgia",33.6549,-84.0237
+06025,"Imperial","California",33.0403,-115.3662
+16017,"Bonner","Idaho",48.3002,-116.6006
+18045,"Fountain","Indiana",40.1218,-87.2417
+47031,"Coffee","Tennessee",35.4909,-86.0761
+47177,"Warren","Tennessee",35.6775,-85.7792
+21195,"Pike","Kentucky",37.4683,-82.3959
+21197,"Powell","Kentucky",37.8298,-83.8221
+26139,"Ottawa","Michigan",42.9599,-85.9968
+47165,"Sumner","Tennessee",36.4694,-86.4591
+37153,"Richmond","North Carolina",35.0061,-79.7474
+48043,"Brewster","Texas",29.8109,-103.2520
+56019,"Johnson","Wyoming",44.0385,-106.5848
+55095,"Polk","Wisconsin",45.4615,-92.4407
+55109,"St. Croix","Wisconsin",45.0342,-92.4531
+48111,"Dallam","Texas",36.2787,-102.6024
+42067,"Juniata","Pennsylvania",40.5299,-77.4033
+18089,"Lake","Indiana",41.4176,-87.3823
+42131,"Wyoming","Pennsylvania",41.5184,-76.0176
+29095,"Jackson","Missouri",39.0089,-94.3475
+42073,"Lawrence","Pennsylvania",40.9914,-80.3351
+42085,"Mercer","Pennsylvania",41.3020,-80.2583
+42079,"Luzerne","Pennsylvania",41.1780,-75.9889
+16025,"Camas","Idaho",43.4628,-114.8060
+19103,"Johnson","Iowa",41.6710,-91.5869
+19117,"Lucas","Iowa",41.0296,-93.3273
+40151,"Woods","Oklahoma",36.7674,-98.8630
+40153,"Woodward","Oklahoma",36.4231,-99.2649
+35027,"Lincoln","New Mexico",33.7451,-105.4593
+38057,"Mercer","North Dakota",47.3086,-101.8328
+35053,"Socorro","New Mexico",34.0070,-106.9300
+18157,"Tippecanoe","Indiana",40.3887,-86.8938
+21221,"Trigg","Kentucky",36.8058,-87.8747
+37165,"Scotland","North Carolina",34.8410,-79.4806
+17055,"Franklin","Illinois",37.9922,-88.9237
+17059,"Gallatin","Illinois",37.7619,-88.2318
+17061,"Greene","Illinois",39.3563,-90.3902
+06009,"Calaveras","California",38.2044,-120.5561
+45065,"McCormick","South Carolina",33.9018,-82.3098
+45077,"Pickens","South Carolina",34.8882,-82.7257
+51065,"Fluvanna","Virginia",37.8425,-78.2771
+45085,"Sumter","South Carolina",33.9165,-80.3811
+51133,"Northumberland","Virginia",37.8907,-76.4233
+21069,"Fleming","Kentucky",38.3694,-83.6968
+47001,"Anderson","Tennessee",36.1193,-84.1995
+30099,"Teton","Montana",47.8372,-112.2403
+35055,"Taos","New Mexico",36.5775,-105.6313
+18085,"Kosciusko","Indiana",41.2445,-85.8613
+38085,"Sioux","North Dakota",46.1123,-101.0426
+47027,"Clay","Tennessee",36.5514,-85.5404
+48067,"Cass","Texas",33.0780,-94.3424
+23017,"Oxford","Maine",44.4982,-70.7551
+21011,"Bath","Kentucky",38.1429,-83.7420
+37057,"Davidson","North Carolina",35.7938,-80.2124
+23005,"Cumberland","Maine",43.8387,-70.3753
+27013,"Blue Earth","Minnesota",44.0348,-94.0672
+51093,"Isle of Wight","Virginia",36.8906,-76.7251
+56037,"Sweetwater","Wyoming",41.6597,-108.8799
+30061,"Mineral","Montana",47.1465,-114.9962
+51685,"Manassas Park","Virginia",38.7779,-77.4567
+55021,"Columbia","Wisconsin",43.4665,-89.3334
+72145,"Vega Baja","Puerto Rico",18.4282,-66.4001
+46041,"Dewey","South Dakota",45.1565,-100.8717
+45005,"Allendale","South Carolina",32.9874,-81.3569
+47059,"Greene","Tennessee",36.1739,-82.8454
+21051,"Clay","Kentucky",37.1591,-83.7129
+21055,"Crittenden","Kentucky",37.3528,-88.0964
+37007,"Anson","North Carolina",34.9735,-80.1034
+47049,"Fentress","Tennessee",36.3799,-84.9324
+21075,"Fulton","Kentucky",36.5538,-89.1839
+21019,"Boyd","Kentucky",38.3597,-82.6873
+45001,"Abbeville","South Carolina",34.2224,-82.4608
+48149,"Fayette","Texas",29.8760,-96.9202
+41049,"Morrow","Oregon",45.4183,-119.5841
+42013,"Blair","Pennsylvania",40.4805,-78.3488
+25019,"Nantucket","Massachusetts",41.2829,-70.0687
+45089,"Williamsburg","South Carolina",33.6189,-79.7280
+27103,"Nicollet","Minnesota",44.3499,-94.2466
+49055,"Wayne","Utah",38.3259,-110.9025
+48053,"Burnet","Texas",30.7887,-98.1831
+30023,"Deer Lodge","Montana",46.0596,-113.0690
+30093,"Silver Bow","Montana",45.9031,-112.6545
+46135,"Yankton","South Dakota",43.0090,-97.3954
+46071,"Jackson","South Dakota",43.6945,-101.6287
+47133,"Overton","Tennessee",36.3446,-85.2874
+49015,"Emery","Utah",38.9960,-110.6998
+48391,"Refugio","Texas",28.3248,-97.1620
+48357,"Ochiltree","Texas",36.2780,-100.8154
+35045,"San Juan","New Mexico",36.5083,-108.3208
+05063,"Independence","Arkansas",35.7419,-91.5698
+29029,"Camden","Missouri",38.0267,-92.7653
+38067,"Pembina","North Dakota",48.7675,-97.5517
+05067,"Jackson","Arkansas",35.5980,-91.2155
+46083,"Lincoln","South Dakota",43.2788,-96.7206
+47131,"Obion","Tennessee",36.3583,-89.1487
+45003,"Aiken","South Carolina",33.5431,-81.6359
+41003,"Benton","Oregon",44.4916,-123.4294
+41039,"Lane","Oregon",43.9397,-122.8452
+51097,"King and Queen","Virginia",37.7187,-76.8943
+29201,"Scott","Missouri",37.0534,-89.5677
+48321,"Matagorda","Texas",28.8212,-96.0128
+48447,"Throckmorton","Texas",33.1774,-99.2130
+55129,"Washburn","Wisconsin",45.8987,-91.7915
+49017,"Garfield","Utah",37.8568,-111.4434
+31055,"Douglas","Nebraska",41.2948,-96.1566
+51520,"Bristol","Virginia",36.6123,-82.1706
+38097,"Traill","North Dakota",47.4541,-97.1612
+05069,"Jefferson","Arkansas",34.2692,-91.9324
+05075,"Lawrence","Arkansas",36.0407,-91.1060
+51570,"Colonial Heights","Virginia",37.2655,-77.3996
+48001,"Anderson","Texas",31.8138,-95.6514
+21039,"Carlisle","Kentucky",36.8530,-88.9693
+47009,"Blount","Tennessee",35.6876,-83.9256
+47017,"Carroll","Tennessee",35.9729,-88.4500
+47079,"Henry","Tennessee",36.3315,-88.3032
+25013,"Hampden","Massachusetts",42.1352,-72.6312
+29033,"Carroll","Missouri",39.4275,-93.5041
+48055,"Caldwell","Texas",29.8371,-97.6183
+50021,"Rutland","Vermont",43.5801,-73.0373
+41031,"Jefferson","Oregon",44.6297,-121.1779
+51185,"Tazewell","Virginia",37.1256,-81.5620
+51043,"Clarke","Virginia",39.1132,-77.9964
+72149,"Villalba","Puerto Rico",18.1304,-66.4700
+12067,"Lafayette","Florida",29.9846,-83.1796
+20205,"Wilson","Kansas",37.5594,-95.7427
+17047,"Edwards","Illinois",38.4163,-88.0537
+38071,"Ramsey","North Dakota",48.2679,-98.7200
+30057,"Madison","Montana",45.3000,-111.9205
+29005,"Atchison","Missouri",40.4313,-95.4285
+51083,"Halifax","Virginia",36.7663,-78.9371
+51013,"Arlington","Virginia",38.8808,-77.1017
+53057,"Skagit","Washington",48.4802,-121.7291
+30025,"Fallon","Montana",46.3348,-104.4174
+51181,"Surry","Virginia",37.1102,-76.8997
+53071,"Walla Walla","Washington",46.2293,-118.4789
+13057,"Cherokee","Georgia",34.2436,-84.4751
+27149,"Stevens","Minnesota",45.5862,-95.9995
+20019,"Chautauqua","Kansas",37.1502,-96.2459
+29075,"Gentry","Missouri",40.2117,-94.4093
+51187,"Warren","Virginia",38.9079,-78.2080
+19135,"Monroe","Iowa",41.0296,-92.8689
+48325,"Medina","Texas",29.3554,-99.1100
+29021,"Buchanan","Missouri",39.6596,-94.8052
+30011,"Carter","Montana",45.5158,-104.5367
+26055,"Grand Traverse","Michigan",44.6674,-85.5607
+28141,"Tishomingo","Mississippi",34.7405,-88.2394
+35003,"Catron","New Mexico",33.9143,-108.4052
+42111,"Somerset","Pennsylvania",39.9728,-79.0282
+36109,"Tompkins","New York",42.4523,-76.4731
+36067,"Onondaga","New York",43.0064,-76.1942
+45051,"Horry","South Carolina",33.9212,-78.9969
+30041,"Hill","Montana",48.6279,-110.1092
+36001,"Albany","New York",42.6003,-73.9731
+13121,"Fulton","Georgia",33.7890,-84.4684
+55091,"Pepin","Wisconsin",44.5830,-92.0019
+01105,"Perry","Alabama",32.6391,-87.2944
+02090,"Fairbanks North Star","Alaska",64.8102,-146.5630
+13125,"Glascock","Georgia",33.2292,-82.6103
+48173,"Glasscock","Texas",31.8696,-101.5207
+56039,"Teton","Wyoming",43.9325,-110.5886
+08059,"Jefferson","Colorado",39.5848,-105.2501
+08029,"Delta","Colorado",38.8613,-107.8631
+13063,"Clayton","Georgia",33.5434,-84.3575
+18117,"Orange","Indiana",38.5410,-86.4963
+36103,"Suffolk","New York",40.8698,-72.8472
+36045,"Jefferson","New York",44.0484,-75.9302
+20107,"Linn","Kansas",38.2121,-94.8425
+37161,"Rutherford","North Carolina",35.4028,-81.9206
+34041,"Warren","New Jersey",40.8552,-74.9978
+49001,"Beaver","Utah",38.3583,-113.2348
+51191,"Washington","Virginia",36.7247,-81.9600
+01015,"Calhoun","Alabama",33.7711,-85.8260
+13133,"Greene","Georgia",33.5789,-83.1661
+54009,"Brooke","West Virginia",40.2726,-80.5759
+02070,"Dillingham","Alaska",59.7925,-158.2545
+04013,"Maricopa","Arizona",33.3481,-112.4935
+18125,"Pike","Indiana",38.3994,-87.2329
+18137,"Ripley","Indiana",39.1031,-85.2636
+20095,"Kingman","Kansas",37.5595,-98.1352
+20123,"Mitchell","Kansas",39.3934,-98.2089
+20083,"Hodgeman","Kansas",38.0881,-99.8974
+20127,"Morris","Kansas",38.6877,-96.6499
+27095,"Mille Lacs","Minnesota",45.9369,-93.6303
+28081,"Lee","Mississippi",34.2905,-88.6804
+28071,"Lafayette","Mississippi",34.3567,-89.4845
+28029,"Copiah","Mississippi",31.8698,-90.4494
+28111,"Perry","Mississippi",31.1714,-88.9924
+38035,"Grand Forks","North Dakota",47.9218,-97.4569
+42045,"Delaware","Pennsylvania",39.9162,-75.4010
+44003,"Kent","Rhode Island",41.6716,-71.5924
+19095,"Iowa","Iowa",41.6864,-92.0641
+31053,"Dodge","Nebraska",41.5769,-96.6539
+54057,"Mineral","West Virginia",39.4120,-78.9455
+05117,"Prairie","Arkansas",34.8299,-91.5521
+04009,"Graham","Arizona",32.9310,-109.8871
+08049,"Grand","Colorado",40.1024,-106.1186
+08109,"Saguache","Colorado",38.0810,-106.2806
+12093,"Okeechobee","Florida",27.3864,-80.8894
+13123,"Gilmer","Georgia",34.6910,-84.4568
+13299,"Ware","Georgia",31.0522,-82.4229
+29007,"Audrain","Missouri",39.2159,-91.8424
+35028,"Los Alamos","New Mexico",35.8704,-106.3059
+30027,"Fergus","Montana",47.2629,-109.2240
+31149,"Rock","Nebraska",42.4207,-99.4500
+38061,"Mountrail","North Dakota",48.2016,-102.3554
+21101,"Henderson","Kentucky",37.7959,-87.5727
+44007,"Providence","Rhode Island",41.8718,-71.5793
+47013,"Campbell","Tennessee",36.4042,-84.1506
+48261,"Kenedy","Texas",26.9296,-97.6976
+36051,"Livingston","New York",42.7283,-77.7753
+54011,"Cabell","West Virginia",38.4192,-82.2411
+06007,"Butte","California",39.6657,-121.6019
+08117,"Summit","Colorado",39.6329,-106.1149
+13147,"Hart","Georgia",34.3522,-82.9643
+17187,"Warren","Illinois",40.8494,-90.6148
+18119,"Owen","Indiana",39.3128,-86.8375
+18037,"Dubois","Indiana",38.3647,-86.8804
+20165,"Rush","Kansas",38.5232,-99.3078
+19011,"Benton","Iowa",42.0802,-92.0646
+21125,"Laurel","Kentucky",37.1093,-84.1185
+20185,"Stafford","Kansas",38.0306,-98.7179
+22115,"Vernon","Louisiana",31.1082,-93.1846
+26093,"Livingston","Michigan",42.6030,-83.9117
+27099,"Mower","Minnesota",43.6713,-92.7526
+28073,"Lamar","Mississippi",31.2053,-89.5095
+28053,"Humphreys","Mississippi",33.1274,-90.5280
+31139,"Pierce","Nebraska",42.2643,-97.6022
+21237,"Wolfe","Kentucky",37.7378,-83.4937
+21033,"Caldwell","Kentucky",37.1447,-87.8681
+46093,"Meade","South Dakota",44.5673,-102.7183
+21021,"Boyle","Kentucky",37.6238,-84.8675
+37199,"Yancey","North Carolina",35.8985,-82.3058
+01047,"Dallas","Alabama",32.3268,-87.1055
+13231,"Pike","Georgia",33.0919,-84.3886
+01035,"Conecuh","Alabama",31.4293,-86.9938
+05105,"Perry","Arkansas",34.9463,-92.9289
+13227,"Pickens","Georgia",34.4634,-84.4656
+13141,"Hancock","Georgia",33.2699,-83.0028
+13307,"Webster","Georgia",32.0450,-84.5511
+18095,"Madison","Indiana",40.1610,-85.7187
+18101,"Martin","Indiana",38.7082,-86.8032
+20055,"Finney","Kansas",38.0441,-100.7376
+20087,"Jefferson","Kansas",39.2349,-95.3824
+18181,"White","Indiana",40.7494,-86.8666
+21199,"Pulaski","Kentucky",37.1042,-84.5773
+17009,"Brown","Illinois",39.9612,-90.7495
+22021,"Caldwell","Louisiana",32.0923,-92.1164
+29101,"Johnson","Missouri",38.7441,-93.8063
+29017,"Bollinger","Missouri",37.3216,-90.0259
+29035,"Carter","Missouri",36.9410,-90.9613
+31109,"Lancaster","Nebraska",40.7836,-96.6875
+34035,"Somerset","New Jersey",40.5642,-74.6161
+36121,"Wyoming","New York",42.7023,-78.2244
+36097,"Schuyler","New York",42.3927,-76.8760
+39091,"Logan","Ohio",40.3888,-83.7659
+39159,"Union","Ohio",40.2991,-83.3713
+42063,"Indiana","Pennsylvania",40.6527,-79.0864
+21099,"Hart","Kentucky",37.3000,-85.8836
+21183,"Ohio","Kentucky",37.4774,-86.8485
+46129,"Walworth","South Dakota",45.4301,-100.0313
+47089,"Jefferson","Tennessee",36.0520,-83.4458
+21097,"Harrison","Kentucky",38.4411,-84.3309
+37173,"Swain","North Carolina",35.4877,-83.4924
+48499,"Wood","Texas",32.7871,-95.3820
+37091,"Hertford","North Carolina",36.3591,-76.9807
+48291,"Liberty","Texas",30.1506,-94.8124
+18071,"Jackson","Indiana",38.9062,-86.0391
+20145,"Pawnee","Kansas",38.1816,-99.2361
+20031,"Coffey","Kansas",38.2371,-95.7340
+22055,"Lafayette","Louisiana",30.2059,-92.0627
+27051,"Grant","Minnesota",45.9342,-96.0114
+28121,"Rankin","Mississippi",32.2634,-89.9465
+28049,"Hinds","Mississippi",32.2665,-90.4429
+37051,"Cumberland","North Carolina",35.0494,-78.8275
+37193,"Wilkes","North Carolina",36.2074,-81.1629
+39011,"Auglaize","Ohio",40.5613,-84.2221
+40125,"Pottawatomie","Oklahoma",35.2068,-96.9495
+40091,"McIntosh","Oklahoma",35.3741,-95.6660
+41071,"Yamhill","Oregon",45.2323,-123.3089
+42077,"Lehigh","Pennsylvania",40.6130,-75.5923
+21217,"Taylor","Kentucky",37.3674,-85.3273
+21009,"Barren","Kentucky",36.9665,-85.9326
+48453,"Travis","Texas",30.3353,-97.7822
+48339,"Montgomery","Texas",30.3003,-95.5028
+48227,"Howard","Texas",32.3067,-101.4357
+51195,"Wise","Virginia",36.9742,-82.6204
+51840,"Winchester","Virginia",39.1732,-78.1702
+39139,"Richland","Ohio",40.7748,-82.5371
+28127,"Simpson","Mississippi",31.9132,-89.9209
+29019,"Boone","Missouri",38.9898,-92.3092
+30015,"Chouteau","Montana",47.8808,-110.4357
+31081,"Hamilton","Nebraska",40.8738,-98.0224
+35049,"Santa Fe","New Mexico",35.5055,-105.9766
+37163,"Sampson","North Carolina",34.9922,-78.3709
+40107,"Okfuskee","Oklahoma",35.4658,-96.3219
+40047,"Garfield","Oklahoma",36.3791,-97.7834
+21165,"Menifee","Kentucky",37.9411,-83.5991
+35033,"Mora","New Mexico",36.0112,-104.9469
+31119,"Madison","Nebraska",41.9170,-97.6007
+31121,"Merrick","Nebraska",41.1680,-98.0413
+41017,"Deschutes","Oregon",43.9149,-121.2259
+32013,"Humboldt","Nevada",41.4066,-118.1100
+42117,"Tioga","Pennsylvania",41.7725,-77.2536
+21031,"Butler","Kentucky",37.2066,-86.6819
+21163,"Meade","Kentucky",37.9680,-86.2148
+21137,"Lincoln","Kentucky",37.4539,-84.6597
+21013,"Bell","Kentucky",36.7311,-83.6739
+21187,"Owen","Kentucky",38.5188,-84.8273
+37137,"Pamlico","North Carolina",35.1469,-76.7292
+37187,"Washington","North Carolina",35.8225,-76.5778
+54015,"Clay","West Virginia",38.4621,-81.0768
+56033,"Sheridan","Wyoming",44.7915,-106.8791
+72137,"Toa Baja","Puerto Rico",18.4303,-66.2158
+72125,"San Germán","Puerto Rico",18.1088,-67.0390
+42103,"Pike","Pennsylvania",41.3317,-75.0338
+21077,"Gallatin","Kentucky",38.7571,-84.8598
+37125,"Moore","North Carolina",35.3113,-79.4819
+37155,"Robeson","North Carolina",34.6399,-79.1045
+48021,"Bastrop","Texas",30.1038,-97.3116
+48455,"Trinity","Texas",31.0889,-95.1353
+37171,"Surry","North Carolina",36.4140,-80.6877
+38023,"Divide","North Dakota",48.8157,-103.4872
+72119,"Río Grande","Puerto Rico",18.3468,-65.8127
+45029,"Colleton","South Carolina",32.8634,-80.6660
+47041,"DeKalb","Tennessee",35.9802,-85.8318
+48309,"McLennan","Texas",31.5527,-97.2025
+37031,"Carteret","North Carolina",34.8268,-76.6550
+48307,"McCulloch","Texas",31.1977,-99.3477
+39171,"Williams","Ohio",41.5602,-84.5885
+48039,"Brazoria","Texas",29.1888,-95.4520
+39013,"Belmont","Ohio",40.0156,-80.9877
+39071,"Highland","Ohio",39.1842,-83.6011
+39173,"Wood","Ohio",41.3611,-83.6237
+55015,"Calumet","Wisconsin",44.0816,-88.2176
+42087,"Mifflin","Pennsylvania",40.6088,-77.6190
+40045,"Ellis","Oklahoma",36.2177,-99.7540
+46075,"Jones","South Dakota",43.9609,-100.6901
+47161,"Stewart","Tennessee",36.5008,-87.8387
+48017,"Bailey","Texas",34.0685,-102.8303
+72113,"Ponce","Puerto Rico",18.0614,-66.6154
+40065,"Jackson","Oklahoma",34.5874,-99.4154
+45059,"Laurens","South Carolina",34.4828,-82.0066
+46063,"Harding","South Dakota",45.5799,-103.4947
+54105,"Wirt","West Virginia",39.0233,-81.3787
+55087,"Outagamie","Wisconsin",44.4156,-88.4654
+38037,"Grant","North Dakota",46.3577,-101.6388
+41007,"Clatsop","Oregon",45.9949,-123.6560
+42107,"Schuylkill","Pennsylvania",40.7058,-76.2176
+42081,"Lycoming","Pennsylvania",41.3442,-77.0650
+47185,"White","Tennessee",35.9257,-85.4560
+55011,"Buffalo","Wisconsin",44.3785,-91.7537
+69110,"Saipan","Commonwealth of the Northern Mariana Islands",15.1904,145.7504
+72079,"Lajas","Puerto Rico",18.0124,-67.0378
+72131,"San Sebastián","Puerto Rico",18.3278,-66.9719
+40139,"Texas","Oklahoma",36.7484,-101.4900
+42037,"Columbia","Pennsylvania",41.0487,-76.4050
+46031,"Corson","South Dakota",45.7095,-101.1959
+48225,"Houston","Texas",31.3177,-95.4230
+48411,"San Saba","Texas",31.1565,-98.8187
+51036,"Charles City","Virginia",37.3571,-77.0630
+51139,"Page","Virginia",38.6191,-78.4849
+46123,"Tripp","South Dakota",43.3456,-99.8833
+48377,"Presidio","Texas",29.9992,-104.2403
+49021,"Iron","Utah",37.8598,-113.2894
+48347,"Nacogdoches","Texas",31.6157,-94.6167
+48477,"Washington","Texas",30.2131,-96.4039
+49003,"Box Elder","Utah",41.5216,-113.0823
+48097,"Cooke","Texas",33.6397,-97.2134
+48487,"Wilbarger","Texas",34.0794,-99.2396
+48289,"Leon","Texas",31.2964,-95.9971
+48255,"Karnes","Texas",28.9056,-97.8592
+51021,"Bland","Virginia",37.1334,-81.1334
+51183,"Sussex","Virginia",36.9212,-77.2624
+51111,"Lunenburg","Virginia",36.9475,-78.2410
+54013,"Calhoun","West Virginia",38.8454,-81.1169
+51027,"Buchanan","Virginia",37.2678,-82.0356
+51117,"Mecklenburg","Virginia",36.6811,-78.3617
+21017,"Bourbon","Kentucky",38.2063,-84.2173
+16067,"Minidoka","Idaho",42.8537,-113.6380
+37005,"Alleghany","North Carolina",36.4923,-81.1263
+51007,"Amelia","Virginia",37.3367,-77.9779
+51073,"Gloucester","Virginia",37.4158,-76.5429
+51171,"Shenandoah","Virginia",38.8577,-78.5719
+51051,"Dickenson","Virginia",37.1260,-82.3496
+72141,"Utuado","Puerto Rico",18.2703,-66.7048
+55005,"Barron","Wisconsin",45.4236,-91.8478
+72003,"Aguada","Puerto Rico",18.3618,-67.1738
+53049,"Pacific","Washington",46.5554,-123.7047
+54045,"Logan","West Virginia",37.8319,-81.9355
+06039,"Madera","California",37.2182,-119.7642
+55061,"Kewaunee","Wisconsin",44.5160,-87.6174
+17135,"Montgomery","Illinois",39.2312,-89.4781
+08051,"Gunnison","Colorado",38.6674,-107.0319
+18013,"Brown","Indiana",39.1958,-86.2274
+13101,"Echols","Georgia",30.7096,-82.8926
+37085,"Harnett","North Carolina",35.3698,-78.8690
+36107,"Tioga","New York",42.1705,-76.3059
+37093,"Hoke","North Carolina",35.0175,-79.2378
+37143,"Perquimans","North Carolina",36.2043,-76.4406
+47085,"Humphreys","Tennessee",36.0397,-87.7748
+48381,"Randall","Texas",34.9660,-101.8969
+08023,"Costilla","Colorado",37.2780,-105.4277
+08123,"Weld","Colorado",40.5540,-104.3941
+13313,"Whitfield","Georgia",34.8053,-84.9668
+21023,"Bracken","Kentucky",38.6881,-84.0911
+18159,"Tipton","Indiana",40.3112,-86.0517
+21207,"Russell","Kentucky",36.9907,-85.0580
+21143,"Lyon","Kentucky",37.0186,-88.0830
+20025,"Clark","Kansas",37.2354,-99.8199
+37077,"Granville","North Carolina",36.3040,-78.6520
+37095,"Hyde","North Carolina",35.5187,-76.2448
+28125,"Sharkey","Mississippi",32.8803,-90.8136
+72001,"Adjuntas","Puerto Rico",18.1796,-66.7526
+13009,"Baldwin","Georgia",33.0713,-83.2520
+21085,"Grayson","Kentucky",37.4615,-86.3446
+28115,"Pontotoc","Mississippi",34.2252,-89.0371
+31015,"Boyd","Nebraska",42.9000,-98.7641
+51790,"Staunton","Virginia",38.1607,-79.0592
+31025,"Cass","Nebraska",40.9086,-96.1425
+46073,"Jerauld","South Dakota",44.0665,-98.6293
+04003,"Cochise","Arizona",31.8784,-109.7511
+05113,"Polk","Arkansas",34.4862,-94.2271
+45039,"Fairfield","South Carolina",34.3948,-81.1211
+06111,"Ventura","California",34.4548,-119.0853
+06059,"Orange","California",33.7030,-117.7611
+12053,"Hernando","Florida",28.5539,-82.4257
+13029,"Bryan","Georgia",32.0130,-81.4420
+19109,"Kossuth","Iowa",43.2036,-94.2067
+20187,"Stanton","Kansas",37.5631,-101.7848
+08071,"Las Animas","Colorado",37.3166,-104.0386
+17119,"Madison","Illinois",38.8303,-89.9053
+12015,"Charlotte","Florida",26.9064,-81.9111
+18051,"Gibson","Indiana",38.3100,-87.5844
+19163,"Scott","Iowa",41.6378,-90.6239
+41035,"Klamath","Oregon",42.6833,-121.6484
+48123,"DeWitt","Texas",29.0818,-97.3575
+01023,"Choctaw","Alabama",32.0198,-88.2636
+01119,"Sumter","Alabama",32.5906,-88.1981
+05015,"Carroll","Arkansas",36.3408,-93.5362
+06029,"Kern","California",35.3435,-118.7282
+12071,"Lee","Florida",26.5777,-81.8392
+08107,"Routt","Colorado",40.4841,-106.9913
+17181,"Union","Illinois",37.4710,-89.2552
+20033,"Comanche","Kansas",37.1915,-99.2717
+21059,"Daviess","Kentucky",37.7319,-87.0863
+22087,"St. Bernard","Louisiana",29.8759,-89.5416
+16005,"Bannock","Idaho",42.6684,-112.2237
+20153,"Rawlins","Kansas",39.7853,-101.0758
+13275,"Thomas","Georgia",30.8637,-83.9194
+13099,"Early","Georgia",31.3236,-84.9048
+16081,"Teton","Idaho",43.7601,-111.2085
+24015,"Cecil","Maryland",39.5705,-75.9432
+26147,"St. Clair","Michigan",42.9315,-82.6806
+05107,"Phillips","Arkansas",34.4285,-90.8496
+06013,"Contra Costa","California",37.9197,-121.9290
+09009,"New Haven","Connecticut",41.4110,-72.9315
+18173,"Warrick","Indiana",38.0923,-87.2719
+18019,"Clark","Indiana",38.4784,-85.7095
+12069,"Lake","Florida",28.7611,-81.7114
+21037,"Campbell","Kentucky",38.9450,-84.3816
+22037,"East Feliciana","Louisiana",30.8442,-91.0454
+12121,"Suwannee","Florida",30.1963,-82.9921
+22125,"West Feliciana","Louisiana",30.8796,-91.4166
+23013,"Knox","Maine",44.1246,-69.1502
+26163,"Wayne","Michigan",42.2809,-83.2819
+28033,"DeSoto","Mississippi",34.8762,-89.9905
+24027,"Howard","Maryland",39.2523,-76.9318
+29157,"Perry","Missouri",37.7077,-89.8246
+29113,"Lincoln","Missouri",39.0572,-90.9597
+27057,"Hubbard","Minnesota",47.1085,-94.9158
+20021,"Cherokee","Kansas",37.1695,-94.8466
+27011,"Big Stone","Minnesota",45.4263,-96.4117
+10001,"Kent","Delaware",39.0870,-75.5678
+16075,"Payette","Idaho",44.0063,-116.7609
+18151,"Steuben","Indiana",41.6442,-85.0017
+12075,"Levy","Florida",29.3195,-82.7421
+13065,"Clinch","Georgia",30.9165,-82.7076
+26027,"Cass","Michigan",41.9152,-85.9953
+28093,"Marshall","Mississippi",34.7617,-89.5032
+26081,"Kent","Michigan",43.0315,-85.5492
+31135,"Perkins","Nebraska",40.8513,-101.6508
+34029,"Ocean","New Jersey",39.8851,-74.2814
+18167,"Vigo","Indiana",39.4306,-87.3892
+36015,"Chemung","New York",42.1404,-76.7587
+18155,"Switzerland","Indiana",38.8267,-85.0395
+27159,"Wadena","Minnesota",46.5856,-94.9691
+56027,"Niobrara","Wyoming",43.0557,-104.4751
+29013,"Bates","Missouri",38.2568,-94.3392
+31129,"Nuckolls","Nebraska",40.1764,-98.0470
+18077,"Jefferson","Indiana",38.7847,-85.4388
+34003,"Bergen","New Jersey",40.9597,-74.0745
+36119,"Westchester","New York",41.1607,-73.7551
+36063,"Niagara","New York",43.1998,-78.7452
+37189,"Watauga","North Carolina",36.2307,-81.6961
+27023,"Chippewa","Minnesota",45.0221,-95.5668
+40071,"Kay","Oklahoma",36.8178,-97.1441
+17151,"Pope","Illinois",37.4136,-88.5610
+42089,"Monroe","Pennsylvania",41.0584,-75.3396
+35043,"Sandoval","New Mexico",35.6880,-106.8643
+16033,"Clark","Idaho",44.2842,-112.3525
+26029,"Charlevoix","Michigan",45.2955,-85.1167
+26091,"Lenawee","Michigan",41.8952,-84.0657
+27157,"Wabasha","Minnesota",44.2841,-92.2308
+29047,"Clay","Missouri",39.3112,-94.4215
+40081,"Lincoln","Oklahoma",35.7024,-96.8824
+47069,"Hardeman","Tennessee",35.2069,-88.9930
+27071,"Koochiching","Minnesota",48.2455,-93.7834
+27107,"Norman","Minnesota",47.3265,-96.4553
+17023,"Clark","Illinois",39.3345,-87.7878
+27005,"Becker","Minnesota",46.9353,-95.6729
+19085,"Harrison","Iowa",41.6840,-95.8175
+28027,"Coahoma","Mississippi",34.2299,-90.6023
+35037,"Quay","New Mexico",35.1048,-103.5502
+34023,"Middlesex","New Jersey",40.4408,-74.4099
+54071,"Pendleton","West Virginia",38.6805,-79.3517
+05003,"Ashley","Arkansas",33.1915,-91.7699
+28133,"Sunflower","Mississippi",33.6013,-90.5895
+28143,"Tunica","Mississippi",34.6522,-90.3747
+29171,"Putnam","Missouri",40.4787,-93.0156
+29197,"Schuyler","Missouri",40.4700,-92.5201
+54085,"Ritchie","West Virginia",39.1775,-81.0630
+54095,"Tyler","West Virginia",39.4647,-80.8831
+51063,"Floyd","Virginia",36.9318,-80.3614
+30055,"McCone","Montana",47.6445,-105.7950
+20177,"Shawnee","Kansas",39.0420,-95.7579
+18033,"DeKalb","Indiana",41.3979,-84.9982
+46101,"Moody","South Dakota",44.0227,-96.6708
+22091,"St. Helena","Louisiana",30.8213,-90.7110
+55051,"Iron","Wisconsin",46.2616,-90.2420
+48475,"Ward","Texas",31.5097,-103.1018
+48485,"Wichita","Texas",33.9887,-98.7032
+48489,"Willacy","Texas",26.4708,-97.6578
+22083,"Richland","Louisiana",32.4173,-91.7647
+29045,"Clark","Missouri",40.4098,-91.7389
+54049,"Marion","West Virginia",39.5094,-80.2406
+54107,"Wood","West Virginia",39.2102,-81.5160
+54033,"Harrison","West Virginia",39.2839,-80.3801
+30105,"Valley","Montana",48.3639,-106.6693
+25009,"Essex","Massachusetts",42.6716,-70.9517
+47019,"Carter","Tennessee",36.2929,-82.1280
+47147,"Robertson","Tennessee",36.5252,-86.8690
+05017,"Chicot","Arkansas",33.2670,-91.2958
+18057,"Hamilton","Indiana",40.0725,-86.0510
+18067,"Howard","Indiana",40.4838,-86.1168
+18097,"Marion","Indiana",39.7817,-86.1382
+18107,"Montgomery","Indiana",40.0402,-86.8934
+28089,"Madison","Mississippi",32.6341,-90.0326
+26033,"Chippewa","Michigan",46.3016,-84.5634
+26097,"Mackinac","Michigan",46.0813,-85.0824
+12089,"Nassau","Florida",30.6109,-81.8015
+54091,"Taylor","West Virginia",39.3353,-80.0458
+47011,"Bradley","Tennessee",35.1529,-84.8607
+12079,"Madison","Florida",30.4444,-83.4688
+28051,"Holmes","Mississippi",33.1231,-90.0916
+47183,"Weakley","Tennessee",36.2988,-88.7177
+27049,"Goodhue","Minnesota",44.4098,-92.7221
+29077,"Greene","Missouri",37.2580,-93.3413
+01111,"Randolph","Alabama",33.2930,-85.4596
+35013,"Doña Ana","New Mexico",32.3519,-106.8335
+42119,"Union","Pennsylvania",40.9626,-77.0634
+46119,"Sully","South Dakota",44.7161,-100.1314
+33003,"Carroll","New Hampshire",43.8738,-71.2024
+51770,"Roanoke","Virginia",37.2820,-79.9569
+19115,"Louisa","Iowa",41.2182,-91.2602
+19145,"Page","Iowa",40.7392,-95.1493
+45055,"Kershaw","South Carolina",34.3389,-80.5896
+16077,"Power","Idaho",42.6932,-112.8411
+41011,"Coos","Oregon",43.1738,-124.0605
+41019,"Douglas","Oregon",43.2802,-123.1661
+55023,"Crawford","Wisconsin",43.2398,-90.9317
+51005,"Alleghany","Virginia",37.7881,-80.0069
+51071,"Giles","Virginia",37.3137,-80.7050
+12023,"Columbia","Florida",30.2244,-82.6220
+72007,"Aguas Buenas","Puerto Rico",18.2505,-66.1272
+72107,"Orocovis","Puerto Rico",18.2147,-66.4358
+27123,"Ramsey","Minnesota",45.0178,-93.0993
+49047,"Uintah","Utah",40.1244,-109.5190
+51067,"Franklin","Virginia",36.9918,-79.8801
+15005,"Kalawao","Hawaii",21.1735,-156.9534
+20005,"Atchison","Kansas",39.5316,-95.3143
+09015,"Windham","Connecticut",41.8305,-71.9871
+09011,"New London","Connecticut",41.4877,-72.1025
+41005,"Clackamas","Oregon",45.1882,-122.2198
+48419,"Shelby","Texas",31.7922,-94.1459
+39029,"Columbiana","Ohio",40.7684,-80.7777
+06031,"Kings","California",36.0750,-119.8159
+06045,"Mendocino","California",39.4396,-123.3924
+08035,"Douglas","Colorado",39.3296,-104.9281
+48259,"Kendall","Texas",29.9444,-98.7116
+05009,"Boone","Arkansas",36.3084,-93.0908
+40083,"Logan","Oklahoma",35.9187,-97.4430
+36065,"Oneida","New York",43.2411,-75.4360
+37113,"Macon","North Carolina",35.1499,-83.4220
+36031,"Essex","New York",44.1163,-73.7733
+51017,"Bath","Virginia",38.0595,-79.7408
+54005,"Boone","West Virginia",38.0228,-81.7098
+54019,"Fayette","West Virginia",38.0283,-81.0815
+54039,"Kanawha","West Virginia",38.3386,-81.5270
+72037,"Ceiba","Puerto Rico",18.2546,-65.6543
+72039,"Ciales","Puerto Rico",18.2912,-66.5189
+08103,"Rio Blanco","Colorado",39.9813,-108.2184
+18109,"Morgan","Indiana",39.4819,-86.4464
+22059,"LaSalle","Louisiana",31.6781,-92.1603
+29135,"Moniteau","Missouri",38.6323,-92.5830
+42039,"Crawford","Pennsylvania",41.6845,-80.1073
+21205,"Rowan","Kentucky",38.1975,-83.4199
+47187,"Williamson","Tennessee",35.8941,-86.8982
+38081,"Sargent","North Dakota",46.1086,-97.6309
+72055,"Guánica","Puerto Rico",17.9825,-66.9193
+16061,"Lewis","Idaho",46.2366,-116.4263
+16069,"Nez Perce","Idaho",46.3253,-116.7505
+20089,"Jewell","Kansas",39.7845,-98.2186
+20117,"Marshall","Kansas",39.7837,-96.5219
+20131,"Nemaha","Kansas",39.7832,-96.0138
+40001,"Adair","Oklahoma",35.8849,-94.6587
+37043,"Clay","North Carolina",35.0569,-83.7494
+45073,"Oconee","South Carolina",34.7539,-83.0663
+05033,"Crawford","Arkansas",35.5883,-94.2441
+20093,"Kearny","Kansas",38.0006,-101.3208
+72049,"Culebra","Puerto Rico",18.3136,-65.2852
+28091,"Marion","Mississippi",31.2306,-89.8226
+28161,"Yalobusha","Mississippi",34.0285,-89.7070
+31065,"Furnas","Nebraska",40.1765,-99.9120
+53015,"Cowlitz","Washington",46.1926,-122.6798
+01083,"Limestone","Alabama",34.8111,-86.9816
+12013,"Calhoun","Florida",30.4062,-85.1965
+12017,"Citrus","Florida",28.8487,-82.4784
+28055,"Issaquena","Mississippi",32.7388,-90.9885
+18061,"Harrison","Indiana",38.1937,-86.1101
+20129,"Morton","Kansas",37.1912,-101.7992
+45083,"Spartanburg","South Carolina",34.9300,-81.9909
+20143,"Ottawa","Kansas",39.1326,-97.6502
+30103,"Treasure","Montana",46.2118,-107.2707
+31051,"Dixon","Nebraska",42.4942,-96.8676
+55013,"Burnett","Wisconsin",45.8628,-92.3682
+55025,"Dane","Wisconsin",43.0675,-89.4182
+22007,"Assumption","Louisiana",29.9010,-91.0624
+42127,"Wayne","Pennsylvania",41.6474,-75.3035
+36077,"Otsego","New York",42.6341,-75.0337
+40049,"Garvin","Oklahoma",34.7044,-97.3085
+36041,"Hamilton","New York",43.6599,-74.4969
+05087,"Madison","Arkansas",36.0107,-93.7239
+42115,"Susquehanna","Pennsylvania",41.8211,-75.8009
+12037,"Franklin","Florida",29.8619,-84.8216
+12039,"Gadsden","Florida",30.5795,-84.6122
+12045,"Gulf","Florida",29.9504,-85.2298
+12065,"Jefferson","Florida",30.4366,-83.8952
+12103,"Pinellas","Florida",27.9291,-82.7317
+40075,"Kiowa","Oklahoma",34.9159,-98.9800
+05047,"Franklin","Arkansas",35.5142,-93.8915
+40117,"Pawnee","Oklahoma",36.3164,-96.6990
+40069,"Johnston","Oklahoma",34.3164,-96.6607
+29081,"Harrison","Missouri",40.3547,-93.9919
+28031,"Covington","Mississippi",31.6332,-89.5537
+53069,"Wahkiakum","Washington",46.2923,-123.4252
+12019,"Clay","Florida",29.9838,-81.8577
+26153,"Schoolcraft","Michigan",46.1962,-86.1992
+55031,"Douglas","Wisconsin",46.4322,-91.9164
+13193,"Macon","Georgia",32.3567,-84.0412
+22027,"Claiborne","Louisiana",32.8227,-92.9946
+06097,"Sonoma","California",38.5284,-122.8874
+40087,"McClain","Oklahoma",35.0085,-97.4432
+31067,"Gage","Nebraska",40.2617,-96.6903
+48343,"Morris","Texas",33.1138,-94.7335
+40109,"Oklahoma","Oklahoma",35.5514,-97.4076
+48223,"Hopkins","Texas",33.1490,-95.5640
+36057,"Montgomery","New York",42.9028,-74.4410
+40113,"Osage","Oklahoma",36.6290,-96.3979
+12113,"Santa Rosa","Florida",30.6991,-87.0213
+12117,"Seminole","Florida",28.7165,-81.2371
+13007,"Baker","Georgia",31.3247,-84.4443
+13083,"Dade","Georgia",34.8552,-85.5043
+13095,"Dougherty","Georgia",31.5331,-84.2169
+13205,"Mitchell","Georgia",31.2244,-84.1932
+13253,"Seminole","Georgia",30.9381,-84.8705
+40119,"Payne","Oklahoma",36.0772,-96.9762
+47137,"Pickett","Tennessee",36.5590,-85.0700
+21087,"Green","Kentucky",37.2649,-85.5515
+48397,"Rockwall","Texas",32.8981,-96.4071
+78020,"St. John","United States Virgin Islands",18.3416,-64.7493
+48229,"Hudspeth","Texas",31.4564,-105.3863
+54087,"Roane","West Virginia",38.7150,-81.3476
+21147,"McCreary","Kentucky",36.7364,-84.4830
+28153,"Wayne","Mississippi",31.6407,-88.6966
+55043,"Grant","Wisconsin",42.8677,-90.7072
+22029,"Concordia","Louisiana",31.4471,-91.6401
+48423,"Smith","Texas",32.3760,-95.2688
+36033,"Franklin","New York",44.5912,-74.3037
+22107,"Tensas","Louisiana",32.0008,-91.3411
+28157,"Wilkinson","Mississippi",31.1598,-91.3113
+28021,"Claiborne","Mississippi",31.9742,-90.9115
+28023,"Clarke","Mississippi",32.0413,-88.6896
+46049,"Faulk","South Dakota",45.0712,-99.1451
+47099,"Lawrence","Tennessee",35.2172,-87.3945
+28035,"Forrest","Mississippi",31.1892,-89.2580
+53041,"Lewis","Washington",46.5786,-122.3927
+51143,"Pittsylvania","Virginia",36.8205,-79.3968
+54027,"Hampshire","West Virginia",39.3169,-78.6142
+06115,"Yuba","California",39.2679,-121.3524
+28163,"Yazoo","Mississippi",32.7805,-90.3954
+42105,"Potter","Pennsylvania",41.7444,-77.8951
+48215,"Hidalgo","Texas",26.3965,-98.1803
+51131,"Northampton","Virginia",37.3417,-75.8786
+36049,"Lewis","New York",43.7841,-75.4499
+13249,"Schley","Georgia",32.2616,-84.3154
+19043,"Clayton","Iowa",42.8447,-91.3413
+37041,"Chowan","North Carolina",36.1507,-76.6075
+01095,"Marshall","Alabama",34.3664,-86.3066
+36007,"Broome","New York",42.1598,-75.8195
+36093,"Schenectady","New York",42.8169,-74.0592
+48041,"Brazos","Texas",30.6608,-96.3019
+51047,"Culpeper","Virginia",38.4872,-77.9553
+48051,"Burleson","Texas",30.4926,-96.6183
+28047,"Harrison","Mississippi",30.5052,-89.1127
+48119,"Delta","Texas",33.3855,-95.6702
+49053,"Washington","Utah",37.2807,-113.5043
+42093,"Montour","Pennsylvania",41.0295,-76.6606
+48105,"Crockett","Texas",30.7229,-101.4128
+12127,"Volusia","Florida",29.0581,-81.1821
+36101,"Steuben","New York",42.2676,-77.3832
+55101,"Racine","Wisconsin",42.7472,-88.0600
+05059,"Hot Spring","Arkansas",34.3182,-92.9458
+19091,"Humboldt","Iowa",42.7767,-94.2076
+29055,"Crawford","Missouri",37.9762,-91.3039
+27173,"Yellow Medicine","Minnesota",44.7166,-95.8687
+13151,"Henry","Georgia",33.4523,-84.1533
+01011,"Bullock","Alabama",32.1007,-85.7159
+06047,"Merced","California",37.1921,-120.7181
+51095,"James City","Virginia",37.3253,-76.7745
+22049,"Jackson","Louisiana",32.3020,-92.5582
+37073,"Gates","North Carolina",36.4456,-76.7002
+55063,"La Crosse","Wisconsin",43.9067,-91.1141
+13269,"Taylor","Georgia",32.5561,-84.2507
+37139,"Pasquotank","North Carolina",36.2950,-76.2834
+51061,"Fauquier","Virginia",38.7393,-77.8082
+51137,"Orange","Virginia",38.2459,-78.0146
+36017,"Chenango","New York",42.4926,-75.6121
+51680,"Lynchburg","Virginia",37.3991,-79.1918
+40029,"Coal","Oklahoma",34.5885,-96.2977
+40063,"Hughes","Oklahoma",35.0485,-96.2505
+48287,"Lee","Texas",30.3116,-96.9639
+51031,"Campbell","Virginia",37.2066,-79.0966
+40123,"Pontotoc","Oklahoma",34.7283,-96.6843
+32031,"Washoe","Nevada",40.6565,-119.6645
+36105,"Sullivan","New York",41.7167,-74.7681
+42041,"Cumberland","Pennsylvania",40.1641,-77.2663
+54041,"Lewis","West Virginia",38.9964,-80.5034
+22053,"Jefferson Davis","Louisiana",30.2673,-92.8145
+31113,"Logan","Nebraska",41.5667,-100.4817
+01113,"Russell","Alabama",32.2882,-85.1851
+05135,"Sharp","Arkansas",36.1616,-91.4791
+06107,"Tulare","California",36.2199,-118.8010
+21003,"Allen","Kentucky",36.7506,-86.1892
+22051,"Jefferson","Louisiana",29.7413,-90.1126
+36079,"Putnam","New York",41.4255,-73.7504
+36087,"Rockland","New York",41.1529,-74.0239
+09001,"Fairfield","Connecticut",41.2690,-73.3894
+29091,"Howell","Missouri",36.7745,-91.8872
+66010,"Guam","Guam",13.4437,144.7745
+48395,"Robertson","Texas",31.0264,-96.5145
+06067,"Sacramento","California",38.4500,-121.3439
+40061,"Haskell","Oklahoma",35.2249,-95.1162
+40077,"Latimer","Oklahoma",34.8766,-95.2489
+54029,"Hancock","West Virginia",40.5188,-80.5742
+05073,"Lafayette","Arkansas",33.2413,-93.6072
+34001,"Atlantic","New Jersey",39.4779,-74.6620
+16083,"Twin Falls","Idaho",42.3548,-114.6675
+48333,"Mills","Texas",31.4957,-98.5949
+21053,"Clinton","Kentucky",36.7262,-85.1346
+39151,"Stark","Ohio",40.8137,-81.3666
+01117,"Shelby","Alabama",33.2640,-86.6628
+41053,"Polk","Oregon",44.9034,-123.4142
+20167,"Russell","Kansas",38.9150,-98.7619
+20045,"Douglas","Kansas",38.8847,-95.2931
+20157,"Republic","Kansas",39.8282,-97.6506
+06095,"Solano","California",38.2705,-121.9332
+05005,"Baxter","Arkansas",36.2868,-92.3370
+51710,"Norfolk","Virginia",36.8958,-76.2579
+35025,"Lea","New Mexico",32.7903,-103.4125
+22065,"Madison","Louisiana",32.3655,-91.2405
+48301,"Loving","Texas",31.8489,-103.5783
+08014,"Broomfield","Colorado",39.9600,-105.0464
+40089,"McCurtain","Oklahoma",34.1155,-94.7711
+54069,"Ohio","West Virginia",40.0972,-80.6198
+37075,"Graham","North Carolina",35.3496,-83.8344
+37039,"Cherokee","North Carolina",35.1330,-84.0639
+31043,"Dakota","Nebraska",42.3906,-96.5649
+25027,"Worcester","Massachusetts",42.3511,-71.9068
+39017,"Butler","Ohio",39.4388,-84.5756
+22015,"Bossier","Louisiana",32.6794,-93.6041
+17103,"Lee","Illinois",41.7469,-89.2995
+41051,"Multnomah","Oregon",45.5476,-122.4193
+37019,"Brunswick","North Carolina",34.0704,-78.2381
+47141,"Putnam","Tennessee",36.1406,-85.4914
+37083,"Halifax","North Carolina",36.2565,-77.6504
+16023,"Butte","Idaho",43.7219,-113.1725
+08031,"Denver","Colorado",39.7602,-104.8771
+22067,"Morehouse","Louisiana",32.8208,-91.8041
+51735,"Poquoson","Virginia",37.1329,-76.3596
+51740,"Portsmouth","Virginia",36.8504,-76.3566
+08013,"Boulder","Colorado",40.0930,-105.3599
+22071,"Orleans","Louisiana",30.0701,-89.9273
+37099,"Jackson","North Carolina",35.2885,-83.1422
+01025,"Clarke","Alabama",31.6771,-87.8317
+01091,"Marengo","Alabama",32.2477,-87.7881
+01065,"Hale","Alabama",32.7616,-87.6298
+01075,"Lamar","Alabama",33.7796,-88.0969
+01107,"Pickens","Alabama",33.2795,-88.0896
+31127,"Nemaha","Nebraska",40.3868,-95.8504
+51041,"Chesterfield","Virginia",37.3790,-77.5895
+48403,"Sabine","Texas",31.3444,-93.8530
+26019,"Benzie","Michigan",44.6388,-86.0161
+29037,"Cass","Missouri",38.6472,-94.3543
+01037,"Coosa","Alabama",32.9363,-86.2483
+08069,"Larimer","Colorado",40.6665,-105.4610
+47037,"Davidson","Tennessee",36.1698,-86.7844
+42027,"Centre","Pennsylvania",40.9190,-77.8208
+48015,"Austin","Texas",29.8862,-96.2779
+50013,"Grand Isle","Vermont",44.7972,-73.2935
+51800,"Suffolk","Virginia",36.6961,-76.6386
+08025,"Crowley","Colorado",38.3268,-103.7836
+08027,"Custer","Colorado",38.1092,-105.3676
+22073,"Ouachita","Louisiana",32.4780,-92.1555
+48383,"Reagan","Texas",31.3660,-101.5230
+40137,"Stephens","Oklahoma",34.4853,-97.8517
+29179,"Reynolds","Missouri",37.3628,-90.9687
+48389,"Reeves","Texas",31.3226,-103.6920
+08041,"El Paso","Colorado",38.8321,-104.5260
+39167,"Washington","Ohio",39.4549,-81.4964
+51045,"Craig","Virginia",37.4827,-80.2106
+01127,"Walker","Alabama",33.8025,-87.2957
+51069,"Frederick","Virginia",39.2045,-78.2626
+30095,"Stillwater","Montana",45.6687,-109.3968
+22117,"Washington","Louisiana",30.8540,-90.0398
+47189,"Wilson","Tennessee",36.1535,-86.2973
+16035,"Clearwater","Idaho",46.6737,-115.6599
+22057,"Lafourche","Louisiana",29.5580,-90.4181
+26047,"Emmet","Michigan",45.5207,-84.8891
+37185,"Warren","North Carolina",36.3978,-78.1053
+69120,"Tinian","Commonwealth of the Northern Mariana Islands",15.0098,145.6316
+72013,"Arecibo","Puerto Rico",18.4051,-66.6759
+26115,"Monroe","Michigan",41.9280,-83.5374
+30047,"Lake","Montana",47.6459,-114.0882
+30063,"Missoula","Montana",47.0359,-113.9245
+08047,"Gilpin","Colorado",39.8578,-105.5215
+08055,"Huerfano","Colorado",37.6849,-104.9598
+54059,"Mingo","West Virginia",37.7270,-82.1355
+54065,"Morgan","West Virginia",39.5597,-78.2538
+01129,"Washington","Alabama",31.4075,-88.2086
+17173,"Shelby","Illinois",39.3914,-88.8058
+18165,"Vermillion","Indiana",39.8531,-87.4631
+34005,"Burlington","New Jersey",39.8769,-74.6667
+27045,"Fillmore","Minnesota",43.6742,-92.0893
+48439,"Tarrant","Texas",32.7717,-97.2914
+17031,"Cook","Illinois",41.8397,-87.8161
+69085,"Northern Islands","Commonwealth of the Northern Mariana Islands",17.7215,145.7470
+51550,"Chesapeake","Virginia",36.6779,-76.3006
+26155,"Shiawassee","Michigan",42.9538,-84.1469
+26157,"Tuscola","Michigan",43.4651,-83.4181
+38011,"Bowman","North Dakota",46.1130,-103.5217
+38033,"Golden Valley","North Dakota",46.9393,-103.8469
+55035,"Eau Claire","Wisconsin",44.7269,-91.2865
+32005,"Douglas","Nevada",38.9116,-119.6161
+18009,"Blackford","Indiana",40.4737,-85.3250
+18179,"Wells","Indiana",40.7294,-85.2216
+05013,"Calhoun","Arkansas",33.5582,-92.5041
+17091,"Kankakee","Illinois",41.1378,-87.8625
+18163,"Vanderburgh","Indiana",38.0287,-87.5854
+16003,"Adams","Idaho",44.8884,-116.4550
+09013,"Tolland","Connecticut",41.8551,-72.3360
+21111,"Jefferson","Kentucky",38.1889,-85.6578
+28109,"Pearl River","Mississippi",30.7682,-89.5896
+22093,"St. James","Louisiana",30.0269,-90.7962
+49013,"Duchesne","Utah",40.2970,-110.4263
+48209,"Hays","Texas",30.0569,-98.0302
+49023,"Juab","Utah",39.7054,-112.7853
+37131,"Northampton","North Carolina",36.4176,-77.3977
+01041,"Crenshaw","Alabama",31.7306,-86.3137
+16007,"Bear Lake","Idaho",42.2848,-111.3299
+39113,"Montgomery","Ohio",39.7543,-84.2914
+01045,"Dale","Alabama",31.4325,-85.6110
+06075,"San Francisco","California",37.7546,-122.4400
+08091,"Ouray","Colorado",38.1544,-107.7676
+17153,"Pulaski","Illinois",37.2219,-89.1263
+05121,"Randolph","Arkansas",36.3419,-91.0270
+05145,"White","Arkansas",35.2564,-91.7467
+39005,"Ashland","Ohio",40.8458,-82.2713
+40101,"Muskogee","Oklahoma",35.6158,-95.3790
+22109,"Terrebonne","Louisiana",29.4101,-90.8648
+41041,"Lincoln","Oregon",44.6411,-123.8691
+26063,"Huron","Michigan",43.8326,-83.0307
+29227,"Worth","Missouri",40.4788,-94.4219
+29175,"Randolph","Missouri",39.4401,-92.4970
+15003,"Honolulu","Hawaii",21.4587,-157.9739
+49027,"Millard","Utah",39.0740,-113.1001
+49041,"Sevier","Utah",38.7479,-111.8042
+49045,"Tooele","Utah",40.4491,-113.1308
+12087,"Monroe","Florida",25.2751,-81.1172
+13033,"Burke","Georgia",33.0607,-81.9996
+01081,"Lee","Alabama",32.6008,-85.3550
+48409,"San Patricio","Texas",28.0085,-97.5195
+06043,"Mariposa","California",37.5822,-119.9048
+29147,"Nodaway","Missouri",40.3606,-94.8831
+17025,"Clay","Illinois",38.7537,-88.4894
+02130,"Ketchikan Gateway","Alaska",55.5846,-130.9333
+02282,"Yakutat","Alaska",59.8953,-140.3218
+18001,"Adams","Indiana",40.7460,-84.9373
+08017,"Cheyenne","Colorado",38.8284,-102.6035
+47173,"Union","Tennessee",36.2894,-83.8387
+17183,"Vermilion","Illinois",40.1837,-87.7329
+53009,"Clallam","Washington",48.0503,-123.9259
+53027,"Grays Harbor","Washington",47.1489,-123.7729
+12109,"St. Johns","Florida",29.9013,-81.4409
+53031,"Jefferson","Washington",47.7503,-123.5948
+06041,"Marin","California",38.0750,-122.7240
+51053,"Dinwiddie","Virginia",37.0764,-77.6343
+17129,"Menard","Illinois",40.0277,-89.8012
+08081,"Moffat","Colorado",40.6194,-108.2088
+16041,"Franklin","Idaho",42.1799,-111.8141
+06101,"Sutter","California",39.0331,-121.6938
+39081,"Jefferson","Ohio",40.3854,-80.7598
+35009,"Curry","New Mexico",34.5740,-103.3477
+36021,"Columbia","New York",42.2498,-73.6326
+28083,"Leflore","Mississippi",33.5494,-90.3012
+13291,"Union","Georgia",34.8329,-83.9904
+39001,"Adams","Ohio",38.8457,-83.4719
+34009,"Cape May","New Jersey",39.1493,-74.8003
+32003,"Clark","Nevada",36.2135,-115.0146
+20103,"Leavenworth","Kansas",39.1998,-95.0371
+51145,"Powhatan","Virginia",37.5513,-77.9160
+53043,"Lincoln","Washington",47.5766,-118.4185
+53045,"Mason","Washington",47.3480,-123.1917
+53055,"San Juan","Washington",48.5760,-122.9477
+17133,"Monroe","Illinois",38.2792,-90.1778
+08097,"Pitkin","Colorado",39.2188,-106.9172
+06035,"Lassen","California",40.6721,-120.5931
+19101,"Jefferson","Iowa",41.0321,-91.9484
+08099,"Prowers","Colorado",37.9549,-102.3937
+16057,"Latah","Idaho",46.8151,-116.7111
+12097,"Osceola","Florida",28.0631,-81.1495
+27171,"Wright","Minnesota",45.1732,-93.9653
+13293,"Upson","Georgia",32.8811,-84.3022
+31049,"Deuel","Nebraska",41.1121,-102.3323
+48359,"Oldham","Texas",35.4049,-102.6030
+13297,"Walton","Georgia",33.7815,-83.7330
+13303,"Washington","Georgia",32.9703,-82.7964
+34013,"Essex","New Jersey",40.7855,-74.2455
+13305,"Wayne","Georgia",31.5528,-81.9172
+29189,"St. Louis","Missouri",38.6409,-90.4457
+22063,"Livingston","Louisiana",30.4395,-90.7286
+01001,"Autauga","Alabama",32.5359,-86.6417
+01005,"Barbour","Alabama",31.8695,-85.3925
+01097,"Mobile","Alabama",30.7803,-88.2077
+53065,"Stevens","Washington",48.3972,-117.8551
+53073,"Whatcom","Washington",48.8273,-121.7223
+13019,"Berrien","Georgia",31.2763,-83.2288
+56041,"Uinta","Wyoming",41.2877,-110.5474
+51081,"Greensville","Virginia",36.6750,-77.5607
+48371,"Pecos","Texas",30.7809,-102.7234
+17161,"Rock Island","Illinois",41.4661,-90.5699
+39135,"Preble","Ohio",39.7423,-84.6483
+39137,"Putnam","Ohio",41.0225,-84.1318
+08111,"San Juan","Colorado",37.7643,-107.6776
+48385,"Real","Texas",29.8325,-99.8217
+30077,"Powell","Montana",46.8538,-112.9329
+13309,"Wheeler","Georgia",32.1169,-82.7245
+06065,"Riverside","California",33.7466,-115.9952
+40115,"Ottawa","Oklahoma",36.8355,-94.8112
+72103,"Naguabo","Puerto Rico",18.2294,-65.7520
+26001,"Alcona","Michigan",44.6847,-83.5942
+56043,"Washakie","Wyoming",43.9049,-107.6813
+48113,"Dallas","Texas",32.7666,-96.7775
+72059,"Guayanilla","Puerto Rico",18.0338,-66.7933
+18183,"Whitley","Indiana",41.1393,-85.5048
+47047,"Fayette","Tennessee",35.1965,-89.4143
+20141,"Osborne","Kansas",39.3503,-98.7678
+72011,"Añasco","Puerto Rico",18.2863,-67.1241
+72097,"Mayagüez","Puerto Rico",18.1767,-67.3095
+60010,"Eastern","American Samoa",-14.2733,-170.6574
+50003,"Bennington","Vermont",43.0361,-73.0929
+53017,"Douglas","Washington",47.7362,-119.6929
+48355,"Nueces","Texas",27.7250,-97.6098
+50019,"Orleans","Vermont",44.8287,-72.2428
+54023,"Grant","West Virginia",39.1046,-79.1961
+13073,"Columbia","Georgia",33.5436,-82.2640
+51085,"Hanover","Virginia",37.7610,-77.4918
+48387,"Red River","Texas",33.6205,-95.0504
+39141,"Ross","Ohio",39.3380,-83.0583
+13091,"Dodge","Georgia",32.1730,-83.1676
+13135,"Gwinnett","Georgia",33.9615,-84.0246
+13085,"Dawson","Georgia",34.4447,-84.1706
+41063,"Wallowa","Oregon",45.5788,-117.1805
+13167,"Johnson","Georgia",32.7008,-82.6574
+13163,"Jefferson","Georgia",33.0537,-82.4176
+39023,"Clark","Ohio",39.9164,-83.7837
+29069,"Dunklin","Missouri",36.2715,-90.0903
+36019,"Clinton","New York",44.7456,-73.6781
+51163,"Rockbridge","Virginia",37.8144,-79.4477
+42099,"Perry","Pennsylvania",40.3988,-77.2601
+05021,"Clay","Arkansas",36.3686,-90.4166
+54037,"Jefferson","West Virginia",39.3070,-77.8630
+30035,"Glacier","Montana",48.7056,-112.9928
+50007,"Chittenden","Vermont",44.4603,-73.0822
+19167,"Sioux","Iowa",43.0828,-96.1778
+48083,"Coleman","Texas",31.7718,-99.4533
+48401,"Rusk","Texas",32.1080,-94.7617
+39145,"Scioto","Ohio",38.8041,-82.9921
+02110,"Juneau","Alaska",58.4377,-134.1480
+05077,"Lee","Arkansas",34.7809,-90.7815
+05123,"St. Francis","Arkansas",35.0222,-90.7481
+55079,"Milwaukee","Wisconsin",43.0053,-87.9675
+55053,"Jackson","Wisconsin",44.3194,-90.8055
+34021,"Mercer","New Jersey",40.2837,-74.7031
+37009,"Ashe","North Carolina",36.4346,-81.5006
+27167,"Wilkin","Minnesota",46.3561,-96.4696
+38051,"McIntosh","North Dakota",46.1122,-99.4413
+50023,"Washington","Vermont",44.2733,-72.6147
+31173,"Thurston","Nebraska",42.1575,-96.5439
+32027,"Pershing","Nevada",40.4411,-118.4046
+50017,"Orange","Vermont",44.0050,-72.3781
+55029,"Door","Wisconsin",44.9491,-87.3140
+06063,"Plumas","California",40.0040,-120.8377
+39147,"Seneca","Ohio",41.1237,-83.1271
+13103,"Effingham","Georgia",32.3669,-81.3421
+31161,"Sheridan","Nebraska",42.5036,-102.4090
+46087,"McCook","South Dakota",43.6745,-97.3680
+55083,"Oconto","Wisconsin",45.0253,-88.2670
+02068,"Denali","Alaska",63.6756,-150.0344
+34017,"Hudson","New Jersey",40.7372,-74.0749
+56013,"Fremont","Wyoming",43.0394,-108.6247
+29137,"Monroe","Missouri",39.4959,-92.0019
+39045,"Fairfield","Ohio",39.7499,-82.6291
+05027,"Columbia","Arkansas",33.2139,-93.2272
+55065,"Lafayette","Wisconsin",42.6601,-90.1325
+36047,"Kings","New York",40.6407,-73.9400
+29141,"Morgan","Missouri",38.4243,-92.8855
+27151,"Swift","Minnesota",45.2833,-95.6828
+29143,"New Madrid","Missouri",36.5965,-89.6507
+55045,"Green","Wisconsin",42.6797,-89.6020
+32015,"Lander","Nevada",39.9302,-117.0409
+32029,"Storey","Nevada",39.4468,-119.5296
+35001,"Bernalillo","New Mexico",35.0515,-106.6711
+13173,"Lanier","Georgia",31.0383,-83.0639
+56045,"Weston","Wyoming",43.8401,-104.5688
+36009,"Cattaraugus","New York",42.2480,-78.6788
+72127,"San Juan","Puerto Rico",18.3930,-66.0628
+72139,"Trujillo Alto","Puerto Rico",18.3362,-66.0026
+19049,"Dallas","Iowa",41.6850,-94.0400
+48443,"Terrell","Texas",30.2252,-102.0773
+13119,"Franklin","Georgia",34.3752,-83.2299
+17199,"Williamson","Illinois",37.7302,-88.9295
+39155,"Trumbull","Ohio",41.3174,-80.7604
+17203,"Woodford","Illinois",40.7885,-89.2113
+08067,"La Plata","Colorado",37.2866,-107.8443
+39157,"Tuscarawas","Ohio",40.4413,-81.4745
+27089,"Marshall","Minnesota",48.3588,-96.3687
+27115,"Pine","Minnesota",46.1204,-92.7419
+05103,"Ouachita","Arkansas",33.5936,-92.8832
+39093,"Lorain","Ohio",41.2950,-82.1512
+37021,"Buncombe","North Carolina",35.6119,-82.5315
+05031,"Craighead","Arkansas",35.8312,-90.6329
+35005,"Chaves","New Mexico",33.3622,-104.4688
+31165,"Sioux","Nebraska",42.4871,-103.7588
+05039,"Dallas","Arkansas",33.9701,-92.6540
+37023,"Burke","North Carolina",35.7501,-81.7042
+37111,"McDowell","North Carolina",35.6816,-82.0498
+42109,"Snyder","Pennsylvania",40.7695,-77.0702
+13271,"Telfair","Georgia",31.9302,-82.9393
+12115,"Sarasota","Florida",27.1843,-82.3310
+13105,"Elbert","Georgia",34.1156,-82.8418
+13185,"Lowndes","Georgia",30.8338,-83.2664
+13263,"Talbot","Georgia",32.6987,-84.5340
+37047,"Columbus","North Carolina",34.2659,-78.6556
+17069,"Hardin","Illinois",37.5185,-88.2666
+13139,"Hall","Georgia",34.3182,-83.8199
+17001,"Adams","Illinois",39.9880,-91.1884
+13153,"Houston","Georgia",32.4596,-83.6662
+48457,"Tyler","Texas",30.7708,-94.3761
+12041,"Gilchrist","Florida",29.7265,-82.7991
+27139,"Scott","Minnesota",44.6485,-93.5384
+28007,"Attala","Mississippi",33.0867,-89.5813
+39131,"Pike","Ohio",39.0773,-83.0664
+46095,"Mellette","South Dakota",43.5819,-100.7597
+36013,"Chautauqua","New York",42.2285,-79.3668
+51177,"Spotsylvania","Virginia",38.1861,-77.6556
+29149,"Oregon","Missouri",36.6864,-91.4037
+34025,"Monmouth","New Jersey",40.2599,-74.2230
+39087,"Lawrence","Ohio",38.5999,-82.5366
+26103,"Marquette","Michigan",46.4313,-87.6407
+13229,"Pierce","Georgia",31.3576,-82.2118
+15007,"Kauai","Hawaii",22.0400,-159.5936
+42033,"Clearfield","Pennsylvania",41.0003,-78.4744
+27029,"Clearwater","Minnesota",47.5770,-95.3790
+13155,"Irwin","Georgia",31.6017,-83.2756
+27035,"Crow Wing","Minnesota",46.4827,-94.0716
+30087,"Rosebud","Montana",46.2271,-106.7277
+39169,"Wayne","Ohio",40.8293,-81.8885
+12051,"Hendry","Florida",26.5535,-81.1652
+13181,"Lincoln","Georgia",33.7942,-82.4510
+13183,"Long","Georgia",31.7519,-81.7451
+48469,"Victoria","Texas",28.7958,-96.9696
+39025,"Clermont","Ohio",39.0476,-84.1528
+46109,"Roberts","South Dakota",45.6295,-96.9476
+46102,"Oglala Lakota","South Dakota",43.3353,-102.5515
+54067,"Nicholas","West Virginia",38.2913,-80.8002
+72071,"Isabela","Puerto Rico",18.4477,-67.0034
+72083,"Las Marías","Puerto Rico",18.2367,-66.9797
+72115,"Quebradillas","Puerto Rico",18.4426,-66.9275
+72081,"Lares","Puerto Rico",18.2680,-66.8659
+72089,"Luquillo","Puerto Rico",18.3410,-65.7242
+72111,"Peñuelas","Puerto Rico",18.0625,-66.7226
+33017,"Strafford","New Hampshire",43.2980,-71.0291
+05045,"Faulkner","Arkansas",35.1486,-92.3315
+29186,"Ste. Genevieve","Missouri",37.8952,-90.1947
+31153,"Sarpy","Nebraska",41.1121,-96.1109
+51179,"Stafford","Virginia",38.4207,-77.4579
+38089,"Stark","North Dakota",46.8112,-102.6546
+47051,"Franklin","Tennessee",35.1561,-86.0921
+38101,"Ward","North Dakota",48.2219,-101.5410
+47115,"Marion","Tennessee",35.1302,-85.6220
+27037,"Dakota","Minnesota",44.6722,-93.0645
+18035,"Delaware","Indiana",40.2279,-85.3970
+27061,"Itasca","Minnesota",47.5097,-93.6309
+26069,"Iosco","Michigan",44.3555,-83.6362
+20159,"Rice","Kansas",38.3473,-98.2013
+20209,"Wyandotte","Kansas",39.1142,-94.7665
+48479,"Webb","Texas",27.7610,-99.3309
+48481,"Wharton","Texas",29.2787,-96.2220
+13207,"Monroe","Georgia",33.0137,-83.9193
+13219,"Oconee","Georgia",33.8348,-83.4374
+13225,"Peach","Georgia",32.5688,-83.8276
+13239,"Quitman","Georgia",31.8664,-85.0167
+39031,"Coshocton","Ohio",40.3024,-81.9202
+13243,"Randolph","Georgia",31.7616,-84.7555
+72085,"Las Piedras","Puerto Rico",18.1881,-65.8714
+54079,"Putnam","West Virginia",38.5080,-81.9106
+54109,"Wyoming","West Virginia",37.6091,-81.5506
+34037,"Sussex","New Jersey",41.1389,-74.6905
+01007,"Bibb","Alabama",32.9976,-87.1284
+28057,"Itawamba","Mississippi",34.2802,-88.3610
+29111,"Lewis","Missouri",40.0968,-91.7216
+33019,"Sullivan","New Hampshire",43.3624,-72.2213
+38069,"Pierce","North Dakota",48.2492,-99.9721
+36081,"Queens","New York",40.7023,-73.8218
+37033,"Caswell","North Carolina",36.3931,-79.3326
+26131,"Ontonagon","Michigan",46.6647,-89.3141
+22005,"Ascension","Louisiana",30.2030,-90.9126
+12055,"Highlands","Florida",27.3427,-81.3412
+37089,"Henderson","North Carolina",35.3364,-82.4802
+19029,"Cass","Iowa",41.3316,-94.9272
+39097,"Madison","Ohio",39.8943,-83.4004
+12061,"Indian River","Florida",27.6946,-80.6059
+05131,"Sebastian","Arkansas",35.2002,-94.2729
+17075,"Iroquois","Illinois",40.7470,-87.8259
+13259,"Stewart","Georgia",32.0795,-84.8346
+39035,"Cuyahoga","Ohio",41.4247,-81.6596
+13159,"Jasper","Georgia",33.3158,-83.6872
+13117,"Forsyth","Georgia",34.2259,-84.1228
+16073,"Owyhee","Idaho",42.5810,-116.1684
+06085,"Santa Clara","California",37.2325,-121.6967
+22079,"Rapides","Louisiana",31.1978,-92.5329
+28095,"Monroe","Mississippi",33.8921,-88.4803
+42101,"Philadelphia","Pennsylvania",40.0069,-75.1357
+33015,"Rockingham","New Hampshire",42.9871,-71.1246
+36083,"Rensselaer","New York",42.7105,-73.5078
+37071,"Gaston","North Carolina",35.2942,-81.1809
+29207,"Stoddard","Missouri",36.8550,-89.9439
+31069,"Garden","Nebraska",41.6189,-102.3354
+01109,"Pike","Alabama",31.8023,-85.9413
+42123,"Warren","Pennsylvania",41.8142,-79.2747
+20099,"Labette","Kansas",37.1908,-95.2978
+19039,"Clarke","Iowa",41.0289,-93.7854
+40041,"Delaware","Oklahoma",36.4079,-94.8030
+18141,"St. Joseph","Indiana",41.6164,-86.2896
+37177,"Tyrrell","North Carolina",35.8178,-76.2082
+08053,"Hinsdale","Colorado",37.8199,-107.3010
+48273,"Kleberg","Texas",27.4310,-97.7230
+51035,"Carroll","Virginia",36.7313,-80.7344
+41045,"Malheur","Oregon",43.1866,-117.6236
+24009,"Calvert","Maryland",38.5412,-76.5686
+21071,"Floyd","Kentucky",37.5564,-82.7448
+48201,"Harris","Texas",29.8567,-95.3925
+51700,"Newport News","Virginia",37.1075,-76.5207
+02170,"Matanuska-Susitna","Alaska",62.3179,-149.5925
+05057,"Hempstead","Arkansas",33.7348,-93.6685
+28137,"Tate","Mississippi",34.6507,-89.9454
+36085,"Richmond","New York",40.5854,-74.1522
+38083,"Sheridan","North Dakota",47.5753,-100.3451
+36111,"Ulster","New York",41.8881,-74.2579
+37059,"Davie","North Carolina",35.9297,-80.5435
+48197,"Hardeman","Texas",34.2891,-99.7442
+46117,"Stanley","South Dakota",44.4124,-100.7348
+29079,"Grundy","Missouri",40.1144,-93.5646
+39049,"Franklin","Ohio",39.9684,-83.0079
+06061,"Placer","California",39.0635,-120.7192
+20091,"Johnson","Kansas",38.8834,-94.8237
+09005,"Litchfield","Connecticut",41.7920,-73.2464
+01061,"Geneva","Alabama",31.0955,-85.8376
+01069,"Houston","Alabama",31.1529,-85.3031
+51077,"Grayson","Virginia",36.6565,-81.2256
+08063,"Kit Carson","Colorado",39.3055,-102.6020
+19133,"Monona","Iowa",42.0524,-95.9589
+48351,"Newton","Texas",30.7845,-93.7457
+13265,"Taliaferro","Georgia",33.5659,-82.8797
+40057,"Harmon","Oklahoma",34.7443,-99.8451
+48349,"Navarro","Texas",32.0474,-96.4720
+13279,"Toombs","Georgia",32.1202,-82.3311
+29187,"St. Francois","Missouri",37.8116,-90.4736
+35021,"Harding","New Mexico",35.8584,-103.8212
+30097,"Sweet Grass","Montana",45.8131,-109.9419
+21155,"Marion","Kentucky",37.5529,-85.2690
+47149,"Rutherford","Tennessee",35.8432,-86.4160
+53061,"Snohomish","Washington",48.0481,-121.6971
+29165,"Platte","Missouri",39.3799,-94.7734
+39061,"Hamilton","Ohio",39.1953,-84.5425
+47081,"Hickman","Tennessee",35.8034,-87.4742
+48337,"Montague","Texas",33.6747,-97.7249
+49007,"Carbon","Utah",39.6486,-110.5877
+20041,"Dickinson","Kansas",38.8662,-97.1531
+17105,"Livingston","Illinois",40.8917,-88.5575
+05149,"Yell","Arkansas",35.0024,-93.4092
+16065,"Madison","Idaho",43.7844,-111.6575
+13285,"Troup","Georgia",33.0331,-85.0291
+12081,"Manatee","Florida",27.4723,-82.3163
+51001,"Accomack","Virginia",37.7656,-75.6348
+13289,"Twiggs","Georgia",32.6684,-83.4273
+24035,"Queen Anne's","Maryland",39.0653,-76.0237
+25015,"Hampshire","Massachusetts",42.3405,-72.6631
+17071,"Henderson","Illinois",40.8180,-90.9251
+40097,"Mayes","Oklahoma",36.3010,-95.2310
+51149,"Prince George","Virginia",37.1859,-77.2258
+36005,"Bronx","New York",40.8517,-73.8581
+05019,"Clark","Arkansas",34.0512,-93.1757
+39065,"Hardin","Ohio",40.6613,-83.6593
+48163,"Frio","Texas",28.8679,-99.1079
+05051,"Garland","Arkansas",34.5767,-93.1503
+31057,"Dundy","Nebraska",40.1766,-101.6881
+31023,"Butler","Nebraska",41.2250,-97.1334
+49019,"Grand","Utah",38.9835,-109.5694
+51127,"New Kent","Virginia",37.5069,-76.9966
+01093,"Marion","Alabama",34.1368,-87.8873
+30073,"Pondera","Montana",48.2287,-112.2272
+32510,"Carson City","Nevada",39.1513,-119.7477
+12125,"Union","Florida",30.0431,-82.3721
+02020,"Anchorage","Alaska",61.1500,-149.1091
+55125,"Vilas","Wisconsin",46.0532,-89.5149
+28019,"Choctaw","Mississippi",33.3472,-89.2482
+31169,"Thayer","Nebraska",40.1765,-97.5950
+13223,"Paulding","Georgia",33.9193,-84.8675
+32033,"White Pine","Nevada",39.4415,-114.9010
+48203,"Harrison","Texas",32.5476,-94.3711
+13113,"Fayette","Georgia",33.4118,-84.4925
+18059,"Hancock","Indiana",39.8228,-85.7730
+22025,"Catahoula","Louisiana",31.6658,-91.8486
+21191,"Pendleton","Kentucky",38.6957,-84.3611
+51197,"Wythe","Virginia",36.9168,-81.0792
+56003,"Big Horn","Wyoming",44.5263,-107.9943
+46137,"Ziebach","South Dakota",44.9804,-101.6656
+25007,"Dukes","Massachusetts",41.3991,-70.6558
+13157,"Jackson","Georgia",34.1344,-83.5656
+18111,"Newton","Indiana",40.9557,-87.3981
+48277,"Lamar","Texas",33.6676,-95.5722
+27021,"Cass","Minnesota",46.9486,-94.3268
+48153,"Floyd","Texas",34.0724,-101.3030
+18139,"Rush","Indiana",39.6199,-85.4649
+06079,"San Luis Obispo","California",35.3876,-120.4037
+20155,"Reno","Kansas",37.9532,-98.0865
+19025,"Calhoun","Iowa",42.3850,-94.6403
+27065,"Kanabec","Minnesota",45.9456,-93.2927
+42035,"Clinton","Pennsylvania",41.2340,-77.6386
+20109,"Logan","Kansas",38.9175,-101.1485
+39027,"Clinton","Ohio",39.4149,-83.8076
+39003,"Allen","Ohio",40.7716,-84.1059
+55115,"Shawano","Wisconsin",44.7893,-88.7644
+40135,"Sequoyah","Oklahoma",35.4961,-94.7550
+47035,"Cumberland","Tennessee",35.9502,-84.9976
+01029,"Cleburne","Alabama",33.6754,-85.5181
+26099,"Macomb","Michigan",42.6946,-82.9315
+26049,"Genesee","Michigan",43.0220,-83.7066
+17007,"Boone","Illinois",42.3228,-88.8239
+38053,"McKenzie","North Dakota",47.7398,-103.3968
+51141,"Patrick","Virginia",36.6791,-80.2841
+17003,"Alexander","Illinois",37.1920,-89.3370
+05133,"Sevier","Arkansas",33.9967,-94.2405
+28039,"George","Mississippi",30.8631,-88.6436
+34039,"Union","New Jersey",40.6607,-74.3092
+17015,"Carroll","Illinois",42.0681,-89.9333
+13287,"Turner","Georgia",31.7163,-83.6249
+06081,"San Mateo","California",37.4243,-122.3307
+13031,"Bulloch","Georgia",32.3958,-81.7424
+19097,"Jackson","Iowa",42.1719,-90.5728
+08113,"San Miguel","Colorado",38.0047,-108.4061
+48427,"Starr","Texas",26.5621,-98.7381
+13187,"Lumpkin","Georgia",34.5726,-84.0040
+34027,"Morris","New Jersey",40.8623,-74.5454
+31063,"Frontier","Nebraska",40.5302,-100.3943
+55033,"Dunn","Wisconsin",44.9470,-91.8965
+48429,"Stephens","Texas",32.7355,-98.8355
+13255,"Spalding","Georgia",33.2608,-84.2830
+39051,"Fulton","Ohio",41.6019,-84.1307
+19037,"Chickasaw","Iowa",43.0604,-92.3187
+48369,"Parmer","Texas",34.5299,-102.7851
+72109,"Patillas","Puerto Rico",18.0327,-66.0112
+42019,"Butler","Pennsylvania",40.9115,-79.9133
+50009,"Essex","Vermont",44.7274,-71.7372
+19077,"Guthrie","Iowa",41.6838,-94.5016
+32007,"Elko","Nevada",41.1444,-115.3543
+01089,"Madison","Alabama",34.7637,-86.5507
+06051,"Mono","California",37.9393,-118.8845
+06073,"San Diego","California",33.0340,-116.7353
+31115,"Loup","Nebraska",41.9137,-99.4541
+31157,"Scotts Bluff","Nebraska",41.8512,-103.7078
+38001,"Adams","North Dakota",46.0974,-102.5295
+47071,"Hardin","Tennessee",35.1985,-88.1851
+48315,"Marion","Texas",32.7986,-94.3577
+13281,"Towns","Georgia",34.9166,-83.7392
+21015,"Boone","Kentucky",38.9687,-84.7283
+26159,"Van Buren","Michigan",42.2516,-86.0192
+48465,"Val Verde","Texas",29.8923,-101.1518
+13319,"Wilkinson","Georgia",32.8034,-83.1708
+13177,"Lee","Georgia",31.7794,-84.1404
+13267,"Tattnall","Georgia",32.0470,-82.0589
+23011,"Kennebec","Maine",44.4094,-69.7676
+19189,"Winnebago","Iowa",43.3774,-93.7329
+19059,"Dickinson","Iowa",43.3779,-95.1507
+22069,"Natchitoches","Louisiana",31.7223,-93.0962
+72017,"Barceloneta","Puerto Rico",18.4418,-66.5594
+31075,"Grant","Nebraska",41.9157,-101.7401
+22041,"Franklin","Louisiana",32.1338,-91.6728
+13197,"Marion","Georgia",32.3527,-84.5254
+51175,"Southampton","Virginia",36.7199,-77.1069
+55121,"Trempealeau","Wisconsin",44.3029,-91.3589
+06055,"Napa","California",38.5064,-122.3312
+05137,"Stone","Arkansas",35.8597,-92.1579
+27141,"Sherburne","Minnesota",45.4435,-93.7747
+48141,"El Paso","Texas",31.7679,-106.2338
+54003,"Berkeley","West Virginia",39.4648,-78.0264
+21141,"Logan","Kentucky",36.8591,-86.8785
+48081,"Coke","Texas",31.8895,-100.5304
+39079,"Jackson","Ohio",39.0203,-82.6184
+13039,"Camden","Georgia",30.9296,-81.6706
+37011,"Avery","North Carolina",36.0760,-81.9216
+02016,"Aleutians West","Alaska",52.9511,-173.6442
+02122,"Kenai Peninsula","Alaska",60.2570,-151.5674
+12031,"Duval","Florida",30.3328,-81.6702
+44009,"Washington","Rhode Island",41.4689,-71.6245
+08019,"Clear Creek","Colorado",39.6895,-105.6438
+29153,"Ozark","Missouri",36.6497,-92.4448
+08061,"Kiowa","Colorado",38.4337,-102.7407
+48061,"Cameron","Texas",26.1343,-97.5134
+29213,"Taney","Missouri",36.6546,-93.0408
+40017,"Canadian","Oklahoma",35.5423,-97.9818
+05071,"Johnson","Arkansas",35.5696,-93.4605
+47095,"Lake","Tennessee",36.3373,-89.4925
+51037,"Charlotte","Virginia",37.0117,-78.6620
+05055,"Greene","Arkansas",36.1181,-90.5586
+12129,"Wakulla","Florida",30.1655,-84.3994
+26141,"Presque Isle","Michigan",45.3414,-83.9173
+17197,"Will","Illinois",41.4450,-87.9789
+72147,"Vieques","Puerto Rico",18.1227,-65.4342
+54081,"Raleigh","West Virginia",37.7713,-81.2478
+13045,"Carroll","Georgia",33.5823,-85.0809
+32023,"Nye","Nevada",38.0359,-116.4694
+55039,"Fond du Lac","Wisconsin",43.7537,-88.4901
+19111,"Lee","Iowa",40.6418,-91.4793
+36091,"Saratoga","New York",43.1066,-73.8625
+22097,"St. Landry","Louisiana",30.5970,-92.0037
+40005,"Atoka","Oklahoma",34.3734,-96.0377
+36035,"Fulton","New York",43.1136,-74.4200
+40121,"Pittsburg","Oklahoma",34.9233,-95.7479
+39009,"Athens","Ohio",39.3341,-82.0454
+01131,"Wilcox","Alabama",31.9896,-87.3075
+42051,"Fayette","Pennsylvania",39.9197,-79.6452
+01009,"Blount","Alabama",33.9814,-86.5662
+13129,"Gordon","Georgia",34.5043,-84.8759
+22095,"St. John the Baptist","Louisiana",30.1264,-90.4710
+42069,"Lackawanna","Pennsylvania",41.4373,-75.6095
+47145,"Roane","Tennessee",35.8467,-84.5226
+72063,"Gurabo","Puerto Rico",18.2637,-65.9772
+46021,"Campbell","South Dakota",45.7712,-100.0512
+72153,"Yauco","Puerto Rico",18.0828,-66.8577
+22121,"West Baton Rouge","Louisiana",30.4638,-91.3147
+18133,"Putnam","Indiana",39.6664,-86.8454
+19173,"Taylor","Iowa",40.7377,-94.6965
+16011,"Bingham","Idaho",43.2168,-112.3984
+55003,"Ashland","Wisconsin",46.3272,-90.6783
+27169,"Winona","Minnesota",43.9868,-91.7785
+51165,"Rockingham","Virginia",38.5113,-78.8746
+30019,"Daniels","Montana",48.7843,-105.5494
+54097,"Upshur","West Virginia",38.8981,-80.2342
+72005,"Aguadilla","Puerto Rico",18.4608,-67.1202
+72031,"Carolina","Puerto Rico",18.3768,-65.9566
+72065,"Hatillo","Puerto Rico",18.4104,-66.7971
+48473,"Waller","Texas",30.0089,-95.9883
+72151,"Yabucoa","Puerto Rico",18.0700,-65.8977
+18147,"Spencer","Indiana",38.0142,-87.0076
+26031,"Cheboygan","Michigan",45.4464,-84.5007
+36027,"Dutchess","New York",41.7639,-73.7424
+30067,"Park","Montana",45.4868,-110.5257
+22003,"Allen","Louisiana",30.6524,-92.8286
+28101,"Newton","Mississippi",32.4000,-89.1180
+22047,"Iberville","Louisiana",30.2585,-91.3470
+29223,"Wayne","Missouri",37.1127,-90.4609
+40141,"Tillman","Oklahoma",34.3743,-98.9245
+36011,"Cayuga","New York",42.9179,-76.5536
+13241,"Rabun","Georgia",34.8819,-83.4022
+05035,"Crittenden","Arkansas",35.2076,-90.3098
+12063,"Jackson","Florida",30.7956,-85.2172
+72021,"Bayamón","Puerto Rico",18.3507,-66.1686
+72041,"Cidra","Puerto Rico",18.1750,-66.1631
+01079,"Lawrence","Alabama",34.5212,-87.3109
+21215,"Spencer","Kentucky",38.0333,-85.3280
+53067,"Thurston","Washington",46.9273,-122.8350
+46011,"Brookings","South Dakota",44.3701,-96.7910
+47061,"Grundy","Tennessee",35.3883,-85.7211
+48025,"Bee","Texas",28.4173,-97.7416
+24017,"Charles","Maryland",38.5068,-76.9932
+42113,"Sullivan","Pennsylvania",41.4465,-76.5125
+51830,"Williamsburg","Virginia",37.2690,-76.6990
+48449,"Titus","Texas",33.2160,-94.9672
+48063,"Camp","Texas",32.9736,-94.9798
+47127,"Moore","Tennessee",35.2817,-86.3595
+40013,"Bryan","Oklahoma",33.9616,-96.2587
+48185,"Grimes","Texas",30.5446,-95.9854
+12073,"Leon","Florida",30.4574,-84.2777
+28025,"Clay","Mississippi",33.6556,-88.7822
+29087,"Holt","Missouri",40.0937,-95.2136
+36029,"Erie","New York",42.7630,-78.7319
+16087,"Washington","Idaho",44.4518,-116.7844
+46055,"Haakon","South Dakota",44.2952,-101.5402
+40079,"Le Flore","Oklahoma",34.8993,-94.7038
+54099,"Wayne","West Virginia",38.1466,-82.4279
+30079,"Prairie","Montana",46.8606,-105.3768
+12033,"Escambia","Florida",30.6699,-87.3633
+13175,"Laurens","Georgia",32.4633,-82.9216
+19023,"Butler","Iowa",42.7320,-92.7906
+41065,"Wasco","Oregon",45.1598,-121.1669
+31027,"Cedar","Nebraska",42.5986,-97.2524
+33011,"Hillsborough","New Hampshire",42.9154,-71.7162
+13251,"Screven","Georgia",32.7498,-81.6117
+31021,"Burt","Nebraska",41.8511,-96.3287
+24039,"Somerset","Maryland",38.1138,-75.7577
+24047,"Worcester","Maryland",38.2125,-75.3352
+38013,"Burke","North Dakota",48.7915,-102.5180
+18127,"Porter","Indiana",41.4612,-87.0673
+29083,"Henry","Missouri",38.3852,-93.7920
+36023,"Cortland","New York",42.5949,-76.0700
+16001,"Ada","Idaho",43.4515,-116.2416
+17175,"Stark","Illinois",41.0933,-89.7972
+38043,"Kidder","North Dakota",46.9801,-99.7802
+51173,"Smyth","Virginia",36.8448,-81.5371
+13301,"Warren","Georgia",33.4084,-82.6765
+21201,"Robertson","Kentucky",38.5161,-84.0494
+02180,"Nome","Alaska",64.9128,-164.0251
+48415,"Scurry","Texas",32.7462,-100.9162
+48249,"Jim Wells","Texas",27.7293,-98.0904
+31095,"Jefferson","Nebraska",40.1761,-97.1427
+47015,"Cannon","Tennessee",35.8081,-86.0613
+18017,"Cass","Indiana",40.7621,-86.3475
+72099,"Moca","Puerto Rico",18.3771,-67.0813
+54043,"Lincoln","West Virginia",38.1749,-82.0702
+31111,"Lincoln","Nebraska",41.0476,-100.7455
+17157,"Randolph","Illinois",38.0526,-89.8236
+55131,"Washington","Wisconsin",43.3686,-88.2300
+11001,"District of Columbia","District of Columbia",38.9034,-77.0154
+51119,"Middlesex","Virginia",37.6308,-76.5678
+31061,"Franklin","Nebraska",40.1765,-98.9518
+06001,"Alameda","California",37.6458,-121.8880
+51510,"Alexandria","Virginia",38.8183,-77.0864
+05079,"Lincoln","Arkansas",33.9571,-91.7341
+37141,"Pender","North Carolina",34.5243,-77.9056
+09003,"Hartford","Connecticut",41.8064,-72.7333
+17097,"Lake","Illinois",42.3225,-88.0030
+31141,"Platte","Nebraska",41.5719,-97.5215
+20081,"Haskell","Kansas",37.5624,-100.8720
+48135,"Ector","Texas",31.8689,-102.5427
+29085,"Hickory","Missouri",37.9415,-93.3205
+51025,"Brunswick","Virginia",36.7646,-77.8592
+19067,"Floyd","Iowa",43.0604,-92.7907
+51600,"Fairfax","Virginia",38.8509,-77.3022
+31123,"Morrill","Nebraska",41.7158,-103.0109
+55127,"Walworth","Wisconsin",42.6685,-88.5423
+13043,"Candler","Georgia",32.4030,-82.0726
+17115,"Macon","Illinois",39.8598,-88.9618
+20063,"Gove","Kansas",38.9159,-100.4825
+28041,"Greene","Mississippi",31.2142,-88.6387
+17189,"Washington","Illinois",38.3531,-89.4111
+23019,"Penobscot","Maine",45.3976,-68.6505
+55001,"Adams","Wisconsin",43.9681,-89.7704
+28059,"Jackson","Mississippi",30.5364,-88.6362
+13071,"Colquitt","Georgia",31.1891,-83.7687
+42125,"Washington","Pennsylvania",40.1890,-80.2477
+10005,"Sussex","Delaware",38.6611,-75.3897
+20197,"Wabaunsee","Kansas",38.9530,-96.2051
+21157,"Marshall","Kentucky",36.8831,-88.3301
+21175,"Morgan","Kentucky",37.9228,-83.2573
+21177,"Muhlenberg","Kentucky",37.2161,-87.1413
+21213,"Simpson","Kentucky",36.7416,-86.5813
+37035,"Catawba","North Carolina",35.6623,-81.2141
+40103,"Noble","Oklahoma",36.3883,-97.2304
+53013,"Columbia","Washington",46.2976,-117.9083
+28061,"Jasper","Mississippi",32.0189,-89.1186
+17033,"Crawford","Illinois",39.0040,-87.7603
+46005,"Beadle","South Dakota",44.4148,-98.2783
+39069,"Henry","Ohio",41.3340,-84.0686
+39047,"Fayette","Ohio",39.5605,-83.4558
+18041,"Fayette","Indiana",39.6395,-85.1787
+48379,"Rains","Texas",32.8707,-95.7930
+29129,"Mercer","Missouri",40.4231,-93.5684
+38027,"Eddy","North Dakota",47.7182,-98.9013
+46061,"Hanson","South Dakota",43.6746,-97.7872
+39109,"Miami","Ohio",40.0543,-84.2287
+48367,"Parker","Texas",32.7778,-97.8046
+48503,"Young","Texas",33.1767,-98.6888
+48373,"Polk","Texas",30.7923,-94.8297
+22011,"Beauregard","Louisiana",30.6482,-93.3438
+49033,"Rich","Utah",41.6311,-111.2446
+53077,"Yakima","Washington",46.4571,-120.7371
+39123,"Ottawa","Ohio",41.5365,-83.1100
+17013,"Calhoun","Illinois",39.1687,-90.6666
+35007,"Colfax","New Mexico",36.6062,-104.6478
+31103,"Keya Paha","Nebraska",42.8791,-99.7115
+56017,"Hot Springs","Wyoming",43.7195,-108.4408
+21007,"Ballard","Kentucky",37.0577,-88.9987
+48005,"Angelina","Texas",31.2543,-94.6118
+45015,"Berkeley","South Carolina",33.1978,-79.9535
+46057,"Hamlin","South Dakota",44.6740,-97.1876
+45037,"Edgefield","South Carolina",33.7716,-81.9671
+48297,"Live Oak","Texas",28.3510,-98.1251
+27121,"Pope","Minnesota",45.5863,-95.4444
+39115,"Morgan","Ohio",39.6208,-81.8532
+41027,"Hood River","Oregon",45.5183,-121.6525
+29167,"Polk","Missouri",37.6167,-93.4003
+48115,"Dawson","Texas",32.7426,-101.9478
+54061,"Monongalia","West Virginia",39.6309,-80.0467
+48207,"Haskell","Texas",33.1786,-99.7310
+48445,"Terry","Texas",33.1739,-102.3345
+48009,"Archer","Texas",33.6154,-98.6874
+19195,"Worth","Iowa",43.3774,-93.2609
+21001,"Adair","Kentucky",37.1038,-85.2800
+08093,"Park","Colorado",39.1186,-105.7170
+45075,"Orangeburg","South Carolina",33.4396,-80.7988
+08065,"Lake","Colorado",39.2012,-106.3448
+21089,"Greenup","Kentucky",38.5445,-82.9219
+13137,"Habersham","Georgia",34.6302,-83.5301
+39163,"Vinton","Ohio",39.2513,-82.4861
+39175,"Wyandot","Ohio",40.8425,-83.3041
+30003,"Big Horn","Montana",45.4234,-107.4884
+28037,"Franklin","Mississippi",31.4771,-90.8971
+51683,"Manassas","Virginia",38.7522,-77.4829
+47107,"McMinn","Tennessee",35.4240,-84.6167
+31117,"McPherson","Nebraska",41.5684,-101.0599
+40133,"Seminole","Oklahoma",35.1689,-96.6159
+48213,"Henderson","Texas",32.2126,-95.8514
+50001,"Addison","Vermont",44.0314,-73.1406
+31033,"Cheyenne","Nebraska",41.2198,-102.9946
+47125,"Montgomery","Tennessee",36.4967,-87.3810
+48035,"Bosque","Texas",31.9006,-97.6330
+47181,"Wayne","Tennessee",35.2410,-87.7880
+45071,"Newberry","South Carolina",34.2900,-81.6014
+48205,"Hartley","Texas",35.8409,-102.6029
+55107,"Rusk","Wisconsin",45.4756,-91.1328
+28117,"Prentiss","Mississippi",34.6180,-88.5197
+19035,"Cherokee","Iowa",42.7353,-95.6237
+20119,"Meade","Kansas",37.2382,-100.3659
+48087,"Collingsworth","Texas",34.9648,-100.2699
+51135,"Nottoway","Virginia",37.1428,-78.0526
+39127,"Perry","Ohio",39.7378,-82.2367
+36053,"Madison","New York",42.9132,-75.6719
+18171,"Warren","Indiana",40.3465,-87.3540
+27085,"McLeod","Minnesota",44.8235,-94.2729
+48425,"Somervell","Texas",32.2225,-97.7751
+39021,"Champaign","Ohio",40.1376,-83.7697
+12086,"Miami-Dade","Florida",25.6145,-80.5588
+13165,"Jenkins","Georgia",32.7924,-81.9630
+40043,"Dewey","Oklahoma",35.9880,-99.0086
+40085,"Love","Oklahoma",33.9512,-97.2459
+13005,"Bacon","Georgia",31.5526,-82.4511
+23021,"Piscataquis","Maine",45.8340,-69.2849
+39085,"Lake","Ohio",41.6970,-81.2369
+48089,"Colorado","Texas",29.6204,-96.5256
+21131,"Leslie","Kentucky",37.0964,-83.3799
+06113,"Yolo","California",38.6874,-121.9031
+12007,"Bradford","Florida",29.9499,-82.1687
+37119,"Mecklenburg","North Carolina",35.2473,-80.8322
+17113,"McLean","Illinois",40.4906,-88.8476
+41067,"Washington","Oregon",45.5596,-123.0972
+18021,"Clay","Indiana",39.3930,-87.1153
+48161,"Freestone","Texas",31.7050,-96.1500
+24003,"Anne Arundel","Maryland",39.0069,-76.6039
+42083,"McKean","Pennsylvania",41.8079,-78.5687
+29103,"Knox","Missouri",40.1271,-92.1478
+19147,"Palo Alto","Iowa",43.0823,-94.6785
+29121,"Macon","Missouri",39.8306,-92.5640
+28103,"Noxubee","Mississippi",33.1103,-88.5698
+28077,"Lawrence","Mississippi",31.5498,-90.1068
+08073,"Lincoln","Colorado",38.9881,-103.5147
+20077,"Harper","Kansas",37.1918,-98.0759
+19171,"Tama","Iowa",42.0797,-92.5322
+28087,"Lowndes","Mississippi",33.4735,-88.4431
+29057,"Dade","Missouri",37.4318,-93.8497
+48033,"Borden","Texas",32.7436,-101.4315
+19021,"Buena Vista","Iowa",42.7356,-95.1505
+47039,"Decatur","Tennessee",35.6014,-88.1096
+16027,"Canyon","Idaho",43.6253,-116.7100
+28147,"Walthall","Mississippi",31.1490,-90.1057
+33005,"Cheshire","New Hampshire",42.9190,-72.2505
+29115,"Linn","Missouri",39.8702,-93.1065
+40129,"Roger Mills","Oklahoma",35.6877,-99.6960
+55111,"Sauk","Wisconsin",43.4275,-89.9486
+22009,"Avoyelles","Louisiana",31.0762,-92.0014
+29109,"Lawrence","Missouri",37.1066,-93.8326
+37127,"Nash","North Carolina",35.9688,-77.9849
+41069,"Wheeler","Oregon",44.7254,-120.0271
+21043,"Carter","Kentucky",38.3192,-83.0488
+37115,"Madison","North Carolina",35.8574,-82.7062
+51153,"Prince William","Virginia",38.7044,-77.4815
+34007,"Camden","New Jersey",39.8042,-74.9589
+38031,"Foster","North Dakota",47.4577,-98.8833
+51167,"Russell","Virginia",36.9340,-82.0954
+26041,"Delta","Michigan",45.9191,-86.9238
+18175,"Washington","Indiana",38.6005,-86.1074
+35019,"Guadalupe","New Mexico",34.8632,-104.7904
+18029,"Dearborn","Indiana",39.1434,-84.9746
+21117,"Kenton","Kentucky",38.9360,-84.5350
+23015,"Lincoln","Maine",44.0628,-69.5431
+28009,"Benton","Mississippi",34.8178,-89.1878
+19119,"Lyon","Iowa",43.3808,-96.2084
+21049,"Clark","Kentucky",37.9707,-84.1483
+37167,"Stanly","North Carolina",35.3109,-80.2526
+47003,"Bedford","Tennessee",35.5137,-86.4596
+51029,"Buckingham","Virginia",37.5704,-78.5272
+05089,"Marion","Arkansas",36.2686,-92.6843
+29003,"Andrew","Missouri",39.9835,-94.8002
+01125,"Tuscaloosa","Alabama",33.2896,-87.5253
+72135,"Toa Alta","Puerto Rico",18.3589,-66.2485
+47063,"Hamblen","Tennessee",36.2180,-83.2694
+53005,"Benton","Washington",46.2394,-119.5114
+13191,"McIntosh","Georgia",31.4948,-81.4080
+48109,"Culberson","Texas",31.4458,-104.5181
+13245,"Richmond","Georgia",33.3598,-82.0770
+21035,"Calloway","Kentucky",36.6206,-88.2731
+33013,"Merrimack","New Hampshire",43.2966,-71.6794
+48167,"Galveston","Texas",29.3892,-94.9610
+31007,"Banner","Nebraska",41.5467,-103.7114
+05053,"Grant","Arkansas",34.2900,-92.4242
+34033,"Salem","New Jersey",39.5872,-75.3486
+41057,"Tillamook","Oregon",45.4643,-123.7123
+36115,"Washington","New York",43.3110,-73.4312
+27077,"Lake of the Woods","Minnesota",48.7702,-94.9041
+08001,"Adams","Colorado",39.8739,-104.3385
+06033,"Lake","California",39.1005,-122.7538
+13317,"Wilkes","Georgia",33.7822,-82.7436
+29089,"Howard","Missouri",39.1426,-92.6968
+42011,"Berks","Pennsylvania",40.4159,-75.9265
+47087,"Jackson","Tennessee",36.3590,-85.6753
+72091,"Manatí","Puerto Rico",18.4181,-66.4896
+54007,"Braxton","West Virginia",38.6987,-80.7200
+21161,"Mason","Kentucky",38.5947,-83.8229
+26021,"Berrien","Michigan",41.9553,-86.4141
+17019,"Champaign","Illinois",40.1398,-88.1998
+51015,"Augusta","Virginia",38.1647,-79.1331
+05001,"Arkansas","Arkansas",34.2910,-91.3744
+13079,"Crawford","Georgia",32.7142,-83.9865
+18027,"Daviess","Indiana",38.7035,-87.0732
+37055,"Dare","North Carolina",35.7620,-75.7838
+30021,"Dawson","Montana",47.2655,-104.8985
+48281,"Lampasas","Texas",31.1960,-98.2423
+12123,"Taylor","Florida",30.0471,-83.6027
+13047,"Catoosa","Georgia",34.9040,-85.1370
+13067,"Cobb","Georgia",33.9416,-84.5766
+22099,"St. Martin","Louisiana",30.1274,-91.6057
+28135,"Tallahatchie","Mississippi",33.9508,-90.1722
+29059,"Dallas","Missouri",37.6801,-93.0239
+37195,"Wilson","North Carolina",35.7057,-77.9193
+38005,"Benson","North Dakota",48.0698,-99.3675
+45063,"Lexington","South Carolina",33.9026,-81.2728
+48137,"Edwards","Texas",29.9825,-100.3057
+13055,"Chattooga","Georgia",34.4740,-85.3453
+24025,"Harford","Maryland",39.5618,-76.3162
+45069,"Marlboro","South Carolina",34.6006,-79.6784
+20161,"Riley","Kansas",39.2972,-96.7365
+26005,"Allegan","Michigan",42.5914,-85.8880
+29051,"Cole","Missouri",38.5050,-92.2803
+40143,"Tulsa","Oklahoma",36.1195,-95.9421
+48187,"Guadalupe","Texas",29.5829,-97.9482
+50005,"Caledonia","Vermont",44.4649,-72.1033
+55055,"Jefferson","Wisconsin",43.0207,-88.7758
+42001,"Adams","Pennsylvania",39.8708,-77.2181
+20105,"Lincoln","Kansas",39.0457,-98.2075
+53029,"Island","Washington",48.1642,-122.5488
+31107,"Knox","Nebraska",42.6370,-97.8917
+32019,"Lyon","Nevada",39.0208,-119.1891
+21063,"Elliott","Kentucky",38.1191,-83.0977
+21079,"Garrard","Kentucky",37.6404,-84.5388
+21133,"Letcher","Kentucky",37.1222,-82.8530
+21223,"Trimble","Kentucky",38.6129,-85.3355
+47123,"Monroe","Tennessee",35.4429,-84.2524
+51113,"Madison","Virginia",38.4134,-78.2794
+17027,"Clinton","Illinois",38.6075,-89.4221
+12011,"Broward","Florida",26.1521,-80.4872
+20175,"Seward","Kansas",37.1932,-100.8507
+48073,"Cherokee","Texas",31.8361,-95.1643
+05041,"Desha","Arkansas",33.8333,-91.2557
+16029,"Caribou","Idaho",42.7703,-111.5629
+37061,"Duplin","North Carolina",34.9356,-77.9330
+20009,"Barton","Kansas",38.4791,-98.7572
+40149,"Washita","Oklahoma",35.2908,-98.9932
+08037,"Eagle","Colorado",39.6276,-106.6943
+39099,"Mahoning","Ohio",41.0147,-80.7775
+01087,"Macon","Alabama",32.3860,-85.6940
+39107,"Mercer","Ohio",40.5405,-84.6287
+51059,"Fairfax","Virginia",38.8349,-77.2757
+55085,"Oneida","Wisconsin",45.7053,-89.5209
+41061,"Union","Oregon",45.3103,-118.0090
+45011,"Barnwell","South Carolina",33.2666,-81.4339
+49051,"Wasatch","Utah",40.3315,-111.1683
+26089,"Leelanau","Michigan",44.9316,-85.8065
+17067,"Hancock","Illinois",40.4036,-91.1639
+51193,"Westmoreland","Virginia",38.1123,-76.8015
+01123,"Tallapoosa","Alabama",32.8625,-85.7978
+13075,"Cook","Georgia",31.1537,-83.4314
+26083,"Keweenaw","Michigan",47.6249,-88.4349
+28069,"Kemper","Mississippi",32.7548,-88.6413
+39125,"Paulding","Ohio",41.1167,-84.5807
+47171,"Unicoi","Tennessee",36.1073,-82.4358
+13209,"Montgomery","Georgia",32.1737,-82.5351
+13027,"Brooks","Georgia",30.8413,-83.5802
+08075,"Logan","Colorado",40.7247,-103.1103
+39117,"Morrow","Ohio",40.5245,-82.7939
+39119,"Muskingum","Ohio",39.9658,-81.9448
+13051,"Chatham","Georgia",32.0041,-81.1324
+13061,"Clay","Georgia",31.6253,-84.9812
+08115,"Sedgwick","Colorado",40.8762,-102.3527
+12105,"Polk","Florida",27.9487,-81.6971
+48147,"Fannin","Texas",33.5925,-96.1069
+21105,"Hickman","Kentucky",36.6779,-88.9733
+01071,"Jackson","Alabama",34.7794,-86.0004
+13215,"Muscogee","Georgia",32.5100,-84.8749
+17195,"Whiteside","Illinois",41.7561,-89.9144
+12009,"Brevard","Florida",28.2931,-80.7317
+13321,"Worth","Georgia",31.5510,-83.8510
+13025,"Brantley","Georgia",31.1972,-81.9807
+40015,"Caddo","Oklahoma",35.1740,-98.3760
+47103,"Lincoln","Tennessee",35.1400,-86.5881
+39111,"Monroe","Ohio",39.7274,-81.0827
+55081,"Monroe","Wisconsin",43.9454,-90.6178
+45021,"Cherokee","South Carolina",35.0487,-81.6207
+55041,"Forest","Wisconsin",45.6675,-88.7702
+21067,"Fayette","Kentucky",38.0429,-84.4587
+36037,"Genesee","New York",43.0011,-78.1939
+21229,"Washington","Kentucky",37.7531,-85.1732
+37117,"Martin","North Carolina",35.8428,-77.1084
+40025,"Cimarron","Oklahoma",36.7485,-102.5171
+45067,"Marion","South Carolina",34.0778,-79.3637
+01039,"Covington","Alabama",31.2479,-86.4515
+06037,"Los Angeles","California",34.3203,-118.2251
+12047,"Hamilton","Florida",30.4957,-82.9461
+12021,"Collier","Florida",26.1108,-81.3474
+20125,"Montgomery","Kansas",37.1926,-95.7428
+17193,"White","Illinois",38.0872,-88.1791
+29009,"Barry","Missouri",36.7100,-93.8296
+26125,"Oakland","Michigan",42.6603,-83.3850
+19005,"Allamakee","Iowa",43.2836,-91.3803
+40147,"Washington","Oklahoma",36.7144,-95.9048
+30005,"Blaine","Montana",48.4302,-108.9594
+51103,"Lancaster","Virginia",37.7321,-76.4620
+12003,"Baker","Florida",30.3311,-82.2846
+22127,"Winn","Louisiana",31.9441,-92.6371
+47117,"Marshall","Tennessee",35.4679,-86.7654
+51057,"Essex","Virginia",37.9424,-76.9494
+18135,"Randolph","Indiana",40.1582,-85.0112
+30101,"Toole","Montana",48.6545,-111.6950
+23007,"Franklin","Maine",44.9743,-70.4433
+26045,"Eaton","Michigan",42.5961,-84.8379
+17167,"Sangamon","Illinois",39.7580,-89.6596
+25001,"Barnstable","Massachusetts",41.7218,-70.2914
+30091,"Sheridan","Montana",48.7211,-104.5047
+35041,"Roosevelt","New Mexico",34.0206,-103.4789
+40053,"Grant","Oklahoma",36.7963,-97.7860
+42133,"York","Pennsylvania",39.9213,-76.7276
+13237,"Putnam","Georgia",33.3225,-83.3742
+13257,"Stephens","Georgia",34.5536,-83.2929
+13011,"Banks","Georgia",34.3538,-83.4984
+18073,"Jasper","Indiana",41.0227,-87.1165
+20113,"McPherson","Kansas",38.3920,-97.6481
+27097,"Morrison","Minnesota",46.0118,-94.2685
+37183,"Wake","North Carolina",35.7898,-78.6522
+28151,"Washington","Mississippi",33.2832,-90.9493
+19045,"Clinton","Iowa",41.8978,-90.5313
+36113,"Warren","New York",43.5612,-73.8463
+01099,"Monroe","Alabama",31.5705,-87.3662
+37105,"Lee","North Carolina",35.4753,-79.1731
+24005,"Baltimore","Maryland",39.4593,-76.6356
+47065,"Hamilton","Tennessee",35.1810,-85.1649
+24021,"Frederick","Maryland",39.4727,-77.3972
+47097,"Lauderdale","Tennessee",35.7605,-89.6312
+36025,"Delaware","New York",42.1977,-74.9670
+01121,"Talladega","Alabama",33.3793,-86.1668
+26025,"Calhoun","Michigan",42.2460,-85.0060
+08015,"Chaffee","Colorado",38.7471,-106.1944
+17139,"Moultrie","Illinois",39.6401,-88.6189
+28107,"Panola","Mississippi",34.3639,-89.9501
+30039,"Granite","Montana",46.4031,-113.4405
+42091,"Montgomery","Pennsylvania",40.2107,-75.3675
+42061,"Huntingdon","Pennsylvania",40.4165,-77.9815
+48157,"Fort Bend","Texas",29.5273,-95.7686
+41013,"Crook","Oregon",44.1424,-120.3561
+37015,"Bertie","North Carolina",36.0656,-76.9758
+55057,"Juneau","Wisconsin",43.9241,-90.1144
+40095,"Marshall","Oklahoma",34.0258,-96.7688
+48331,"Milam","Texas",30.7861,-96.9776
+26165,"Wexford","Michigan",44.3384,-85.5782
+37159,"Rowan","North Carolina",35.6394,-80.5250
+21239,"Woodford","Kentucky",38.0430,-84.7412
+40059,"Harper","Oklahoma",36.7885,-99.6676
+55139,"Winnebago","Wisconsin",44.0687,-88.6446
+21047,"Christian","Kentucky",36.8934,-87.4894
+37001,"Alamance","North Carolina",36.0436,-79.3987
+21065,"Estill","Kentucky",37.6918,-83.9643
+42129,"Westmoreland","Pennsylvania",40.3110,-79.4672
+29195,"Saline","Missouri",39.1365,-93.2035
+46037,"Day","South Dakota",45.3671,-97.6077
+48029,"Bexar","Texas",29.4493,-98.5200
+51019,"Bedford","Virginia",37.3147,-79.5243
+39015,"Brown","Ohio",38.9337,-83.8677
+41059,"Umatilla","Oregon",45.5911,-118.7372
+47129,"Morgan","Tennessee",36.1339,-84.6487
+51161,"Roanoke","Virginia",37.2693,-80.0697
+51630,"Fredericksburg","Virginia",38.3013,-77.4907
+53063,"Spokane","Washington",47.6202,-117.4047
+54073,"Pleasants","West Virginia",39.3705,-81.1614
+72027,"Camuy","Puerto Rico",18.4175,-66.8608
+40007,"Beaver","Oklahoma",36.7496,-100.4767
+47025,"Claiborne","Tennessee",36.4866,-83.6619
+04001,"Apache","Arizona",35.3834,-109.4878
+13145,"Harris","Georgia",32.7358,-84.9086
+12077,"Liberty","Florida",30.2417,-84.8830
+28045,"Hancock","Mississippi",30.4161,-89.4888
+39007,"Ashtabula","Ohio",41.7076,-80.7495
+06021,"Glenn","California",39.5980,-122.3909
+40035,"Craig","Oklahoma",36.7618,-95.2083
+17087,"Johnson","Illinois",37.4609,-88.8810
+29183,"St. Charles","Missouri",38.7821,-90.6742
+20035,"Cowley","Kansas",37.2379,-96.8375
+22123,"West Carroll","Louisiana",32.7880,-91.4589
+38029,"Emmons","North Dakota",46.2843,-100.2390
+29181,"Ripley","Missouri",36.6526,-90.8634
+06087,"Santa Cruz","California",37.0566,-122.0012
+06023,"Humboldt","California",40.6976,-123.8766
+46089,"McPherson","South Dakota",45.7670,-99.2217
+53075,"Whitman","Washington",46.9011,-117.5224
+53019,"Ferry","Washington",48.4689,-118.5172
+13273,"Terrell","Georgia",31.7769,-84.4367
+13221,"Oglethorpe","Georgia",33.8794,-83.0824
+30009,"Carbon","Montana",45.2277,-109.0267
+56021,"Laramie","Wyoming",41.3073,-104.6892
+18005,"Bartholomew","Indiana",39.2048,-85.8975
+21081,"Grant","Kentucky",38.6479,-84.6234
+39043,"Erie","Ohio",41.3734,-82.6399
+21167,"Mercer","Kentucky",37.8120,-84.8735
+27027,"Clay","Minnesota",46.8915,-96.4905
+21173,"Montgomery","Kentucky",38.0328,-83.9145
+37123,"Montgomery","North Carolina",35.3324,-79.9067
+27053,"Hennepin","Minnesota",45.0051,-93.4765
+21233,"Webster","Kentucky",37.5200,-87.6812
+18091,"LaPorte","Indiana",41.5457,-86.7401
+20011,"Bourbon","Kansas",37.8554,-94.8487
+37179,"Union","North Carolina",34.9880,-80.5306
+51810,"Virginia Beach","Virginia",36.7331,-76.0428
+55009,"Brown","Wisconsin",44.4531,-88.0035
+08043,"Fremont","Colorado",38.4737,-105.4400
+28067,"Jones","Mississippi",31.6225,-89.1700
+31181,"Webster","Nebraska",40.1763,-98.4997
+37029,"Camden","North Carolina",36.3873,-76.2059
+48251,"Johnson","Texas",32.3790,-97.3660
+08077,"Mesa","Colorado",39.0187,-108.4672
+30013,"Cascade","Montana",47.3077,-111.3459
+20015,"Butler","Kansas",37.7814,-96.8390
+38025,"Dunn","North Dakota",47.3564,-102.6187
+49035,"Salt Lake","Utah",40.6685,-111.9235
+48121,"Denton","Texas",33.2052,-97.1175
+46023,"Charles Mix","South Dakota",43.2087,-98.5873
+51125,"Nelson","Virginia",37.7865,-78.8843
+72043,"Coamo","Puerto Rico",18.0968,-66.3603
+38103,"Wells","North Dakota",47.5876,-99.6605
+72051,"Dorado","Puerto Rico",18.4387,-66.2753
+17143,"Peoria","Illinois",40.7881,-89.7611
+34015,"Gloucester","New Jersey",39.7172,-75.1412
+27003,"Anoka","Minnesota",45.2741,-93.2465
+46013,"Brown","South Dakota",45.5901,-98.3518
+40093,"Major","Oklahoma",36.3118,-98.5368
+46039,"Deuel","South Dakota",44.7601,-96.6673
+02230,"Skagway","Alaska",59.5608,-135.3346
+47163,"Sullivan","Tennessee",36.5133,-82.3043
+44001,"Bristol","Rhode Island",41.7135,-71.2824
+47093,"Knox","Tennessee",35.9932,-83.9388
+56007,"Carbon","Wyoming",41.6928,-106.9320
+42043,"Dauphin","Pennsylvania",40.4159,-76.7779
+51580,"Covington","Virginia",37.7820,-79.9883
+55049,"Iowa","Wisconsin",43.0009,-90.1356
+47175,"Van Buren","Tennessee",35.6944,-85.4532
+48019,"Bandera","Texas",29.7473,-99.2463
+12059,"Holmes","Florida",30.8675,-85.8155
+41055,"Sherman","Oregon",45.4051,-120.6909
+01067,"Henry","Alabama",31.5148,-85.2415
+05139,"Union","Arkansas",33.1718,-92.5996
+54031,"Hardy","West Virginia",39.0074,-78.8570
+22017,"Caddo","Louisiana",32.5800,-93.8807
+41029,"Jackson","Oregon",42.4319,-122.7286
+06049,"Modoc","California",41.5898,-120.7253
+28003,"Alcorn","Mississippi",34.8808,-88.5805
+08011,"Bent","Colorado",37.9549,-103.0719
+18105,"Monroe","Indiana",39.1618,-86.5234
+21029,"Bullitt","Kentucky",37.9699,-85.6974
+39121,"Noble","Ohio",39.7658,-81.4562
+21005,"Anderson","Kentucky",38.0030,-84.9882
+21179,"Nelson","Kentucky",37.8047,-85.4673
+49057,"Weber","Utah",41.2697,-111.9139
+49025,"Kane","Utah",37.2865,-111.8878
+05091,"Miller","Arkansas",33.3122,-93.8922
+45079,"Richland","South Carolina",34.0220,-80.9048
+12107,"Putnam","Florida",29.6093,-81.7434
+17077,"Jackson","Illinois",37.7856,-89.3812
+37013,"Beaufort","North Carolina",35.4939,-76.8588
+36123,"Yates","New York",42.6333,-77.1034
+47111,"Macon","Tennessee",36.5323,-86.0069
+48323,"Maverick","Texas",28.7427,-100.3144
+27155,"Traverse","Minnesota",45.7721,-96.4720
+32001,"Churchill","Nevada",39.5816,-118.3367
+56005,"Campbell","Wyoming",44.2457,-105.5488
+53059,"Skamania","Washington",46.0219,-121.9149
+13315,"Wilcox","Georgia",31.9730,-83.4316
+72053,"Fajardo","Puerto Rico",18.3225,-65.6613
+47143,"Rhea","Tennessee",35.6091,-84.9245
+21025,"Breathitt","Kentucky",37.5215,-83.3229
+29217,"Vernon","Missouri",37.8495,-94.3431
+01053,"Escambia","Alabama",31.1264,-87.1627
+12083,"Marion","Florida",29.2105,-82.0553
+53003,"Asotin","Washington",46.1911,-117.2028
+29023,"Butler","Missouri",36.7157,-90.4059
+29031,"Cape Girardeau","Missouri",37.3836,-89.6851
+51105,"Lee","Virginia",36.7066,-83.1285
+01043,"Cullman","Alabama",34.1321,-86.8673
+17029,"Coles","Illinois",39.5213,-88.2216
+18015,"Carroll","Indiana",40.5829,-86.5631
+22075,"Plaquemines","Louisiana",29.4334,-89.6221
+31091,"Hooker","Nebraska",41.9161,-101.1352
+38015,"Burleigh","North Dakota",46.9775,-100.4681
+54063,"Monroe","West Virginia",37.5606,-80.5491
+47021,"Cheatham","Tennessee",36.2620,-87.0883
+42015,"Bradford","Pennsylvania",41.7893,-76.5147
+21185,"Oldham","Kentucky",38.4002,-85.4483
+05101,"Newton","Arkansas",35.9198,-93.2175
+33009,"Grafton","New Hampshire",43.9405,-71.8211
+55117,"Sheboygan","Wisconsin",43.7210,-87.9459
+28129,"Smith","Mississippi",32.0176,-89.5069
+22103,"St. Tammany","Louisiana",30.4102,-89.9572
+24033,"Prince George's","Maryland",38.8296,-76.8463
+27145,"Stearns","Minnesota",45.5524,-94.6135
+25017,"Middlesex","Massachusetts",42.4859,-71.3914
+42055,"Franklin","Pennsylvania",39.9273,-77.7217
+17145,"Perry","Illinois",38.0845,-89.3663
+29073,"Gasconade","Missouri",38.4420,-91.5078
+18161,"Union","Indiana",39.6259,-84.9248
+29099,"Jefferson","Missouri",38.2620,-90.5364
+40131,"Rogers","Oklahoma",36.3723,-95.6045
+45017,"Calhoun","South Carolina",33.6746,-80.7783
+54035,"Jackson","West Virginia",38.8358,-81.6760
+69100,"Rota","Commonwealth of the Northern Mariana Islands",14.1567,145.2088
+72123,"Salinas","Puerto Rico",18.0059,-66.2577
+48239,"Jackson","Texas",28.9538,-96.5777
+53035,"Kitsap","Washington",47.6121,-122.6769
+12057,"Hillsborough","Florida",27.9292,-82.3083
+17043,"DuPage","Illinois",41.8520,-88.0864
+34031,"Passaic","New Jersey",41.0356,-74.3013
+48181,"Grayson","Texas",33.6268,-96.6784
+13283,"Treutlen","Georgia",32.4040,-82.5674
+28155,"Webster","Mississippi",33.6133,-89.2854
+31101,"Keith","Nebraska",41.1993,-101.6617
+28001,"Adams","Mississippi",31.4797,-91.3532
+36069,"Ontario","New York",42.8525,-77.3009
+54053,"Mason","West Virginia",38.7683,-82.0265
+04025,"Yavapai","Arizona",34.5988,-112.5530

@@ -1,0 +1,7 @@
+vote_id|chamber|date|bill|law|question|yeas|nays|present|not_voting|url
+s5-h|H|2025-01-22|S 5|P.L. 119-1|On Passage|263|156|0|14|https://clerk.house.gov/evs/2025/roll023.xml
+s5-s|S|2025-01-20|S 5|P.L. 119-1|On Passage of the Bill|64|35|0|0|https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00007.xml
+hr1-s|S|2025-07-01|H R 1|P.L. 119-21|On Passage of the Bill|50|50|0|0|https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00372.xml
+hr1-h|H|2025-07-03|H R 1|P.L. 119-21|On Motion to Concur in the Senate Amendment|218|214|0|0|https://clerk.house.gov/evs/2025/roll190.xml
+s2-s|S|2026-06-05|S 2|P.L. 119-98|On Passage of the Bill|52|47|0|1|https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00163.xml
+s2-h|H|2026-06-09|S 2|P.L. 119-98|On Passage|214|212|0|4|https://clerk.house.gov/evs/2026/roll214.xml

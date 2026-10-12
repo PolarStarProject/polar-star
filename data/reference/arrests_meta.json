@@ -1,0 +1,13 @@
+{
+ "columns": {
+  "date": "apprehension_date",
+  "method": "apprehension_method",
+  "state": "apprehension_state_filled_in",
+  "criminality": "apprehension_criminality"
+ },
+ "first": "2022-10-01",
+ "last": "2026-08-06",
+ "rows": 896393,
+ "dropped_duplicates": 10024,
+ "source": "https://github.com/deportationdata/ice"
+}

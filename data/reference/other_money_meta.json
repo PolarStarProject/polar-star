@@ -1,0 +1,218 @@
+{
+ "from": "2023-10-01",
+ "to": "2026-09-30",
+ "fys": [
+  2024,
+  2025,
+  2026
+ ],
+ "read": "2026-10-08",
+ "programs": {
+  "CBP/holding": {
+   "total_musd": 1810.2,
+   "by_fy_musd": {
+    "2024": 1538.9,
+    "2025": 272.0,
+    "2026": -0.7
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 0.0,
+   "filters": {
+    "psc_codes": [
+     "W054",
+     "M1AZ",
+     "M1JZ"
+    ]
+   }
+  },
+  "CBP/medical": {
+   "total_musd": 645.7,
+   "by_fy_musd": {
+    "2024": 317.8,
+    "2025": 194.7,
+    "2026": 133.2
+   },
+   "private_people_left_out": 2,
+   "all_payees_read": true,
+   "taken_back_musd": 0.2,
+   "filters": {
+    "psc_codes": [
+     "Q403",
+     "Q999",
+     "Q201",
+     "Q301",
+     "Q402",
+     "Q501",
+     "Q702"
+    ]
+   }
+  },
+  "CBP/care": {
+   "total_musd": 493.3,
+   "by_fy_musd": {
+    "2024": 239.1,
+    "2025": 146.0,
+    "2026": 108.2
+   },
+   "private_people_left_out": 6,
+   "all_payees_read": true,
+   "taken_back_musd": 2.9,
+   "filters": {
+    "psc_codes": [
+     "S206",
+     "S203",
+     "S201",
+     "R401",
+     "V111",
+     "V211",
+     "V221",
+     "V222",
+     "V231"
+    ]
+   }
+  },
+  "HHS/children_grants": {
+   "total_musd": 4101.7,
+   "by_fy_musd": {
+    "2024": 3068.1,
+    "2025": 1238.3,
+    "2026": -204.8
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 129.4,
+   "filters": {
+    "program_numbers": [
+     "93.676"
+    ]
+   }
+  },
+  "HHS/children_contracts": {
+   "total_musd": 19.9,
+   "by_fy_musd": {
+    "2024": 5.1,
+    "2025": 14.8,
+    "2026": -0.0
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 0.0,
+   "filters": {
+    "description": "unaccompanied"
+   }
+  },
+  "FEMA/detention_grants": {
+   "total_musd": 608.4,
+   "by_fy_musd": {
+    "2024": 0.0,
+    "2025": 608.4,
+    "2026": 0.0
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 0.0,
+   "filters": {
+    "program_numbers": [
+     "97.158"
+    ]
+   }
+  },
+  "FEMA/shelter_grants": {
+   "total_musd": -201.4,
+   "by_fy_musd": {
+    "2024": 640.9,
+    "2025": -887.4,
+    "2026": 45.1
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 229.0,
+   "filters": {
+    "program_numbers": [
+     "97.141",
+     "97.149"
+    ]
+   }
+  },
+  "DHS/state_border_fund": {
+   "total_musd": 7500.0,
+   "by_fy_musd": {
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 7500.0
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 0.0,
+   "filters": {
+    "program_numbers": [
+     "97.159"
+    ]
+   }
+  },
+  "ICE/via_dhs_hq": {
+   "total_musd": 464.8,
+   "by_fy_musd": {
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 464.8
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 0.0,
+   "filters": {
+    "agencies": [
+     {
+      "type": "funding",
+      "tier": "subtier",
+      "name": "U.S. Immigration and Customs Enforcement",
+      "toptier_name": "Department of Homeland Security"
+     },
+     {
+      "type": "awarding",
+      "tier": "subtier",
+      "name": "Office of Procurement Operations",
+      "toptier_name": "Department of Homeland Security"
+     }
+    ]
+   }
+  },
+  "DOJ/marshals_detention": {
+   "total_musd": 865.7,
+   "by_fy_musd": {
+    "2024": 282.2,
+    "2025": 302.0,
+    "2026": 281.5
+   },
+   "private_people_left_out": 0,
+   "all_payees_read": true,
+   "taken_back_musd": 0.0,
+   "filters": {
+    "description": "detention"
+   }
+  }
+ },
+ "dod_awards": [
+  {
+   "award": "W9124J25FA075",
+   "recipient": "ACQUISITION LOGISTICS LLC",
+   "awarding": "Department of the Army",
+   "obligated_musd": 253.2,
+   "ceiling_musd": 1342.7,
+   "start": "2025-07-19",
+   "what": "ICE DETENTION CENTER, FT. BLISS, TX",
+   "url": "https://www.usaspending.gov/award/CONT_AWD_W9124J25FA075_9700_N0002325D0004_9700"
+  },
+  {
+   "award": "W9124J25CA014",
+   "recipient": "BERING STRAITS PROFESSIONAL SERVICES, LLC",
+   "awarding": "Department of the Army",
+   "obligated_musd": 12.7,
+   "ceiling_musd": 13.4,
+   "start": "2025-06-14",
+   "what": "DETENTION SECURITY OFFICERS AND TRANSPORTATION SERVICES AT THE EL PASO ENHANCED HARDENED FACILITY.",
+   "url": "https://www.usaspending.gov/award/CONT_AWD_W9124J25CA014_9700_-NONE-_-NONE-"
+  }
+ ]
+}

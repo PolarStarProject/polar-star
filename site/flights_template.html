@@ -1,0 +1,119 @@
+<title>ICE Air Flight Tracks · Polar Star</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;600&display=swap">
+<style>
+/* Layout: the globe on top, sized to the screen width; the day's flights as a tappable list underneath. */
+:root{
+  --bg:#eef2f7; --surface:#ffffff; --ink:#121e2c; --muted:#526175; --line:#d0d9e4; --accent:#1d4a7c;
+  --sea:#dfe7f0; --land:#f8fafc; --border:#b8c5d4; --intl:#b3421f; --dom:#1d4a7c; --hub:#121e2c; --fac:#8b9bb0;
+  --display:"Lexend",system-ui,sans-serif; --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b1320; --surface:#132034; --ink:#e8eef6; --muted:#9aabc1; --line:#2a3b53; --accent:#8cc0f2;
+  --sea:#09101b; --land:#18263a; --border:#33475f; --intl:#ff9a73; --dom:#8cc0f2; --hub:#e8eef6; --fac:#5d7090; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1320; --surface:#132034; --ink:#e8eef6; --muted:#9aabc1; --line:#2a3b53; --accent:#8cc0f2;
+  --sea:#09101b; --land:#18263a; --border:#33475f; --intl:#ff9a73; --dom:#8cc0f2; --hub:#e8eef6; --fac:#5d7090; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:1.0625rem/1.5 var(--body);padding-inline:16px;padding-block:16px 40px}
+main{max-width:44rem;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1,h2{font-family:var(--display);margin:0;line-height:1.2;text-wrap:balance} h1{font-size:1.5rem} h2{font-size:1.15rem}
+p{margin:0} .muted{color:var(--muted);font-size:.95rem}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.globe{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:8px}
+canvas{width:100%;height:auto;aspect-ratio:1;max-width:100%;touch-action:none;cursor:grab;display:block}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;padding-inline:6px}
+.key span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:28px;height:0;border-top:3px solid var(--intl)} .sw.d{border-top:3px dashed var(--dom)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--fac)} .dot.h{background:var(--hub);width:11px;height:11px}
+.days{display:flex;gap:8px;flex-wrap:wrap}
+.days button{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer}
+.days button[aria-pressed="true"]{background:var(--accent);color:var(--surface);border-color:var(--accent);font-weight:700}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+li button{width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px}
+li button[aria-pressed="true"]{border-color:var(--accent);border-width:2px}
+.route{font-weight:700;min-width:0} .when{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.sub{grid-column:1/-1;color:var(--muted);font-size:.9rem}
+.tag{font-size:.8rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.tag.i{color:var(--intl)} .tag.d{color:var(--dom)}
+footer{font-size:.9rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+</style>
+<main>
+  <h1>ICE Air flight tracks</h1>
+  <p id="lead"></p>
+  <div class="days" id="days" role="group" aria-label="Day"></div>
+  <div class="globe">
+    <canvas id="c" width="900" height="900" role="img" aria-label="Globe showing the day's flight tracks"></canvas>
+    <div class="key">
+      <span><i class="sw"></i>Left or entered the US</span><span><i class="sw d"></i>Within the US</span>
+      <span><i class="dot h"></i>Staging airport</span><span><i class="dot"></i>Detention facility</span>
+    </div>
+    <p class="muted" style="padding-inline:6px">Drag to turn the globe. Lines are the positions the aircraft actually broadcast; a gap or a straight jump means the signal was lost.</p>
+  </div>
+  <h2 id="lh"></h2>
+  <ul id="legs"></ul>
+  <footer>
+    <p><strong>How flights are picked.</strong> Only aircraft flying under a contractor callsign are read. A day is kept when the aircraft starts or ends a flight at Alexandria, Harlingen, or Mesa, the airports ICE uses for staging. Contractor planes also fly ordinary charters, and flights that avoid those three airports are missed, so this is a minimum, not a total. Nobody on board is identified.</p>
+    <p>"Last seen near" means the signal was lost before landing; the airport named is the closest one, not a confirmed landing.</p>
+    <p>Flight data © adsb.lol contributors, Open Database License. Airports: OurAirports. Facility locations: Deportation Data Project. Free. Never commercial. Not an official ICE page.</p>
+  </footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const WORLD = /*__WORLD__*/null, DATA = /*__DATA__*/null;
+const $ = id => document.getElementById(id), cv = $("c"), ctx = cv.getContext("2d");
+const land = topojson.feature(WORLD, WORLD.objects.countries), borders = topojson.mesh(WORLD, WORLD.objects.countries, (a,b)=>a!==b);
+const proj = d3.geoOrthographic().fitExtent([[12,12],[888,888]], {type:"Sphere"}).rotate([97,-27]).clipAngle(90);
+const path = d3.geoPath(proj, ctx);
+proj.scale(proj.scale()*2.1);
+let day = DATA.days[DATA.days.length-1], sel = null;
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const where = (code, certain) => { const a = DATA.airports[code] || {}; const n = a.city ? `${a.city} (${code})` : code; return certain ? n : `last seen near ${n}`; };
+const legsOf = d => DATA.legs.filter(l => l.date === d);
+
+function draw(){
+  ctx.clearRect(0,0,900,900);
+  ctx.beginPath(); path({type:"Sphere"}); ctx.fillStyle = css("--sea"); ctx.fill();
+  ctx.beginPath(); path(land); ctx.fillStyle = css("--land"); ctx.fill();
+  ctx.beginPath(); path(borders); ctx.strokeStyle = css("--border"); ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = css("--fac");
+  DATA.facilities.forEach(f => { const p = visible(f); if (p){ ctx.beginPath(); ctx.arc(p[0],p[1],2.6,0,7); ctx.fill(); } });
+  const ls = legsOf(day);
+  ls.forEach((l,i) => { if (sel !== null && sel !== i) line(l, .18); });
+  ls.forEach((l,i) => { if (sel === null || sel === i) line(l, 1, sel === i); });
+  ctx.fillStyle = css("--hub"); ctx.font = "600 22px Lexend, system-ui, sans-serif"; ctx.textBaseline = "middle";
+  Object.entries(DATA.staging).forEach(([code,s]) => { const p = visible({lon:s.lon,lat:s.lat}); if (!p) return;
+    ctx.beginPath(); ctx.arc(p[0],p[1],7,0,7); ctx.fill(); ctx.fillText(s.name, p[0]+12, p[1]); });
+}
+function visible(o){ const r = proj.rotate(); return d3.geoDistance([o.lon,o.lat], [-r[0],-r[1]]) < Math.PI/2 ? proj([o.lon,o.lat]) : null; }
+function line(l, alpha, strong){
+  ctx.save(); ctx.globalAlpha = alpha; ctx.beginPath();
+  path({type:"LineString", coordinates: l.track.map(p => [p[1], p[0]])});
+  ctx.strokeStyle = css(l.kind === "international" ? "--intl" : "--dom"); ctx.lineWidth = strong ? 5 : 3;
+  ctx.setLineDash(l.kind === "international" ? [] : [10,7]); ctx.stroke(); ctx.restore();
+}
+function list(){
+  const ls = legsOf(day), ul = $("legs"); ul.replaceChildren();
+  const tails = new Set(ls.map(l => l.registration)).size, intl = ls.filter(l => l.kind === "international").length;
+  $("lead").textContent = `${ls.length} flights by ${tails} contractor aircraft on ${day}: ${intl} left or entered the US, ${ls.length - intl} stayed within it. This is a minimum; see how flights are picked below.`;
+  $("lh").textContent = `Flights on ${day} (times in UTC)`;
+  ls.forEach((l,i) => {
+    const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-pressed", sel === i);
+    const mk = (c,t) => { const e = document.createElement("span"); e.className = c; e.textContent = t; return e; };
+    b.append(mk("route", `${where(l.origin, l.origin_certain)} → ${where(l.dest, l.dest_certain)}`), mk("when", `${l.departed_utc}–${l.arrived_utc}`),
+             mk("sub", `${l.registration} · ${l.aircraft_type} · ${l.callsign}`), mk("tag " + (l.kind === "international" ? "i" : "d"), l.kind === "international" ? "Left or entered the US" : "Within the US"));
+    b.onclick = () => { sel = sel === i ? null : i; if (sel !== null){ const m = l.track[Math.floor(l.track.length/2)]; proj.rotate([-m[1], -m[0]]); } list(); draw(); };
+    const li = document.createElement("li"); li.append(b); ul.append(li);
+  });
+}
+function days(){
+  const box = $("days"); box.replaceChildren(); box.hidden = DATA.days.length < 2;
+  DATA.days.forEach(d => { const b = document.createElement("button"); b.type = "button"; b.textContent = d; b.setAttribute("aria-pressed", d === day);
+    b.onclick = () => { day = d; sel = null; days(); list(); draw(); }; box.append(b); });
+}
+d3.select(cv).call(d3.drag().on("drag", e => { const r = proj.rotate(), k = 900 / cv.clientWidth * 0.25 / (proj.scale()/440);
+  proj.rotate([r[0] + e.dx * k, Math.max(-80, Math.min(80, r[1] - e.dy * k))]); draw(); }));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+new MutationObserver(draw).observe(document.documentElement, {attributes:true, attributeFilter:["data-theme"]});
+days(); list(); draw();
+</script>

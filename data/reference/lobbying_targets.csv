@@ -1,0 +1,21 @@
+company|target|filings
+GEO|House of Representatives|100
+GEO|Senate|84
+GEO|Department of Homeland Security|23
+GEO|ICE|6
+GEO|Office of Management and Budget|6
+GEO|Department of Justice|5
+GEO|Executive Office of the President|4
+GEO|Department of Health and Human Services|4
+GEO|White House Office|4
+GEO|Bureau of Prisons|4
+CC|House of Representatives|81
+CC|Senate|71
+CC|General Services Administration (GSA)|1
+MTC|House of Representatives|42
+MTC|Senate|42
+MTC|Department of Labor|11
+MTC|White House Office|7
+CSI|House of Representatives|5
+CSI|Senate|5
+CSI|Department of Homeland Security|5

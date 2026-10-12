@@ -1,0 +1,13 @@
+detention_facility_code,name,city,state,address_full,field_office
+SAMPA,Sample Facility A,Sampletown,CA,1 Sample Rd,Sample office
+SAMPB,Sample Facility B,Sampletown,CA,1 Sample Rd,Sample office
+SAMPC,Sample Facility C,Sampletown,AZ,1 Sample Rd,Sample office
+SAMPD,Sample Facility D,Sampletown,TX,1 Sample Rd,Sample office
+SAMPE,Sample Facility E,Sampletown,TX,1 Sample Rd,Sample office
+SAMPF,Sample Facility F,Sampletown,LA,1 Sample Rd,Sample office
+SAMPG,Sample Facility G,Sampletown,LA,1 Sample Rd,Sample office
+SAMPH,Sample Facility H,Sampletown,GA,1 Sample Rd,Sample office
+SAMPI,Sample Facility I,Sampletown,NJ,1 Sample Rd,Sample office
+SAMPJ,Sample Facility J,Sampletown,WA,1 Sample Rd,Sample office
+SAMPK,Sample Hold Room K,Sampletown,IL,1 Sample Rd,Sample office
+SAMPL,Sample Facility L,Sampletown,MS,1 Sample Rd,Sample office

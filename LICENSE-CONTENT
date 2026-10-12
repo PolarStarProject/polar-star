@@ -1,0 +1,19 @@
+Polar Star (Estrella Polar) — site content license
+
+Copyright 2026 Polar Star Project
+
+The written content, explanations, page design, charts and layout of Polar Star are licensed under the
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+In short: you may share and adapt this content for non-commercial purposes, with credit to the Polar Star Project
+and a link to the page, and you must share adapted versions under the same license. The license text governs.
+
+Not covered by this license:
+- Government records (ICE, DHS, CBP, HHS, GAO, the courts and other agencies), which are public domain in the
+  United States. Polar Star claims no rights in them.
+- Documents published by others that this page links to; they belong to their publishers.
+- Data files, which are under LICENSE-DATA.
+- The software, which is under LICENSE.
+- Fonts in site/vendor/fonts, which are under the SIL Open Font License, and the other vendored libraries in
+  site/vendor, which keep their own licenses.

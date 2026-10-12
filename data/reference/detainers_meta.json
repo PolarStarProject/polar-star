@@ -1,0 +1,14 @@
+{
+ "columns": {
+  "date": "detainer_prepare_date",
+  "kind": "detainer_type",
+  "state": "facility_state",
+  "conviction": "conviction",
+  "lift": "detainer_lift_reason"
+ },
+ "first": "2022-10-01",
+ "last": "2026-09-04",
+ "rows": 740601,
+ "dropped_duplicates": 17121,
+ "source": "https://github.com/deportationdata/ice"
+}

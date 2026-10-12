@@ -1,0 +1,23 @@
+Polar Star (Estrella Polar) — data license
+
+Copyright 2026 Polar Star Project
+
+The data files in data/reference/ and the site data files are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0), except as listed below.
+To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
+
+In short: you may use, share and adapt the data for any purpose, with credit to the Polar Star Project and a link to
+the page. The license text governs.
+
+Exceptions:
+- Flight data (site/flights-data.js, site/flights.html data, and data/flights/) is derived from aircraft positions
+  © adsb.lol contributors and is made available under the Open Database License (ODbL) 1.0:
+  https://opendatacommons.org/licenses/odbl/1-0/
+  Any rights in individual contents of the database are licensed under the Database Contents License:
+  https://opendatacommons.org/licenses/dbcl/1-0/
+  Credit: "© adsb.lol contributors, ODbL; compiled by the Polar Star Project".
+- Government records are public domain in the United States; this license covers only Polar Star's own selection,
+  arrangement and calculations.
+- Data from other projects keeps its own terms: Deportation Data Project (CC0), OurAirports (public domain),
+  congress-legislators (CC0), HIFLD (public domain), Tracking 287(g) archive (MIT for its code; the lists are ICE
+  records). The "For researchers" tab on the page lists each source and how it is credited.

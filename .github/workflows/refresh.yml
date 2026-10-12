@@ -1,0 +1,77 @@
+# Weekly: fetch new data, test, rebuild the page, save the data back to the repository, publish the page.
+# Also runs when started by hand (Actions tab > Refresh and publish > Run workflow).
+name: Refresh and publish
+on:
+  schedule:
+    - cron: "17 11 * * 1"        # Mondays 11:17 UTC
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Run only these steps, comma-separated (blank = all). Example: tests,build"
+        required: false
+        default: ""
+      skip:
+        description: "Skip these steps, comma-separated. Example: flights"
+        required: false
+        default: ""
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: sudo apt-get install -y tesseract-ocr poppler-utils
+      - name: Refresh
+        env:
+          FEC_API_KEY: ${{ secrets.FEC_API_KEY }}      # optional: without it the political committee figures are left as they are
+          ONLY: ${{ github.event.inputs.only }}
+          SKIP: ${{ github.event.inputs.skip }}
+        run: |
+          args=""
+          if [ -n "$ONLY" ]; then args="$args --only $ONLY"; fi
+          if [ -n "$SKIP" ]; then args="$args --skip $SKIP"; fi
+          xvfb-run -a python pipeline/refresh_all.py $args
+      - name: Save refreshed data to the repository
+        if: always()
+        run: |
+          git config user.name "refresh-bot"
+          git config user.email "refresh-bot@users.noreply.github.com"
+          git add -A data site
+          git diff --cached --quiet || git commit -m "Weekly refresh $(date -u +%F)"
+          # main may have moved while the refresh ran (hours, for the FEC steps): replay this commit on top, keeping the freshly read data on a conflict
+          for i in 1 2 3; do git push && exit 0; git pull --rebase -X theirs || { git rebase --abort; exit 1; }; done; exit 1
+      # Publishing is skipped, without failing the run, until Pages is switched on in the repository settings.
+      - id: pages
+        continue-on-error: true
+        uses: actions/configure-pages@v5
+      - if: steps.pages.outcome == 'success'
+        run: |
+          # The built page is a fragment (it is also published as an artifact that adds its own wrapper), so give it a document head here.
+          mkdir -p _site && cp -r site/layers _site/ 2>/dev/null || true
+          cp site/flights-data.js _site/
+          cp site/more-data.js _site/
+          mkdir -p _site/vendor && cp site/vendor/d3.min.js site/vendor/topojson.min.js _site/vendor/ && cp -r site/vendor/fonts _site/vendor/
+          { printf '<!doctype html>\n<html lang="en">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'; cat site/index.html; } > _site/index.html
+      - if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        if: steps.pages.outcome == 'success'
+        uses: actions/deploy-pages@v4

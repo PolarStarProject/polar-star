@@ -1,0 +1,15 @@
+key|label|number|match|sources
+orr|ORR National Call Center|1-800-203-7001|8002037001|https://www.acf.gov/orr/programs/ucs/national-call-center https://www.acf.gov/orr/programs/ucs/about https://www.hhs.gov/programs/social-services/unaccompanied-children/index.html https://www.hhs.gov/programs/social-services/unaccompanied-children https://acf.gov/orr/programs/uac/family-reunification-packet https://www.acf.gov/orr/programs/ucs
+eoir|EOIR automated case information|1-800-898-7180|8008987180|https://www.justice.gov/eoir/customer-service-initiatives https://www.justice.gov/eoir/automated-case-information https://acis.eoir.justice.gov/en/ https://www.justice.gov/eoir
+ciam|Mexico CIAM (Arizona number)|520-623-7874|5206237874|https://consulmex.sre.gob.mx/losangeles/index.php/es/ciam https://www.gob.mx/sre/articulos/eleven-measures-to-protect-the-mexican-community-in-the-u-s https://www.gob.mx/sre/acciones-y-programas/centro-de-informacion-y-asistencia-a-mexicanos-ciam https://consulmex.sre.gob.mx/tucson/ https://consulmex.sre.gob.mx/losangeles/index.php/proteccion https://consulmex.sre.gob.mx/sacramento/
+ciam_tf|Mexico CIAM (toll-free)|1-855-463-6395|8554636395|https://consulmex.sre.gob.mx/losangeles/index.php/es/ciam https://www.gob.mx/sre/articulos/eleven-measures-to-protect-the-mexican-community-in-the-u-s https://www.gob.mx/sre/acciones-y-programas/centro-de-informacion-y-asistencia-a-mexicanos-ciam https://consulmex.sre.gob.mx/tucson/ https://consulmex.sre.gob.mx/losangeles/index.php/proteccion https://consulmex.sre.gob.mx/sacramento/
+dril|ICE Detention Reporting and Information Line|1-888-351-4024|8883514024|https://www.ice.gov/ICEcasereview https://www.ice.gov/detain/detention-reporting-and-information-line https://www.ice.gov/detain/detention-management
+ffi_in|Freedom for Immigrants hotline speed dial from inside detention|9233#|9233|https://www.freedomforimmigrants.org/hotline https://freedomforimmigrants.org/hotline
+ffi_out|Freedom for Immigrants hotline for families|209-757-3733|2097573733|https://www.freedomforimmigrants.org/hotline https://freedomforimmigrants.org/hotline https://www.freedomforimmigrants.org/
+consular|State Department list of foreign consular offices in the US||consul|https://www.state.gov/foreign-consular-offices-in-the-united-states/ https://www.state.gov/foreign-consular-offices/
+gt|Guatemala Ministry of Foreign Affairs||consul|https://www.minex.gob.gt/ https://minex.gob.gt/
+hn|Honduras Ministry of Foreign Affairs||consul|https://sreci.gob.hn/ https://www.sreci.gob.hn/
+sv|El Salvador Ministry of Foreign Affairs||consul|https://rree.gob.sv/ https://www.rree.gob.sv/
+bondfunds|Community Justice Exchange immigration bond fund directory||bond|https://www.communityjusticeexchange.org/en/immigration-directory
+acis_en|EOIR online case status (English)||case|https://acis.eoir.justice.gov/en/
+acis_es|EOIR online case status (Spanish)||caso|https://acis.eoir.justice.gov/es/

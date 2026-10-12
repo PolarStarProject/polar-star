@@ -1,0 +1,16 @@
+{
+ "facility_published": true,
+ "window_months": 12,
+ "min_avg_held": 50,
+ "deaths_min": 3,
+ "deaths_ratio": 2.0,
+ "max_p": 0.05,
+ "alleg_min": 5,
+ "alleg_ratio": 2.0,
+ "audit_max_age_years": 3,
+ "long_min": 10,
+ "long_ratio": 2.0,
+ "long_published": true,
+ "officials_published": true,
+ "officials_min_usd": 200
+}

@@ -1,0 +1,404 @@
+month|method|arrests
+2022-10|287(g) Program|244
+2022-10|CAP Federal Incarceration|801
+2022-10|CAP Local Incarceration|3736
+2022-10|CAP State Incarceration|446
+2022-10|ERO Reprocessed Arrest|437
+2022-10|Located|830
+2022-10|Non-Custodial Arrest|8635
+2022-10|Other|456
+2022-10|Other efforts|1028
+2022-11|287(g) Program|236
+2022-11|CAP Federal Incarceration|822
+2022-11|CAP Local Incarceration|3772
+2022-11|CAP State Incarceration|446
+2022-11|ERO Reprocessed Arrest|259
+2022-11|Located|678
+2022-11|Non-Custodial Arrest|8601
+2022-11|Other|568
+2022-11|Other efforts|1018
+2022-12|287(g) Program|234
+2022-12|CAP Federal Incarceration|897
+2022-12|CAP Local Incarceration|3206
+2022-12|CAP State Incarceration|403
+2022-12|ERO Reprocessed Arrest|225
+2022-12|Located|563
+2022-12|Non-Custodial Arrest|8299
+2022-12|Other|521
+2022-12|Other efforts|887
+2023-01|287(g) Program|180
+2023-01|CAP Federal Incarceration|851
+2023-01|CAP Local Incarceration|3589
+2023-01|CAP State Incarceration|484
+2023-01|ERO Reprocessed Arrest|136
+2023-01|Located|677
+2023-01|Non-Custodial Arrest|10734
+2023-01|Other|446
+2023-01|Other efforts|873
+2023-02|287(g) Program|213
+2023-02|CAP Federal Incarceration|1259
+2023-02|CAP Local Incarceration|3403
+2023-02|CAP State Incarceration|444
+2023-02|Custodial Arrest|1
+2023-02|ERO Reprocessed Arrest|211
+2023-02|Located|589
+2023-02|Non-Custodial Arrest|8775
+2023-02|Other|517
+2023-02|Other efforts|686
+2023-03|287(g) Program|226
+2023-03|CAP Federal Incarceration|1402
+2023-03|CAP Local Incarceration|4039
+2023-03|CAP State Incarceration|501
+2023-03|Custodial Arrest|1
+2023-03|ERO Reprocessed Arrest|224
+2023-03|Located|730
+2023-03|Non-Custodial Arrest|7418
+2023-03|Other|535
+2023-03|Other efforts|607
+2023-04|287(g) Program|230
+2023-04|CAP Federal Incarceration|978
+2023-04|CAP Local Incarceration|3696
+2023-04|CAP State Incarceration|435
+2023-04|ERO Reprocessed Arrest|428
+2023-04|Located|709
+2023-04|Non-Custodial Arrest|5828
+2023-04|Other|487
+2023-04|Other efforts|494
+2023-05|287(g) Program|209
+2023-05|CAP Federal Incarceration|1053
+2023-05|CAP Local Incarceration|4064
+2023-05|CAP State Incarceration|507
+2023-05|ERO Reprocessed Arrest|563
+2023-05|Located|708
+2023-05|Non-Custodial Arrest|5462
+2023-05|Other|473
+2023-05|Other efforts|589
+2023-06|287(g) Program|238
+2023-06|CAP Federal Incarceration|1100
+2023-06|CAP Local Incarceration|3902
+2023-06|CAP State Incarceration|498
+2023-06|ERO Reprocessed Arrest|324
+2023-06|Located|564
+2023-06|Non-Custodial Arrest|4978
+2023-06|Other|424
+2023-06|Other efforts|515
+2023-07|287(g) Program|234
+2023-07|CAP Federal Incarceration|1144
+2023-07|CAP Local Incarceration|3952
+2023-07|CAP State Incarceration|418
+2023-07|ERO Reprocessed Arrest|333
+2023-07|Located|553
+2023-07|Non-Custodial Arrest|4173
+2023-07|Other|378
+2023-07|Other efforts|419
+2023-08|287(g) Program|172
+2023-08|CAP Federal Incarceration|1089
+2023-08|CAP Local Incarceration|3408
+2023-08|CAP State Incarceration|466
+2023-08|ERO Reprocessed Arrest|1219
+2023-08|Located|687
+2023-08|Non-Custodial Arrest|3979
+2023-08|Other|396
+2023-08|Other efforts|325
+2023-09|287(g) Program|178
+2023-09|CAP Federal Incarceration|957
+2023-09|CAP Local Incarceration|3178
+2023-09|CAP State Incarceration|439
+2023-09|ERO Reprocessed Arrest|1351
+2023-09|Located|639
+2023-09|Non-Custodial Arrest|2980
+2023-09|Other|520
+2023-09|Other efforts|274
+2023-10|287(g) Program|194
+2023-10|CAP Federal Incarceration|1026
+2023-10|CAP Local Incarceration|3104
+2023-10|CAP State Incarceration|470
+2023-10|ERO Reprocessed Arrest|994
+2023-10|Located|604
+2023-10|Non-Custodial Arrest|2764
+2023-10|Other|421
+2023-10|Other efforts|465
+2023-11|287(g) Program|192
+2023-11|CAP Federal Incarceration|978
+2023-11|CAP Local Incarceration|3141
+2023-11|CAP State Incarceration|420
+2023-11|ERO Reprocessed Arrest|502
+2023-11|Located|594
+2023-11|Non-Custodial Arrest|2311
+2023-11|Other|361
+2023-11|Other efforts|427
+2023-12|287(g) Program|175
+2023-12|CAP Federal Incarceration|1097
+2023-12|CAP Local Incarceration|3661
+2023-12|CAP State Incarceration|396
+2023-12|ERO Reprocessed Arrest|863
+2023-12|Located|534
+2023-12|Non-Custodial Arrest|1936
+2023-12|Other|455
+2023-12|Other efforts|731
+2024-01|287(g) Program|200
+2024-01|CAP Federal Incarceration|872
+2024-01|CAP Local Incarceration|3060
+2024-01|CAP State Incarceration|403
+2024-01|Custodial Arrest|1
+2024-01|ERO Reprocessed Arrest|540
+2024-01|Located|544
+2024-01|Non-Custodial Arrest|2006
+2024-01|Other|423
+2024-01|Other efforts|460
+2024-02|287(g) Program|217
+2024-02|CAP Federal Incarceration|1198
+2024-02|CAP Local Incarceration|3406
+2024-02|CAP State Incarceration|497
+2024-02|Custodial Arrest|2
+2024-02|ERO Reprocessed Arrest|694
+2024-02|Located|714
+2024-02|Non-Custodial Arrest|2113
+2024-02|Other|379
+2024-02|Other efforts|373
+2024-03|287(g) Program|237
+2024-03|CAP Federal Incarceration|1007
+2024-03|CAP Local Incarceration|3923
+2024-03|CAP State Incarceration|523
+2024-03|ERO Reprocessed Arrest|441
+2024-03|Located|656
+2024-03|Non-Custodial Arrest|1886
+2024-03|Other|508
+2024-03|Other efforts|440
+2024-04|287(g) Program|248
+2024-04|CAP Federal Incarceration|1060
+2024-04|CAP Local Incarceration|3976
+2024-04|CAP State Incarceration|507
+2024-04|Custodial Arrest|1
+2024-04|ERO Reprocessed Arrest|496
+2024-04|Located|963
+2024-04|Non-Custodial Arrest|2053
+2024-04|Other|441
+2024-04|Other efforts|448
+2024-05|287(g) Program|272
+2024-05|CAP Federal Incarceration|1091
+2024-05|CAP Local Incarceration|4449
+2024-05|CAP State Incarceration|566
+2024-05|ERO Reprocessed Arrest|438
+2024-05|Located|795
+2024-05|Non-Custodial Arrest|1783
+2024-05|Other|336
+2024-05|Other efforts|514
+2024-06|287(g) Program|233
+2024-06|CAP Federal Incarceration|882
+2024-06|CAP Local Incarceration|4118
+2024-06|CAP State Incarceration|419
+2024-06|ERO Reprocessed Arrest|301
+2024-06|Located|574
+2024-06|Non-Custodial Arrest|1380
+2024-06|Other|376
+2024-06|Other efforts|279
+2024-07|287(g) Program|305
+2024-07|CAP Federal Incarceration|1023
+2024-07|CAP Local Incarceration|4386
+2024-07|CAP State Incarceration|473
+2024-07|Custodial Arrest|1
+2024-07|ERO Reprocessed Arrest|340
+2024-07|Located|774
+2024-07|Non-Custodial Arrest|1536
+2024-07|Other|339
+2024-07|Other efforts|289
+2024-08|287(g) Program|260
+2024-08|CAP Federal Incarceration|978
+2024-08|CAP Local Incarceration|4723
+2024-08|CAP State Incarceration|459
+2024-08|ERO Reprocessed Arrest|149
+2024-08|Located|662
+2024-08|Non-Custodial Arrest|1362
+2024-08|Other|342
+2024-08|Other efforts|243
+2024-09|287(g) Program|300
+2024-09|CAP Federal Incarceration|868
+2024-09|CAP Local Incarceration|4262
+2024-09|CAP State Incarceration|426
+2024-09|Custodial Arrest|1
+2024-09|ERO Reprocessed Arrest|107
+2024-09|Located|585
+2024-09|Non-Custodial Arrest|1194
+2024-09|Other|255
+2024-09|Other efforts|392
+2024-10|287(g) Program|296
+2024-10|CAP Federal Incarceration|1045
+2024-10|CAP Local Incarceration|4843
+2024-10|CAP State Incarceration|460
+2024-10|Custodial Arrest|2
+2024-10|ERO Reprocessed Arrest|81
+2024-10|Located|723
+2024-10|Non-Custodial Arrest|1449
+2024-10|Other|294
+2024-10|Other efforts|302
+2024-11|287(g) Program|254
+2024-11|CAP Federal Incarceration|911
+2024-11|CAP Local Incarceration|4318
+2024-11|CAP State Incarceration|440
+2024-11|ERO Reprocessed Arrest|60
+2024-11|Located|613
+2024-11|Non-Custodial Arrest|1139
+2024-11|Other|230
+2024-11|Other efforts|213
+2024-12|287(g) Program|253
+2024-12|CAP Federal Incarceration|991
+2024-12|CAP Local Incarceration|4580
+2024-12|CAP State Incarceration|467
+2024-12|ERO Reprocessed Arrest|92
+2024-12|Located|604
+2024-12|Non-Custodial Arrest|1115
+2024-12|Other|233
+2024-12|Other efforts|172
+2025-01|287(g) Program|297
+2025-01|CAP Federal Incarceration|1151
+2025-01|CAP Local Incarceration|5192
+2025-01|CAP State Incarceration|546
+2025-01|Custodial Arrest|6
+2025-01|ERO Reprocessed Arrest|109
+2025-01|Located|1851
+2025-01|Non-Custodial Arrest|2408
+2025-01|Other|330
+2025-01|Other efforts|284
+2025-02|287(g) Program|379
+2025-02|CAP Federal Incarceration|1030
+2025-02|CAP Local Incarceration|7420
+2025-02|CAP State Incarceration|497
+2025-02|Custodial Arrest|1
+2025-02|ERO Reprocessed Arrest|70
+2025-02|Located|2918
+2025-02|Non-Custodial Arrest|3924
+2025-02|Other|514
+2025-02|Other efforts|382
+2025-03|287(g) Program|439
+2025-03|CAP Federal Incarceration|1028
+2025-03|CAP Local Incarceration|8955
+2025-03|CAP State Incarceration|493
+2025-03|Custodial Arrest|1
+2025-03|ERO Reprocessed Arrest|50
+2025-03|Located|2814
+2025-03|Non-Custodial Arrest|4006
+2025-03|Other|478
+2025-03|Other efforts|352
+2025-04|287(g) Program|427
+2025-04|CAP Federal Incarceration|1126
+2025-04|CAP Local Incarceration|8584
+2025-04|CAP State Incarceration|507
+2025-04|ERO Reprocessed Arrest|48
+2025-04|Located|2739
+2025-04|Non-Custodial Arrest|3500
+2025-04|Other|396
+2025-04|Other efforts|314
+2025-05|287(g) Program|518
+2025-05|CAP Federal Incarceration|1497
+2025-05|CAP Local Incarceration|9243
+2025-05|CAP State Incarceration|479
+2025-05|Custodial Arrest|2
+2025-05|ERO Reprocessed Arrest|49
+2025-05|Located|3786
+2025-05|Non-Custodial Arrest|5668
+2025-05|Other|594
+2025-05|Other efforts|487
+2025-06|287(g) Program|517
+2025-06|CAP Federal Incarceration|1664
+2025-06|CAP Local Incarceration|9459
+2025-06|CAP State Incarceration|502
+2025-06|Custodial Arrest|6
+2025-06|ERO Reprocessed Arrest|86
+2025-06|Located|6965
+2025-06|Non-Custodial Arrest|8405
+2025-06|Other|1003
+2025-06|Other efforts|1181
+2025-07|287(g) Program|668
+2025-07|CAP Federal Incarceration|1263
+2025-07|CAP Local Incarceration|7352
+2025-07|CAP State Incarceration|416
+2025-07|Custodial Arrest|3034
+2025-07|ERO Reprocessed Arrest|111
+2025-07|Located|3926
+2025-07|Non-Custodial Arrest|8811
+2025-07|Other|681
+2025-07|Other efforts|557
+2025-08|287(g) Program|1048
+2025-08|CAP Federal Incarceration|1
+2025-08|CAP Local Incarceration|13
+2025-08|CAP State Incarceration|1
+2025-08|Custodial Arrest|13541
+2025-08|ERO Reprocessed Arrest|58
+2025-08|Located|2
+2025-08|Non-Custodial Arrest|13056
+2025-08|Other|93
+2025-09|287(g) Program|1811
+2025-09|CAP Federal Incarceration|1
+2025-09|CAP Local Incarceration|12
+2025-09|CAP State Incarceration|2
+2025-09|Custodial Arrest|13114
+2025-09|ERO Reprocessed Arrest|66
+2025-09|Non-Custodial Arrest|17535
+2025-09|Other|134
+2025-09|Other efforts|1
+2025-10|287(g) Program|2417
+2025-10|CAP Federal Incarceration|1
+2025-10|CAP Local Incarceration|25
+2025-10|CAP State Incarceration|2
+2025-10|Custodial Arrest|14506
+2025-10|ERO Reprocessed Arrest|46
+2025-10|Non-Custodial Arrest|19888
+2025-10|Other|157
+2025-11|287(g) Program|2910
+2025-11|CAP Local Incarceration|3
+2025-11|Custodial Arrest|13102
+2025-11|ERO Reprocessed Arrest|51
+2025-11|Non-Custodial Arrest|18294
+2025-11|Other|194
+2025-11|Other efforts|1
+2025-12|287(g) Program|3028
+2025-12|CAP Federal Incarceration|1
+2025-12|CAP Local Incarceration|1
+2025-12|Custodial Arrest|14553
+2025-12|ERO Reprocessed Arrest|45
+2025-12|Located|1
+2025-12|Non-Custodial Arrest|21810
+2025-12|Other|283
+2026-01|287(g) Program|3790
+2026-01|CAP Local Incarceration|2
+2026-01|Custodial Arrest|13455
+2026-01|ERO Reprocessed Arrest|38
+2026-01|Located|1
+2026-01|Non-Custodial Arrest|19643
+2026-01|Other|510
+2026-01|Other efforts|2
+2026-02|287(g) Program|2927
+2026-02|Custodial Arrest|12574
+2026-02|ERO Reprocessed Arrest|20
+2026-02|Located|1
+2026-02|Non-Custodial Arrest|13832
+2026-02|Other|197
+2026-03|287(g) Program|3404
+2026-03|Custodial Arrest|13569
+2026-03|ERO Reprocessed Arrest|23
+2026-03|Located|1
+2026-03|Non-Custodial Arrest|13396
+2026-03|Other|175
+2026-04|287(g) Program|3561
+2026-04|CAP Local Incarceration|1
+2026-04|Custodial Arrest|13655
+2026-04|ERO Reprocessed Arrest|15
+2026-04|Non-Custodial Arrest|13628
+2026-04|Other|300
+2026-05|287(g) Program|4707
+2026-05|CAP Local Incarceration|4
+2026-05|Custodial Arrest|13675
+2026-05|ERO Reprocessed Arrest|18
+2026-05|Non-Custodial Arrest|13592
+2026-05|Other|257
+2026-06|287(g) Program|6242
+2026-06|Custodial Arrest|15502
+2026-06|ERO Reprocessed Arrest|19
+2026-06|Non-Custodial Arrest|20588
+2026-06|Other|237
+2026-07|287(g) Program|6461
+2026-07|Custodial Arrest|17620
+2026-07|ERO Reprocessed Arrest|25
+2026-07|Non-Custodial Arrest|24725
+2026-07|Other|260
