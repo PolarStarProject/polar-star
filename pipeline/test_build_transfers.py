@@ -90,3 +90,28 @@ def test_women_custody_counts_stays_not_stints(tmp_path=None):
     df["book_in_date_time"] = df["stay_book_in_date_time"]; df["book_out_date_time"] = df["stay_book_out_date_time"]; df.loc[3, "book_in_date_time"] = "2026-07-30"     # a newer stint (any gender) sets the day
     df.to_parquet(p); w2 = b.women_custody(p)
     assert w2["as_of"] == "2026-07-30" and w2["open"]["n"] == 1
+
+
+def test_contact_matched_through_hand_kept_alias():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"EROFCB": {"name": "Enforcement and Removal Operations El Paso Camp East Montana", "state": "TX"},
+            "EPC": {"name": "El Paso Service Processing Center", "state": "TX"}}
+    contacts = pd.DataFrame([{"name": "ERO El Paso Camp East Montana", "phone": "(915) 280-2270", "source": "https://www.ice.gov/x"}])
+    log = {}
+    attach_contacts(facs, contacts, log)                                            # without the alias: no confident match, no number
+    assert "phone" not in facs["EROFCB"] and log["contacts_not_matched"] == ["ERO El Paso Camp East Montana"]
+    attach_contacts(facs, contacts, log, {"ERO EL PASO CAMP EAST MONTANA": "EROFCB"})
+    assert facs["EROFCB"]["phone"] == "(915) 280-2270" and "phone" not in facs["EPC"]
+
+
+def test_alias_to_missing_facility_or_wrong_state_gets_no_number():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"EROFCB": {"name": "Camp East Montana", "state": "NM"}}
+    contacts = pd.DataFrame([{"name": "ERO El Paso Camp East Montana", "phone": "(915) 280-2270", "source": ""}])
+    log = {}
+    attach_contacts(facs, contacts, log, {"ERO EL PASO CAMP EAST MONTANA": "NOPE"})   # alias to a code that does not exist
+    assert "phone" not in facs["EROFCB"]
+    attach_contacts(facs, contacts, log, {"ERO EL PASO CAMP EAST MONTANA": "EROFCB"}) # area code is Texas, facility says NM
+    assert "phone" not in facs["EROFCB"] and log["contacts_area_code_in_other_state"]

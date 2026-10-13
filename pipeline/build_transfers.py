@@ -205,13 +205,17 @@ def area_state(phone):
     return None
 
 
-def attach_contacts(facs, contacts, log):
+def attach_contacts(facs, contacts, log, aliases=None):
     """Attach ICE's published phone number to a facility only on a confident, unambiguous name match.
-    A wrong number sends a family to the wrong place, so anything doubtful gets no number."""
+    A wrong number sends a family to the wrong place, so anything doubtful gets no number.
+    aliases: {other name: facility code} from facility_name_aliases.csv, kept by hand, for sites whose name on ICE's
+    contact page differs from the name in ICE's records (e.g. "ERO El Paso Camp East Montana")."""
     import difflib
     by_name = {}
     for code, f in facs.items():
         by_name.setdefault(norm_name(f["name"]), []).append(code)
+    for alias, code in (aliases or {}).items():                      # a hand-kept other name, only for a facility that exists
+        if code in facs and norm_name(alias) not in by_name: by_name[norm_name(alias)] = [code]
     matched, skipped, wrong_state = 0, [], []
     for _, c in contacts.iterrows():
         if not isinstance(c["phone"], str) or not c["phone"].strip(): continue
@@ -241,7 +245,9 @@ def main():
     t = transfers(st, log)
     facs, startw, end = aggregate(st, t, fac)
     if len(args) > 2:
-        attach_contacts(facs, pd.read_csv(args[2], dtype=str), log)
+        ap = Path(__file__).parent.parent / "data" / "reference" / "facility_name_aliases.csv"
+        aliases = dict(pd.read_csv(ap, sep="|", dtype=str)[["name", "facility_code"]].dropna().values) if ap.exists() else {}
+        attach_contacts(facs, pd.read_csv(args[2], dtype=str), log, aliases)
     if len(args) > 3:
         off = pd.read_csv(args[3], dtype=str).set_index("field_office")
         n = 0
