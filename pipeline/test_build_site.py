@@ -599,3 +599,14 @@ def test_prefill_writes_english_text_and_confirmed_numbers_before_the_script():
     assert '<p data-t="a">Hello &amp; bye</p>' in out and '<b data-t="f"></b>' in out
     assert '<span data-hl="orr">1-800-203-7001</span>' in out and '<p hidden data-hlp="dril">' in out
     assert out[out.find("<script"):] == html[html.find("<script"):]          # the script itself is untouched
+
+
+def test_display_name_keeps_ice_name_and_rejects_unknown_codes(tmp_path):
+    from build_site import display_names
+    (tmp_path / "facility_display_names.csv").write_text("facility_code|name|source\nX1|Camp Short|https://www.ice.gov/x\n", encoding="utf-8")
+    site = {"facilities": {"X1": {"name": "Enforcement and Removal Operations Long Name"}}}
+    display_names(site, tmp_path); display_names(site, tmp_path)          # running twice changes nothing more
+    f = site["facilities"]["X1"]
+    assert f["name"] == "Camp Short" and f["ice_name"] == "Enforcement and Removal Operations Long Name" and f["name_src"] == "https://www.ice.gov/x"
+    try: display_names({"facilities": {}}, tmp_path); assert False, "an unknown code must stop the build"
+    except ValueError: pass

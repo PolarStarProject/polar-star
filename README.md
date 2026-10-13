@@ -80,7 +80,7 @@ undercount, by an unknown amount. A month with few days read looks quiet; the pa
 | Local police agreements, 287(g) | 287g_agencies.csv | appelson/Tracking_287g (MIT), joined on state and county | fetch.py |
 | ICE inspection reports | ice_inspections.csv | ICE FOIA library, matched on city, state and name | refresh_contacts.py |
 | Deaths per fiscal year, national | ice_deaths_by_year.csv | ICE's death reporting page; no names stored | refresh_contacts.py |
-| Legal help sections by state | legal_aid_sections.csv | contents page of the Justice Department pro bono list | by hand |
+| Legal help sections by state | legal_aid_providers.csv (legal_aid_sections.csv only as a fallback) | the courts each state's section of the Justice Department pro bono list names | from the list, each refresh |
 
 ice_inspections.csv does not exist until refresh_contacts.py has run once on Windows.
 Deaths are shown as national totals only. ICE's death reports are narratives that name several
@@ -91,7 +91,7 @@ outreach\ holds a draft request to Freedom for Immigrants for visiting and phone
 
 | File | What | How it is refreshed |
 |---|---|---|
-| `data/reference/legal_aid_providers.csv` | Free legal providers by state, from the Justice Department list. Pipe-delimited. **Partial hand copy: 128 providers, 29 states.** | By hand from the PDF. The page says it is partial and links the full list. |
+| `data/reference/legal_aid_providers.csv` | Free legal providers by state, from the Justice Department list: every provider and the immigration courts it is listed for. Pipe-delimited. With `legal_aid_meta.json` (edition, date read). | Read in full from the PDF by `pipeline/eoir_probono.py` (step `legalaid`). |
 | `data/reference/oversight_visits.csv` | Visits by officials, including denied entry. One row per visit, each with a public source link. 2 rows so far. | By hand. Add a row only with a source. |
 | `data/reference/legislators-current.csv` | Members of Congress (unitedstates/congress-legislators, public domain). | Re-download when Congress changes. |
 | `data/reference/facility_districts.csv` | House district per facility. | `python pipeline\districts.py` on Windows (Census geocoder is not reachable from the cloud). |
@@ -878,6 +878,7 @@ Each list below is checked automatically in GitHub Actions. Nothing is approved 
 Four reviews (a family member, a researcher, a congressional staffer, a legal-aid attorney with a designer's eye) led to these changes.
 
 - **For families.** A scam warning at the top; the A-number explained at first use; a dated note that many people now get no bond hearing (with habeas as the route a lawyer may use); warnings for relatives without status about paying bond at an ICE office and about visiting; know-your-rights basics; consulate links; what to do after a deportation. Search finds these steps first, in English and Spanish ("abogado", "fianza", "deportado"...).
+- **The free legal help list is read in full.** `pipeline/eoir_probono.py` (step `legalaid`) downloads the Justice Department's List of Pro Bono Legal Service Providers (a PDF, new each January, April, July and October) and reads every provider by immigration court. The PDF prints two columns of boxes; boxes are split on their drawn borders so columns never mix. Nothing is written if it reads fewer than 150 providers, drops more than a quarter from the list on file, or finds a provider without a state. If justice.gov refuses the download, the step fails and the list on file stays: save the PDF and run `python pipeline/eoir_probono.py path\to\file.pdf`.
 - **Help lines are checked.** `pipeline/hotlines_check.py` (step `hotlines`) reads `data/reference/hotlines.csv` and shows a phone number or help link only while one of its official pages still shows it (21-day grace if every page is unreachable). A number that fails is hidden, not guessed. ice.gov and state.gov block GitHub's runners, so lines published only there stay hidden until another official page carries them.
 - **One clock.** `build_site.py` runs in UTC, like Actions, and stops if any `*meta*.json` date is later than the build date.
 - **Dates.** ICE's statistics file is dated by the figures' as-of date, not the day it was posted. The deaths header says "since October 2022" and lists the yearly counts before that.

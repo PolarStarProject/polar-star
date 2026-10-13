@@ -49,6 +49,7 @@ STEPS = [  # name, command after "python", required
     ("social",     ["pipeline/social_check.py"], False),
     ("officials",  ["pipeline/officials_check.py"], False),
     ("hotlines",   ["pipeline/hotlines_check.py"], False),
+    ("legalaid",   ["pipeline/eoir_probono.py"], False),
     ("moa",        ["pipeline/moa_links.py"], False),
     ("signers",    ["pipeline/moa_signers.py"], False),
     ("transfers",  ["pipeline/build_transfers.py", RAW + "detention-stints-latest.parquet", RAW + "facilities-latest.parquet",

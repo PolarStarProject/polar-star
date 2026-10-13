@@ -1622,6 +1622,17 @@ def future_dates(ref, today):
     return bad
 
 
+def display_names(site, ref):
+    """The name families know a site by, shown as its title, with ICE's own name kept beside it (facility_display_names.csv,
+    kept by hand, each with the public page that uses the name). Done last, after every match on ICE's names."""
+    for r in rd_pipe(ref / "facility_display_names.csv"):
+        f = site.get("facilities", {}).get(r["facility_code"])
+        if not f: raise ValueError(f"facility_display_names.csv: unknown facility code {r['facility_code']}")
+        if not r["name"].strip() or not r["source"].startswith("https://"): raise ValueError(f"facility_display_names.csv: {r['facility_code']} needs a name and an https source")
+        if f.get("ice_name"): continue
+        f["ice_name"], f["name"], f["name_src"] = f["name"], r["name"].strip(), r["source"]
+
+
 def main():
     site = json.loads((ROOT / "data" / "site_data.json").read_text(encoding="utf-8"))
     legs = [l for f in sorted(glob.glob(str(ROOT / "data" / "flights" / "legs_*.json"))) for l in json.load(open(f, encoding="utf-8"))]
@@ -1654,6 +1665,8 @@ def main():
         for r in csv.DictReader(open(ref / "legal_aid_providers.csv", encoding="utf-8"), delimiter="|"):
             prov.setdefault(r["state"], []).append([r["name"], r["phone"], r["city"], r["kind"], r["courts"]])
         site["legal_providers"] = prov
+        lm = ref / "legal_aid_meta.json"                                  # which edition of the Justice Department list, and whether it was read in full
+        if lm.exists(): site["legal_meta"] = {k: v for k, v in json.loads(lm.read_text(encoding="utf-8")).items() if k in ("edition", "read", "providers", "full")}
     if (ref / "oversight_visits.csv").exists():
         n = 0
         for f in site["facilities"].values(): f.pop("visits", None)
@@ -1871,6 +1884,7 @@ def main():
         dyn["spending"] = json.loads((ref / "money_meta.json").read_text(encoding="utf-8"))["read"] if (ref / "money_meta.json").exists() else ""
         dyn["court"] = json.loads((ref / "court_meta.json").read_text(encoding="utf-8")).get("checked", "") if (ref / "court_meta.json").exists() else ""
         jm = lambda n: json.loads((ref / n).read_text(encoding="utf-8")) if (ref / n).exists() else {}
+        dyn["legalaid"] = jm("legal_aid_meta.json").get("read", "")
         dyn["lobby"] = jm("lobbying_meta.json").get("read", ""); dyn["fec"] = jm("fec_meta.json").get("read", "")
         dyn["fec_donors"] = jm("fec_donors_meta.json").get("read", ""); dyn["fec_top"] = jm("member_top_donors_meta.json").get("read", ""); dyn["social"] = jm("social_meta.json").get("checked", "")
         dyn["sec"] = "" if jm("sec_meta.json").get("newer") else jm("sec_meta.json").get("checked", "")      # a newer filing exists: fall back to the day the files were last read by hand
@@ -1961,6 +1975,7 @@ def main():
         heavy = json.dumps({"all": flights.pop("all"), "legs": flights.pop("legs"), "world": json.loads((ROOT / "site" / "vendor" / "countries-110m.json").read_text(encoding="utf-8"))}, separators=(",", ":"))
         flights["more"] = hashlib.sha1(heavy.encode()).hexdigest()[:12]
         (ROOT / "site" / "flights-data.js").write_text(f'window.FLIGHTS_MORE={{"v":"{flights["more"]}","d":{heavy}}};', encoding="utf-8")
+    display_names(site, ref)
     html = prefill_text(html, site.get("hotlines") or {})
     html = (html.replace("/*__DATA__*/null", json.dumps(site, separators=(",", ":")))
                 .replace("/*__FLIGHTS__*/null", json.dumps(flights, separators=(",", ":")))
