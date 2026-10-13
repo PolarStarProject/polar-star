@@ -5,7 +5,7 @@
  "same_facility_rebooking_ignored": 57100,
  "overlap_in_two_places_at_once_kept": 33,
  "transfers": 1823111,
- "contacts_matched": 141,
+ "contacts_matched": 142,
  "contacts_area_code_in_other_state": [
   "Diamondback Correctional Facility (888) 351-4024 vs OK",
   "Dodge Detention Facility (312) 347-2400 vs WI",
@@ -15,7 +15,6 @@
  "contacts_not_matched": [
   "Cass County Detention Center",
   "Cass County Jail",
-  "ERO El Paso Camp East Montana",
   "FCI Atlanta",
   "FCI Leavenworth",
   "FCI Lewisburg",
