@@ -1,9 +1,10 @@
 {
- "started": "2026-10-13T15:35:20+00:00",
+ "started": "2026-10-13T21:26:15+00:00",
  "steps": {
+  "legalaid": "ok",
   "tests": "ok",
   "build": "ok"
  },
- "finished": "2026-10-13T15:36:32+00:00",
+ "finished": "2026-10-13T21:27:27+00:00",
  "page_rebuilt": true
 }
