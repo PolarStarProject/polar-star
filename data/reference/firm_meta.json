@@ -1,5 +1,5 @@
 {
- "read": "2026-10-12",
+ "read": "2026-10-14",
  "years": [
   2025,
   2026
@@ -45,6 +45,10 @@
    "clients": 6,
    "partial": false
   },
+  "Lionel \"Leo\" Aguirre": {
+   "clients": 1,
+   "partial": false
+  },
   "Miller Strategies, LLC": {
    "clients": 207,
    "partial": false
@@ -58,7 +62,7 @@
    "partial": false
   },
   "Squire Patton Boggs": {
-   "clients": 231,
+   "clients": 232,
    "partial": false
   },
   "State Federal Strategies": {

@@ -1,10 +1,10 @@
 {
- "started": "2026-10-13T21:26:15+00:00",
+ "started": "2026-10-14T00:18:03+00:00",
  "steps": {
-  "legalaid": "ok",
-  "tests": "ok",
+  "lobbying": "ok",
+  "firms": "ok",
   "build": "ok"
  },
- "finished": "2026-10-13T21:27:27+00:00",
+ "finished": "2026-10-14T00:40:28+00:00",
  "page_rebuilt": true
 }
