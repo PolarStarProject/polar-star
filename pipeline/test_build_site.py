@@ -346,7 +346,7 @@ def test_crcl_memo_names_give_a_date_and_a_kind_and_other_documents_are_skipped(
     assert c.parse({"id": 2, "slug": "2021-crli-00001-april-2023-records-_part5", "title": "x"}) is None and c.parse({"id": 3, "slug": "24-1399-crcl-x", "title": "x"}) is None
 
 
-def test_lobbying_takes_the_latest_version_per_quarter_and_hides_a_personal_registrant():
+def test_lobbying_takes_the_latest_version_per_quarter_and_names_a_personal_registrant():
     import money_lobbying as m
     F = lambda typ, reg, rid, client, period, posted, income=None, expenses=None, ents=(): {"filing_type": typ, "registrant": {"id": rid, "name": reg}, "client": {"id": 9, "name": client}, "filing_period": period,
                                                                                                  "dt_posted": posted, "income": income, "expenses": expenses, "lobbying_activities": [{"government_entities": [{"name": e} for e in ents]}]}
@@ -357,7 +357,7 @@ def test_lobbying_takes_the_latest_version_per_quarter_and_hides_a_personal_regi
           F("RR", "NEW FIRM LLC", 4, "THE GEO GROUP, INC.", "second_quarter", "2025-06-01"),                                                                                                 # a registration: no amount
           F("Q1", "TIBER CREEK GROUP", 5, "GEORGIALINK PUBLIC AFFAIRS GROUP, LLC", "first_quarter", "2025-04-16", income="50000.00")]                                                       # not the company
     own, out, firms, targets, last = m.summarise(fl, m.COMPANIES["GEO"][1], {"NAVIGATORS GLOBAL LLC": "Navigators Global LLC"})
-    assert (own, out, last) == (300000, 155000, "Q2") and firms == {"Navigators Global LLC": 140000, "A registrant filing under a personal name": 15000}
+    assert (own, out, last) == (300000, 155000, "Q2") and firms == {"Navigators Global LLC": 140000, "Jane Q. Public": 15000}      # a lobbyist paid by the company is on the trail: named as filed
     assert targets == {"Senate": 1, "House of Representatives": 1} and sum(firms.values()) == out
 
 

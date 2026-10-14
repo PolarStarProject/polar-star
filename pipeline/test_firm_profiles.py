@@ -1,5 +1,5 @@
 """Checks for reading a lobbying firm's clients, political money and former officials out of lda.gov records."""
-from firm_profiles import core, qname, recipient, clients_of, money_of, former_of
+from firm_profiles import core, qname, recipient, clients_of, money_of, former_of, mask_people, on_trail, person_key, PERSONAL
 
 KEY = core("Holland & Knight LLP")
 
@@ -59,8 +59,20 @@ def test_private_people_are_never_named():
     for n in ["MORGAN STANLEY", "PALANTIR TECHNOLOGIES, INC.", "DENVER WATER", "GILA RIVER INDIAN COMMUNITY", "STANLEY BLACK & DECKER", "HOUSTON AIRPORT SYSTEM", "SHERPA 6", "ISSUE ONE"]: assert not is_person(n), n
     assert is_person("NOBODY KNOWNNAME", "Individual")
     fl = [filing("SMITH, JOHN", 9, "first_quarter", "2026-04-10", "30000"), filing("DOE, JANE", 8, "first_quarter", "2026-04-10", "10000")]
-    c = clients_of(fl, KEY)
+    c = mask_people(clients_of(fl, KEY))
     assert all(k.startswith(PERSONAL) for k in c) and len(c) == 2 and not any("SMITH" in k or "DOE" in k for k in c)
+
+
+def test_a_person_on_the_money_trail_is_named_and_others_are_not():
+    fl = [filing("SMITH, JOHN", 9, "first_quarter", "2026-04-10", "30000", ents=["Homeland Security, Dept of (DHS)"]),     # lobbied Homeland Security
+          filing("DOE, JANE", 8, "first_quarter", "2026-04-10", "10000"),                                               # no tie
+          filing("ROE, RICHARD", 7, "first_quarter", "2026-04-10", "5000"),                                             # a named donor to a detention committee
+          filing("ACME CORP", 6, "first_quarter", "2026-04-10", "1000")]
+    c = mask_people(clients_of(fl, KEY), donors=frozenset({person_key("Richard Roe")}))
+    named = sorted(k for k in c if not k.startswith(PERSONAL))
+    assert named == ["ACME CORP", "ROE, RICHARD", "SMITH, JOHN"] and sum(k.startswith(PERSONAL) for k in c) == 1
+    assert all("person" not in v for v in c.values())
+    assert on_trail("Jane Doe", {"imm": "1"}) and not on_trail("Jane Doe", {"ice": "0", "dhs": "0", "imm": "0"})
 
 
 def test_recipient_last_first_and_acronyms():

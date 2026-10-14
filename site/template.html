@@ -2261,7 +2261,7 @@ const tpOpen = new Set(); let scSel = "drate";
 // A compact chart of something over time: lines, or columns side by side. One axis from zero. Tap or move over it to read any
 // period; the line under the chart always states the numbers, and "Show the numbers" holds the full table.
 // series: [[color 1-6, name, values]]; a null value is a gap.
-function tchart(labels, series, o){ o = o || {}; labels = labels.map(esLab); const t = T[lang], fmt = o.fmt || (v => v.toLocaleString()), NS = "http://www.w3.org/2000/svg", W = 340, H = 150, L = 4, R = 6, Tp = 14, B = 18, n = labels.length, col = o.type === "col";
+function tchart(labels, series, o){ o = o || {}; if (!labels.length) return el("p","muted",T[lang].more_wait);      /* data still loading (or none): no empty chart */ labels = labels.map(esLab); const t = T[lang], fmt = o.fmt || (v => v.toLocaleString()), NS = "http://www.w3.org/2000/svg", W = 340, H = 150, L = 4, R = 6, Tp = 14, B = 18, n = labels.length, col = o.type === "col";
   const sv = (tag, at, txt) => { const e = document.createElementNS(NS, tag); Object.entries(at || {}).forEach(([k, v]) => e.setAttribute(k, v)); if (txt != null) e.textContent = txt; return e; };
   const raw = Math.max(1e-9, ...series.flatMap(x => x[2].filter(v => v != null))), mag = Math.pow(10, Math.floor(Math.log10(raw))), mx = [1, 2, 2.5, 5, 10].map(k => k * mag).find(v => v >= raw);
   const step = (W - L - R) / (col ? n : Math.max(1, n - 1)), X = i => col ? L + step * (i + .5) : L + step * i, Y = v => Tp + (H - Tp - B) * (1 - v / mx);

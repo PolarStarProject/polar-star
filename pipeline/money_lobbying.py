@@ -7,7 +7,8 @@ For each company and each year from 2023: every quarterly report naming the comp
   outside_usd  what outside firms report being paid by it. The two can overlap: never add them.
 Writes data/reference/lobbying_by_year.csv, lobbying_firms.csv, lobbying_targets.csv, lobbying_former_officials.csv and
 lobbying_meta.json.
-A registrant that is a person, not a firm, is shown as "A registrant filing under a personal name": no private names.
+A registrant that is a person, not a firm (a lobbyist registered under their own name), is named as filed: being paid by a
+detention company puts them on the money trail, and the registration is a public federal filing. No addresses are kept.
 Lobbyists are named only in lobbying_former_officials.csv, and only those who disclosed a past government post: they are
 named for that public post, as they reported it.
 Nothing is written unless every request succeeds.
@@ -28,6 +29,13 @@ TARGETS = {"HOUSE OF REPRESENTATIVES": "House of Representatives", "SENATE": "Se
            "Labor, Dept of (DOL)": "Department of Labor", "Federal Aviation Administration (FAA)": "Federal Aviation Administration"}
 
 
+def person_name(raw):
+    """A lobbyist registered under their own name, as filed: 'SMITH, JOHN A.' -> 'John A. Smith'."""
+    n = re.sub(r"\s*\(.*?\)", "", raw or "").strip()
+    if "," in n: last, first = [x.strip() for x in n.split(",", 1)]; n = f"{first} {last}"
+    return " ".join(w if w.isupper() and len(w) <= 3 and "." not in w and w not in ("JR", "SR") else w.title() for w in n.split()) or "A registrant filing under a personal name"
+
+
 def norm(name): return re.sub(r"[^A-Z0-9]+", " ", re.sub(r"\(.*?\)", " ", name.upper())).strip()
 
 
@@ -44,7 +52,7 @@ def summarise(filings, pattern, old_names=None):
         if rx.search(f["registrant"]["name"]): own += int(float(f["expenses"] or 0) + float(f["income"] or 0))
         else:
             v = int(float(f["income"] or 0)); out += v; raw = f["registrant"]["name"]
-            name = (old_names or {}).get(norm(raw)) or (re.sub(r"\s*\(.*?\)", "", raw).title().replace(" Llc", " LLC").replace(" Llp", " LLP").replace(" Dc", " DC") if ORG.search(raw) else "A registrant filing under a personal name")
+            name = (old_names or {}).get(norm(raw)) or (re.sub(r"\s*\(.*?\)", "", raw).title().replace(" Llc", " LLC").replace(" Llp", " LLP").replace(" Dc", " DC") if ORG.search(raw) else person_name(raw))
             firms[name] = firms.get(name, 0) + v
         seen = {g["name"] for a in f.get("lobbying_activities") or [] for g in a.get("government_entities") or []}
         for n in seen: t = TARGETS.get(n, n); targets[t] = targets.get(t, 0) + 1
@@ -82,7 +90,7 @@ def former_officials(filings, pattern):
     for f in filings:
         if not re.search(pattern, ((f.get("client") or {}).get("name") or "").upper()): continue
         firm, y = (f.get("registrant") or {}).get("name") or "", f.get("filing_year")
-        if not ORG.search(firm): firm = "A registrant filing under a personal name"
+        if not ORG.search(firm): firm = person_name(firm)
         for a in f.get("lobbying_activities") or []:
             for l in a.get("lobbyists") or []:
                 cp = re.sub(r"\s+", " ", (l.get("covered_position") or "")).strip()

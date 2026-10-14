@@ -110,16 +110,48 @@ def clients_of(filings, key):
         c = f.get("client") or {}
         name = re.sub(r"\s+", " ", (c.get("name") or "")).strip()
         if not name: continue
-        if is_person(name, c.get("general_description") or ""): name = PERSONAL + "#" + hashlib.sha1(name.upper().encode()).hexdigest()[:8]     # one row per person, never named
         acts = f.get("lobbying_activities") or []
         ents = {g.get("name") or "" for a in acts for g in a.get("government_entities") or []}
         q = f"{f.get('filing_year')} {QUARTER.get(f.get('filing_period'), '')}".strip()
-        o = out.setdefault(name, {"usd": 0, "filings": 0, "ice": 0, "dhs": 0, "imm": 0, "first": q, "last": q})
+        o = out.setdefault(name, {"usd": 0, "filings": 0, "ice": 0, "dhs": 0, "imm": 0, "first": q, "last": q, "person": False})
+        o["person"] = o["person"] or is_person(name, c.get("general_description") or "")
         o["usd"] += int(float(f.get("income") or 0)); o["filings"] += 1
         o["ice"] += any("Immigration & Customs Enforcement" in e for e in ents)
         o["dhs"] += any(e.startswith("Homeland Security") for e in ents)
         o["imm"] += any((a.get("general_issue_code") or "") == "IMM" for a in acts)
         o["first"], o["last"] = min(o["first"], q), max(o["last"], q)
+    return out
+
+
+def person_key(name):
+    """'SMITH, JOHN A.' / 'John A. Smith Jr.' -> ('JOHN', 'SMITH'): first and last name, to match one record against another."""
+    n = re.sub(r"\s+", " ", (name or "")).strip().upper()
+    if "," in n: last, first = n.split(",", 1); n = f"{first} {last}"
+    w = [x for x in re.sub(r"[^A-Z' -]", " ", n).split() if x not in ("JR", "SR", "II", "III", "IV", "MR", "MS", "MRS", "DR") and len(x) > 1]
+    return (w[0], w[-1]) if len(w) >= 2 else None
+
+
+def trail_people(ref):
+    """People already on the detention money trail in other records: named donors to the detention companies' committees
+    (fec_donors.csv). A lobbying client who is one of them is named."""
+    p = Path(ref) / "fec_donors.csv"
+    if not p.exists(): return frozenset()
+    return frozenset(k for k in (person_key(r["name"]) for r in csv.DictReader(open(p, encoding="utf-8"), delimiter="|")) if k)
+
+
+def on_trail(name, v, donors=frozenset()):
+    """A private person is named only when their own records tie them to the detention money trail: a lobbying report of
+    theirs lists ICE or Homeland Security among the agencies lobbied or immigration among the issues, or they are a named
+    donor to a detention company's committee. Checked again on every refresh, so a person who becomes tied is named then."""
+    return bool(int(v.get("ice") or 0) or int(v.get("dhs") or 0) or int(v.get("imm") or 0) or person_key(name) in donors)
+
+
+def mask_people(clients, donors=frozenset()):
+    """{client: fields} -> the same, with each private person not on the trail replaced by an unnamed row (one per person)."""
+    out = {}
+    for name, v in clients.items():
+        if v.get("person") and not on_trail(name, v, donors): name = PERSONAL + "#" + hashlib.sha1(name.upper().encode()).hexdigest()[:8]
+        out[name] = {k: x for k, x in v.items() if k != "person"}
     return out
 
 
@@ -183,13 +215,15 @@ def main():
         return out, full
     firms = sorted({r["firm"] for r in csv.DictReader(open(REF / "lobbying_firms.csv", encoding="utf-8"), delimiter="|") if "personal name" not in r["firm"]})
     this = dt.date.today().year
+    donors = trail_people(REF)
     rows_c, rows_m, rows_f, meta = [], [], [], {"read": str(dt.date.today()), "years": [this - YEARS_BACK, this], "firms": {}}
     for firm in firms:
         key = core(firm); cl, mo, fo, partial = {}, {}, {}, False
         for y in range(this - YEARS_BACK, this + 1):
             fl, full = pages("filings", {"registrant_name": qname(firm), "filing_year": y}); partial |= not full
             for k, v in clients_of(fl, key).items():
-                o = cl.setdefault(k, {"usd": 0, "filings": 0, "ice": 0, "dhs": 0, "imm": 0, "first": v["first"], "last": v["last"]})
+                o = cl.setdefault(k, {"usd": 0, "filings": 0, "ice": 0, "dhs": 0, "imm": 0, "first": v["first"], "last": v["last"], "person": False})
+                o["person"] = o["person"] or v["person"]
                 for f in ("usd", "filings", "ice", "dhs", "imm"): o[f] += v[f]
                 o["first"], o["last"] = min(o["first"], v["first"]), max(o["last"], v["last"])
             for k, v in former_of(fl, key).items():
@@ -197,6 +231,7 @@ def main():
             rp, full = pages("contributions", {"registrant_name": qname(firm), "filing_year": y}); partial |= not full
             for k, (usd, n) in money_of(rp, key).items():
                 o = mo.setdefault(k, [0.0, 0]); o[0] += usd; o[1] += n
+        cl = mask_people(cl, donors)                                       # private people off the trail: counted, not named
         rows_c += [{"firm": firm, "client": k.split("#")[0] if k.startswith(PERSONAL) else k, **v} for k, v in sorted(cl.items(), key=lambda kv: -kv[1]["usd"])]
         rows_m += [{"firm": firm, "recipient": k[0], "kind": k[1], "usd": round(v[0]), "gifts": v[1]} for k, v in sorted(mo.items(), key=lambda kv: -kv[1][0])]
         rows_f += [{"firm": firm, "lobbyist": k, "covered_position": v} for k, v in sorted(fo.items())]

@@ -7,7 +7,7 @@ for _s in (sys.stdout, sys.stderr):
 if hasattr(time, "tzset"): time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too (Windows has no tzset; see utc_today)
 from pathlib import Path
 from flights import STAGING, km
-from firm_profiles import core, is_person, recipient, PERSONAL
+from firm_profiles import core, is_person, on_trail, trail_people, recipient, PERSONAL
 
 ROOT = Path(__file__).parent.parent
 NEAR_AIRPORT_KM = 5      # "next to" the airport
@@ -1368,12 +1368,12 @@ def firm_cards(ref):
     awards = {}
     for r in rd_pipe(ref / "ice_awards.csv"):
         k = core(r["recipient"]); awards[k] = awards.get(k, 0) + int(float(r.get("window_usd") or r["amount_usd"] or 0))      # what ICE committed to it in the contract window (ice_awards_meta.json)
-    pc = {}
+    pc, donors = {}, trail_people(ref)
     for r in rd_pipe(ref / "firm_clients.csv"):
         n = names.get(core(r["firm"]))
         if not n: continue
         o = out[n]
-        if r["client"] == PERSONAL or is_person(r["client"]):           # private people are counted, never named
+        if r["client"] == PERSONAL or (is_person(r["client"]) and not on_trail(r["client"], r, donors)):     # private people off the trail are counted, not named
             k = pc.setdefault(n, [PERSONAL, 0, 0, 0, 0, 0, r["first"], r["last"], 0, 0]); k[1] += int(r["usd"]); k[2] += int(r["filings"]); k[9] += 1
             k[6], k[7] = min(k[6], r["first"]), max(k[7], r["last"]); continue
         o["n_clients"] += 1
@@ -1667,6 +1667,12 @@ def main():
         site["legal_providers"] = prov
         lm = ref / "legal_aid_meta.json"                                  # which edition of the Justice Department list, and whether it was read in full
         if lm.exists(): site["legal_meta"] = {k: v for k, v in json.loads(lm.read_text(encoding="utf-8")).items() if k in ("edition", "read", "providers", "full")}
+        if site.get("legal_meta", {}).get("full"):                       # the courts each state's section lists, from the list itself, so it never falls behind
+            secs = {}
+            for st, L in prov.items():
+                for c in (x for p in L for x in p[4].split("/")):
+                    if c and "juvenile" not in c and c not in secs.setdefault(st, []): secs[st].append(c)
+            site["legal_aid"] = {st: "; ".join(v) for st, v in secs.items()}
     if (ref / "oversight_visits.csv").exists():
         n = 0
         for f in site["facilities"].values(): f.pop("visits", None)

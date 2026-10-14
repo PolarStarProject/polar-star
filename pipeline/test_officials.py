@@ -59,7 +59,7 @@ def test_former_officials_from_filings():
     out = lob.former_officials([f(2024, "Chief of Staff, ICE"), f(2025, "Chief of Staff, ICE"), f(2025, "x", client="OTHER CO")], r"\bGEO GROUP\b")
     assert out == {("Jane Roe", "Chief of Staff, ICE", "Acme Strategies LLC"): [2024, 2025]}             # no "N/A" rows; other clients ignored
     out = lob.former_officials([f(2025, "Staff, House", firm="Jane Roe")], r"\bGEO GROUP\b")
-    assert list(out)[0][2] == "A registrant filing under a personal name"
+    assert list(out)[0][2] == "Jane Roe"                                                                 # a lobbyist registered under their own name, as filed
 
 
 def test_page_has_the_new_sections():
