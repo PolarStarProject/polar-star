@@ -9,7 +9,7 @@ may fail (a site is down, a server is blocked): its data stays as it was, the fa
 data/refresh_status.json, and the page footer flags that source once it is older than it should be.
 The page is rebuilt only after every test passes, and the previous page is put back if the build fails.
 """
-import datetime as dt, json, shutil, subprocess, sys
+import datetime as dt, json, os, shutil, signal, subprocess, sys, threading
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -63,6 +63,12 @@ STEPS = [  # name, command after "python", required
     ("build",      ["pipeline/build_site.py"], True),
 ]
 
+# Longest a step may run before it is stopped (minutes), so one slow or stuck source cannot use up the whole run and keep the
+# page from being rebuilt. A stopped step counts as failed: its data is left as it was and it is tried again next week.
+LIMIT = 40
+LIMITS = {"records": 60, "transfers": 60, "fec": 90, "jfc": 60, "donors": 60, "membercom": 60, "topdonors": 60, "countrypacs": 60,
+          "firmbase": 60, "flights": 60, "tests": 30, "build": 20}
+
 ON_REQUEST = {"probe"}   # steps that run only when named in --only
 MONTHLY = set()          # steps that run only in the first week of a month (none now: the audit check is weekly again)
 
@@ -86,12 +92,17 @@ def main(argv):
         if name in MONTHLY and not arg("--only") and dt.date.today().day > 7: print(f"=== {name} === skipped: runs in the first week of each month", flush=True); status["steps"][name] = "not due"; continue
         if name == "build" and page.exists(): shutil.copy2(page, keep)
         print(f"=== {name} ===", flush=True)
-        proc = subprocess.Popen([sys.executable, "-u"] + cmd, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors="replace")
+        proc = subprocess.Popen([sys.executable, "-u"] + cmd, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors="replace",
+                                start_new_session=True)        # its own process group, so stopping it also stops any browser it started
+        limit, stopped = LIMITS.get(name, LIMIT), []
+        timer = threading.Timer(limit * 60, lambda: (stopped.append(1), os.killpg(proc.pid, signal.SIGKILL)))
+        timer.daemon = True; timer.start()
         tail = []
         for line in proc.stdout:                                     # shown live, and the last lines are kept so a failure explains itself in refresh_status.json
             print(line, end="", flush=True); tail = (tail + [line.rstrip()])[-6:]
-        code = proc.wait()
-        status["steps"][name] = "ok" if code == 0 else "failed"
+        code = proc.wait(); timer.cancel()
+        if stopped: code = code or 1; tail.append(f"stopped after {limit} minutes")
+        status["steps"][name] = "ok" if code == 0 else ("timed out" if stopped else "failed")
         if code != 0: status.setdefault("errors", {})[name] = " / ".join(t for t in tail if t)[-500:]
         if code != 0:
             print(f"{name} FAILED (exit {code})" + ("; stopping, page left as it was" if required else "; its data is left as it was"), flush=True)

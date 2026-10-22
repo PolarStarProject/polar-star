@@ -23,14 +23,14 @@ concurrency:
   cancel-in-progress: false
 jobs:
   refresh:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     timeout-minutes: 340
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
@@ -38,6 +38,11 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - run: sudo apt-get install -y tesseract-ocr poppler-utils
       - name: Refresh
+        id: refresh
+        # Each step has its own time limit (refresh_all.py); this is a backstop. If the refresh is cut off, the run goes on to
+        # rebuild and publish the page from whatever data it has, instead of being cancelled before it publishes.
+        timeout-minutes: 290
+        continue-on-error: true
         env:
           FEC_API_KEY: ${{ secrets.FEC_API_KEY }}      # optional: without it the political committee figures are left as they are
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
@@ -48,6 +53,9 @@ jobs:
           if [ -n "$ONLY" ]; then args="$args --only $ONLY"; fi
           if [ -n "$SKIP" ]; then args="$args --skip $SKIP"; fi
           xvfb-run -a python pipeline/refresh_all.py $args
+      - name: Rebuild the page if the refresh was cut off
+        if: steps.refresh.outcome != 'success'
+        run: xvfb-run -a python pipeline/refresh_all.py --only tests,build
       - name: Save refreshed data to the repository
         if: always()
         run: |
