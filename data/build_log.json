@@ -5,27 +5,14 @@
  "same_facility_rebooking_ignored": 57100,
  "overlap_in_two_places_at_once_kept": 33,
  "transfers": 1823111,
- "contacts_matched": 142,
+ "contacts_matched": 156,
  "contacts_area_code_in_other_state": [
-  "Diamondback Correctional Facility (888) 351-4024 vs OK",
   "Dodge Detention Facility (312) 347-2400 vs WI",
   "Monroe County Jail (313) 771-6601 vs FL",
   "Naval Station Guantanamo Bay (JTF Camp Six and Migrant Ops Center Main A) (954) 236-4900 vs CU"
  ],
  "contacts_not_matched": [
-  "Cass County Detention Center",
-  "Cass County Jail",
-  "FCI Atlanta",
-  "FCI Leavenworth",
-  "FCI Lewisburg",
-  "FDC Miami",
-  "FDC Philadelphia",
-  "Folkston ICE Processing Center (Annex)",
-  "Folkston ICE Processing Center (Main)",
-  "Orange County Jail",
-  "Phelps County Jail",
-  "Phelps County Jail",
-  "Polk County Jail"
+  "Cass County Detention Center"
  ],
  "facilities_with_field_office_phone": 508,
  "facilities_with_no_phone_at_all": 118,

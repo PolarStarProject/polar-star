@@ -1,9 +1,11 @@
 {
- "started": "2026-10-22T05:16:21+00:00",
+ "started": "2026-10-22T08:49:24+00:00",
  "steps": {
+  "records": "ok",
+  "transfers": "ok",
   "tests": "ok",
   "build": "ok"
  },
- "finished": "2026-10-22T05:17:22+00:00",
+ "finished": "2026-10-22T08:52:57+00:00",
  "page_rebuilt": true
 }
