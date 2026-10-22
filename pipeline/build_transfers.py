@@ -186,6 +186,8 @@ def norm_name(x):
     import re
     x = re.sub(r"\(.*?\)", " ", str(x).lower())
     x = re.sub(r"[^a-z0-9 ]", " ", x.replace("\u2019", "").replace("'", ""))
+    x = re.sub(r"\bfci\b", "federal correctional institution", x)          # ICE's contact pages abbreviate federal prisons
+    x = re.sub(r"\bfdc\b", "federal detention center", x)
     return " ".join(w for w in x.split() if w not in {"the", "ice", "corecivic"})
 
 
@@ -205,32 +207,58 @@ def area_state(phone):
     return None
 
 
+def toll_free(phone):
+    """A US toll-free number (800, 833, 844, 855, 866, 877, 888): it belongs to no state, so the state check cannot apply."""
+    import re
+    d = re.sub(r"\D", "", str(phone))
+    if len(d) == 11 and d[0] == "1": d = d[1:]
+    return len(d) == 10 and d[:3] in {"800", "833", "844", "855", "866", "877", "888"}
+
+
 def attach_contacts(facs, contacts, log, aliases=None):
-    """Attach ICE's published phone number to a facility only on a confident, unambiguous name match.
+    """Attach ICE's published phone number to a facility only on a confident, unambiguous match.
     A wrong number sends a family to the wrong place, so anything doubtful gets no number.
     aliases: {other name: facility code} from facility_name_aliases.csv, kept by hand, for sites whose name on ICE's
-    contact page differs from the name in ICE's records (e.g. "ERO El Paso Camp East Montana")."""
+    contact page differs from the name in ICE's records (e.g. "ERO El Paso Camp East Montana"). An alias written exactly as
+    ICE's contact page writes the name, brackets included, is matched first: "Folkston ICE Processing Center (Main)" and
+    "(Annex)" are two sites whose names differ only in the brackets.
+    Where one name fits facilities in several states ("Phelps County Jail" in Missouri and in Nebraska), the state the
+    number's area code belongs to decides, and only if exactly one of them is in that state."""
     import difflib
-    by_name = {}
+    by_name, exact = {}, {}
     for code, f in facs.items():
         by_name.setdefault(norm_name(f["name"]), []).append(code)
     for alias, code in (aliases or {}).items():                      # a hand-kept other name, only for a facility that exists
-        if code in facs and norm_name(alias) not in by_name: by_name[norm_name(alias)] = [code]
-    matched, skipped, wrong_state = 0, [], []
-    for _, c in contacts.iterrows():
-        if not isinstance(c["phone"], str) or not c["phone"].strip(): continue
+        if code not in facs: continue
+        exact.setdefault(" ".join(str(alias).upper().split()), code)
+        if norm_name(alias) not in by_name: by_name[norm_name(alias)] = [code]
+    rows = [c for _, c in contacts.iterrows() if isinstance(c["phone"], str) and c["phone"].strip()]
+    matched, skipped, wrong_state, claimed = 0, [], [], {}
+    picks = []
+    for c in rows:
+        raw = " ".join(str(c["name"]).upper().split())
+        if raw in exact:
+            picks.append((c, exact[raw])); continue
         key = norm_name(c["name"])
         hit = by_name.get(key)
         if hit is None:
             close = difflib.get_close_matches(key, list(by_name), n=2, cutoff=0.9)
             hit = by_name[close[0]] if len(close) == 1 else None
-        dup_in_contacts = (contacts["name"].map(norm_name) == key).sum() > 1
-        if hit is None or len(hit) != 1 or dup_in_contacts:
+        if not hit: skipped.append(c["name"]); continue
+        st = area_state(c["phone"])
+        if len(hit) > 1:                                             # same name in several places: the area code must pick one
+            hit = [h for h in hit if facs[h].get("state") == st]
+        if len(hit) != 1: skipped.append(c["name"]); continue
+        picks.append((c, hit[0]))
+    for c, code in picks: claimed.setdefault(code, set()).add(c["phone"].strip())
+    for c, code in picks:
+        if len(claimed[code]) > 1:                                   # two different numbers point at one facility: give it none
             skipped.append(c["name"]); continue
-        if area_state(c["phone"]) != facs[hit[0]].get("state"):      # the number's area code must sit in the facility's state
-            wrong_state.append(f'{c["name"]} {c["phone"]} vs {facs[hit[0]].get("state")}'); continue
-        facs[hit[0]]["phone"] = c["phone"].strip(); matched += 1
-        if isinstance(c.get("source"), str): facs[hit[0]]["ice_page"] = c["source"]      # ICE's own page: visiting hours, mail, money
+        if area_state(c["phone"]) != facs[code].get("state") and not toll_free(c["phone"]):   # the area code must sit in the facility's state (a toll-free number has none)
+            wrong_state.append(f'{c["name"]} {c["phone"]} vs {facs[code].get("state")}'); continue
+        if facs[code].get("phone") == c["phone"].strip(): continue   # the same number listed twice
+        facs[code]["phone"] = c["phone"].strip(); matched += 1
+        if isinstance(c.get("source"), str): facs[code]["ice_page"] = c["source"]      # ICE's own page: visiting hours, mail, money
     log["contacts_matched"] = matched
     log["contacts_area_code_in_other_state"] = wrong_state
     log["contacts_not_matched"] = sorted(skipped)

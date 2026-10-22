@@ -115,3 +115,65 @@ def test_alias_to_missing_facility_or_wrong_state_gets_no_number():
     assert "phone" not in facs["EROFCB"]
     attach_contacts(facs, contacts, log, {"ERO EL PASO CAMP EAST MONTANA": "EROFCB"}) # area code is Texas, facility says NM
     assert "phone" not in facs["EROFCB"] and log["contacts_area_code_in_other_state"]
+
+
+def test_same_name_in_two_states_decided_by_area_code():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"PHELPMO": {"name": "Phelps County Jail", "state": "MO"}, "PHELPNE": {"name": "Phelps County Jail", "state": "NE"},
+            "POLKJFL": {"name": "Polk County Jail", "state": "FL"}, "POLKJIA": {"name": "Polk County Jail", "state": "IA"}}
+    contacts = pd.DataFrame([{"name": "Phelps County Jail", "phone": "(308) 995-5692", "source": ""},
+                             {"name": "Phelps County Jail", "phone": "(573) 426-3860", "source": ""},
+                             {"name": "Polk County Jail", "phone": "(515) 323-5400", "source": ""}])
+    log = {}
+    attach_contacts(facs, contacts, log)
+    assert facs["PHELPNE"]["phone"] == "(308) 995-5692" and facs["PHELPMO"]["phone"] == "(573) 426-3860"
+    assert facs["POLKJIA"]["phone"] == "(515) 323-5400" and "phone" not in facs["POLKJFL"]
+
+
+def test_two_same_named_places_in_one_state_get_no_number():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"A": {"name": "Cass County Jail", "state": "TX"}, "B": {"name": "Cass County Jail", "state": "TX"}}
+    log = {}
+    attach_contacts(facs, pd.DataFrame([{"name": "Cass County Jail", "phone": "(903) 756-7511", "source": ""}]), log)
+    assert "phone" not in facs["A"] and "phone" not in facs["B"] and log["contacts_not_matched"] == ["Cass County Jail"]
+
+
+def test_two_numbers_for_one_facility_give_none():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"X": {"name": "Lake County Jail", "state": "FL"}}
+    contacts = pd.DataFrame([{"name": "Lake County Jail", "phone": "(352) 742-4000", "source": ""},
+                             {"name": "Lake County Jail", "phone": "(352) 343-2101", "source": ""}])
+    log = {}
+    attach_contacts(facs, contacts, log)
+    assert "phone" not in facs["X"]
+
+
+def test_bracketed_alias_and_federal_abbreviations():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"FIPCMGA": {"name": "Folkston ICE Processing Center (Main)", "state": "GA"},
+            "FIPCAGA": {"name": "Folkston ICE Processing Center (Annex)", "state": "GA"},
+            "BOPMIM": {"name": "Federal Detention Center Miami", "state": "FL"}}
+    contacts = pd.DataFrame([{"name": "Folkston ICE Processing Center (Main)", "phone": "(912) 496-6905", "source": ""},
+                             {"name": "Folkston ICE Processing Center (Annex)", "phone": "(912) 496-6905", "source": ""},
+                             {"name": "FDC Miami", "phone": "(305) 577-0010", "source": ""}])
+    log = {}
+    attach_contacts(facs, contacts, log)                             # without the aliases the two Folkston names look alike
+    assert "phone" not in facs["FIPCMGA"] and "phone" not in facs["FIPCAGA"] and facs["BOPMIM"]["phone"] == "(305) 577-0010"
+    attach_contacts(facs, contacts, log, {"FOLKSTON ICE PROCESSING CENTER (MAIN)": "FIPCMGA", "FOLKSTON ICE PROCESSING CENTER (ANNEX)": "FIPCAGA"})
+    assert facs["FIPCMGA"]["phone"] == "(912) 496-6905" and facs["FIPCAGA"]["phone"] == "(912) 496-6905"
+
+
+def test_toll_free_number_passes_the_state_check_only_on_a_unique_name():
+    import pandas as pd
+    from build_transfers import attach_contacts
+    facs = {"OKDBACK": {"name": "Diamondback Correctional Facility", "state": "OK"},
+            "A": {"name": "Cass County Jail", "state": "ND"}, "B": {"name": "Cass County Jail", "state": "NE"}}
+    contacts = pd.DataFrame([{"name": "Diamondback Correctional Facility", "phone": "(888) 351-4024", "source": ""},
+                             {"name": "Cass County Jail", "phone": "(800) 555-0100", "source": ""}])
+    log = {}
+    attach_contacts(facs, contacts, log)
+    assert facs["OKDBACK"]["phone"] == "(888) 351-4024" and "phone" not in facs["A"] and "phone" not in facs["B"]
