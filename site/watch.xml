@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Polar Star Project: alerts from the records</title>
 <id>tag:polar-star,2026:watch</id>
-<updated>2026-10-14T00:00:00Z</updated>
+<updated>2026-10-22T00:00:00Z</updated>
 <link rel="alternate" href="./"/>
 <author><name>Polar Star Project</name></author>
 <entry>
@@ -10,7 +10,7 @@
 <id>tag:polar-star,2026:watch/ice-detention-stats/2026-10-09</id>
 <updated>2026-10-09T00:00:00Z</updated>
 <link href="./"/>
-<summary>ICE's last detention statistics file is dated July 20, 2026: 84 days with no new file when ICE's page was checked on October 12, 2026. Congress asked for this file every two weeks, so about 6 updates have been missed. The requirement was added in the fiscal 2020 DHS appropriations law; reporting has noted debate over whether it still binds ICE.</summary>
+<summary>ICE's last detention statistics file is dated July 20, 2026: 91 days with no new file when ICE's page was checked on October 19, 2026. Congress asked for this file every two weeks, so about 6 updates have been missed. The requirement was added in the fiscal 2020 DHS appropriations law; reporting has noted debate over whether it still binds ICE.</summary>
 </entry>
 <entry>
 <title>Share of people in ICE detention held more than a year</title>
