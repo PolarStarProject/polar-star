@@ -1611,9 +1611,9 @@ def social_list(ref):
     meta = json.loads((ref / "social_meta.json").read_text(encoding="utf-8")) if (ref / "social_meta.json").exists() else {}
     return {"checked": meta.get("checked", ""), "orgs": sorted(orgs.values(), key=lambda o: (o[2], o[0].lower()))}
 
-DISPUTE_KINDS = {"lawsuit", "law", "order", "charge"}
+DISPUTE_KINDS = {"lawsuit", "law", "order", "charge", "investigation"}
 DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url"]
-US_STATE_CODES = set("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
+US_STATE_CODES = set("US AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
 
 def disputes_list(ref, facilities, today=None):
     """Formal disputes on public record between ICE/DHS/DOJ and state or local governments, researched by hand
