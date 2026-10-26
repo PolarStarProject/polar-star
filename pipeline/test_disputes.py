@@ -138,3 +138,12 @@ def test_governor_change_needs_a_terms_line(tmp):
     assert governor_changes(tmp, {"NJ": "Mikie Sherrill", "VA": "Glenn Youngkin"}, {"NJ": [["Phil Murphy", "D", "2018-01-16", "2026-01-20"]]}) == [("NJ", "Phil Murphy", "Mikie Sherrill")]
     assert "NJ|Mikie Sherrill" in (tmp / "governors_known.csv").read_text(encoding="utf-8")
     assert governor_changes(tmp, {"NJ": "Mikie Sherrill", "VA": "Glenn Youngkin"}, {}) == []      # clean once recorded
+
+
+def test_disputes_reach_the_feed(tmp):
+    import watch
+    (tmp / "site").mkdir(); (tmp / "site" / "watch.xml").write_text('<feed xmlns="http://www.w3.org/2005/Atom">\n<title>x</title>\n</feed>\n', encoding="utf-8")
+    d = ["2025-05-09", "NJ", "Newark", "charge", "federal", "", "", "Federal officers arrested the mayor & charged him.", "", "Dropped.", "", "2025-05-19", [], "https://x/1", "", "", [], [], True]
+    watch.add_disputes(tmp, [d])
+    s = (tmp / "site" / "watch.xml").read_text(encoding="utf-8")
+    assert "<title>Criminal charge, Newark, NJ (2025-05-09)</title>" in s and "mayor &amp; charged" in s and "/2025-05-19</id>" in s and s.rstrip().endswith("</feed>")
