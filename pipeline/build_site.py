@@ -1611,6 +1611,68 @@ def social_list(ref):
     meta = json.loads((ref / "social_meta.json").read_text(encoding="utf-8")) if (ref / "social_meta.json").exists() else {}
     return {"checked": meta.get("checked", ""), "orgs": sorted(orgs.values(), key=lambda o: (o[2], o[0].lower()))}
 
+DISPUTE_KINDS = {"lawsuit", "law", "order", "charge"}
+DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url"]
+US_STATE_CODES = set("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
+
+def disputes_list(ref, facilities, today=None):
+    """Formal disputes on public record between ICE/DHS/DOJ and state or local governments, researched by hand
+    (data/reference/ice_local_disputes.csv; rules in the project spec). Rows are rejected loudly rather than shown wrong:
+    [date, state, place, kind, started_by, federal_party, local_party, what_en, what_es, status_en, status_es, status_date, [facility codes], source_url, status_url]"""
+    f = Path(ref) / "ice_local_disputes.csv"
+    if not f.exists(): return []
+    rows = list(csv.DictReader(open(f, encoding="utf-8"), delimiter="|"))
+    if rows and list(rows[0].keys()) != DISPUTE_COLS: raise ValueError(f"ice_local_disputes.csv: columns must be {DISPUTE_COLS}")
+    today = today or dt.date.today().isoformat(); seen = set(); out = []
+    iso = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    for r in rows:
+        r = {k: (v or "").strip() for k, v in r.items()}; i = r["id"]
+        def bad(why): raise ValueError(f"ice_local_disputes.csv row {i or '?'}: {why}")
+        if not i or i in seen: bad("missing or repeated id")
+        seen.add(i)
+        for k in ("date", "state", "place", "kind", "started_by", "federal_party", "local_party", "what_en", "what_es", "source_url"):
+            if not r[k]: bad(f"{k} is empty")
+        if not iso.match(r["date"]) or r["date"] > today: bad(f"bad or future date {r['date']!r}")
+        if r["state"] not in US_STATE_CODES: bad(f"unknown state {r['state']!r}")
+        if r["kind"] not in DISPUTE_KINDS: bad(f"kind must be one of {sorted(DISPUTE_KINDS)}")
+        if r["started_by"] not in ("federal", "state_local"): bad("started_by must be federal or state_local")
+        for k in ("source_url", "status_url"):
+            if r[k] and not r[k].startswith("https://"): bad(f"{k} must be an https link")
+        if bool(r["status_en"]) != bool(r["status_es"]): bad("status needs both English and Spanish")
+        if r["status_en"] and not (iso.match(r["status_date"]) and r["status_url"]): bad("a status needs its date and its own source")
+        if r["status_date"] and (r["status_date"] < r["date"] or r["status_date"] > today): bad("status date before the dispute or in the future")
+        offs = [o.strip() for o in r["officials"].split(";") if o.strip()]       # "Name (role in English / in Spanish)": elected officials and political appointees only
+        if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", o) for o in offs): bad("officials must be written Name (role / rol), separated by ;")
+        codes = [c for c in r["facility_codes"].split(";") if c.strip()]
+        unk = [c for c in codes if c not in facilities]
+        if unk: bad(f"unknown facility codes {unk}")
+        out.append([r["date"], r["state"], r["place"], r["kind"], r["started_by"], r["federal_party"], r["local_party"], r["what_en"], r["what_es"], r["status_en"], r["status_es"], r["status_date"], codes, r["source_url"], r["status_url"]])
+    ck = Path(ref) / "disputes_checked.csv"                       # made by pipeline/disputes_check.py; a failed link is flagged, not hidden
+    fail = {r["url"]: r["checked"] for r in csv.DictReader(open(ck, encoding="utf-8"), delimiter="|") if r["ok"] == "0"} if ck.exists() else {}
+    laws = {}
+    lf = Path(ref) / "disputed_laws.csv"                            # the state or local law at the center of each dispute, and who wrote it; by hand
+    if lf.exists():
+        for r in csv.DictReader(open(lf, encoding="utf-8"), delimiter="|"):
+            r = {k: (v or "").strip() for k, v in r.items()}
+            if r["dispute_id"] not in seen: raise ValueError(f"disputed_laws.csv: unknown dispute {r['dispute_id']!r}")
+            if not (r["law_en"] and r["law_es"] and r["law_url"].startswith("https://")): raise ValueError(f"disputed_laws.csv: {r['dispute_id']} needs a name in both languages and an https source")
+            au = [x.strip() for x in r["authors"].split(";") if x.strip()]
+            if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", x) for x in au): raise ValueError(f"disputed_laws.csv: {r['dispute_id']}: authors must be written Name (role / rol)")
+            laws.setdefault(r["dispute_id"], []).append([r["law_en"], r["law_es"], r["law_url"], [[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in au]])
+    for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], []))
+    return sorted(out, key=lambda x: x[0], reverse=True)
+
+def governor_terms(ref):
+    """Governors who left office since January 2025, kept by hand with a source each (data/reference/governor_terms.csv),
+    so an entry can name the governor at the time when it differs from the governor now: {state: [[name, party, start, end]]}."""
+    f = Path(ref) / "governor_terms.csv"
+    if not f.exists(): return {}
+    out = {}
+    for r in csv.DictReader(open(f, encoding="utf-8"), delimiter="|"):
+        if r["state"] not in US_STATE_CODES or not (r["start"] < r["end"]) or not r["source"].startswith("https://"): raise ValueError(f"governor_terms.csv: bad row {r}")
+        out.setdefault(r["state"], []).append([r["name"], r["party"], r["start"], r["end"]])
+    return out
+
 def future_dates(ref, today):
     """Every "read"/"checked"/"as_of" date in the reference metadata that is later than the build date (a clock mix-up)."""
     bad = []
@@ -1960,6 +2022,12 @@ def main():
         (ROOT / "data" / "watch" / "officials_candidates.json").write_text(json.dumps(fl, indent=1), encoding="utf-8")
         site["pol"]["flags"] = {"min": rules.get("officials_min_usd", 0), **({"list": fl} if rules.get("officials_published") else {"pending": len(fl)})}
     site["social"] = social_list(ref)
+    site["disputes"] = disputes_list(ref, site["facilities"]); site["gov_terms"] = governor_terms(ref)
+    if (ref / "federal_law_sponsors.csv").exists():                  # who sponsored the enforcement laws on Politicians; by hand, from congress.gov
+        fs = list(csv.DictReader(open(ref / "federal_law_sponsors.csv", encoding="utf-8"), delimiter="|"))
+        laws = {v[4] for v in (site.get("pol") or {}).get("votes", [])}
+        if laws and any(r["law"] not in laws for r in fs): raise ValueError("federal_law_sponsors.csv: a law that is not among the votes on Politicians")
+        site["law_sponsors"] = [[r["law"], r["bill"], r["sponsor"], r["chamber"], r["state"], r["url"]] for r in fs]
     site["hotlines"] = hotlines(ref)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
