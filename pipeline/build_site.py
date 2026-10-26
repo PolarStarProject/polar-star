@@ -1613,6 +1613,7 @@ def social_list(ref):
 
 DISPUTE_KINDS = {"lawsuit", "law", "order", "charge", "investigation"}
 DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url"]
+LAWCOM = re.compile(r"^(House|Senate) Committee on (the Judiciary|Homeland Security)(?!.*Appropriations)")   # the committees that write immigration law
 US_STATE_CODES = set("US AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
 
 def disputes_list(ref, facilities, today=None):
@@ -1661,6 +1662,74 @@ def disputes_list(ref, facilities, today=None):
             laws.setdefault(r["dispute_id"], []).append([r["law_en"], r["law_es"], r["law_url"], [[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in au]])
     for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], []))
     return sorted(out, key=lambda x: x[0], reverse=True)
+
+def _pnorm(s):
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", s or "") if not unicodedata.combining(c)).lower()
+
+def person_key(s):
+    """First and last name only, lower case, no accents: filings drop middle names, initials and nicknames ("Chuy")."""
+    w = re.sub(r"\([^)]*\)|\"[^\"]*\"", " ", _pnorm(s))
+    w = re.sub(r",?\s+(jr|sr|ii|iii|iv)\.?\s*$", "", w.strip())
+    w = [x for x in re.sub(r"[^a-z\s'-]", " ", w).split() if len(x) > 1]
+    return f"{w[0]} {w[-1]}" if len(w) > 1 else ""
+
+def staff_hit(posts, first, last):
+    """A lobbyist's reported past post names this official by first and last name ("Chief of Staff, Rep. Vince Fong").
+    Surname-only mentions ("Rep Gallego") are not enough: two members can share a surname. Interns are not counted."""
+    pat = re.compile(rf"\b(rep|sen|senator|representative|congressman|congresswoman|gov|governor|mayor)\.?\s+{re.escape(first)}\s+([a-z]\.?\s+)?{re.escape(last)}\b")
+    return any(pat.search(_pnorm(seg)) and "intern" not in seg.lower() for seg in (posts or "").split(";"))
+
+def vote_summary(code):
+    c = re.sub(r"[-PX]", "", code or ""); y, n = c.count("Y"), c.count("N")
+    return None if not c else ["for" if not n else "ag" if not y else "mix", y, n]
+
+def dispute_people(site):
+    """Everyone the disputes tab names, checked against the rest of the page's records. Worked out here, not in the
+    browser, so it is tested and can be read in the page data (DATA.dispute_people): {name as shown: {bg, v:[for|ag|mix, yes, no], t:[[code, detail]]}}.
+    dm detention-company committee or staff money; jf joint fundraiser that received it; lf political money from a lobbying
+    firm hired by a detention or ICE flight company; fs former staff now lobby at such a firm; ov the overlap rule on
+    Politicians; re refused entry to an ICE facility; vi published oversight visits."""
+    D, P = site.get("disputes") or [], site.get("pol") or {}
+    if not D: return {}
+    M, C = P.get("m") or [], P.get("c") or {}
+    flagged = {f["bg"] for f in ((P.get("flags") or {}).get("list") or [])}
+    names = set()
+    for d in D:
+        names.update(o[0] for o in d[16]); names.update(a[0] for l in d[17] for a in l[3])
+        names.update(g[1] for g in (P.get("gov") or []) if g[0] == d[1])
+        names.update(t[0] for t in (site.get("gov_terms") or {}).get(d[1], []))
+        names.update(m[1] for m in M if m[4] == d[1] and m[11] and any(LAWCOM.match(c) for c in (m[7] or [])))
+    names.update(s[2] for s in site.get("law_sponsors") or [])
+    firm_money, staff = {}, []
+    for fn, c in ((site.get("firms") or {}).get("cards") or {}).items():
+        for n, k, u, g in c.get("money") or []:
+            key = person_key(re.sub(r"\s*\([A-Z]{2}(-\d+)?\)\s*$", "", n))
+            if key: firm_money.setdefault(key, []).append([fn, u])
+        staff += [[fn, posts, cos] for lob, posts, cos in c.get("former") or []]
+    visits = (site.get("statements_visits") or []) + [r for r in site.get("statements") or [] if r[2] == "visit"]
+    def has(s, key): return f" {key} " in " " + re.sub(r"\s+", " ", re.sub(r"[^a-z\s'-]", " ", _pnorm(s))) + " "
+    out = {}
+    for nm in sorted(names):
+        key = person_key(nm)
+        if not key: continue
+        first, last = key.split()
+        m = next((m for m in M if _pnorm(m[1]) == _pnorm(nm) or _pnorm(re.sub(r'\s*"[^"]*"', "", m[1])) == _pnorm(nm)), None)
+        bg = m[0] if m else ""; t = []
+        if m and ((m[9] or 0) + (m[10] or 0) > 0 or (m[13] or 0) > 0): t.append(["dm", [(m[9] or 0) + (m[10] or 0), m[13] or 0]])
+        if bg and (C.get(bg) or {}).get("jfc"): t.append(["jf", [j[0] for j in C[bg]["jfc"]]])
+        if key in firm_money: t.append(["lf", firm_money[key]])
+        fs = []
+        for fn, posts, cos in staff:
+            if staff_hit(posts, first, last) and [fn, cos] not in fs: fs.append([fn, cos])
+        if fs: t.append(["fs", fs])
+        if bg in flagged: t.append(["ov", 1])
+        dn = [[r[1], r[0]] for r in site.get("denied") or [] if has(r[2], key)]
+        if dn: t.append(["re", dn])
+        vs = sum(1 for r in visits if has(r[1], key))
+        if vs: t.append(["vi", vs])
+        out[nm] = {"bg": bg, "v": vote_summary(m[8]) if m else None, "t": t}
+    return out
 
 def governor_terms(ref):
     """Governors who left office since January 2025, kept by hand with a source each (data/reference/governor_terms.csv),
@@ -2035,6 +2104,7 @@ def main():
     if fc:
         firm_members(fc["pat"], (site.get("pol") or {}).get("m") or []); fc["pat"].pop("_money", None)
         site["firms"] = fc
+    site["dispute_people"] = dispute_people(site)
     hp = ROOT / "data" / "headline_history.json"                   # what the headline counts were at each update, so the page can say what changed
     hist, site["changes"] = record_changes(json.loads(hp.read_text(encoding="utf-8")) if hp.exists() else [], today, headline(site))
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")

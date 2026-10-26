@@ -87,3 +87,42 @@ def test_link_check_flags_but_keeps(tmp):
     assert links([GOOD, {**GOOD, "status_url": ""}]) == ["https://www.courtlistener.com/y", "https://www.justice.gov/x"]
     write(tmp, [GOOD]); (tmp / "disputes_checked.csv").write_text("url|ok|checked|last_ok\nhttps://www.justice.gov/x|0|2026-10-20|\n", encoding="utf-8")
     assert disputes_list(tmp, FAC, today="2026-10-25")[0][15] == "2026-10-20"
+
+
+def test_person_key_drops_middle_names_nicknames_and_accents():
+    from build_site import person_key
+    assert person_key('Jesús G. "Chuy" García') == person_key("Jesús García") == "jesus garcia"
+    assert person_key("Katie Boyd Britt") == person_key("Katie Britt") == "katie britt"
+    assert person_key("Jodey C. Arrington (TX-19)".replace(" (TX-19)", "")) == "jodey arrington"
+    assert person_key("Thomas H. Kean, Jr.") == "thomas kean"
+    assert person_key("Madonna") == ""
+
+
+def test_former_staff_needs_the_first_name_and_skips_interns():
+    from build_site import staff_hit
+    assert staff_hit("Chief of Staff, Rep. Vince Fong; Chief of Staff, Rep. Bill Thomas.", "vince", "fong")
+    assert staff_hit("LA, Sen. Debbie Stabenow; Staff Asst., Sen. Cory Booker", "cory", "booker")
+    assert not staff_hit("Comm Drctr, Rep Gallego, Dec 13- Jan 15", "ruben", "gallego")          # Pete Gallego, not Ruben
+    assert not staff_hit("Congressman Barry Moore, Legislative Assistant.", "wes", "moore")
+    assert not staff_hit("Intern, Sen. Richard Blumenthal", "richard", "blumenthal")
+
+
+def test_vote_summary():
+    from build_site import vote_summary
+    assert vote_summary("Y--Y-Y") == ["for", 3, 0] and vote_summary("-NN-N-") == ["ag", 0, 3]
+    assert vote_summary("Y--Y-N") == ["mix", 2, 1] and vote_summary("--X---") is None
+
+
+def test_dispute_people_links_records():
+    from build_site import dispute_people
+    m = [["A1", "Ana B. Cruz", "H", "R", "NJ", "3", "", ["House Committee on the Judiciary"], "Y--Y-Y", 5000, 0, 1, "", 250, 1],
+         ["B2", "Ras J. Baraka", "H", "D", "TX", "9", "", [], "------", 0, 0, 0, "", 0, 0]]
+    d = [["2025-05-09", "NJ", "Newark", "charge", "federal", "", "", "", "", "", "", "", [], "https://x", "", "", [["Ras J. Baraka", "Mayor", "alcalde"]], []]]
+    site = {"disputes": d, "pol": {"m": m, "c": {"A1": {"jfc": [["FUND X", 1, 1, [], [], 1]]}}, "flags": {"list": [{"bg": "A1"}]}, "gov": [["NJ", "Mikie Sherrill", "D"]]},
+            "firms": {"cards": {"Firm Q": {"money": [["Ana Cruz", "campaign", 1000, 1]], "former": [["X", "Chief of Staff, Rep. Ana Cruz", ["GEO"]]]}}},
+            "denied": [["2025-05-09", "Delaney Hall, Newark, NJ", "Newark Mayor Ras Baraka", "", "", "", ""]], "statements_visits": [], "statements": []}
+    P = dispute_people(site)
+    assert P["Ras J. Baraka"]["t"] == [["re", [["Delaney Hall, Newark, NJ", "2025-05-09"]]]] and P["Ras J. Baraka"]["v"] is None
+    a = dict(P["Ana B. Cruz"]["t"])
+    assert P["Ana B. Cruz"]["v"] == ["for", 3, 0] and a["dm"] == [5000, 250] and a["jf"] == ["FUND X"] and a["lf"] == [["Firm Q", 1000]] and a["fs"] == [["Firm Q", ["GEO"]]] and a["ov"] == 1
+    assert "Mikie Sherrill" in P and P["Mikie Sherrill"]["t"] == []
