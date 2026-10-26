@@ -2121,6 +2121,7 @@ def main():
         firm_members(fc["pat"], (site.get("pol") or {}).get("m") or []); fc["pat"].pop("_money", None)
         site["firms"] = fc
     site["dispute_people"] = dispute_people(site)
+    watch.add_disputes(ROOT, site.get("disputes"))                  # new disputes and new steps reach the same feed as the alerts
     hp = ROOT / "data" / "headline_history.json"                   # what the headline counts were at each update, so the page can say what changed
     hist, site["changes"] = record_changes(json.loads(hp.read_text(encoding="utf-8")) if hp.exists() else [], today, headline(site))
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")
