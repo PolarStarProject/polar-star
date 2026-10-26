@@ -63,6 +63,14 @@ def test_page_has_the_tab_in_both_languages():
     for w in ("defied", "attack", "crack", "illegal"): assert all(w not in x.lower() for x in lead), w   # neutral wording
 
 
+def test_source_kind():
+    from build_site import source_kind
+    assert source_kind("https://www.justice.gov/opa/pr/x") == "official" and source_kind("https://www.ded.uscourts.gov/x.pdf") == "official"
+    assert source_kind("https://www.hennepinattorney.org/news/x") == "official" and source_kind("https://www.nj.gov/governor/x") == "official"
+    assert source_kind("https://clearinghouse.net/case/1/") == "copy" and source_kind("https://kmph.com/resources/pdf/x.pdf") == "copy"
+    assert source_kind("https://ny1.com/nyc/x") == "news" and source_kind("") == ""
+
+
 def test_disputed_laws(tmp):
     write(tmp, [GOOD])
     (tmp / "disputed_laws.csv").write_text("dispute_id|law_en|law_es|law_url|authors\nnj-1|Law|Ley|https://x|Ann Lee (State Senator / senadora estatal)\n", encoding="utf-8")
