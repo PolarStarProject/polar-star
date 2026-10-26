@@ -1612,7 +1612,7 @@ def social_list(ref):
     return {"checked": meta.get("checked", ""), "orgs": sorted(orgs.values(), key=lambda o: (o[2], o[0].lower()))}
 
 DISPUTE_KINDS = {"lawsuit", "law", "order", "charge", "investigation"}
-DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url"]
+DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url", "final"]
 LAWCOM = re.compile(r"^(House|Senate) Committee on (the Judiciary|Homeland Security)(?!.*Appropriations)")   # the committees that write immigration law
 US_STATE_CODES = set("US AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
 
@@ -1644,6 +1644,7 @@ def disputes_list(ref, facilities, today=None):
         if r["status_date"] and (r["status_date"] < r["date"] or r["status_date"] > today): bad("status date before the dispute or in the future")
         offs = [o.strip() for o in r["officials"].split(";") if o.strip()]       # "Name (role in English / in Spanish)": elected officials and political appointees only
         if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", o) for o in offs): bad("officials must be written Name (role / rol), separated by ;")
+        if r["final"] not in ("", "Y") or (r["final"] and not r["status_en"]): bad("final is Y (the case or charge is over) or empty, and Y needs a status")
         codes = [c for c in r["facility_codes"].split(";") if c.strip()]
         unk = [c for c in codes if c not in facilities]
         if unk: bad(f"unknown facility codes {unk}")
@@ -1660,7 +1661,7 @@ def disputes_list(ref, facilities, today=None):
             au = [x.strip() for x in r["authors"].split(";") if x.strip()]
             if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", x) for x in au): raise ValueError(f"disputed_laws.csv: {r['dispute_id']}: authors must be written Name (role / rol)")
             laws.setdefault(r["dispute_id"], []).append([r["law_en"], r["law_es"], r["law_url"], [[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in au]])
-    for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], []))
+    for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], [])); o.append(r["final"] == "Y")
     return sorted(out, key=lambda x: x[0], reverse=True)
 
 def _pnorm(s):
@@ -1730,6 +1731,20 @@ def dispute_people(site):
         if vs: t.append(["vi", vs])
         out[nm] = {"bg": bg, "v": vote_summary(m[8]) if m else None, "t": t}
     return out
+
+def governor_changes(ref, current, terms):
+    """The weekly check found a different governor in a state: the outgoing one must be in governor_terms.csv, or every
+    older dispute in that state would silently lose its "Governor at the time". Raises until the line is added; once it
+    is, governors_known.csv is brought up to date so the next build is clean."""
+    f = Path(ref) / "governors_known.csv"
+    if not f.exists() or not current: return []
+    known = {r["state"]: r["name"] for r in csv.DictReader(open(f, encoding="utf-8"), delimiter="|")}
+    changed = [(st, known[st], nm) for st, nm in sorted(current.items()) if st in known and known[st] != nm]
+    missing = [f"{st}: {old} -> {new}" for st, old, new in changed if not any(t[0] == old for t in terms.get(st, []))]
+    if missing: raise ValueError("A governor changed and governor_terms.csv has no line for the one who left (name|party|start|end|source): " + "; ".join(missing))
+    if changed or set(current) - set(known):
+        f.write_text("state|name\n" + "".join(f"{st}|{nm}\n" for st, nm in sorted({**known, **current}.items())), encoding="utf-8")
+    return changed
 
 def governor_terms(ref):
     """Governors who left office since January 2025, kept by hand with a source each (data/reference/governor_terms.csv),
@@ -2092,6 +2107,7 @@ def main():
         site["pol"]["flags"] = {"min": rules.get("officials_min_usd", 0), **({"list": fl} if rules.get("officials_published") else {"pending": len(fl)})}
     site["social"] = social_list(ref)
     site["disputes"] = disputes_list(ref, site["facilities"]); site["gov_terms"] = governor_terms(ref)
+    for st, old, new in governor_changes(ref, {r["state"]: r["name"] for r in rd_pipe(ref / "governors.csv")} if (ref / "governors.csv").exists() else {}, site["gov_terms"]): print(f"GOVERNOR CHANGE recorded: {st} {old} -> {new}")
     if (ref / "federal_law_sponsors.csv").exists():                  # who sponsored the enforcement laws on Politicians; by hand, from congress.gov
         fs = list(csv.DictReader(open(ref / "federal_law_sponsors.csv", encoding="utf-8"), delimiter="|"))
         laws = {v[4] for v in (site.get("pol") or {}).get("votes", [])}
