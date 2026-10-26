@@ -7,7 +7,7 @@ FAC = {"DLNYHNJ": {}}
 GOOD = {"id": "nj-1", "date": "2025-05-09", "state": "NJ", "place": "Newark", "kind": "charge", "started_by": "federal",
         "federal_party": "Justice Department", "local_party": "Mayor of Newark", "officials": "Ras Baraka (Mayor of Newark / alcalde de Newark)", "what_en": "A charge.", "what_es": "Un cargo.",
         "status_en": "Dismissed.", "status_es": "Desestimado.", "status_date": "2025-05-21", "facility_codes": "DLNYHNJ",
-        "source_url": "https://www.justice.gov/x", "status_url": "https://www.courtlistener.com/y"}
+        "source_url": "https://www.justice.gov/x", "status_url": "https://www.courtlistener.com/y", "final": ""}
 
 
 def write(tmp, rows):
@@ -43,6 +43,8 @@ def test_bad_rows_are_rejected(tmp):
     assert rejects(tmp, status_es="")                       # and both languages
     assert rejects(tmp, status_date="2025-01-01")           # before the dispute began
     assert rejects(tmp, what_es="")
+    assert rejects(tmp, final="yes")
+    assert rejects(tmp, final="Y", status_en="", status_es="", status_date="", status_url="")
     assert rejects(tmp, officials="Ras Baraka")                # role is required
     assert rejects(tmp, officials="Ras Baraka (Mayor of Newark)")   # in both languages
 
@@ -126,3 +128,13 @@ def test_dispute_people_links_records():
     a = dict(P["Ana B. Cruz"]["t"])
     assert P["Ana B. Cruz"]["v"] == ["for", 3, 0] and a["dm"] == [5000, 250] and a["jf"] == ["FUND X"] and a["lf"] == [["Firm Q", 1000]] and a["fs"] == [["Firm Q", ["GEO"]]] and a["ov"] == 1
     assert "Mikie Sherrill" in P and P["Mikie Sherrill"]["t"] == []
+
+
+def test_governor_change_needs_a_terms_line(tmp):
+    from build_site import governor_changes
+    (tmp / "governors_known.csv").write_text("state|name\nNJ|Phil Murphy\nVA|Glenn Youngkin\n", encoding="utf-8")
+    try: governor_changes(tmp, {"NJ": "Mikie Sherrill", "VA": "Glenn Youngkin"}, {}); assert False
+    except ValueError as e: assert "NJ: Phil Murphy -> Mikie Sherrill" in str(e)
+    assert governor_changes(tmp, {"NJ": "Mikie Sherrill", "VA": "Glenn Youngkin"}, {"NJ": [["Phil Murphy", "D", "2018-01-16", "2026-01-20"]]}) == [("NJ", "Phil Murphy", "Mikie Sherrill")]
+    assert "NJ|Mikie Sherrill" in (tmp / "governors_known.csv").read_text(encoding="utf-8")
+    assert governor_changes(tmp, {"NJ": "Mikie Sherrill", "VA": "Glenn Youngkin"}, {}) == []      # clean once recorded
