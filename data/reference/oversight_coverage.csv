@@ -1,225 +1,175 @@
 member,party,type,state,status,listing,releases_read,oldest,why
-Maria Cantwell,Democrat,sen,WA,read,/news/press-releases,8,2026-09-28,
-Amy Klobuchar,Democrat,sen,MN,read,/public/index.cfm/news-releases,10,2026-09-16,
-Bernard Sanders,Independent,sen,VT,read,/media/press-releases,11,2025-04-16,
-Sheldon Whitehouse,Democrat,sen,RI,read,/media/press-releases,10,2007-08-30,
-John Barrasso,Republican,sen,WY,unreadable,,0,,HTTP Error 404: Not Found
-Roger F. Wicker,Republican,sen,MS,read,/media-center/press-releases,1,,
-Susan M. Collins,Republican,sen,ME,read,/newsroom/press-releases,21,2026-10-01,
-John Cornyn,Republican,sen,TX,read,/news,15,2026-10-01,
-Richard J. Durbin,Democrat,sen,IL,read,/newsroom/press-releases,19,2026-10-08,
-Mitch McConnell,Republican,sen,KY,read,feed,20,,
-Jeff Merkley,Democrat,sen,OR,read,feed,10,2026-10-01,
-Jack Reed,Democrat,sen,RI,read,/news/releases,21,2026-09-22,
-James E. Risch,Republican,sen,ID,read,/media/press-releases,10,2026-07-24,
-Jeanne Shaheen,Democrat,sen,NH,unreadable,,0,,HTTP Error 404: Not Found
-Mark R. Warner,Democrat,sen,VA,read,/media/press-releases,12,,
-Kirsten E. Gillibrand,Democrat,sen,NY,read,/press-releases,10,2026-09-29,
-Christopher A. Coons,Democrat,sen,DE,read,/media/press-releases,10,2026-10-05,
+Maria Cantwell,Democrat,sen,WA,unreadable,,0,,no release links found
+Amy Klobuchar,Democrat,sen,MN,unreadable,,0,,no release links found
+Bernard Sanders,Independent,sen,VT,unreadable,,0,,no release links found
+Sheldon Whitehouse,Democrat,sen,RI,unreadable,,0,,no release links found
+John Barrasso,Republican,sen,WY,unreadable,,0,,no release links found
+Roger F. Wicker,Republican,sen,MS,read,/public/index.cfm/press-releases,1,,
+Susan M. Collins,Republican,sen,ME,unreadable,,0,,no release links found
+John Cornyn,Republican,sen,TX,unreadable,,0,,no release links found
+Richard J. Durbin,Democrat,sen,IL,unreadable,,0,,no release links found
+Mitch McConnell,Republican,sen,KY,unreadable,,0,,no release links found
+Jeff Merkley,Democrat,sen,OR,unreadable,,0,,no release links found
+Jack Reed,Democrat,sen,RI,read,/public/index.cfm/press-releases,1,,
+James E. Risch,Republican,sen,ID,unreadable,,0,,no release links found
+Jeanne Shaheen,Democrat,sen,NH,unreadable,,0,,no release links found
+Mark R. Warner,Democrat,sen,VA,unreadable,,0,,no release links found
+Kirsten E. Gillibrand,Democrat,sen,NY,unreadable,,0,,no release links found
+Christopher A. Coons,Democrat,sen,DE,unreadable,,0,,no release links found
 Robert B. Aderholt,Republican,rep,AL,read,/media-center/press-releases,30,2026-03-27,
-Tammy Baldwin,Democrat,sen,WI,read,/news/press-releases,20,2026-09-18,
+Tammy Baldwin,Democrat,sen,WI,unreadable,,0,,no release links found
 Michael F. Bennet,Democrat,sen,CO,unreadable,,0,,no release links found
-Gus M. Bilirakis,Republican,rep,FL,read,/media/press-releases,30,2026-04-28,
+Gus M. Bilirakis,Republican,rep,FL,read,/media/press-releases,30,2026-04-29,
 "Sanford D. Bishop, Jr.",Democrat,rep,GA,read,/media-center/press-releases,30,2026-02-04,
-Marsha Blackburn,Republican,sen,TN,unreadable,,0,,HTTP Error 404: Not Found
-Richard Blumenthal,Democrat,sen,CT,read,/newsroom,3,2026-10-08,
-John Boozman,Republican,sen,AR,read,/press-releases,13,2026-09-15,
+Marsha Blackburn,Republican,sen,TN,unreadable,,0,,no release links found
+Richard Blumenthal,Democrat,sen,CT,unreadable,,0,,no release links found
+John Boozman,Republican,sen,AR,read,/press-releases,10,2026-09-15,
 Vern Buchanan,Republican,rep,FL,unreadable,,0,,HTTP Error 404: Not Found
 Ken Calvert,Republican,rep,CA,read,/media/press-releases,30,2026-01-22,
-Shelley Moore Capito,Republican,sen,WV,read,/news/press-releases,20,2026-10-02,
-André Carson,Democrat,rep,IN,read,/media/press-releases,30,2026-02-25,
+Shelley Moore Capito,Republican,sen,WV,unreadable,,0,,no release links found
+André Carson,Democrat,rep,IN,read,/media/press-releases,30,2026-02-26,
 John R. Carter,Republican,rep,TX,read,/media/press-releases,5,2021-06-17,
-Bill Cassidy,Republican,sen,LA,read,/newsroom/press-releases,12,2026-09-15,
+Bill Cassidy,Republican,sen,LA,unreadable,,0,,no release links found
 Kathy Castor,Democrat,rep,FL,read,/News/DocumentQuery.aspx?DocumentTypeID=821,10,2026-07-28,
-Judy Chu,Democrat,rep,CA,read,/media-center/press-releases,30,2026-06-24,
+Judy Chu,Democrat,rep,CA,read,/media-center/press-releases,30,2026-06-25,
 Yvette D. Clarke,Democrat,rep,NY,unreadable,,0,,HTTP Error 404: Not Found
 Emanuel Cleaver,Democrat,rep,MO,read,/media-center/press-releases,30,2026-05-20,
 James E. Clyburn,Democrat,rep,SC,unreadable,,0,,no release links found
-Steve Cohen,Democrat,rep,TN,read,/media-center/press-releases,31,2026-08-05,
+Steve Cohen,Democrat,rep,TN,read,/media-center/press-releases,31,2026-08-06,
 Tom Cole,Republican,rep,OK,read,/media-center/press-releases,30,2026-03-02,
-Jim Costa,Democrat,rep,CA,read,/media/press-releases,30,2026-04-17,
-Joe Courtney,Democrat,rep,CT,read,/media-center/press-releases,30,2026-07-10,
-Mike Crapo,Republican,sen,ID,unreadable,,0,,HTTP Error 404: Not Found
+Jim Costa,Democrat,rep,CA,read,/media/press-releases,30,2026-04-23,
+Joe Courtney,Democrat,rep,CT,read,/media-center/press-releases,30,2026-07-16,
+Mike Crapo,Republican,sen,ID,unreadable,,0,,no release links found
 "Eric A. ""Rick"" Crawford",Republican,rep,AR,read,/media/press-releases,30,2025-03-11,
-Henry Cuellar,Democrat,rep,TX,read,/News/DocumentQuery.aspx?DocumentTypeID=1232,10,2026-04-14,
+Henry Cuellar,Democrat,rep,TX,read,/News/DocumentQuery.aspx?DocumentTypeID=1232,10,2026-10-21,
 Danny K. Davis,Democrat,rep,IL,read,/media/press-releases,30,2025-04-24,
 Diana DeGette,Democrat,rep,CO,read,/media-center/press-releases,30,2026-01-21,
-Rosa L. DeLauro,Democrat,rep,CT,read,/media-center/press-releases,30,2026-06-16,
+Rosa L. DeLauro,Democrat,rep,CT,read,/media-center/press-releases,30,2026-06-18,
 Scott DesJarlais,Republican,rep,TN,unreadable,,0,,HTTP Error 404: Not Found
-Mario Diaz-Balart,Republican,rep,FL,read,/media-center/press-releases,30,2026-06-08,
+Mario Diaz-Balart,Republican,rep,FL,read,/media-center/press-releases,30,2026-06-23,
 Lloyd Doggett,Democrat,rep,TX,read,/media/press-releases,30,2025-11-06,
 "Charles J. ""Chuck"" Fleischmann",Republican,rep,TN,read,/media/press-releases,30,2025-02-04,
-Virginia Foxx,Republican,rep,NC,read,/news/,15,2025-03-28,
+Virginia Foxx,Republican,rep,NC,read,/news/,15,2025-04-25,
 John Garamendi,Democrat,rep,CA,unreadable,,0,,HTTP Error 404: Not Found
 Paul A. Gosar,Republican,rep,AZ,read,/news/documentquery.aspx?DocumentTypeID=27,30,2025-02-14,
-Chuck Grassley,Republican,sen,IA,read,/news/news-releases,19,2026-09-29,
+Chuck Grassley,Republican,sen,IA,unreadable,,0,,no release links found
 Sam Graves,Republican,rep,MO,read,/media/press-releases,30,2025-07-15,
 Al Green,Democrat,rep,TX,read,/media/press-releases,30,2026-10-05,
-H. Morgan Griffith,Republican,rep,VA,read,/news/,10,2026-10-01,
-Brett Guthrie,Republican,rep,KY,read,/news/,15,2026-06-17,
-Andy Harris,Republican,rep,MD,read,/media/press-releases,30,2026-04-22,
-Martin Heinrich,Democrat,sen,NM,read,/newsroom/press-releases,21,,
+H. Morgan Griffith,Republican,rep,VA,read,/news/,10,2026-10-02,
+Brett Guthrie,Republican,rep,KY,read,/news/,15,2026-06-23,
+Andy Harris,Republican,rep,MD,read,/media/press-releases,30,2026-04-30,
+Martin Heinrich,Democrat,sen,NM,unreadable,,0,,no release links found
 James A. Himes,Democrat,rep,CT,unreadable,,0,,HTTP Error 404: Not Found
-Mazie K. Hirono,Democrat,sen,HI,read,/news/press-releases,20,2026-06-29,
-John Hoeven,Republican,sen,ND,read,/media/press-releases,12,,
-Steny H. Hoyer,Democrat,rep,MD,read,/media/press-releases,30,2026-08-08,
+Mazie K. Hirono,Democrat,sen,HI,unreadable,,0,,no release links found
+John Hoeven,Republican,sen,ND,unreadable,,0,,no release links found
+Steny H. Hoyer,Democrat,rep,MD,read,/media/press-releases,30,2026-10-02,
 Bill Huizenga,Republican,rep,MI,read,/News/DocumentQuery.aspx?DocumentTypeID=2041,10,2026-04-20,
 "Henry C. ""Hank"" Johnson, Jr.",Democrat,rep,GA,read,/media-center/press-releases,30,2026-02-28,
-Ron Johnson,Republican,sen,WI,unreadable,,0,,HTTP Error 404: Not Found
+Ron Johnson,Republican,sen,WI,unreadable,,0,,no release links found
 Jim Jordan,Republican,rep,OH,read,/media/press-releases,30,2017-06-08,
-Marcy Kaptur,Democrat,rep,OH,read,/media-center/press-releases,30,2026-07-24,
+Marcy Kaptur,Democrat,rep,OH,read,/media-center/press-releases,30,2026-08-10,
 William R. Keating,Democrat,rep,MA,read,/media/press-releases,23,2024-03-26,
-Mike Kelly,Republican,rep,PA,read,/media/press-releases,31,2026-07-01,
-James Lankford,Republican,sen,OK,read,/media/press-releases,6,,
-Rick Larsen,Democrat,rep,WA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-07-23,
-John B. Larson,Democrat,rep,CT,read,/media-center/press-releases,31,2026-07-28,
+Mike Kelly,Republican,rep,PA,read,/media/press-releases,32,2026-07-13,
+James Lankford,Republican,sen,OK,unreadable,,0,,no release links found
+Rick Larsen,Democrat,rep,WA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-08-03,
+John B. Larson,Democrat,rep,CT,read,/media-center/press-releases,31,2026-08-07,
 Robert E. Latta,Republican,rep,OH,read,/news/documentquery.aspx?DocumentTypeID=1456,30,2026-03-05,
 Mike Lee,Republican,sen,UT,read,feed,20,2026-07-15,
-Zoe Lofgren,Democrat,rep,CA,read,/media/press-releases,30,2026-06-24,
+Zoe Lofgren,Democrat,rep,CA,read,/media/press-releases,30,,
 Frank D. Lucas,Republican,rep,OK,unreadable,,0,,HTTP Error 404: Not Found
-Ben Ray Luján,Democrat,sen,NM,read,/media/press-releases,6,,
+Ben Ray Luján,Democrat,sen,NM,unreadable,,0,,no release links found
 Stephen F. Lynch,Democrat,rep,MA,unreadable,,0,,HTTP Error 404: Not Found
-Edward J. Markey,Democrat,sen,MA,read,/news/press-releases,21,2026-10-01,
-Doris O. Matsui,Democrat,rep,CA,read,/media/press-releases,31,2026-04-24,
-Michael T. McCaul,Republican,rep,TX,read,/media-center/press-releases,31,2026-03-25,
+Edward J. Markey,Democrat,sen,MA,read,/public/index.cfm/press-releases,1,,
+Doris O. Matsui,Democrat,rep,CA,read,/media/press-releases,31,2026-04-29,
+Michael T. McCaul,Republican,rep,TX,read,/media-center/press-releases,30,2026-04-17,
 Tom McClintock,Republican,rep,CA,read,/media-center/press-releases,1,,
 Betty McCollum,Democrat,rep,MN,read,/media/press-releases,31,2026-05-28,
-James P. McGovern,Democrat,rep,MA,read,/newsroom,15,2026-06-12,
+James P. McGovern,Democrat,rep,MA,read,/newsroom,15,2026-07-10,
 Gregory W. Meeks,Democrat,rep,NY,read,/media/press-releases,30,2026-06-08,
 Gwen Moore,Democrat,rep,WI,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-04-25,
-Jerry Moran,Republican,sen,KS,read,/public/index.cfm/news-releases,10,2026-09-17,
-Lisa Murkowski,Republican,sen,AK,read,/press/press-releases,19,2026-10-01,
-Christopher Murphy,Democrat,sen,CT,read,/newsroom/press-releases,20,2026-10-01,
-Patty Murray,Democrat,sen,WA,unreadable,,0,,HTTP Error 404: Not Found
+Jerry Moran,Republican,sen,KS,unreadable,,0,,no release links found
+Lisa Murkowski,Republican,sen,AK,unreadable,,0,,no release links found
+Christopher Murphy,Democrat,sen,CT,unreadable,,0,,no release links found
+Patty Murray,Democrat,sen,WA,unreadable,,0,,no release links found
 Jerrold Nadler,Democrat,rep,NY,read,/news,15,2026-06-15,
 Richard E. Neal,Democrat,rep,MA,unreadable,,0,,HTTP Error 404: Not Found
 Eleanor Holmes Norton,Democrat,rep,DC,read,/media/press-releases,30,2026-06-02,
-"Frank Pallone, Jr.",Democrat,rep,NJ,read,/media/press-releases,30,2026-05-27,
+"Frank Pallone, Jr.",Democrat,rep,NJ,read,/media/press-releases,30,2026-05-29,
 Rand Paul,Republican,sen,KY,read,feed,10,2026-02-24,
-Nancy Pelosi,Democrat,rep,CA,read,/news/press-releases,30,2026-04-17,
-Gary C. Peters,Democrat,sen,MI,read,/newsroom/press-releases,20,2026-08-28,
-Chellie Pingree,Democrat,rep,ME,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-05-06,
-Mike Quigley,Democrat,rep,IL,read,/media-center/press-releases,30,2025-12-12,
-Harold Rogers,Republican,rep,KY,read,/press-releases,10,2026-08-24,
+Nancy Pelosi,Democrat,rep,CA,read,/news/press-releases,30,2026-04-22,
+Gary C. Peters,Democrat,sen,MI,unreadable,,0,,no release links found
+Chellie Pingree,Democrat,rep,ME,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-05-29,
+Mike Quigley,Democrat,rep,IL,read,/media-center/press-releases,30,2026-01-03,
+Harold Rogers,Republican,rep,KY,read,/press-releases,10,2026-08-25,
 Mike Rogers,Republican,rep,AL,read,/news/documentquery.aspx?DocumentTypeID=27,30,2025-01-20,
 Steve Scalise,Republican,rep,LA,read,/media/press-releases,30,2026-05-05,
-Janice D. Schakowsky,Democrat,rep,IL,read,/media/press-releases,30,2026-01-23,
-Adam B. Schiff,Democrat,sen,CA,read,/media/press-releases,10,2026-10-05,
-Charles E. Schumer,Democrat,sen,NY,read,/newsroom/press-releases,20,2026-08-19,
+Janice D. Schakowsky,Democrat,rep,IL,read,/media/press-releases,30,2026-02-10,
+Adam B. Schiff,Democrat,sen,CA,unreadable,,0,,no release links found
+Charles E. Schumer,Democrat,sen,NY,unreadable,,0,,no release links found
 David Schweikert,Republican,rep,AZ,unreadable,,0,,no release links found
 Austin Scott,Republican,rep,GA,read,/press-releases,10,2025-11-19,
-"Robert C. ""Bobby"" Scott",Democrat,rep,VA,read,/media-center/press-releases,30,2026-07-16,
-Tim Scott,Republican,sen,SC,read,/media/press-releases,20,2026-07-22,
+"Robert C. ""Bobby"" Scott",Democrat,rep,VA,read,/media-center/press-releases,30,2026-07-21,
+Tim Scott,Republican,sen,SC,unreadable,,0,,no release links found
 Terri A. Sewell,Democrat,rep,AL,unreadable,,0,,HTTP Error 404: Not Found
-Brad Sherman,Democrat,rep,CA,read,/media-center/press-releases,30,2026-03-19,
+Brad Sherman,Democrat,rep,CA,read,/media-center/press-releases,30,2026-03-23,
 Michael K. Simpson,Republican,rep,ID,read,/News/DocumentQuery.aspx?DocumentTypeID=1515,10,2026-08-27,
-Adam Smith,Democrat,rep,WA,read,/news/press-releases,30,2025-11-13,
-Adrian Smith,Republican,rep,NE,read,/media/press-releases,30,2026-06-11,
-Christopher H. Smith,Republican,rep,NJ,read,/news,5,2026-10-02,
-Linda T. Sánchez,Democrat,rep,CA,read,/media-center/press-releases,30,2026-03-19,
-Bennie G. Thompson,Democrat,rep,MS,read,/media/press-releases,30,2026-04-08,
-Mike Thompson,Democrat,rep,CA,read,/newsroom/press-releases,30,2026-05-30,
-Glenn Thompson,Republican,rep,PA,read,/media-center/press-releases,30,2026-05-20,
-John Thune,Republican,sen,SD,read,/media/press-releases,12,,
+Adam Smith,Democrat,rep,WA,read,/news/press-releases,30,2025-12-22,
+Adrian Smith,Republican,rep,NE,read,/media/press-releases,30,2026-06-25,
+Christopher H. Smith,Republican,rep,NJ,read,/news,5,2026-10-09,
+Linda T. Sánchez,Democrat,rep,CA,read,/media-center/press-releases,30,2026-04-30,
+Bennie G. Thompson,Democrat,rep,MS,read,/media/press-releases,30,2026-05-13,
+Mike Thompson,Democrat,rep,CA,read,/newsroom/press-releases,30,2026-06-24,
+Glenn Thompson,Republican,rep,PA,read,/media-center/press-releases,30,2026-05-29,
+John Thune,Republican,sen,SD,unreadable,,0,,no release links found
 Paul Tonko,Democrat,rep,NY,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-02-13,
-Michael R. Turner,Republican,rep,OH,read,/media-center/press-releases,31,2025-06-11,
-Chris Van Hollen,Democrat,sen,MD,read,/news/press-releases,19,2026-09-23,
+Michael R. Turner,Republican,rep,OH,read,/media-center/press-releases,30,2025-06-25,
+Chris Van Hollen,Democrat,sen,MD,unreadable,,0,,no release links found
 Nydia M. Velázquez,Democrat,rep,NY,read,/media-center/press-releases,30,2025-10-20,
-Tim Walberg,Republican,rep,MI,read,/media/press-releases,30,2026-07-10,
-Debbie Wasserman Schultz,Democrat,rep,FL,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-05-04,
+Tim Walberg,Republican,rep,MI,read,/media/press-releases,30,2026-07-17,
+Debbie Wasserman Schultz,Democrat,rep,FL,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-05-11,
 Maxine Waters,Democrat,rep,CA,read,/media-center/press-releases,29,2025-06-24,
 Daniel Webster,Republican,rep,FL,read,/press-releases,10,2026-05-22,
-Peter Welch,Democrat,sen,VT,unreadable,,0,,HTTP Error 404: Not Found
+Peter Welch,Democrat,sen,VT,unreadable,,0,,no release links found
 Joe Wilson,Republican,rep,SC,read,/media/press-releases,30,2025-03-25,
 Frederica S. Wilson,Democrat,rep,FL,read,/media/press-releases,30,2025-11-17,
 Robert J. Wittman,Republican,rep,VA,read,/media-center/press-releases,1,,
-Steve Womack,Republican,rep,AR,read,/news/documentquery.aspx?DocumentTypeID=2067,30,2026-05-12,
-Ron Wyden,Democrat,sen,OR,read,/news/press-releases,35,2026-09-28,
-Todd Young,Republican,sen,IN,read,/media/press-releases,20,2026-10-01,
+Steve Womack,Republican,rep,AR,read,/news/documentquery.aspx?DocumentTypeID=2067,30,2026-05-15,
+Ron Wyden,Democrat,sen,OR,read,feed,15,2026-10-01,
+Todd Young,Republican,sen,IN,unreadable,,0,,no release links found
 Mark E. Amodei,Republican,rep,NV,read,/news-releases,30,2025-02-25,
 Suzanne Bonamici,Democrat,rep,OR,read,/media/press-releases,30,2026-06-04,
-Suzan K. DelBene,Democrat,rep,WA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-06-08,
+Suzan K. DelBene,Democrat,rep,WA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-06-09,
 Thomas Massie,Republican,rep,KY,read,/media/press-releases,15,2025-11-18,
-Brian Schatz,Democrat,sen,HI,read,/newsroom/press-releases,19,2026-08-19,
+Brian Schatz,Democrat,sen,HI,unreadable,,0,,no release links found
 Bill Foster,Democrat,rep,IL,read,/media/press-releases,30,2026-02-13,
 Dina Titus,Democrat,rep,NV,read,/media/press-releases,15,2026-07-22,
-Tom Cotton,Republican,sen,AR,read,/media/press-releases,20,2026-07-21,
-Jared Huffman,Democrat,rep,CA,read,/media-center/press-releases,20,2026-10-08,
+Tom Cotton,Republican,sen,AR,read,/press-office/press-releases,20,2026-07-28,
+Jared Huffman,Democrat,rep,CA,read,/media-center/press-releases,20,2026-10-15,
 Ami Bera,Democrat,rep,CA,read,/news/press-releases,30,2026-06-23,
 Julia Brownley,Democrat,rep,CA,unreadable,,0,,HTTP Error 404: Not Found
-Raul Ruiz,Democrat,rep,CA,read,/media-center/press-releases,29,2025-10-24,
+Raul Ruiz,Democrat,rep,CA,read,/media-center/press-releases,29,2025-10-28,
 Mark Takano,Democrat,rep,CA,read,/newsroom/press-releases,20,,
 Juan Vargas,Democrat,rep,CA,read,/media/press-releases,30,2025-08-28,
-Scott H. Peters,Democrat,rep,CA,read,/press-releases,30,2026-06-09,
-Lois Frankel,Democrat,rep,FL,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-01-22,
-Tammy Duckworth,Democrat,sen,IL,read,/news/press-releases,21,2026-10-09,
-Andy Barr,Republican,rep,KY,read,/press-releases,10,2026-07-22,
-Elizabeth Warren,Democrat,sen,MA,read,/media/press-releases,12,2026-10-01,
-"Angus S. King, Jr.",Independent,sen,ME,read,/newsroom/press-releases,21,2026-10-10,
-Ann Wagner,Republican,rep,MO,read,/media-center/press-releases,30,2026-01-22,
-Steve Daines,Republican,sen,MT,read,/media/press-releases,1,,
+Scott H. Peters,Democrat,rep,CA,read,/press-releases,30,2026-06-23,
+Lois Frankel,Democrat,rep,FL,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-02-03,
+Tammy Duckworth,Democrat,sen,IL,unreadable,,0,,no release links found
+Andy Barr,Republican,rep,KY,read,/press-releases,10,2026-07-28,
+Elizabeth Warren,Democrat,sen,MA,unreadable,,0,,no release links found
+"Angus S. King, Jr.",Independent,sen,ME,unreadable,,0,,no release links found
+Ann Wagner,Republican,rep,MO,read,/media-center/press-releases,30,2026-01-23,
+Steve Daines,Republican,sen,MT,unreadable,,0,,no release links found
 Richard Hudson,Republican,rep,NC,read,/media/press-releases,30,2026-03-23,
-Kevin Cramer,Republican,sen,ND,read,/news/press-releases,21,2026-10-05,
+Kevin Cramer,Republican,sen,ND,read,/public/index.cfm/press-releases,1,,
 Deb Fischer,Republican,sen,NE,unreadable,,0,,no release links found
 Grace Meng,Democrat,rep,NY,read,/media-center/press-releases,30,2026-02-05,
 Hakeem S. Jeffries,Democrat,rep,NY,unreadable,,0,,no release links found
 Joyce Beatty,Democrat,rep,OH,read,/media-center/press-releases,30,2026-02-24,
 David P. Joyce,Republican,rep,OH,unreadable,,0,,HTTP Error 404: Not Found
 Scott Perry,Republican,rep,PA,read,/news/documentquery.aspx?DocumentTypeID=2608,30,2024-07-25,
-Ted Cruz,Republican,sen,TX,read,/newsroom/press-releases,20,2026-08-10,
+Ted Cruz,Republican,sen,TX,unreadable,,0,,no release links found
 "Randy K. Weber, Sr.",Republican,rep,TX,read,/news/documentquery.aspx?DocumentTypeID=27,30,2025-11-12,
-Joaquin Castro,Democrat,rep,TX,read,/media-center/press-releases,19,2026-10-06,
-Roger Williams,Republican,rep,TX,read,/media-center/press-releases,30,2025-07-07,
+Joaquin Castro,Democrat,rep,TX,read,/media-center/press-releases,19,2026-10-23,
+Roger Williams,Republican,rep,TX,read,/media-center/press-releases,30,2025-07-10,
 Marc A. Veasey,Democrat,rep,TX,read,/media-center/press-releases,30,2025-10-07,
-Tim Kaine,Democrat,sen,VA,read,/news,20,,
-Mark Pocan,Democrat,rep,WI,read,/media-center/press-releases,30,2025-11-04,
-Robin L. Kelly,Democrat,rep,IL,read,/media-center/press-releases,31,2026-02-24,
-Jason Smith,Republican,rep,MO,unreadable,,0,,HTTP Error 404: Not Found
-Cory A. Booker,Democrat,sen,NJ,unreadable,,0,,HTTP Error 404: Not Found
-Katherine M. Clark,Democrat,rep,MA,unreadable,,0,,HTTP Error 404: Not Found
-Donald Norcross,Democrat,rep,NJ,read,/media/press-releases,31,2026-01-14,
-Alma S. Adams,Democrat,rep,NC,read,/media-center/press-releases,30,2026-04-16,
-Gary J. Palmer,Republican,rep,AL,read,/media-center/press-releases,30,2025-07-08,
-J. French Hill,Republican,rep,AR,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-01-08,
-Bruce Westerman,Republican,rep,AR,read,/media-center/press-releases,30,2025-03-06,
-Ruben Gallego,Democrat,sen,AZ,read,/media/press-releases,10,2026-10-05,
-Mark DeSaulnier,Democrat,rep,CA,read,/media-center/press-releases,31,2025-12-01,
-Pete Aguilar,Democrat,rep,CA,unreadable,,0,,HTTP Error 404: Not Found
-Ted Lieu,Democrat,rep,CA,read,/media-center/press-releases,30,2026-04-23,
-Norma J. Torres,Democrat,rep,CA,read,/media-center/press-releases,20,2026-10-08,
-"Earl L. ""Buddy"" Carter",Republican,rep,GA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-04-22,
-Barry Loudermilk,Republican,rep,GA,unreadable,,0,,HTTP Error 404: Not Found
-Rick W. Allen,Republican,rep,GA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-02-24,
-Mike Bost,Republican,rep,IL,unreadable,,0,,HTTP Error 404: Not Found
-Seth Moulton,Democrat,rep,MA,read,/news/press-releases,30,2026-07-13,
-John R. Moolenaar,Republican,rep,MI,read,/media-center/press-releases,30,2026-02-11,
-Debbie Dingell,Democrat,rep,MI,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-08-27,
-Tom Emmer,Republican,rep,MN,read,/media-center/press-releases,30,2026-03-04,
-David Rouzer,Republican,rep,NC,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-02-06,
-Bonnie Watson Coleman,Democrat,rep,NJ,read,/newsroom/press-releases,20,2026-10-05,
-Elise M. Stefanik,Republican,rep,NY,unreadable,,0,,HTTP Error 404: Not Found
-Brendan F. Boyle,Democrat,rep,PA,read,/media-center/press-releases,30,2026-04-21,
-Brian Babin,Republican,rep,TX,read,/news/documentquery.aspx?DocumentTypeID=27,30,2025-01-21,
-"Donald S. Beyer, Jr.",Democrat,rep,VA,read,/news/documentquery.aspx?DocumentTypeID=27,31,2026-08-07,
-Stacey E. Plaskett,Democrat,rep,VI,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-06-09,
-Dan Newhouse,Republican,rep,WA,read,/media-center/press-releases,31,2026-05-01,
-Glenn Grothman,Republican,rep,WI,read,/news/documentquery.aspx?DocumentTypeID=27,30,2025-10-07,
-Aumua Amata Coleman Radewagen,Republican,rep,AS,read,/media/press-releases,30,2026-08-21,
-Dan Sullivan,Republican,sen,AK,read,/media/press-releases,13,2026-08-18,
-Joni Ernst,Republican,sen,IA,read,/news/press-releases,20,2026-10-01,
-Thom Tillis,Republican,sen,NC,unreadable,,0,,HTTP Error 404: Not Found
-Mike Rounds,Republican,sen,SD,read,/newsroom/press-releases,20,2026-04-22,
-Trent Kelly,Republican,rep,MS,read,/news/documentquery.aspx?DocumentTypeID=27,30,2022-06-28,
-Darin LaHood,Republican,rep,IL,unreadable,,0,,HTTP Error 404: Not Found
-Warren Davidson,Republican,rep,OH,read,/media/press-releases,30,2025-01-22,
-James Comer,Republican,rep,KY,unreadable,,0,,HTTP Error 404: Not Found
-Dwight Evans,Democrat,rep,PA,read,/media/press-releases,31,2025-06-04,
-John Kennedy,Republican,sen,LA,unreadable,,0,,HTTP Error 404: Not Found
-Margaret Wood Hassan,Democrat,sen,NH,read,/news/press-releases,20,2026-09-17,
-Catherine Cortez Masto,Democrat,sen,NV,read,/media/press-releases,8,,
-Bradley Scott Schneider,Democrat,rep,IL,read,/media/press-releases,30,2026-06-12,
-Andy Biggs,Republican,rep,AZ,read,/media/press-releases,31,2026-06-09,
-Ro Khanna,Democrat,rep,CA,read,/media/press-releases,30,2025-12-11,
-Jimmy Panetta,Democrat,rep,CA,read,/media/press-releases,30,2026-08-07,
-Salud O. Carbajal,Democrat,rep,CA,read,/news/documentquery.aspx?DocumentTypeID=27,30,2026-05-05,
-Nanette Diaz Barragán,Democrat,rep,CA,unreadable,,0,,HTTP Error 404: Not Found
+Tim Kaine,Democrat,sen,VA,unreadable,,0,,no release links found
+Mark Pocan,Democrat,rep,WI,read,/media-center/press-releases,30,2025-11-17,

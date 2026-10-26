@@ -1,14 +1,14 @@
 {
- "built": "2026-10-23",
+ "built": "2026-10-26",
  "stale": [
-  "Removals, returns and expulsions by fiscal year (yearbook table 39) (2023-09-30, 1119 days)",
-  "Removals from detention by destination country (ICE detention records) (2026-07-31, 84 days)"
+  "Removals, returns and expulsions by fiscal year (yearbook table 39) (2023-09-30, 1122 days)",
+  "Removals from detention by destination country (ICE detention records) (2026-07-31, 87 days)"
  ],
  "layers": {
   "facilities": 561,
   "agreements_287g": 1185,
-  "airports": 189,
-  "flight_routes": 1979,
-  "flight_tracks_recent": 408
+  "airports": 191,
+  "flight_routes": 2006,
+  "flight_tracks_recent": 278
  }
 }

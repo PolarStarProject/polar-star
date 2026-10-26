@@ -1,24 +1,24 @@
 company|issue|filings
-GEO|Homeland Security|94
-GEO|Law Enforcement/Crime/Criminal Justice|74
-GEO|Immigration|46
-GEO|Banking|26
+GEO|Homeland Security|98
+GEO|Law Enforcement/Crime/Criminal Justice|76
+GEO|Immigration|48
+GEO|Banking|28
 GEO|Budget/Appropriations|13
 GEO|Government Issues|1
 GEO|Environment/Superfund|1
-CC|Law Enforcement/Crime/Criminal Justice|65
-CC|Financial Institutions/Investments/Securities|64
-CC|Budget/Appropriations|57
-CC|Government Issues|42
-CC|Homeland Security|29
-CC|Banking|14
-CC|Taxation/Internal Revenue Code|14
-CC|Civil Rights/Civil Liberties|7
-MTC|Government Issues|33
-MTC|Budget/Appropriations|27
-MTC|Law Enforcement/Crime/Criminal Justice|23
-MTC|Labor Issues/Antitrust/Workplace|19
-MTC|Homeland Security|14
-CSI|Homeland Security|5
-CSI|Transportation|3
-CSI|Budget/Appropriations|2
+CC|Law Enforcement/Crime/Criminal Justice|70
+CC|Financial Institutions/Investments/Securities|69
+CC|Budget/Appropriations|62
+CC|Government Issues|45
+CC|Homeland Security|32
+CC|Banking|15
+CC|Taxation/Internal Revenue Code|15
+CC|Medicare/Medicaid|8
+MTC|Government Issues|35
+MTC|Budget/Appropriations|29
+MTC|Law Enforcement/Crime/Criminal Justice|24
+MTC|Labor Issues/Antitrust/Workplace|20
+MTC|Homeland Security|15
+CSI|Homeland Security|6
+CSI|Transportation|4
+CSI|Budget/Appropriations|3

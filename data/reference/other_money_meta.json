@@ -6,7 +6,7 @@
   2025,
   2026
  ],
- "read": "2026-10-19",
+ "read": "2026-10-26",
  "programs": {
   "CBP/holding": {
    "total_musd": 1810.2,
@@ -73,15 +73,15 @@
    }
   },
   "HHS/children_grants": {
-   "total_musd": 4101.7,
+   "total_musd": 4306.4,
    "by_fy_musd": {
     "2024": 3068.1,
     "2025": 1238.3,
-    "2026": -204.8
+    "2026": 0.0
    },
    "private_people_left_out": 0,
    "all_payees_read": true,
-   "taken_back_musd": 129.4,
+   "taken_back_musd": 123.8,
    "filters": {
     "program_numbers": [
      "93.676"

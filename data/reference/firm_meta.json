@@ -1,12 +1,12 @@
 {
- "read": "2026-10-14",
+ "read": "2026-10-26",
  "years": [
   2025,
   2026
  ],
  "firms": {
   "Akin Gump Strauss Hauer & Feld": {
-   "clients": 382,
+   "clients": 402,
    "partial": true
   },
   "Avant Bishop Washington & Black LLC": {
@@ -14,19 +14,19 @@
    "partial": false
   },
   "Bradley Arant Boult Cummings LLP": {
-   "clients": 24,
+   "clients": 25,
    "partial": false
   },
   "Capitol Counsel LLC": {
-   "clients": 207,
+   "clients": 209,
    "partial": false
   },
   "Checkmate Government Relations": {
-   "clients": 144,
+   "clients": 169,
    "partial": false
   },
   "Continental Strategy, LLC": {
-   "clients": 186,
+   "clients": 213,
    "partial": false
   },
   "Da Vinci Group": {
@@ -34,15 +34,15 @@
    "partial": false
   },
   "Greenberg Traurig, LLP": {
-   "clients": 90,
+   "clients": 96,
    "partial": false
   },
   "Holland & Knight LLP": {
-   "clients": 452,
+   "clients": 457,
    "partial": true
   },
   "Liberty Government Affairs": {
-   "clients": 6,
+   "clients": 7,
    "partial": false
   },
   "Lionel \"Leo\" Aguirre": {
@@ -50,7 +50,7 @@
    "partial": false
   },
   "Miller Strategies, LLC": {
-   "clients": 207,
+   "clients": 219,
    "partial": false
   },
   "Navigators Global LLC": {
@@ -62,7 +62,7 @@
    "partial": false
   },
   "Squire Patton Boggs": {
-   "clients": 232,
+   "clients": 246,
    "partial": false
   },
   "State Federal Strategies": {
@@ -70,7 +70,7 @@
    "partial": false
   },
   "TSG Advocates DC, LLC": {
-   "clients": 112,
+   "clients": 126,
    "partial": false
   },
   "The Simmons & Russell Group, LLC": {
@@ -78,7 +78,7 @@
    "partial": false
   },
   "The Vogel Group": {
-   "clients": 184,
+   "clients": 189,
    "partial": false
   },
   "Tower 19": {
@@ -90,7 +90,7 @@
    "partial": false
   },
   "Venture Government Strategies, LLC": {
-   "clients": 118,
+   "clients": 124,
    "partial": false
   }
  }

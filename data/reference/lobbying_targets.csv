@@ -1,21 +1,21 @@
 company|target|filings
-GEO|House of Representatives|101
-GEO|Senate|85
-GEO|Department of Homeland Security|23
-GEO|ICE|6
-GEO|Office of Management and Budget|6
-GEO|Department of Justice|5
-GEO|Executive Office of the President|4
+GEO|House of Representatives|103
+GEO|Senate|88
+GEO|Department of Homeland Security|26
+GEO|ICE|7
+GEO|Office of Management and Budget|7
+GEO|Department of Justice|6
+GEO|Executive Office of the President|5
 GEO|Bureau of Prisons|4
-GEO|White House Office|4
 GEO|Department of Health and Human Services|4
-CC|House of Representatives|81
-CC|Senate|71
-CC|Office of the Comptroller of the Currency (OCC)|1
-MTC|Senate|42
-MTC|House of Representatives|42
-MTC|Department of Labor|11
+GEO|White House Office|4
+CC|House of Representatives|88
+CC|Senate|77
+CC|Department of Homeland Security|2
+MTC|House of Representatives|44
+MTC|Senate|44
+MTC|Department of Labor|12
 MTC|White House Office|7
-CSI|Senate|5
-CSI|House of Representatives|5
-CSI|Department of Homeland Security|5
+CSI|Department of Homeland Security|6
+CSI|House of Representatives|6
+CSI|Senate|6

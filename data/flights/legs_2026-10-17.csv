@@ -1,0 +1,12 @@
+date,registration,hex,aircraft_type,callsign,departed_utc,arrived_utc,origin,origin_country,origin_certain,dest,dest_country,dest_certain,kind,basis
+2026-10-17,N277GX,a2c129,A321,GXA6139,01:47,02:35,HUM,US,False,AEX,US,True,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N289GX,a2f016,A320,GXA6126,16:05,16:38,AEX,US,True,GLS,US,False,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N289GX,a2f016,A320,GXA6127,23:15,23:54,BZT,US,False,AEX,US,True,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N278GX,a2c4e0,A320,GXA132,19:54,23:36,AZA,US,True,MIA,US,True,domestic,"contractor aircraft; day includes AZA (Mesa, AZ)"
+2026-10-17,N530FL,a6b0f5,A321,VELUX53,13:18,15:15,OPF,US,True,AEX,US,True,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N530FL,a6b0f5,A321,VELUX53,17:30,23:59,AEX,US,True,HUM,US,False,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N319NV,a36980,A319,GXA166,00:51,01:43,AEX,US,True,NGP,US,False,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N319NV,a36980,A319,UX42,12:29,13:24,NQI,US,False,AEX,US,True,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N319NV,a36980,A319,GXA6108,15:25,17:29,AEX,US,True,CME,MX,False,international,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N318NV,a365c9,A319,GXA6102,14:30,16:21,AEX,US,True,ELP,US,True,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"
+2026-10-17,N318NV,a365c9,A319,GXA6103,17:43,19:17,ELP,US,False,AEX,US,True,domestic,"contractor aircraft; day includes AEX (Alexandria, LA)"

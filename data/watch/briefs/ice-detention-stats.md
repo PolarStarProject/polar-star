@@ -4,8 +4,8 @@ Open since October 9, 2026. From Polar Star Project, a public-interest data page
 
 ## What the records show
 
-- ICE's last detention statistics file is dated July 20, 2026: 91 days with no new file when ICE's page was checked on October 19, 2026.
-- Congress asked for this file every two weeks, so about 6 updates have been missed.
+- ICE's last detention statistics file is dated July 20, 2026: 98 days with no new file when ICE's page was checked on October 26, 2026.
+- Congress asked for this file every two weeks, so about 7 updates have been missed.
 - The requirement was added in the fiscal 2020 DHS appropriations law; reporting has noted debate over whether it still binds ICE.
 
 ## Sources
