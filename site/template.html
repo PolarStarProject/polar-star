@@ -3159,31 +3159,13 @@ function dpItem(d){ const t = T[lang], es = lang === "es", li = el("li");
   d[12].forEach(c => { if (!F[c]) return; const b = el("button","linkbtn",F[c].name); b.type = "button"; b.onclick = () => goFull(c); ln.append(b); });
   li.append(ln); if (li._cm) li.append(li._cm); return li; }
 const dpMember = nm => { const n = norm(nm), r = ((DATA.pol || {}).m || []).find(m => norm(m[1]) === n || norm(m[1].replace(/\s*"[^"]*"/g, "")) === n); return r ? r[0] : ""; };   // names on filings leave out nicknames ("Chuy")
-const dpKey = s => { const w = norm(s).replace(/\([^)]*\)|"[^"]*"/g, " ").replace(/,?\s+(jr|sr|ii|iii|iv)\.?\s*$/, "").replace(/[^a-z\s'-]/g, " ").trim().split(/\s+/).filter(x => x.length > 1 || x === "j"); return w.length > 1 ? w[0] + " " + w[w.length - 1] : ""; };   // first and last name only: filings drop middle names and nicknames
-let TIE = null;
-function dpTieIdx(){ if (TIE) return TIE; TIE = {firm:new Map(), staff:[], denied:DATA.denied || [], visit:(DATA.statements_visits || []).concat((DATA.statements || []).filter(r => r[2] === "visit"))};
-  for (const [fn, c] of Object.entries((DATA.firms || {}).cards || {})){
-    (c.money || []).forEach(([n, k, u, g]) => { const key = dpKey(n.replace(/\s*\([A-Z]{2}(-\d+)?\)\s*$/, "")); if (key) (TIE.firm.get(key) || TIE.firm.set(key, []).get(key)).push([fn, u, g]); });
-    (c.former || []).forEach(([lob, posts, cos]) => TIE.staff.push([fn, posts, cos])); }
-  return TIE; }
-function dpTies(nm, bg){ const t = T[lang], X = dpTieIdx(), k = dpKey(nm), out = []; if (!k) return out; const last = k.split(" ").pop(), first = k.split(" ")[0];
-  const P = DATA.pol || {}, M = bg && (P.m || []).find(m => m[0] === bg), C = bg && (P.c || {})[bg];
-  if (M && (M[9] + M[10] > 0 || M[13] > 0)) out.push(["dm", t.dp_tt.dm("$" + (M[9] + M[10]).toLocaleString(), "$" + (M[13] || 0).toLocaleString())]);
-  if (C && C.jfc && C.jfc.length) out.push(["jf", t.dp_tt.jf(C.jfc.map(j => j[0]).join("; "))]);
-  const fm = X.firm.get(k); if (fm) out.push(["lf", t.dp_tt.lf(fm.map(([f, u]) => `${f} ($${(+u || 0).toLocaleString()})`).join("; "))]);
-  const re = new RegExp(`\\b(rep|sen|senator|representative|congressman|congresswoman|gov|governor|mayor)\\.?\\s+${first}\\s+([a-z]\\.?\\s+)?${last}\\b`);
-  const st = X.staff.filter(([f, posts]) => posts.split(";").some(seg => re.test(norm(seg)) && !/intern/i.test(seg)));
-  if (st.length) out.push(["fs", t.dp_tt.fs(st.map(([f, posts, cos]) => cos.length ? `${f} (${cos.join(", ")})` : f).filter((x, i, a) => a.indexOf(x) === i).join("; "))]);
-  if (bg && polFlag(bg)) out.push(["ov", t.dp_tt.ov]);
-  const has = s => ` ${dpKey(s) === k ? k : ""} ${norm(s)} `.includes(` ${k} `) || norm(s).replace(/[^a-z\s]/g, " ").replace(/\s+/g, " ").includes(k.replace(/[^a-z\s]/g, " "));
-  const dn = X.denied.filter(r => has(r[2])); if (dn.length) out.push(["re", t.dp_tt.re(dn.map(r => `${r[1]}, ${dateText(r[0])}`).join("; "))]);
-  const vs = X.visit.filter(r => has(r[1])); if (vs.length) out.push(["vi", t.dp_tt.vi(vs.length)]);
-  return out; }
-function dpVote(M){ const c = (M[8] || "").replace(/[-PX]/g, ""), y = (c.match(/Y/g) || []).length, n = (c.match(/N/g) || []).length; return !c ? null : {k:!n ? "for" : !y ? "ag" : "mix", y, n}; }
-function dpWho(nm, label, o){ const t = T[lang], w = el("span","dpw"), P = DATA.pol || {}, M = o.bg && (P.m || []).find(m => m[0] === o.bg);
+function dpTies(nm){ const t = T[lang], q = (DATA.dispute_people || {})[nm], $u = x => "$" + (+x || 0).toLocaleString(); if (!q) return [];   // worked out by the build (dispute_people in build_site.py)
+  const fmt = {dm:x => t.dp_tt.dm($u(x[0]), $u(x[1])), jf:x => t.dp_tt.jf(x.join("; ")), lf:x => t.dp_tt.lf(x.map(([f, u]) => `${f} (${$u(u)})`).join("; ")), fs:x => t.dp_tt.fs(x.map(([f, c]) => c.length ? `${f} (${c.join(", ")})` : f).join("; ")), ov:() => t.dp_tt.ov, re:x => t.dp_tt.re(x.map(([pl, d]) => `${pl}, ${dateText(d)}`).join("; ")), vi:x => t.dp_tt.vi(x)};
+  return q.t.map(([k, x]) => [k, fmt[k](x)]); }
+function dpWho(nm, label, o){ const t = T[lang], w = el("span","dpw"), q = (DATA.dispute_people || {})[nm] || {}; o.bg = o.bg || q.bg;
   const b = o.bg ? memberBtn(o.bg, label) : o.click ? (() => { const x = el("button","linkbtn",label); x.type = "button"; x.onclick = o.click; return x; })() : el("span","dp-o",label); w.append(b);
-  const v = M && dpVote(M); if (v){ w.classList.add("dpv-" + v.k); w.append(el("span","dpv",t.dp_v[v.k](v.y, v.n))); }
-  dpTies(nm, o.bg).forEach(([k, tip]) => { const x = el("span","dpt",t.dp_tn[k]); x.title = tip; x.tabIndex = 0; x.setAttribute("role","button"); x.setAttribute("aria-label", tip); x.onclick = x.onkeydown = e => { if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return; e.preventDefault(); e.stopPropagation(); tilePop(`${nm}: ${t.dp_tn[k]}`, el("p","",tip)); }; w.append(x); });
+  const v = q.v; if (v){ w.classList.add("dpv-" + v[0]); w.append(el("span","dpv",t.dp_v[v[0]](v[1], v[2]))); }
+  dpTies(nm).forEach(([k, tip]) => { const x = el("span","dpt",t.dp_tn[k]); x.title = tip; x.tabIndex = 0; x.setAttribute("role","button"); x.setAttribute("aria-label", tip); x.onclick = x.onkeydown = e => { if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return; e.preventDefault(); e.stopPropagation(); tilePop(`${nm}: ${t.dp_tn[k]}`, el("p","",tip)); }; w.append(x); });
   return w; }
 function dpKeyRender(){ const t = T[lang], b = $("dp-key-b"); b.replaceChildren(el("p","",t.dp_key_p)); const ul = el("ul","plain dpkey");
   [["for", t.dp_v.for(3, 0)], ["ag", t.dp_v.ag(0, 3)], ["mix", t.dp_v.mix(2, 1)]].forEach(([k, x]) => { const li = el("li"), w = el("span","dpw dpv-" + k); w.append(el("span","dpv",x)); li.append(w, el("span","muted",t.dp_vk[k])); ul.append(li); });
