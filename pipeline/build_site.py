@@ -1616,6 +1616,19 @@ DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_p
 LAWCOM = re.compile(r"^(House|Senate) Committee on (the Judiciary|Homeland Security)(?!.*Appropriations)")   # the committees that write immigration law
 US_STATE_CODES = set("US AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
 
+OFFICIAL_HOSTS = re.compile(r"(\.gov|\.gov\.[a-z]{2}|\.us|uscourts\.gov|courtlistener\.com|hennepinattorney\.org|cookcountystatesattorney\.org|chicityclerk\.s3\.[a-z0-9-]+\.amazonaws\.com)$")
+COPY_HOSTS = {"clearinghouse.net", "store.ilrc.org", "www.ilrc.org", "ilrc.org"}
+
+def source_kind(url):
+    """official: the court, the government body or the legislature itself. copy: a court record or law hosted by someone
+    else (a docket archive, a news site's copy of a filing). news: a news report. The page labels the last two."""
+    from urllib.parse import urlparse
+    u = urlparse(url or ""); h = (u.hostname or "").lower()
+    if not h: return ""
+    if OFFICIAL_HOSTS.search(h): return "official"
+    if h in COPY_HOSTS or u.path.lower().endswith(".pdf"): return "copy"
+    return "news"
+
 def disputes_list(ref, facilities, today=None):
     """Formal disputes on public record between ICE/DHS/DOJ and state or local governments, researched by hand
     (data/reference/ice_local_disputes.csv; rules in the project spec). Rows are rejected loudly rather than shown wrong:
@@ -1661,7 +1674,7 @@ def disputes_list(ref, facilities, today=None):
             au = [x.strip() for x in r["authors"].split(";") if x.strip()]
             if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", x) for x in au): raise ValueError(f"disputed_laws.csv: {r['dispute_id']}: authors must be written Name (role / rol)")
             laws.setdefault(r["dispute_id"], []).append([r["law_en"], r["law_es"], r["law_url"], [[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in au]])
-    for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], [])); o.append(r["final"] == "Y")
+    for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], [])); o.append(r["final"] == "Y"); o.append([source_kind(r["source_url"]), source_kind(r["status_url"])])
     return sorted(out, key=lambda x: x[0], reverse=True)
 
 def _pnorm(s):
