@@ -3,7 +3,7 @@ A Spanish-only date bug once stopped the pregnancies and deaths tab from drawing
 import pathlib
 
 PAGE = pathlib.Path(__file__).resolve().parent.parent / "site" / "index.html"
-VIEWS = ["fam", "find", "flights", "orgs", "agree", "co", "ven", "opm", "gov", "pol", "life", "over", "news", "money", "trends", "about", "legal", "research", "watch", "state"]
+VIEWS = ["fam", "find", "flights", "orgs", "agree", "co", "ven", "opm", "gov", "pol", "life", "over", "news", "disp", "money", "trends", "about", "legal", "research", "watch", "state"]
 
 
 def test_every_tab_draws_in_english_and_spanish_without_errors():

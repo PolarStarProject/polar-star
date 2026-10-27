@@ -1611,6 +1611,173 @@ def social_list(ref):
     meta = json.loads((ref / "social_meta.json").read_text(encoding="utf-8")) if (ref / "social_meta.json").exists() else {}
     return {"checked": meta.get("checked", ""), "orgs": sorted(orgs.values(), key=lambda o: (o[2], o[0].lower()))}
 
+DISPUTE_KINDS = {"lawsuit", "law", "order", "charge", "investigation"}
+DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url", "final"]
+LAWCOM = re.compile(r"^(House|Senate) Committee on (the Judiciary|Homeland Security)(?!.*Appropriations)")   # the committees that write immigration law
+US_STATE_CODES = set("US AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY PR GU VI AS MP".split())
+
+OFFICIAL_HOSTS = re.compile(r"(\.gov|\.gov\.[a-z]{2}|\.us|uscourts\.gov|courtlistener\.com|hennepinattorney\.org|cookcountystatesattorney\.org|chicityclerk\.s3\.[a-z0-9-]+\.amazonaws\.com)$")
+COPY_HOSTS = {"clearinghouse.net", "store.ilrc.org", "www.ilrc.org", "ilrc.org"}
+
+def source_kind(url):
+    """official: the court, the government body or the legislature itself. copy: a court record or law hosted by someone
+    else (a docket archive, a news site's copy of a filing). news: a news report. The page labels the last two."""
+    from urllib.parse import urlparse
+    u = urlparse(url or ""); h = (u.hostname or "").lower()
+    if not h: return ""
+    if OFFICIAL_HOSTS.search(h): return "official"
+    if h in COPY_HOSTS or u.path.lower().endswith(".pdf"): return "copy"
+    return "news"
+
+def disputes_list(ref, facilities, today=None):
+    """Formal disputes on public record between ICE/DHS/DOJ and state or local governments, researched by hand
+    (data/reference/ice_local_disputes.csv; rules in the project spec). Rows are rejected loudly rather than shown wrong:
+    [date, state, place, kind, started_by, federal_party, local_party, what_en, what_es, status_en, status_es, status_date, [facility codes], source_url, status_url]"""
+    f = Path(ref) / "ice_local_disputes.csv"
+    if not f.exists(): return []
+    rows = list(csv.DictReader(open(f, encoding="utf-8"), delimiter="|"))
+    if rows and list(rows[0].keys()) != DISPUTE_COLS: raise ValueError(f"ice_local_disputes.csv: columns must be {DISPUTE_COLS}")
+    today = today or dt.date.today().isoformat(); seen = set(); out = []
+    iso = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    for r in rows:
+        r = {k: (v or "").strip() for k, v in r.items()}; i = r["id"]
+        def bad(why): raise ValueError(f"ice_local_disputes.csv row {i or '?'}: {why}")
+        if not i or i in seen: bad("missing or repeated id")
+        seen.add(i)
+        for k in ("date", "state", "place", "kind", "started_by", "federal_party", "local_party", "what_en", "what_es", "source_url"):
+            if not r[k]: bad(f"{k} is empty")
+        if not iso.match(r["date"]) or r["date"] > today: bad(f"bad or future date {r['date']!r}")
+        if r["state"] not in US_STATE_CODES: bad(f"unknown state {r['state']!r}")
+        if r["kind"] not in DISPUTE_KINDS: bad(f"kind must be one of {sorted(DISPUTE_KINDS)}")
+        if r["started_by"] not in ("federal", "state_local"): bad("started_by must be federal or state_local")
+        for k in ("source_url", "status_url"):
+            if r[k] and not r[k].startswith("https://"): bad(f"{k} must be an https link")
+        if bool(r["status_en"]) != bool(r["status_es"]): bad("status needs both English and Spanish")
+        if r["status_en"] and not (iso.match(r["status_date"]) and r["status_url"]): bad("a status needs its date and its own source")
+        if r["status_date"] and (r["status_date"] < r["date"] or r["status_date"] > today): bad("status date before the dispute or in the future")
+        offs = [o.strip() for o in r["officials"].split(";") if o.strip()]       # "Name (role in English / in Spanish)": elected officials and political appointees only
+        if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", o) for o in offs): bad("officials must be written Name (role / rol), separated by ;")
+        if r["final"] not in ("", "Y") or (r["final"] and not r["status_en"]): bad("final is Y (the case or charge is over) or empty, and Y needs a status")
+        codes = [c for c in r["facility_codes"].split(";") if c.strip()]
+        unk = [c for c in codes if c not in facilities]
+        if unk: bad(f"unknown facility codes {unk}")
+        out.append([r["date"], r["state"], r["place"], r["kind"], r["started_by"], r["federal_party"], r["local_party"], r["what_en"], r["what_es"], r["status_en"], r["status_es"], r["status_date"], codes, r["source_url"], r["status_url"]])
+    ck = Path(ref) / "disputes_checked.csv"                       # made by pipeline/disputes_check.py; a failed link is flagged, not hidden
+    fail = {r["url"]: r["checked"] for r in csv.DictReader(open(ck, encoding="utf-8"), delimiter="|") if r["ok"] == "0"} if ck.exists() else {}
+    laws = {}
+    lf = Path(ref) / "disputed_laws.csv"                            # the state or local law at the center of each dispute, and who wrote it; by hand
+    if lf.exists():
+        for r in csv.DictReader(open(lf, encoding="utf-8"), delimiter="|"):
+            r = {k: (v or "").strip() for k, v in r.items()}
+            if r["dispute_id"] not in seen: raise ValueError(f"disputed_laws.csv: unknown dispute {r['dispute_id']!r}")
+            if not (r["law_en"] and r["law_es"] and r["law_url"].startswith("https://")): raise ValueError(f"disputed_laws.csv: {r['dispute_id']} needs a name in both languages and an https source")
+            au = [x.strip() for x in r["authors"].split(";") if x.strip()]
+            if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", x) for x in au): raise ValueError(f"disputed_laws.csv: {r['dispute_id']}: authors must be written Name (role / rol)")
+            laws.setdefault(r["dispute_id"], []).append([r["law_en"], r["law_es"], r["law_url"], [[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in au]])
+    dk = {}
+    for f2 in (Path(ref) / "dispute_dockets.csv", Path(ref) / "dispute_dockets_checked.csv"):   # hand list, then what dockets.py found
+        for r in (csv.DictReader(open(f2, encoding="utf-8"), delimiter="|") if f2.exists() else []):
+            if r["id"] not in seen: raise ValueError(f"{f2.name}: unknown dispute {r['id']!r}")
+            dk[r["id"]] = {**dk.get(r["id"], {}), **r}
+    for o, r in zip(out, rows):
+        o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], [])); o.append(r["final"] == "Y"); o.append([source_kind(r["source_url"]), source_kind(r["status_url"])])
+        k = dk.get(r["id"], {}); lf = k.get("last_filing", "")                      # 20: [docket url, its newest filing, newer than the step on file]
+        o.append([k.get("cl_url", ""), lf, bool(lf and lf > (r["status_date"] or r["date"]))] if k.get("cl_url") else [])
+    return sorted(out, key=lambda x: x[0], reverse=True)
+
+def _pnorm(s):
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", s or "") if not unicodedata.combining(c)).lower()
+
+def person_key(s):
+    """First and last name only, lower case, no accents: filings drop middle names, initials and nicknames ("Chuy")."""
+    w = re.sub(r"\([^)]*\)|\"[^\"]*\"", " ", _pnorm(s))
+    w = re.sub(r",?\s+(jr|sr|ii|iii|iv)\.?\s*$", "", w.strip())
+    w = [x for x in re.sub(r"[^a-z\s'-]", " ", w).split() if len(x) > 1]
+    return f"{w[0]} {w[-1]}" if len(w) > 1 else ""
+
+def staff_hit(posts, first, last):
+    """A lobbyist's reported past post names this official by first and last name ("Chief of Staff, Rep. Vince Fong").
+    Surname-only mentions ("Rep Gallego") are not enough: two members can share a surname. Interns are not counted."""
+    pat = re.compile(rf"\b(rep|sen|senator|representative|congressman|congresswoman|gov|governor|mayor)\.?\s+{re.escape(first)}\s+([a-z]\.?\s+)?{re.escape(last)}\b")
+    return any(pat.search(_pnorm(seg)) and "intern" not in seg.lower() for seg in (posts or "").split(";"))
+
+def vote_summary(code):
+    c = re.sub(r"[-PX]", "", code or ""); y, n = c.count("Y"), c.count("N")
+    return None if not c else ["for" if not n else "ag" if not y else "mix", y, n]
+
+def dispute_people(site):
+    """Everyone the disputes tab names, checked against the rest of the page's records. Worked out here, not in the
+    browser, so it is tested and can be read in the page data (DATA.dispute_people): {name as shown: {bg, v:[for|ag|mix, yes, no], t:[[code, detail]]}}.
+    dm detention-company committee or staff money; jf joint fundraiser that received it; lf political money from a lobbying
+    firm hired by a detention or ICE flight company; fs former staff now lobby at such a firm; ov the overlap rule on
+    Politicians; re refused entry to an ICE facility; vi published oversight visits."""
+    D, P = site.get("disputes") or [], site.get("pol") or {}
+    if not D: return {}
+    M, C = P.get("m") or [], P.get("c") or {}
+    flagged = {f["bg"] for f in ((P.get("flags") or {}).get("list") or [])}
+    names = set()
+    for d in D:
+        names.update(o[0] for o in d[16]); names.update(a[0] for l in d[17] for a in l[3])
+        names.update(g[1] for g in (P.get("gov") or []) if g[0] == d[1])
+        names.update(t[0] for t in (site.get("gov_terms") or {}).get(d[1], []))
+        names.update(m[1] for m in M if m[4] == d[1] and m[11] and any(LAWCOM.match(c) for c in (m[7] or [])))
+    names.update(s[2] for s in site.get("law_sponsors") or [])
+    firm_money, staff = {}, []
+    for fn, c in ((site.get("firms") or {}).get("cards") or {}).items():
+        for n, k, u, g in c.get("money") or []:
+            key = person_key(re.sub(r"\s*\([A-Z]{2}(-\d+)?\)\s*$", "", n))
+            if key: firm_money.setdefault(key, []).append([fn, u])
+        staff += [[fn, posts, cos] for lob, posts, cos in c.get("former") or []]
+    visits = (site.get("statements_visits") or []) + [r for r in site.get("statements") or [] if r[2] == "visit"]
+    def has(s, key): return f" {key} " in " " + re.sub(r"\s+", " ", re.sub(r"[^a-z\s'-]", " ", _pnorm(s))) + " "
+    out = {}
+    for nm in sorted(names):
+        key = person_key(nm)
+        if not key: continue
+        first, last = key.split()
+        m = next((m for m in M if _pnorm(m[1]) == _pnorm(nm) or _pnorm(re.sub(r'\s*"[^"]*"', "", m[1])) == _pnorm(nm)), None)
+        bg = m[0] if m else ""; t = []
+        if m and ((m[9] or 0) + (m[10] or 0) > 0 or (m[13] or 0) > 0): t.append(["dm", [(m[9] or 0) + (m[10] or 0), m[13] or 0]])
+        if bg and (C.get(bg) or {}).get("jfc"): t.append(["jf", [j[0] for j in C[bg]["jfc"]]])
+        if key in firm_money: t.append(["lf", firm_money[key]])
+        fs = []
+        for fn, posts, cos in staff:
+            if staff_hit(posts, first, last) and [fn, cos] not in fs: fs.append([fn, cos])
+        if fs: t.append(["fs", fs])
+        if bg in flagged: t.append(["ov", 1])
+        dn = [[r[1], r[0]] for r in site.get("denied") or [] if has(r[2], key)]
+        if dn: t.append(["re", dn])
+        vs = sum(1 for r in visits if has(r[1], key))
+        if vs: t.append(["vi", vs])
+        out[nm] = {"bg": bg, "v": vote_summary(m[8]) if m else None, "t": t}
+    return out
+
+def governor_changes(ref, current, terms):
+    """The weekly check found a different governor in a state: the outgoing one must be in governor_terms.csv, or every
+    older dispute in that state would silently lose its "Governor at the time". Raises until the line is added; once it
+    is, governors_known.csv is brought up to date so the next build is clean."""
+    f = Path(ref) / "governors_known.csv"
+    if not f.exists() or not current: return []
+    known = {r["state"]: r["name"] for r in csv.DictReader(open(f, encoding="utf-8"), delimiter="|")}
+    changed = [(st, known[st], nm) for st, nm in sorted(current.items()) if st in known and known[st] != nm]
+    missing = [f"{st}: {old} -> {new}" for st, old, new in changed if not any(t[0] == old for t in terms.get(st, []))]
+    if missing: raise ValueError("A governor changed and governor_terms.csv has no line for the one who left (name|party|start|end|source): " + "; ".join(missing))
+    if changed or set(current) - set(known):
+        f.write_text("state|name\n" + "".join(f"{st}|{nm}\n" for st, nm in sorted({**known, **current}.items())), encoding="utf-8")
+    return changed
+
+def governor_terms(ref):
+    """Governors who left office since January 2025, kept by hand with a source each (data/reference/governor_terms.csv),
+    so an entry can name the governor at the time when it differs from the governor now: {state: [[name, party, start, end]]}."""
+    f = Path(ref) / "governor_terms.csv"
+    if not f.exists(): return {}
+    out = {}
+    for r in csv.DictReader(open(f, encoding="utf-8"), delimiter="|"):
+        if r["state"] not in US_STATE_CODES or not (r["start"] < r["end"]) or not r["source"].startswith("https://"): raise ValueError(f"governor_terms.csv: bad row {r}")
+        out.setdefault(r["state"], []).append([r["name"], r["party"], r["start"], r["end"]])
+    return out
+
 def future_dates(ref, today):
     """Every "read"/"checked"/"as_of" date in the reference metadata that is later than the build date (a clock mix-up)."""
     bad = []
@@ -1960,6 +2127,13 @@ def main():
         (ROOT / "data" / "watch" / "officials_candidates.json").write_text(json.dumps(fl, indent=1), encoding="utf-8")
         site["pol"]["flags"] = {"min": rules.get("officials_min_usd", 0), **({"list": fl} if rules.get("officials_published") else {"pending": len(fl)})}
     site["social"] = social_list(ref)
+    site["disputes"] = disputes_list(ref, site["facilities"]); site["gov_terms"] = governor_terms(ref)
+    for st, old, new in governor_changes(ref, {r["state"]: r["name"] for r in rd_pipe(ref / "governors.csv")} if (ref / "governors.csv").exists() else {}, site["gov_terms"]): print(f"GOVERNOR CHANGE recorded: {st} {old} -> {new}")
+    if (ref / "federal_law_sponsors.csv").exists():                  # who sponsored the enforcement laws on Politicians; by hand, from congress.gov
+        fs = list(csv.DictReader(open(ref / "federal_law_sponsors.csv", encoding="utf-8"), delimiter="|"))
+        laws = {v[4] for v in (site.get("pol") or {}).get("votes", [])}
+        if laws and any(r["law"] not in laws for r in fs): raise ValueError("federal_law_sponsors.csv: a law that is not among the votes on Politicians")
+        site["law_sponsors"] = [[r["law"], r["bill"], r["sponsor"], r["chamber"], r["state"], r["url"]] for r in fs]
     site["hotlines"] = hotlines(ref)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
@@ -1967,6 +2141,8 @@ def main():
     if fc:
         firm_members(fc["pat"], (site.get("pol") or {}).get("m") or []); fc["pat"].pop("_money", None)
         site["firms"] = fc
+    site["dispute_people"] = dispute_people(site)
+    watch.add_disputes(ROOT, site.get("disputes"))                  # new disputes and new steps reach the same feed as the alerts
     hp = ROOT / "data" / "headline_history.json"                   # what the headline counts were at each update, so the page can say what changed
     hist, site["changes"] = record_changes(json.loads(hp.read_text(encoding="utf-8")) if hp.exists() else [], today, headline(site))
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")

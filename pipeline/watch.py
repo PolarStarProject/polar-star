@@ -196,6 +196,31 @@ def atom(alerts, log, built, pub):
     return "\n".join(E + ["</feed>", ""])
 
 
+DISPUTE_KIND = {"lawsuit": "Lawsuit", "law": "Law and federal response", "order": "Order, letter or subpoena", "charge": "Criminal charge", "investigation": "Criminal investigation"}
+
+
+def dispute_entries(disputes, n=30):
+    """The newest disputes between ICE and state or local governments, as feed entries. An entry's id carries its
+    latest step's date, so a new step shows up in a reader as an update."""
+    import hashlib
+    E = []
+    for d in sorted(disputes, key=lambda d: d[11] or d[0], reverse=True)[:n]:
+        k = hashlib.sha1(d[13].encode()).hexdigest()[:10]; when = d[11] or d[0]
+        where = d[2] if d[1] == "US" or d[1] in d[2] else f"{d[2]}, {d[1]}"
+        summ = d[7] + (f" Latest on record ({d[11]}): {d[9]}" if d[9] else "") + f" Source: {d[13]}"
+        E += ["<entry>", f"<title>{escape(DISPUTE_KIND.get(d[3], d[3]))}, {escape(where)} ({d[0]})</title>", f"<id>tag:polar-star,2026:dispute/{k}/{when}</id>",
+              f"<updated>{when}T00:00:00Z</updated>", '<link href="./#disp"/>', f"<summary>{escape(summ)}</summary>", "</entry>"]
+    return E
+
+
+def add_disputes(root, disputes):
+    """Adds the disputes to site/watch.xml, written by build() before the disputes are read."""
+    p = root / "site" / "watch.xml"
+    if not (disputes and p.exists()): return
+    s = p.read_text(encoding="utf-8")
+    p.write_text(s.replace("</feed>", "\n".join(dispute_entries(disputes)) + "\n</feed>", 1), encoding="utf-8")
+
+
 def build(site, pdm, today, ref, root, pub):
     """Works out every alert, keeps the log, writes the briefs, candidates and feed; returns what the page shows."""
     rp = ref / "watch_rules.json"; rules = {**RULES_DEFAULT, **(json.loads(rp.read_text(encoding="utf-8")) if rp.exists() else {})}
