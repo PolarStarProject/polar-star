@@ -65,6 +65,16 @@ def offers_int(v):
     return n if 0 <= n < 100000 else ""
 
 
+FAIR_OPP_LIMITED = {"ONLY ONE SOURCE - OTHER", "FOLLOW-ON ACTION FOLLOWING COMPETITIVE INITIAL ACTION", "MINIMUM GUARANTEE", "SOLE SOURCE", "URGENCY",
+                    "URGENCY (FAR 6.302-2)", "OTHER STATUTORY AUTHORITY", "MOBILIZATION, ESSENTIAL R&D (FAR 6.302-3)", "UNIQUE SOURCE", "ONLY ONE SOURCE"}
+# An order under a competed contract can still be placed without letting the contract's other holders compete for it: the
+# record then names a fair-opportunity exception. Such an order is "L" (limited), never "C", whatever the parent contract's code.
+
+def award_competition(competed, reason):
+    """'C', 'N', 'L' or '' for one award: 'L' when a competed contract's order names a fair-opportunity exception."""
+    return "L" if competed == "C" and (reason or "").strip().upper() in FAIR_OPP_LIMITED else competed
+
+
 def competed_code(code, groups):
     """'C', 'N' or '' from an extent-competed code and money_usaspending.COMPETED."""
     return "C" if code in groups["competed"] else "N" if code in groups["not_competed"] else ""
@@ -114,7 +124,8 @@ def main():
             if not (j.get("page_metadata") or {}).get("hasNext"): break
             page += 1
         c, pop = d.get("latest_transaction_contract_data") or {}, d.get("place_of_performance") or {}
-        r.update({"window_usd": window_sum(txs, start, end), "competed": competed_code(c.get("extent_competed"), COMPETED), "psc": (c.get("product_or_service_code") or "").strip(),
+        why = " ".join((c.get("other_than_full_and_open_description") or c.get("fair_opportunity_limited_description") or "").split())
+        r.update({"window_usd": window_sum(txs, start, end), "competed": award_competition(competed_code(c.get("extent_competed"), COMPETED), why), "psc": (c.get("product_or_service_code") or "").strip(),
                   "extent": (c.get("extent_competed") or "").strip(), "offers": offers_int(c.get("number_of_offers_received")), "reason": " ".join((c.get("other_than_full_and_open_description") or c.get("fair_opportunity_limited_description") or "").split())[:120].replace("|", "/"),
                   "pop_city": (pop.get("city_name") or "").strip().upper().replace("|", "/"), "pop_state": (pop.get("state_code") or "").strip().upper(), "pop_zip": (pop.get("zip5") or "").strip()})
         return True
