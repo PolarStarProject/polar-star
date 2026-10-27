@@ -46,6 +46,7 @@ jobs:
         env:
           FEC_API_KEY: ${{ secrets.FEC_API_KEY }}      # optional: without it the political committee figures are left as they are
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+          COURTLISTENER_TOKEN: ${{ secrets.COURTLISTENER_TOKEN }}   # optional: the project's CourtListener account; court dockets for the disputes tab
           ONLY: ${{ github.event.inputs.only }}
           SKIP: ${{ github.event.inputs.skip }}
         run: |

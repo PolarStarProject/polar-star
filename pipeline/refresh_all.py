@@ -50,6 +50,7 @@ STEPS = [  # name, command after "python", required
     ("officials",  ["pipeline/officials_check.py"], False),
     ("hotlines",   ["pipeline/hotlines_check.py"], False),
     ("disputes",   ["pipeline/disputes_check.py"], False),
+    ("dockets",    ["pipeline/dockets.py"], False),
     ("legalaid",   ["pipeline/eoir_probono.py"], False),
     ("moa",        ["pipeline/moa_links.py"], False),
     ("signers",    ["pipeline/moa_signers.py"], False),
@@ -68,7 +69,7 @@ STEPS = [  # name, command after "python", required
 # page from being rebuilt. A stopped step counts as failed: its data is left as it was and it is tried again next week.
 LIMIT = 40
 LIMITS = {"records": 60, "transfers": 60, "fec": 90, "jfc": 60, "donors": 60, "membercom": 60, "topdonors": 60, "countrypacs": 60,
-          "firmbase": 60, "flights": 60, "tests": 30, "build": 20}
+          "firmbase": 60, "flights": 60, "tests": 30, "build": 20, "dockets": 20}
 
 ON_REQUEST = {"probe"}   # steps that run only when named in --only
 MONTHLY = set()          # steps that run only in the first week of a month (none now: the audit check is weekly again)
