@@ -2085,7 +2085,7 @@ def main():
         dyn["lobby"] = jm("lobbying_meta.json").get("read", ""); dyn["fec"] = jm("fec_meta.json").get("read", "")
         dyn["fec_donors"] = jm("fec_donors_meta.json").get("read", ""); dyn["fec_top"] = jm("member_top_donors_meta.json").get("read", ""); dyn["social"] = jm("social_meta.json").get("checked", "")
         dyn["sec"] = "" if jm("sec_meta.json").get("newer") else jm("sec_meta.json").get("checked", "")      # a newer filing exists: fall back to the day the files were last read by hand
-        dyn["stats"] = max((r["as_of"] for r in rdx("ice_stats_snapshots.csv") if r.get("as_of")), default="") or (site.get("contracts_meta") or {}).get("as_of") or max((r["read"] for r in rdx("detention_stats_files.csv")), default="")   # the date the figures in ICE's newest file are as of (not the day it was posted, nor the day it was read)
+        dyn["stats"] = (site.get("contracts_meta") or {}).get("as_of") or max((r["as_of"] for r in rdx("ice_stats_snapshots.csv") if r.get("as_of")), default="") or max((r["read"] for r in rdx("detention_stats_files.csv")), default="")   # the date in the newest file's own name comes first: ice_stats_snapshots' as_of is the day the file was read   # the date the figures in ICE's newest file are as of (not the day it was posted, nor the day it was read)
         dyn["findings"] = max((r["checked"] for r in rdx("ice_inspection_findings.csv")), default="")
         om = jm("other_sources_meta.json"); dyn["other_money"] = jm("other_money_meta.json").get("read", "")
         for k in ("encounters", "custody", "orr"):         # monthly series are dated by the last month they cover, so a source that stops publishing goes stale
