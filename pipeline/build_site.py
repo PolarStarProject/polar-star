@@ -1583,11 +1583,31 @@ def vendors(ref):
     return {"rows": out, "from": meta.get("from", ""), "to": meta.get("to", ""), "read": meta.get("read", ""), "lob_read": lm.get("read", ""), "lob_from": lm.get("from", "")}
 
 
-def hotlines(ref):
-    """Help lines and links that passed this week's check on their official page: {key: [number or "", source page, checked]}."""
+HAND_DAYS = 30                       # a line checked by hand is shown for this long, then hidden until checked again
+PRIORITY_LINES = ("dril", "ciam", "consular", "orr", "eoir")
+
+def hotlines(ref, today=None):
+    """Help lines and links that passed this week's check on their official page: {key: [number or "", source page, checked]}.
+    When the weekly check cannot confirm a line (the official site blocks GitHub's servers), a check by hand in
+    hotlines_manual.csv (key | checked | source | note) shows it for HAND_DAYS days, marked [.., "hand"] so the page says so."""
     rd = lambda n: list(csv.DictReader(open(Path(ref) / n, encoding="utf-8"), delimiter="|")) if (Path(ref) / n).exists() else []
+    today = dt.date.fromisoformat(today) if today else dt.date.today()
     want = {r["key"]: r for r in rd("hotlines.csv")}
-    return {r["key"]: [want[r["key"]]["number"], r["source"], r["checked"]] for r in rd("hotlines_checked.csv") if r["ok"] == "1" and r["key"] in want}
+    out = {r["key"]: [want[r["key"]]["number"], r["source"], r["checked"]] for r in rd("hotlines_checked.csv") if r["ok"] == "1" and r["key"] in want}
+    for r in rd("hotlines_manual.csv"):
+        k = r["key"]
+        if k not in want: raise ValueError(f"hotlines_manual.csv: {k!r} is not in hotlines.csv")
+        if not r["source"].startswith("https://"): raise ValueError(f"hotlines_manual.csv: {k} needs the official page it was checked on")
+        age = (today - dt.date.fromisoformat(r["checked"])).days
+        if age < 0: raise ValueError(f"hotlines_manual.csv: {k} checked in the future")
+        if k in out: continue                                       # the automatic check passed: that wins
+        if age <= HAND_DAYS:
+            out[k] = [want[k]["number"], r["source"], r["checked"], "hand"]
+            if age > HAND_DAYS - 7: print(f"HAND-CHECKED LINE {k} is hidden after {r['checked']} + {HAND_DAYS} days: check it again on {r['source']}")
+        else: print(f"HAND-CHECKED LINE {k} EXPIRED (checked {r['checked']}); hidden until it is checked again")
+    hidden = [k for k in PRIORITY_LINES if k in want and k not in out]
+    if hidden: print("FAMILY HELP LINES HIDDEN (not confirmed this week): " + ", ".join(hidden))
+    return out
 
 
 def social_list(ref):
@@ -2134,7 +2154,7 @@ def main():
         laws = {v[4] for v in (site.get("pol") or {}).get("votes", [])}
         if laws and any(r["law"] not in laws for r in fs): raise ValueError("federal_law_sponsors.csv: a law that is not among the votes on Politicians")
         site["law_sponsors"] = [[r["law"], r["bill"], r["sponsor"], r["chamber"], r["state"], r["url"]] for r in fs]
-    site["hotlines"] = hotlines(ref)
+    site["hotlines"] = hotlines(ref, today)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
     fc = firm_cards(ref)
