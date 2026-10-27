@@ -1824,6 +1824,16 @@ def display_names(site, ref):
         f["ice_name"], f["name"], f["name_src"] = f["name"], r["name"].strip(), r["source"]
 
 
+def check_script(html):
+    """Stops the build when the page's script does not parse (node --check), so the weekly run puts the previous page back
+    instead of publishing a page that does nothing. Skipped where node is not installed."""
+    import shutil, subprocess, tempfile
+    if not shutil.which("node"): return
+    for js in re.findall(r"<script>(.*?)</script>", html, re.S):
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f: f.write(js)
+        r = subprocess.run(["node", "--check", f.name], capture_output=True, text=True); os.unlink(f.name)
+        if r.returncode: raise ValueError("the page's script does not parse:\n" + r.stderr[-1500:])
+
 def main():
     site = json.loads((ROOT / "data" / "site_data.json").read_text(encoding="utf-8"))
     legs = [l for f in sorted(glob.glob(str(ROOT / "data" / "flights" / "legs_*.json"))) for l in json.load(open(f, encoding="utf-8"))]
@@ -2187,6 +2197,8 @@ def main():
                 .replace("/*__FLIGHTS__*/null", json.dumps(flights, separators=(",", ":")))
                 .replace("/*__US__*/null", (ROOT / "site" / "vendor" / "us-states-10m.json").read_text(encoding="utf-8")))
     (ROOT / "site" / "index.html").write_text(html, encoding="utf-8")
+    check_script(html)
+
     print("; ".join(extra))
     print("STALE SOURCES: " + "; ".join(stale) if stale else "all sources within their expected age")
     near = sorted((f["name"], f["near"]) for f in site["facilities"].values() if f.get("near"))
