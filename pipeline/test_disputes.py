@@ -155,3 +155,14 @@ def test_disputes_reach_the_feed(tmp):
     watch.add_disputes(tmp, [d])
     s = (tmp / "site" / "watch.xml").read_text(encoding="utf-8")
     assert "<title>Criminal charge, Newark, NJ (2025-05-09)</title>" in s and "mayor &amp; charged" in s and "/2025-05-19</id>" in s and s.rstrip().endswith("</feed>")
+
+
+def test_docket_newer_than_the_step_on_file(tmp):
+    write(tmp, [GOOD])
+    (tmp / "dispute_dockets.csv").write_text("id|court|docket_number\nnj-1|njd|2:25-cr-1\n", encoding="utf-8")
+    assert disputes_list(tmp, FAC, today="2026-10-25")[0][20] == []                     # not found on CourtListener yet: nothing shown
+    (tmp / "dispute_dockets_checked.csv").write_text("id|court|docket_number|cl_id|cl_url|last_filing|entry_date|entry_text|entry_doc|checked\nnj-1|njd|2:25-cr-1|5|https://www.courtlistener.com/docket/5/x/|2025-06-02||||2026-10-20\n", encoding="utf-8")
+    assert disputes_list(tmp, FAC, today="2026-10-25")[0][20] == ["https://www.courtlistener.com/docket/5/x/", "2025-06-02", True]   # status is 2025-05-19
+    (tmp / "dispute_dockets.csv").write_text("id|court|docket_number\nzz|njd|1\n", encoding="utf-8")
+    try: disputes_list(tmp, FAC, today="2026-10-25"); assert False
+    except ValueError: pass

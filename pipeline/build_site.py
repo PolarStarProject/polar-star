@@ -1674,7 +1674,15 @@ def disputes_list(ref, facilities, today=None):
             au = [x.strip() for x in r["authors"].split(";") if x.strip()]
             if any(not re.fullmatch(r"[^()]+ \([^()/]+ / [^()/]+\)", x) for x in au): raise ValueError(f"disputed_laws.csv: {r['dispute_id']}: authors must be written Name (role / rol)")
             laws.setdefault(r["dispute_id"], []).append([r["law_en"], r["law_es"], r["law_url"], [[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in au]])
-    for o, r in zip(out, rows): o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], [])); o.append(r["final"] == "Y"); o.append([source_kind(r["source_url"]), source_kind(r["status_url"])])
+    dk = {}
+    for f2 in (Path(ref) / "dispute_dockets.csv", Path(ref) / "dispute_dockets_checked.csv"):   # hand list, then what dockets.py found
+        for r in (csv.DictReader(open(f2, encoding="utf-8"), delimiter="|") if f2.exists() else []):
+            if r["id"] not in seen: raise ValueError(f"{f2.name}: unknown dispute {r['id']!r}")
+            dk[r["id"]] = {**dk.get(r["id"], {}), **r}
+    for o, r in zip(out, rows):
+        o.append(fail.get(o[13], "")); o.append([[x.rsplit(" (", 1)[0], *x.rsplit(" (", 1)[1][:-1].split(" / ")] for x in (y.strip() for y in r["officials"].split(";")) if x]); o.append(laws.get(r["id"], [])); o.append(r["final"] == "Y"); o.append([source_kind(r["source_url"]), source_kind(r["status_url"])])
+        k = dk.get(r["id"], {}); lf = k.get("last_filing", "")                      # 20: [docket url, its newest filing, newer than the step on file]
+        o.append([k.get("cl_url", ""), lf, bool(lf and lf > (r["status_date"] or r["date"]))] if k.get("cl_url") else [])
     return sorted(out, key=lambda x: x[0], reverse=True)
 
 def _pnorm(s):
