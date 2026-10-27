@@ -1,12 +1,14 @@
 """data/site_data.json + data/flights/legs_*.json -> site/index.html (facility pages and flights in one page)."""
 import csv, glob, json, math, os, re, sys, time
 import datetime as dt
+import urllib.parse
 os.environ["TZ"] = "UTC"
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"): _s.reconfigure(errors="replace")      # a Windows console cannot print every character in the build notes
 if hasattr(time, "tzset"): time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too (Windows has no tzset; see utc_today)
 from pathlib import Path
 from flights import STAGING, km
+from money_awards import award_competition
 from firm_profiles import core, is_person, on_trail, trail_people, recipient, PERSONAL
 
 ROOT = Path(__file__).parent.parent
@@ -251,7 +253,7 @@ def awards_by_recipient(rows, meta):
         amt = int(r["amount_usd"])
         if amt < int(meta["floor_usd"]) or not r["uid"] or not r["recipient"]: raise ValueError(f"ice_awards.csv: bad row {r.get('award_id')}")
         win = r.get("window_usd") or ""                 # blank = that award's detail was not read; never shown as zero
-        by.setdefault(r["recipient"].upper(), []).append([r["award_id"], round(amt / 1e6, 1), r["start"], r["end"], r["type"], r["what"], r["uid"], round(int(win) / 1e6, 1) if win != "" else None, r.get("competed") or "", int(r["offers"]) if (r.get("offers") or "") != "" else None, r.get("reason") or "", r.get("extent") or ""]); n += 1
+        by.setdefault(r["recipient"].upper(), []).append([r["award_id"], round(amt / 1e6, 1), r["start"], r["end"], r["type"], r["what"], r["uid"], round(int(win) / 1e6, 1) if win != "" else None, award_competition(r.get("competed") or "", r.get("reason")), int(r["offers"]) if (r.get("offers") or "") != "" else None, r.get("reason") or "", r.get("extent") or ""]); n += 1
     if n != int(meta["awards"]): raise ValueError(f"ice_awards.csv has {n} rows, its meta says {meta['awards']}")
     for v in by.values(): v.sort(key=lambda a: -a[1])
     return {"meta": {k: meta[k] for k in ("from", "to", "read", "floor_usd", "awards", "recipients")}, "by": by}
@@ -301,7 +303,7 @@ def facility_awards(site, rows):
         if not codes or not codes[0]: n["nowhere"] += 1; continue
         if len(codes) > 1: n["shared"] += 1; continue
         win = r.get("window_usd") or ""; n["placed"] += 1
-        out.setdefault(codes[0], []).append([r["recipient"], r["award_id"], round(int(r["amount_usd"]) / 1e6, 1), round(int(win) / 1e6, 1) if win != "" else None, r["start"], r["end"], r.get("competed") or "", r["uid"]])
+        out.setdefault(codes[0], []).append([r["recipient"], r["award_id"], round(int(r["amount_usd"]) / 1e6, 1), round(int(win) / 1e6, 1) if win != "" else None, r["start"], r["end"], award_competition(r.get("competed") or "", r.get("reason")), r["uid"]])
     for v in out.values(): v.sort(key=lambda a: -(a[3] if a[3] is not None else a[2]))
     return out, n
 
@@ -1145,6 +1147,8 @@ def donors_section(ref):
     for r in rows:
         if r["co"] not in ("GEO", "CC", "MTC", "LAS", "ICA", "CSI"): raise ValueError(f"fec_donors.csv: unknown company {r['co']!r}")
         if not (r["url"].startswith("https://docquery.fec.gov/") or r["url"].startswith("https://www.fec.gov/")): raise ValueError(f"fec_donors.csv: link {r['url']}")
+        if not r["url"].startswith("https://www.fec.gov/data/receipts/"):        # older rows link the scanned filing, which prints a street address
+            r["url"] = "https://www.fec.gov/data/receipts/?" + urllib.parse.urlencode({"committee_id": r["committee_id"], "contributor_name": r["name"], "two_year_transaction_period": r["cycle"]})
         own = r["committee_id"] in ("C00382150", "C00366468", "C00208322")      # a company's own committee (GEO, CoreCivic, MTC): its gifts on are counted as PAC money
         out.append([r["co"], r["date"], r["name"], r["employer"], r["occupation"], r["state"], float(r["usd"]), r["committee"], "O" if own else r["ctype"], r["party"], r["bioguide"], r["url"], int(r["cycle"])])
     got = round(sum(r[6] for r in out), 2)
@@ -1583,11 +1587,31 @@ def vendors(ref):
     return {"rows": out, "from": meta.get("from", ""), "to": meta.get("to", ""), "read": meta.get("read", ""), "lob_read": lm.get("read", ""), "lob_from": lm.get("from", "")}
 
 
-def hotlines(ref):
-    """Help lines and links that passed this week's check on their official page: {key: [number or "", source page, checked]}."""
+HAND_DAYS = 30                       # a line checked by hand is shown for this long, then hidden until checked again
+PRIORITY_LINES = ("dril", "ciam", "consular", "orr", "eoir")
+
+def hotlines(ref, today=None):
+    """Help lines and links that passed this week's check on their official page: {key: [number or "", source page, checked]}.
+    When the weekly check cannot confirm a line (the official site blocks GitHub's servers), a check by hand in
+    hotlines_manual.csv (key | checked | source | note) shows it for HAND_DAYS days, marked [.., "hand"] so the page says so."""
     rd = lambda n: list(csv.DictReader(open(Path(ref) / n, encoding="utf-8"), delimiter="|")) if (Path(ref) / n).exists() else []
+    today = dt.date.fromisoformat(today) if today else dt.date.today()
     want = {r["key"]: r for r in rd("hotlines.csv")}
-    return {r["key"]: [want[r["key"]]["number"], r["source"], r["checked"]] for r in rd("hotlines_checked.csv") if r["ok"] == "1" and r["key"] in want}
+    out = {r["key"]: [want[r["key"]]["number"], r["source"], r["checked"]] for r in rd("hotlines_checked.csv") if r["ok"] == "1" and r["key"] in want}
+    for r in rd("hotlines_manual.csv"):
+        k = r["key"]
+        if k not in want: raise ValueError(f"hotlines_manual.csv: {k!r} is not in hotlines.csv")
+        if not r["source"].startswith("https://"): raise ValueError(f"hotlines_manual.csv: {k} needs the official page it was checked on")
+        age = (today - dt.date.fromisoformat(r["checked"])).days
+        if age < 0: raise ValueError(f"hotlines_manual.csv: {k} checked in the future")
+        if k in out: continue                                       # the automatic check passed: that wins
+        if age <= HAND_DAYS:
+            out[k] = [want[k]["number"], r["source"], r["checked"], "hand"]
+            if age > HAND_DAYS - 7: print(f"HAND-CHECKED LINE {k} is hidden after {r['checked']} + {HAND_DAYS} days: check it again on {r['source']}")
+        else: print(f"HAND-CHECKED LINE {k} EXPIRED (checked {r['checked']}); hidden until it is checked again")
+    hidden = [k for k in PRIORITY_LINES if k in want and k not in out]
+    if hidden: print("FAMILY HELP LINES HIDDEN (not confirmed this week): " + ", ".join(hidden))
+    return out
 
 
 def social_list(ref):
@@ -1799,6 +1823,16 @@ def display_names(site, ref):
         if f.get("ice_name"): continue
         f["ice_name"], f["name"], f["name_src"] = f["name"], r["name"].strip(), r["source"]
 
+
+def check_script(html):
+    """Stops the build when the page's script does not parse (node --check), so the weekly run puts the previous page back
+    instead of publishing a page that does nothing. Skipped where node is not installed."""
+    import shutil, subprocess, tempfile
+    if not shutil.which("node"): return
+    for js in re.findall(r"<script>(.*?)</script>", html, re.S):
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f: f.write(js)
+        r = subprocess.run(["node", "--check", f.name], capture_output=True, text=True); os.unlink(f.name)
+        if r.returncode: raise ValueError("the page's script does not parse:\n" + r.stderr[-1500:])
 
 def main():
     site = json.loads((ROOT / "data" / "site_data.json").read_text(encoding="utf-8"))
@@ -2061,7 +2095,7 @@ def main():
         dyn["lobby"] = jm("lobbying_meta.json").get("read", ""); dyn["fec"] = jm("fec_meta.json").get("read", "")
         dyn["fec_donors"] = jm("fec_donors_meta.json").get("read", ""); dyn["fec_top"] = jm("member_top_donors_meta.json").get("read", ""); dyn["social"] = jm("social_meta.json").get("checked", "")
         dyn["sec"] = "" if jm("sec_meta.json").get("newer") else jm("sec_meta.json").get("checked", "")      # a newer filing exists: fall back to the day the files were last read by hand
-        dyn["stats"] = max((r["as_of"] for r in rdx("ice_stats_snapshots.csv") if r.get("as_of")), default="") or (site.get("contracts_meta") or {}).get("as_of") or max((r["read"] for r in rdx("detention_stats_files.csv")), default="")   # the date the figures in ICE's newest file are as of (not the day it was posted, nor the day it was read)
+        dyn["stats"] = (site.get("contracts_meta") or {}).get("as_of") or max((r["as_of"] for r in rdx("ice_stats_snapshots.csv") if r.get("as_of")), default="") or max((r["read"] for r in rdx("detention_stats_files.csv")), default="")   # the date in the newest file's own name comes first: ice_stats_snapshots' as_of is the day the file was read   # the date the figures in ICE's newest file are as of (not the day it was posted, nor the day it was read)
         dyn["findings"] = max((r["checked"] for r in rdx("ice_inspection_findings.csv")), default="")
         om = jm("other_sources_meta.json"); dyn["other_money"] = jm("other_money_meta.json").get("read", "")
         for k in ("encounters", "custody", "orr"):         # monthly series are dated by the last month they cover, so a source that stops publishing goes stale
@@ -2134,7 +2168,7 @@ def main():
         laws = {v[4] for v in (site.get("pol") or {}).get("votes", [])}
         if laws and any(r["law"] not in laws for r in fs): raise ValueError("federal_law_sponsors.csv: a law that is not among the votes on Politicians")
         site["law_sponsors"] = [[r["law"], r["bill"], r["sponsor"], r["chamber"], r["state"], r["url"]] for r in fs]
-    site["hotlines"] = hotlines(ref)
+    site["hotlines"] = hotlines(ref, today)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
     fc = firm_cards(ref)
@@ -2163,6 +2197,8 @@ def main():
                 .replace("/*__FLIGHTS__*/null", json.dumps(flights, separators=(",", ":")))
                 .replace("/*__US__*/null", (ROOT / "site" / "vendor" / "us-states-10m.json").read_text(encoding="utf-8")))
     (ROOT / "site" / "index.html").write_text(html, encoding="utf-8")
+    check_script(html)
+
     print("; ".join(extra))
     print("STALE SOURCES: " + "; ".join(stale) if stale else "all sources within their expected age")
     near = sorted((f["name"], f["near"]) for f in site["facilities"].values() if f.get("near"))
