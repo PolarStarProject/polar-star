@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Polar Star Project: alerts from the records</title>
 <id>tag:polar-star,2026:watch</id>
-<updated>2026-10-26T00:00:00Z</updated>
+<updated>2026-10-27T00:00:00Z</updated>
 <link rel="alternate" href="./"/>
 <author><name>Polar Star Project</name></author>
 <entry>
@@ -123,5 +123,215 @@
 <updated>2026-10-09T00:00:00Z</updated>
 <link href="./"/>
 <summary>54 of the 281 people held here on August 6, 2026 had been in ICE detention more than a year (19%), against 6.3% of everyone held. At the national share, a count this high would come up by chance less than once in 100. Long stays often come from cases still in court or on appeal; the records do not say which.</summary>
+</entry>
+<entry>
+<title>Lawsuit, California, CA (2026-10-15)</title>
+<id>tag:polar-star,2026:dispute/73a98634bc/2026-10-15</id>
+<updated>2026-10-15T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>California sued DHS and ICE over ICE's courthouse enforcement directive and civil immigration arrests at California courthouses (C.D. Cal.). Source: https://oag.ca.gov/news/press-releases/100-lawsuits-21-months-attorney-general-bonta-sues-ice-over-civil-immigration</summary>
+</entry>
+<entry>
+<title>Lawsuit, Baltimore, MD (2026-03-10)</title>
+<id>tag:polar-star,2026:dispute/43fc7e4afc/2026-10-15</id>
+<updated>2026-10-15T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Maryland sued ICE and DHS to force production of the records ICE had refused to provide (Maryland v. Lyons, D. Md.). Latest on record (2026-10-15): The court dismissed the case without prejudice, holding that the state law does not authorize subpoenas to federal agencies. Source: https://oag.maryland.gov/News/Pages/Attorney-General-Brown-Files-Lawsuit-to-Force-ICE-to-Turn-Over-Records-for-OAG%E2%80%99s-Civil-Rights-Investigation-into-Reported-D.aspx</summary>
+</entry>
+<entry>
+<title>Lawsuit, New York City, NY (2025-07-24)</title>
+<id>tag:polar-star,2026:dispute/26552f48fd/2026-10-15</id>
+<updated>2026-10-15T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued New York City over its laws that limit city help with federal immigration enforcement (United States v. City of New York, E.D.N.Y.). Latest on record (2026-10-15): The court dismissed the case and closed it. Source: https://www.justice.gov/opa/pr/justice-department-sues-new-york-city-over-sanctuary-policies</summary>
+</entry>
+<entry>
+<title>Lawsuit, California, CA (2025-11-17)</title>
+<id>tag:polar-star,2026:dispute/683b4f5f96/2026-10-14</id>
+<updated>2026-10-14T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued California over two 2025 laws that limit face coverings for officers and require them to show identification (United States v. California, C.D. Cal.). Latest on record (2026-10-14): The Ninth Circuit reversed the district court's refusal to block the identification requirement and told it to issue a preliminary injunction against that requirement. Source: https://www.justice.gov/opa/pr/justice-department-files-complaint-challenging-california-mask-ban-and-identification</summary>
+</entry>
+<entry>
+<title>Criminal charge, Minneapolis, MN (2026-04-16)</title>
+<id>tag:polar-star,2026:dispute/b257b322e8/2026-10-13</id>
+<updated>2026-10-13T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Hennepin County Attorney charged an ICE officer with two counts of second-degree assault for allegedly pointing his weapon at two people in a car on Highway 62 on February 5, 2026. Latest on record (2026-10-13): The case is in state court; a federal judge has not ruled on the request to move it to federal court. Source: https://www.hennepinattorney.org/news/news/2026/April/morgan-charges</summary>
+</entry>
+<entry>
+<title>Lawsuit, 21 states and the District of Columbia, led by New Jersey, NJ (2025-08-18)</title>
+<id>tag:polar-star,2026:dispute/9aa7dd3bcd/2026-10-08</id>
+<updated>2026-10-08T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>States sued the Justice Department over conditions on crime-victim grants that required them to help DHS with civil immigration enforcement; amended complaints added Byrne JAG and other grant conditions (New Jersey v. DOJ, D.R.I.). Latest on record (2026-10-08): Both sides have asked the court to decide the case without trial; no ruling yet. Source: https://www.wisdoj.gov/PressReleases/8-18-2025-VOCA-Multistate.pdf</summary>
+</entry>
+<entry>
+<title>Criminal charge, North Minneapolis, MN (2026-05-18)</title>
+<id>tag:polar-star,2026:dispute/d08257e6fe/2026-09-17</id>
+<updated>2026-09-17T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Hennepin County Attorney charged an ICE officer with four counts of second-degree assault and one count of falsely reporting a crime over a January 14, 2026 shooting through a home's front door that wounded a man. Latest on record (2026-09-17): He made a first appearance in state court and was released on bail. Source: https://www.hennepinattorney.org/news/news/2026/May/castro-charges</summary>
+</entry>
+<entry>
+<title>Lawsuit, Santa Clara County, near Gilroy, CA (2026-06-10)</title>
+<id>tag:polar-star,2026:dispute/81b78a2b4f/2026-09-11</id>
+<updated>2026-09-11T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>California and Santa Clara County sued DHS and ICE to stop construction of a federally leased ICE facility on farmland near Gilroy (N.D. Cal.). Latest on record (2026-09-11): The court issued a preliminary injunction halting construction. Source: https://oag.ca.gov/news/press-releases/attorney-general-bonta-county-santa-clara-sue-block-illegal-development-ice</summary>
+</entry>
+<entry>
+<title>Lawsuit, Minneapolis and Saint Paul, MN (2026-01-12)</title>
+<id>tag:polar-star,2026:dispute/7fe32731cf/2026-09-10</id>
+<updated>2026-09-10T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Minnesota, Minneapolis and Saint Paul sued DHS to stop Operation Metro Surge, a deployment of DHS agents, including ICE, to the Twin Cities (D. Minn.). Latest on record (2026-09-10): The court heard the federal government's motion to dismiss the case as moot on September 9, 2026; no ruling found. Source: https://ag.state.mn.us/Office/Communications/2026/01/12_ICE.asp</summary>
+</entry>
+<entry>
+<title>Lawsuit, New Jersey, NJ (2026-02-23)</title>
+<id>tag:polar-star,2026:dispute/6195d069eb/2026-09-04</id>
+<updated>2026-09-04T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued New Jersey over Executive Order No. 12, which bars civil immigration arrests in nonpublic areas of state property (United States v. New Jersey, D.N.J.). Latest on record (2026-09-04): The court dismissed the case; the executive order remains in effect. Source: https://www.justice.gov/opa/pr/justice-department-files-lawsuit-against-new-jersey-interfering-federal-immigration-laws</summary>
+</entry>
+<entry>
+<title>Lawsuit, Rochester, NY (2025-04-24)</title>
+<id>tag:polar-star,2026:dispute/2043c8f3e1/2026-09-01</id>
+<updated>2026-09-01T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Rochester over its policy limiting city help with federal immigration enforcement (United States v. City of Rochester, W.D.N.Y.). Latest on record (2026-09-01): The court dismissed the amended complaint with prejudice and closed the case. Source: https://cityofrochester.gov/news/statement-mayor-city-council-president-city-rochester-regarding-legal-filing-us-department</summary>
+</entry>
+<entry>
+<title>Lawsuit, Washtenaw County, MI (2026-04-09)</title>
+<id>tag:polar-star,2026:dispute/fcfc04ce10/2026-08-21</id>
+<updated>2026-08-21T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Washtenaw County over its limits on cooperation with immigration authorities, on honoring ICE detainers and on federal agents' access to county property (E.D. Mich.). Latest on record (2026-08-21): The court dismissed the case, holding the county's policies are not overridden by federal law. Source: https://www.justice.gov/opa/pr/justice-department-files-lawsuit-against-washtenaw-county-michigan-interfering-federal-0</summary>
+</entry>
+<entry>
+<title>Lawsuit, 22 states, the District of Columbia and Pennsylvania's governor, led by Illinois, IL (2026-08-13)</title>
+<id>tag:polar-star,2026:dispute/bba2e59834/2026-08-20</id>
+<updated>2026-08-20T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>States asked a federal court to quash a DHS immigration enforcement subpoena to the American Association of Motor Vehicle Administrators for about 17 million commercial driver's license records, including Social Security numbers (Illinois v. DHS, E.D. Va.). Latest on record (2026-08-20): The court put the motion on hold and extended the association's time to respond until further order. Source: https://ag.ny.gov/sites/default/files/court-filings/illinois-et-al-v-united-states-department-of-homeland-security-brief-iso-2026.pdf</summary>
+</entry>
+<entry>
+<title>Criminal investigation, Minneapolis, MN (2026-01-09)</title>
+<id>tag:polar-star,2026:dispute/0b0a13cfde/2026-08-20</id>
+<updated>2026-08-20T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Hennepin County Attorney and the Minnesota Attorney General opened a joint effort, including a public evidence portal, to gather evidence for a criminal investigation of a fatal shooting by an ICE officer in Minneapolis in January 2026. Latest on record (2026-08-20): No charges had been filed; the state investigation was continuing. Source: https://www.hennepinattorney.org/news/news/2026/January/HCAO-Evidence-Submission-Portal</summary>
+</entry>
+<entry>
+<title>Lawsuit, New Mexico and Albuquerque, NM (2026-05-08)</title>
+<id>tag:polar-star,2026:dispute/59b488a780/2026-08-19</id>
+<updated>2026-08-19T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued New Mexico and Albuquerque over a 2026 state law barring public bodies from contracting with ICE for detention and a city ordinance on ICE access (United States v. New Mexico, D.N.M.). Latest on record (2026-08-19): New Mexico filed counterclaims against the United States, DHS, ICE and Otero County seeking to void the county's 2026 detention agreement with ICE. Source: https://www.justice.gov/opa/pr/justice-department-files-lawsuit-against-state-new-mexico-and-city-albuquerque-obstructing</summary>
+</entry>
+<entry>
+<title>Lawsuit, Illinois, IL (2025-12-22)</title>
+<id>tag:polar-star,2026:dispute/31ba3045d5/2026-08-19</id>
+<updated>2026-08-19T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Illinois over two 2025 state laws, the Illinois Bivens Act and the Courts Access, Safety, and Participation Act (United States v. Illinois, S.D. Ill.). Latest on record (2026-08-19): The court denied Illinois's motion to dismiss and ordered the state to answer the complaint. Source: https://www.justice.gov/opa/pr/justice-department-sues-jb-pritzker-kwame-raoul-over-illinois-bivens-act</summary>
+</entry>
+<entry>
+<title>Lawsuit, States, led by California and Illinois, CA (2026-07-23)</title>
+<id>tag:polar-star,2026:dispute/ff38b73a82/2026-07-23</id>
+<updated>2026-07-23T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>States sued DHS and FEMA over 2026 grant conditions, including renewed requirements to help with civil immigration enforcement (D.R.I.). Source: https://oag.ca.gov/news/press-releases/attorney-general-bonta-co-leads-lawsuit-challenging-trump-administration%E2%80%99s-0</summary>
+</entry>
+<entry>
+<title>Lawsuit, Boston, MA (2025-09-04)</title>
+<id>tag:polar-star,2026:dispute/f0f7a989b4/2026-07-23</id>
+<updated>2026-07-23T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Boston over its Trust Act and related policies that limit city help with federal immigration enforcement (United States v. City of Boston, D. Mass.). Latest on record (2026-07-23): The court dismissed the case for lack of standing on May 28, 2026; the United States appealed to the First Circuit. Source: https://www.justice.gov/opa/pr/department-justice-sues-city-boston-mayor-michelle-wu-over-sanctuary-city-laws</summary>
+</entry>
+<entry>
+<title>Lawsuit, Minnesota, Minneapolis, Saint Paul and Hennepin County, MN (2025-09-29)</title>
+<id>tag:polar-star,2026:dispute/117cfd7ddf/2026-07-20</id>
+<updated>2026-07-20T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Minnesota, Minneapolis, Saint Paul and Hennepin County over their policies on immigration detainers and data sharing (United States v. Minnesota, D. Minn.). Latest on record (2026-07-20): The court dismissed the case. Source: https://www.justice.gov/opa/pr/justice-department-sues-minnesota-over-sanctuary-policies</summary>
+</entry>
+<entry>
+<title>Lawsuit, Maryland, MD (2026-07-09)</title>
+<id>tag:polar-star,2026:dispute/2f977de377/2026-07-09</id>
+<updated>2026-07-09T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Maryland over its Community Trust Act and its handling of immigration detainers (D. Md.). Source: https://www.justice.gov/opa/pr/justice-department-sues-maryland-over-sanctuary-policies</summary>
+</entry>
+<entry>
+<title>Criminal charge, Milwaukee, WI (2025-04-24)</title>
+<id>tag:polar-star,2026:dispute/8faf0b4e76/2026-07-09</id>
+<updated>2026-07-09T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Federal prosecutors charged a Milwaukee County judge over her actions on April 18, 2025, when ICE officers came to her courthouse to arrest a defendant in her court. Latest on record (2026-07-09): A jury convicted her of obstructing a proceeding and acquitted her of concealment; she was fined $5,000 and appealed to the Seventh Circuit. Source: https://www.justice.gov/usao-edwi/pr/former-milwaukee-county-judge-sentenced-obstruction</summary>
+</entry>
+<entry>
+<title>Lawsuit, Surprise, AZ (2026-04-24)</title>
+<id>tag:polar-star,2026:dispute/3a7e227fd7/2026-07-08</id>
+<updated>2026-07-08T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Arizona sued DHS and ICE over a proposed ICE detention facility in a Surprise warehouse (Arizona v. Mullin, D. Ariz.). Latest on record (2026-07-08): The case is paused by agreement; the federal side agreed not to hold people or begin conversion work there until its environmental review is complete. Source: https://www.azag.gov/press-release/attorney-general-mayes-sues-block-proposed-ice-detention-facility-surprise</summary>
+</entry>
+<entry>
+<title>Lawsuit, Big Cypress (the state-run detention site known as Alligator Alcatraz), FL (2026-01-13)</title>
+<id>tag:polar-star,2026:dispute/bd3f17a23a/2026-07-08</id>
+<updated>2026-07-08T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>In a brief to the Eleventh Circuit, the Miccosukee Tribe, a plaintiff in the suit since 2025, argued that the detention site harms its lands, water and cultural practices and that DHS and ICE must complete an environmental review (Friends of the Everglades v. Noem). Latest on record (2026-07-08): The Eleventh Circuit vacated the preliminary injunction that had halted the site, finding no final federal action. Source: https://indianz.com/News/wp-content/uploads/2026/01/13/miccosukee011326.pdf</summary>
+</entry>
+<entry>
+<title>Lawsuit, Newark, Jersey City, Paterson and Hoboken, NJ (2025-05-22)</title>
+<id>tag:polar-star,2026:dispute/005335c85a/2026-06-24</id>
+<updated>2026-06-24T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued four New Jersey cities over policies that limit city help with federal immigration enforcement (United States v. City of Newark, D.N.J.). Latest on record (2026-06-24): The court dismissed the complaint for lack of standing and allowed 45 days to file a new one. Source: https://clearinghouse.net/case/46729/</summary>
+</entry>
+<entry>
+<title>Order, letter or subpoena, Minnesota, Minneapolis and Saint Paul, MN (2026-01-20)</title>
+<id>tag:polar-star,2026:dispute/e15f2bbdcc/2026-06-22</id>
+<updated>2026-06-22T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department served grand jury subpoenas on Minnesota state, city and county officials in an investigation of alleged obstruction of immigration enforcement during Operation Metro Surge. Latest on record (2026-06-22): The federal court in Minnesota quashed the subpoenas. Source: https://ag.state.mn.us/Office/Communications/2026/06/22_Metro-Surge-Subpoenas.asp</summary>
+</entry>
+<entry>
+<title>Lawsuit, Los Angeles, CA (2025-06-30)</title>
+<id>tag:polar-star,2026:dispute/eb9f414592/2026-06-20</id>
+<updated>2026-06-20T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>The Justice Department sued Los Angeles over its ordinance barring the use of city resources for federal immigration enforcement (United States v. City of Los Angeles, C.D. Cal.). Latest on record (2026-06-20): The court granted the city's motion to dismiss. Source: https://www.justice.gov/opa/pr/justice-department-files-lawsuit-against-sanctuary-city-policies-los-angeles-california</summary>
+</entry>
+<entry>
+<title>Lawsuit, Romulus, MI (2026-03-24)</title>
+<id>tag:polar-star,2026:dispute/f038313309/2026-06-18</id>
+<updated>2026-06-18T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Michigan and Romulus sued DHS and ICE over ICE's plan to turn a Romulus warehouse into a detention center (E.D. Mich.). Latest on record (2026-06-18): ICE said it would sell the warehouse instead of using it for detention; the case stays open until a written agreement is made. Source: https://www.michigan.gov/ag/news/press-releases/2026/03/24/ag-nessel-files-lawsuit-challenging-plan-to-convert-romulus-warehouse-into-ice-detention-center</summary>
+</entry>
+<entry>
+<title>Criminal charge, Logan, UT (2026-06-03)</title>
+<id>tag:polar-star,2026:dispute/7ebc4dfad9/2026-06-11</id>
+<updated>2026-06-11T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>A federal grand jury indicted two former Logan municipal court clerks on harboring, transporting and obstruction charges for allegedly leading people out a back door on April 9, 2026 while an ICE officer waited to make an arrest. Latest on record (2026-06-11): Both pleaded not guilty. Source: https://www.justice.gov/usao-ut/pr/two-former-utah-court-clerks-arrested-and-facing-federal-charges-after-allegedly-helping</summary>
+</entry>
+<entry>
+<title>Criminal charge, New York City, NY (2025-09-18)</title>
+<id>tag:polar-star,2026:dispute/77a813f26d/2026-06-11</id>
+<updated>2026-06-11T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Federal officers arrested the New York City Comptroller at 26 Federal Plaza while he and state legislators were observing ICE holding areas, and he was charged federally. Latest on record (2026-06-11): A federal judge found him not guilty of a petty obstruction charge. Source: https://comptroller.nyc.gov/newsroom/statement-from-nyc-comptroller-brad-lander-on-proceeding-to-trial-for-september-18th-arrest-at-26-federal-plaza/</summary>
+</entry>
+<entry>
+<title>Lawsuit, Salt Lake City and Salt Lake County, UT (2026-06-08)</title>
+<id>tag:polar-star,2026:dispute/da80d0b972/2026-06-08</id>
+<updated>2026-06-08T00:00:00Z</updated>
+<link href="./#disp"/>
+<summary>Salt Lake City and Salt Lake County sued DHS over its purchase of a warehouse to turn into an immigration detention facility (Salt Lake City Corporation v. Mullin, D. Utah). Source: https://www.slc.gov/mayor/wp-content/uploads/sites/51/2026/06/2026-06-08-Complaint-No.-26cv528.pdf</summary>
 </entry>
 </feed>
