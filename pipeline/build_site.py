@@ -1,12 +1,14 @@
 """data/site_data.json + data/flights/legs_*.json -> site/index.html (facility pages and flights in one page)."""
 import csv, glob, json, math, os, re, sys, time
 import datetime as dt
+import urllib.parse
 os.environ["TZ"] = "UTC"
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"): _s.reconfigure(errors="replace")      # a Windows console cannot print every character in the build notes
 if hasattr(time, "tzset"): time.tzset()   # one clock for every date on the page: GitHub Actions runs in UTC, so the build does too (Windows has no tzset; see utc_today)
 from pathlib import Path
 from flights import STAGING, km
+from money_awards import award_competition
 from firm_profiles import core, is_person, on_trail, trail_people, recipient, PERSONAL
 
 ROOT = Path(__file__).parent.parent
@@ -251,7 +253,7 @@ def awards_by_recipient(rows, meta):
         amt = int(r["amount_usd"])
         if amt < int(meta["floor_usd"]) or not r["uid"] or not r["recipient"]: raise ValueError(f"ice_awards.csv: bad row {r.get('award_id')}")
         win = r.get("window_usd") or ""                 # blank = that award's detail was not read; never shown as zero
-        by.setdefault(r["recipient"].upper(), []).append([r["award_id"], round(amt / 1e6, 1), r["start"], r["end"], r["type"], r["what"], r["uid"], round(int(win) / 1e6, 1) if win != "" else None, r.get("competed") or "", int(r["offers"]) if (r.get("offers") or "") != "" else None, r.get("reason") or "", r.get("extent") or ""]); n += 1
+        by.setdefault(r["recipient"].upper(), []).append([r["award_id"], round(amt / 1e6, 1), r["start"], r["end"], r["type"], r["what"], r["uid"], round(int(win) / 1e6, 1) if win != "" else None, award_competition(r.get("competed") or "", r.get("reason")), int(r["offers"]) if (r.get("offers") or "") != "" else None, r.get("reason") or "", r.get("extent") or ""]); n += 1
     if n != int(meta["awards"]): raise ValueError(f"ice_awards.csv has {n} rows, its meta says {meta['awards']}")
     for v in by.values(): v.sort(key=lambda a: -a[1])
     return {"meta": {k: meta[k] for k in ("from", "to", "read", "floor_usd", "awards", "recipients")}, "by": by}
@@ -301,7 +303,7 @@ def facility_awards(site, rows):
         if not codes or not codes[0]: n["nowhere"] += 1; continue
         if len(codes) > 1: n["shared"] += 1; continue
         win = r.get("window_usd") or ""; n["placed"] += 1
-        out.setdefault(codes[0], []).append([r["recipient"], r["award_id"], round(int(r["amount_usd"]) / 1e6, 1), round(int(win) / 1e6, 1) if win != "" else None, r["start"], r["end"], r.get("competed") or "", r["uid"]])
+        out.setdefault(codes[0], []).append([r["recipient"], r["award_id"], round(int(r["amount_usd"]) / 1e6, 1), round(int(win) / 1e6, 1) if win != "" else None, r["start"], r["end"], award_competition(r.get("competed") or "", r.get("reason")), r["uid"]])
     for v in out.values(): v.sort(key=lambda a: -(a[3] if a[3] is not None else a[2]))
     return out, n
 
@@ -1145,6 +1147,8 @@ def donors_section(ref):
     for r in rows:
         if r["co"] not in ("GEO", "CC", "MTC", "LAS", "ICA", "CSI"): raise ValueError(f"fec_donors.csv: unknown company {r['co']!r}")
         if not (r["url"].startswith("https://docquery.fec.gov/") or r["url"].startswith("https://www.fec.gov/")): raise ValueError(f"fec_donors.csv: link {r['url']}")
+        if not r["url"].startswith("https://www.fec.gov/data/receipts/"):        # older rows link the scanned filing, which prints a street address
+            r["url"] = "https://www.fec.gov/data/receipts/?" + urllib.parse.urlencode({"committee_id": r["committee_id"], "contributor_name": r["name"], "two_year_transaction_period": r["cycle"]})
         own = r["committee_id"] in ("C00382150", "C00366468", "C00208322")      # a company's own committee (GEO, CoreCivic, MTC): its gifts on are counted as PAC money
         out.append([r["co"], r["date"], r["name"], r["employer"], r["occupation"], r["state"], float(r["usd"]), r["committee"], "O" if own else r["ctype"], r["party"], r["bioguide"], r["url"], int(r["cycle"])])
     got = round(sum(r[6] for r in out), 2)

@@ -28,7 +28,8 @@ def test_row_keeps_state_but_no_street_city_or_zip_and_links_the_filing():
     out = m.row(co, 2026, r, {"C1": ("H", "R", "SMITH FOR CONGRESS")}, {"C1": "S000001"})
     assert list(out) == m.FIELDS and out["state"] == "FL" and out["name"] == "DOE / JANE" and out["bioguide"] == "S000001"
     assert not any(v in str(out.values()) for v in ("MAIN ST", "BOCA", "33431"))
-    assert out["url"] == "https://docquery.fec.gov/cgi-bin/fecimg/?202503019000"
+    assert out["url"].startswith("https://www.fec.gov/data/receipts/?") and "committee_id=C1" in out["url"] and "two_year_transaction_period=2026" in out["url"]
+    assert "docquery" not in out["url"]                    # scanned filings print the street address
 
 
 def test_member_link_only_for_candidate_committees_and_leadership_funds_tied_to_one_person():

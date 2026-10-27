@@ -76,10 +76,12 @@ def keep(rows):
     return out
 
 
-def filing_url(r):
-    if (r.get("pdf_url") or "").startswith("https://"): return r["pdf_url"]
-    if r.get("image_number"): return f"https://docquery.fec.gov/cgi-bin/fecimg/?{r['image_number']}"
-    return f"https://www.fec.gov/data/committee/{r.get('committee_id')}/"
+def filing_url(r, cycle=None):
+    """The FEC's own record of this gift: its itemized-receipts search for the donor's name at the committee and cycle.
+    Never the scanned filing image: images print the donor's street address, which this page promises never to show."""
+    q = {"committee_id": r.get("committee_id") or "", "contributor_name": r.get("contributor_name") or r.get("name") or ""}
+    if cycle: q["two_year_transaction_period"] = str(cycle)
+    return "https://www.fec.gov/data/receipts/?" + urllib.parse.urlencode(q)
 
 
 def clean(s):
@@ -92,7 +94,7 @@ def row(co, cyc, r, cinfo, member):
             "employer": clean(r.get("contributor_employer")), "occupation": clean(r.get("contributor_occupation")),
             "state": (r.get("contributor_state") or "")[:2], "usd": round(float(r.get("contribution_receipt_amount") or 0), 2),
             "committee_id": cid, "committee": clean(name or (r.get("committee") or {}).get("name") or cid), "ctype": ct, "party": party,
-            "bioguide": member.get(cid, ""), "url": filing_url(r)}
+            "bioguide": member.get(cid, ""), "url": filing_url(r, cyc)}
 
 
 def member_links(cinfo_raw, byfec):
