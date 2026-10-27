@@ -1,11 +1,9 @@
 {
- "started": "2026-10-27T21:04:17+00:00",
+ "started": "2026-10-27T21:21:20+00:00",
  "steps": {
-  "tests": "failed"
+  "tests": "ok",
+  "build": "ok"
  },
- "errors": {
-  "tests": "  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed /   File \"/home/runner/work/polar-star/polar-star/pipeline/test_build_site.py\", line 1, in <module> /     import build_site as b /   File \"/home/runner/work/polar-star/polar-star/pipeline/build_site.py\", line 11, in <module> /     from money_awards import award_competition / ImportError: cannot import name 'award_competition' from 'money_awards' (/home/runner/work/polar-star/polar-star/pipeline/money_awards.py)"
- },
- "finished": "2026-10-27T21:04:18+00:00",
- "page_rebuilt": false
+ "finished": "2026-10-27T21:22:37+00:00",
+ "page_rebuilt": true
 }
