@@ -288,7 +288,7 @@ input[type=search]{border-width:1px;padding:10px 12px;min-height:44px;box-sizing
 }
 
 /* paper and night sky, Oct 2026 */
-.so li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}.so li:last-child{border-bottom:0}.dp li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}.dp li:last-child{border-bottom:0}.dp-s{font-size:.95rem}.dp-o{display:inline-block;padding:6px 0}.dp-cm,.dp-law{align-items:baseline}.dpw{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;padding-left:6px;border-left:4px solid transparent}.dpv-for{border-left-color:var(--c4)}.dpv-ag{border-left-color:var(--g2)}.dpv-mix{border-left-color:var(--g5);border-left-style:dashed}.dpv{font-size:.8rem;color:var(--muted)}.dpt{font-size:.75rem;line-height:1.2;padding:2px 6px;border-radius:999px;border:1px solid var(--line);background:var(--note-bg);color:var(--note-ink);cursor:help;white-space:nowrap}.dpt-i{background:transparent;color:var(--muted);border-style:dashed}.dp-sk{font-size:.85rem}.dp-stale{font-size:.9rem;font-style:italic}.dpkey li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:4px 0}.so-l .linkbtn{padding:6px 0;min-height:36px}.so-d{font-size:.95rem}.so-l{display:flex;flex-wrap:wrap;gap:4px 16px}.so-l a{display:inline-block;padding:6px 0;min-height:36px;box-sizing:border-box}
+.so li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}.so li:last-child{border-bottom:0}.dp li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}.dp li:last-child{border-bottom:0}.dp-s{font-size:.95rem}.dp-o{display:inline-block;padding:6px 0}.dp-cm,.dp-law{align-items:baseline}.dpw{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;padding-left:6px;border-left:4px solid transparent}.dpv-for{border-left-color:var(--c4)}.dpv-ag{border-left-color:var(--g2)}.dpv-mix{border-left-color:var(--g5);border-left-style:dashed}.dpv{font-size:.8rem;color:var(--muted)}.dpt{font-size:.75rem;line-height:1.2;padding:2px 6px;border-radius:999px;border:1px solid var(--line);background:var(--note-bg);color:var(--note-ink);cursor:help;white-space:nowrap}.dpt-i{background:transparent;color:var(--muted);border-style:dashed}.dp-sk{font-size:.85rem}.dp-stale{font-size:.9rem;font-style:italic}.fltrs{display:flex;flex-wrap:wrap;gap:4px 14px;margin:4px 0 6px}.fltrs .pick{min-width:9rem}.dpkey li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:4px 0}.so-l .linkbtn{padding:6px 0;min-height:36px}.so-d{font-size:.95rem}.so-l{display:flex;flex-wrap:wrap;gap:4px 16px}.so-l a{display:inline-block;padding:6px 0;min-height:36px;box-sizing:border-box}
 #tab-agree,#tab-gov,#tab-co,#tab-ven{flex-basis:100%}
 header.top{border-bottom:1px solid var(--line)}
 .vg{border-left-width:4px}
@@ -900,7 +900,7 @@ const T = {
 
   intro:"Type the last place you know someone was held. You will see where people held there were usually sent next, and what to do now.",
   sample:"Sample data. Every facility and number on this page is invented to show how it will work. Do not rely on it.",
-  fl_from:a => `From ${a}`, find:"Last known facility", ph:"Name, city or state", busiest:"Busiest facilities", nores:"No facility matches. Try part of the name, the city, the state or the ZIP code.", q_count:(a, b) => `Showing ${a} of ${b} facilities`, q_more:(a, b) => `Showing ${a} of ${b}. Show more`,
+  fl_from:a => `From ${a}`, find:"Last known facility", ph:"Name, city or state", busiest:"Busiest facilities", all_fac:"All facilities, busiest first", all_any:"All", all_city:"City", all_kind:"Kind", all_note:"Filter by state, city or kind. The busiest are the ones that held the most people in the latest records.", fm_st:"State", fm_st_all:"Whole country", fm_st_list:s => `Facilities in ${s}`, nores:"No facility matches. Try part of the name, the city, the state or the ZIP code.", q_count:(a, b) => `Showing ${a} of ${b} facilities`, q_more:(a, b) => `Showing ${a} of ${b}. Show more`,
   office:o=>`ICE field office: ${o}`,
   outcome:"What happened to people who left here",
   O:{moved:"Moved to another ICE facility", deported:"Deported", left_voluntarily:"Left the US voluntarily", released:"Released in the US", other_agency:"Handed to another agency, such as the US Marshals. Not released.", transfer_unrecorded:"Marked as transferred, but the next place is not in the records", died:"Died in custody", escaped:"Escaped", processing_changed:"ICE changed how the case was being handled at this office. The records do not say where the person went.", no_reason:"ICE recorded no reason", unlisted:"A reason this page does not yet classify", other:"Smaller groups, combined"},
@@ -1275,7 +1275,7 @@ const T = {
 
   intro:"Escriba el último lugar donde sabe que estuvo detenida la persona. Verá adónde suelen enviar después a quienes estuvieron allí y qué hacer ahora.",
   sample:"Datos de muestra. Todos los centros y números de esta página son inventados para mostrar cómo funcionará. No confíe en ellos.",
-  fl_from:a => `Desde ${a}`, find:"Último centro conocido", ph:"Nombre, ciudad o estado", busiest:"Centros con más movimiento", nores:"Ningún centro coincide. Pruebe con parte del nombre, la ciudad, el estado o el código postal.", q_count:(a, b) => `Se muestran ${a} de ${b} centros`, q_more:(a, b) => `Se muestran ${a} de ${b}. Ver más`,
+  fl_from:a => `Desde ${a}`, find:"Último centro conocido", ph:"Nombre, ciudad o estado", busiest:"Centros con más movimiento", all_fac:"Todos los centros, primero los de más movimiento", all_any:"Todos", all_city:"Ciudad", all_kind:"Tipo", all_note:"Filtre por estado, ciudad o tipo. Los de más movimiento son los que tuvieron más personas en los registros más recientes.", fm_st:"Estado", fm_st_all:"Todo el país", fm_st_list:s => `Centros en ${s}`, nores:"Ningún centro coincide. Pruebe con parte del nombre, la ciudad, el estado o el código postal.", q_count:(a, b) => `Se muestran ${a} de ${b} centros`, q_more:(a, b) => `Se muestran ${a} de ${b}. Ver más`,
   office:o=>`Oficina regional de ICE: ${o}`,
   outcome:"Qué pasó con quienes salieron de aquí",
   O:{moved:"Trasladados a otro centro de ICE", deported:"Deportados", left_voluntarily:"Salieron de EE. UU. voluntariamente", released:"Liberados en EE. UU.", other_agency:"Entregados a otra agencia, como los US Marshals. No liberados.", transfer_unrecorded:"Marcados como trasladados, pero el siguiente lugar no aparece en los registros", died:"Murieron bajo custodia", escaped:"Escaparon", processing_changed:"ICE cambió la forma en que se manejaba el caso en esta oficina. Los registros no dicen adónde fue la persona.", no_reason:"ICE no registró ninguna razón", unlisted:"Una razón que esta página aún no clasifica", other:"Grupos pequeños, combinados"},
@@ -1498,18 +1498,32 @@ function zoomable(svg){ const full = [0, 0, 640, 400]; let vb = full.slice(), dr
   const end = () => { if (drag && drag[4] > 6) svg.dataset.dragged = Date.now(); drag = null; }; svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
   svg.addEventListener("click", e => { if (Date.now() - (+svg.dataset.dragged || 0) < 350){ e.stopPropagation(); e.preventDefault(); } }, true);    // the end of a drag is not a tap on a dot
   svg.addEventListener("wheel", e => { if (!e.ctrlKey && scale() <= 1.01) return; e.preventDefault(); zoom(e.deltaY < 0 ? 1.25 : 0.8); }, {passive: false});
-  new MutationObserver(() => { if (scale() > 1.01) dots(); }).observe(svg, {childList: true, subtree: true}); svg._zl = () => { inn.setAttribute("aria-label", T[lang].z_in); out.setAttribute("aria-label", T[lang].z_out); reset.textContent = T[lang].z_reset; }; apply(); }
+  new MutationObserver(() => { if (scale() > 1.01) dots(); }).observe(svg, {childList: true, subtree: true}); svg._zoomTo = b => { if (!b){ vb = full.slice(); apply(); return; } const pad = 24, w = Math.max(60, b[2] - b[0] + 2 * pad), h = Math.max(40, b[3] - b[1] + 2 * pad), k = Math.max(w / full[2], h / full[3]); vb = [ (b[0] + b[2]) / 2 - full[2] * k / 2, (b[1] + b[3]) / 2 - full[3] * k / 2, full[2] * k, full[3] * k ]; apply(); };   // zoom to a box of points
+  svg._zl = () => { inn.setAttribute("aria-label", T[lang].z_in); out.setAttribute("aria-label", T[lang].z_out); reset.textContent = T[lang].z_reset; }; apply(); }
 // For one operator: people held now, guaranteed beds that sat empty, and deficiencies per ICE inspection, from the same data as the sections above.
 function opExtra(k){ const t = T[lang], out = [], H = (DATA.held || {}).ops || {}, B = DATA.beds, FI = (DATA.findings || {}).ops || {};
   if (H[k]) out.push([t.ox_held, H[k][0].toLocaleString()]);
   if (B){ const e = B.below.filter(r => opAt(r[0]) === k).reduce((x, r) => x + r[3], 0); out.push([t.ox_empty("20" + B.fy.slice(2)), e.toLocaleString()]); }
   if (FI[k] && FI[k][0]) out.push([t.ox_def(FI[k][0]), (Math.round(10 * FI[k][1] / FI[k][0]) / 10).toString()]);
   return out; }
+let findSt = "", findCity = "", findKind = "", allMax = 30, allOpen = false;
+const allFacRows = () => KEYS.map(k => k[0]).filter(c => { const f = F[c]; return (!findSt || f.state === findSt) && (!findCity || (f.city || "").toUpperCase() === findCity) && (!findKind || (f.kind || "O") === findKind); });
+function allFacList(ul){ const t = T[lang], d = el("details","agd"), sm = el("summary"), bd = el("div","agb"), L = allFacRows(); d.open = allOpen || !!(findSt || findCity || findKind); d.ontoggle = () => { allOpen = d.open; };
+  sm.append(el("span","",t.all_fac), el("span","agn",L.length.toLocaleString())); d.append(sm, bd);
+  const fl = el("div","fltrs"), opt = (sel, list, v) => { list.forEach(([k, x]) => { const o = el("option","",x); o.value = k; sel.append(o); }); sel.value = v; };
+  { const [w, sel] = pickBox(t.fm_st), n = {}; Object.values(F).forEach(f => { if (f.state) n[f.state] = (n[f.state] || 0) + 1; }); opt(sel, [["", t.all_any], ...Object.keys(n).sort((a, b) => SN(a).localeCompare(SN(b), lang)).map(k => [k, `${SN(k)} (${n[k]})`])], findSt); sel.onchange = () => { findSt = sel.value; findCity = ""; allMax = 30; renderList(); if (!$("fmap-card").hidden) facMap(); }; fl.append(w); }
+  if (findSt){ const [w, sel] = pickBox(t.all_city), n = {}; Object.values(F).forEach(f => { if (f.state === findSt && f.city){ const c = f.city.toUpperCase(); n[c] = (n[c] || 0) + 1; } }); opt(sel, [["", t.all_any], ...Object.keys(n).sort().map(k => [k, `${k.replace(/\b(\w)(\w*)/g, (m, a, b) => a + b.toLowerCase())} (${n[k]})`])], findCity); sel.onchange = () => { findCity = sel.value; allMax = 30; renderList(); }; fl.append(w); }
+  { const [w, sel] = pickBox(t.all_kind), n = {}; Object.values(F).forEach(f => { const k = f.kind || "O"; n[k] = (n[k] || 0) + 1; }); opt(sel, [["", t.all_any], ...["D","J","H","F","S","O"].filter(k => n[k]).map(k => [k, `${t.fm_k[k]} (${n[k]})`])], findKind); sel.onchange = () => { findKind = sel.value; allMax = 30; renderList(); }; fl.append(w); }
+  const into = el("ul","results"); into.style.marginTop = "0"; bd.append(fl, el("p","muted",t.all_note), into);
+  L.slice(0, allMax).forEach(c => { const f = F[c], b = el("button"); b.type = "button"; b.append(el("span","",f.name), el("span","st",`${place(f)} · ${t.fm_k[f.kind || "O"]}`)); if (c === current) b.setAttribute("aria-current","true"); b.onclick = () => go(c); const li = el("li"); li.append(b); into.append(li); });
+  if (!L.length) into.append(el("li","muted",t.nores));
+  if (L.length > allMax){ const b = el("button","linkbtn",t.q_more(allMax, L.length)); b.type = "button"; b.onclick = () => { allMax += 50; renderList(); }; bd.append(b); }
+  const li = el("li"); li.append(d); ul.append(li); }
 function renderList(){
   const q = norm($("q").value.trim()), ul = $("results"), t = T[lang]; ul.replaceChildren(); if (q !== listQ){ listQ = q; listMax = 8; }
   const all = findFacilities(q), hits = all.slice(0, q ? listMax : 5).map(c => [c]); $("q-live").textContent = q ? (all.length ? t.q_count(Math.min(listMax, all.length), all.length) : t.nores) : "";
   let into = ul;
-  if (!q && hits.length){ const d = el("details","agd"), sm = el("summary"); sm.append(el("span","",t.busiest), el("span","agn",hits.length)); into = el("ul","results"); into.style.marginTop = "0"; const bd = el("div","agb"); bd.append(into); d.append(sm, bd); const li = el("li"); li.append(d); ul.append(li); }
+  if (!q){ allFacList(ul); return; }
   if (!hits.length) ul.append(el("li","muted",t.nores));
   hits.forEach(([c]) => { const f = F[c], b = el("button"); b.type = "button";
     b.append(el("span","",f.name), el("span","st",place(f)));
@@ -2177,6 +2191,14 @@ function facMap(){
   { const [lab, sel] = pickBox(t.fm_show), opn = {}; Object.values(DATA.operators || {}).forEach(o => { opn[o[0]] = (opn[o[0]] || 0) + 1; });
     [["", t.fm_show_all], ...(((DATA.watch || {}).alerts || []).some(a => a.code) ? [["watch", t.fm_show_watch]] : []), ...Object.entries(opn).sort((a, b) => b[1] - a[1]).map(([k, c]) => ["op:" + k, `${t.op_n[k] || k} (${c})`])].forEach(([v, l]) => { const o = el("option","",l); o.value = v; sel.append(o); });
     sel.value = fmShow; sel.onchange = () => { fmShow = sel.value; facMap(); }; lab.style.marginTop = "8px"; lg.append(lab); }
+  { const [lab, sel] = pickBox(t.fm_st), n = {}; Object.values(DATA.facilities).forEach(f => { if (f.state) n[f.state] = (n[f.state] || 0) + 1; });
+    [["", t.fm_st_all], ...Object.keys(n).sort((a, b) => SN(a).localeCompare(SN(b), lang)).map(k => [k, `${SN(k)} (${n[k]})`])].forEach(([v, l]) => { const o = el("option","",l); o.value = v; sel.append(o); });
+    sel.value = findSt; sel.onchange = () => { findSt = sel.value; findCity = ""; allMax = 30; facMap(); renderList(); }; lab.style.marginTop = "8px"; lg.append(lab);
+    const svgEl = $("fm-map"), P = Object.values(DATA.facilities).filter(f => findSt && f.state === findSt && f.lat != null).map(f => usProj["fm-map"]([f.lon, f.lat])).filter(Boolean);
+    if (svgEl._zoomTo) svgEl._zoomTo(P.length ? [Math.min(...P.map(x => x[0])), Math.min(...P.map(x => x[1])), Math.max(...P.map(x => x[0])), Math.max(...P.map(x => x[1]))] : null);
+    const sl = $("fm-state-list") || (() => { const u = el("div"); u.id = "fm-state-list"; $("fm-legend").after(u); return u; })(); sl.replaceChildren();
+    if (findSt){ const L = Object.entries(DATA.facilities).filter(([c, f]) => f.state === findSt).sort((a, b) => a[1].name.localeCompare(b[1].name)), d = el("details","agd"), sm = el("summary"), bd = el("div","agb"), u = el("ul","plain");
+      sm.append(el("span","",t.fm_st_list(SN(findSt))), el("span","agn",L.length)); d.append(sm, bd); L.forEach(([c, f]) => { const li = el("li"), b = el("button","linkbtn",`${f.name} · ${f.city || ""} · ${t.fm_k[f.kind || "O"]}`); b.type = "button"; b.onclick = () => go(c); li.append(b); u.append(li); }); bd.append(u); capList(u); sl.append(d); } }
   const all = Object.entries(DATA.facilities), noPos = all.filter(([c, f]) => f.lat == null), off = all.filter(([c, f]) => f.lat != null && !usProj["fm-map"]([f.lon, f.lat]));
   $("fm-note").textContent = t.fm_note;
   const box = $("fm-missing"); box.replaceChildren();
