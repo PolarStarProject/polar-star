@@ -1738,8 +1738,7 @@ def dispute_people(site):
     Politicians; re refused entry to an ICE facility; vi published oversight visits."""
     D, P = site.get("disputes") or [], site.get("pol") or {}
     if not D: return {}
-    M, C = P.get("m") or [], P.get("c") or {}
-    flagged = {f["bg"] for f in ((P.get("flags") or {}).get("list") or [])}
+    M = P.get("m") or []
     names = set()
     for d in D:
         names.update(o[0] for o in d[16]); names.update(a[0] for l in d[17] for a in l[3])
@@ -1747,35 +1746,114 @@ def dispute_people(site):
         names.update(t[0] for t in (site.get("gov_terms") or {}).get(d[1], []))
         names.update(m[1] for m in M if m[4] == d[1] and m[11] and any(LAWCOM.match(c) for c in (m[7] or [])))
     names.update(s[2] for s in site.get("law_sponsors") or [])
+    ctx, out = tie_context(site), {}
+    for nm in sorted(names):
+        key = person_key(nm)
+        if not key: continue
+        m = next((m for m in M if _pnorm(m[1]) == _pnorm(nm) or _pnorm(re.sub(r'\s*"[^"]*"', "", m[1])) == _pnorm(nm)), None)
+        out[nm] = {"bg": m[0] if m else "", "v": vote_summary(m[8]) if m else None, "t": person_ties(ctx, key, m)}
+    return out
+
+def tie_context(site):
+    """What person_ties checks a name against, worked out once per build."""
+    P = site.get("pol") or {}
     firm_money, staff = {}, []
     for fn, c in ((site.get("firms") or {}).get("cards") or {}).items():
         for n, k, u, g in c.get("money") or []:
             key = person_key(re.sub(r"\s*\([A-Z]{2}(-\d+)?\)\s*$", "", n))
             if key: firm_money.setdefault(key, []).append([fn, u])
         staff += [[fn, posts, cos] for lob, posts, cos in c.get("former") or []]
-    visits = (site.get("statements_visits") or []) + [r for r in site.get("statements") or [] if r[2] == "visit"]
-    def has(s, key): return f" {key} " in " " + re.sub(r"\s+", " ", re.sub(r"[^a-z\s'-]", " ", _pnorm(s))) + " "
-    out = {}
-    for nm in sorted(names):
-        key = person_key(nm)
-        if not key: continue
-        first, last = key.split()
-        m = next((m for m in M if _pnorm(m[1]) == _pnorm(nm) or _pnorm(re.sub(r'\s*"[^"]*"', "", m[1])) == _pnorm(nm)), None)
-        bg = m[0] if m else ""; t = []
-        if m and ((m[9] or 0) + (m[10] or 0) > 0 or (m[13] or 0) > 0): t.append(["dm", [(m[9] or 0) + (m[10] or 0), m[13] or 0]])
-        if bg and (C.get(bg) or {}).get("jfc"): t.append(["jf", [j[0] for j in C[bg]["jfc"]]])
-        if key in firm_money: t.append(["lf", firm_money[key]])
-        fs = []
-        for fn, posts, cos in staff:
-            if staff_hit(posts, first, last) and [fn, cos] not in fs: fs.append([fn, cos])
-        if fs: t.append(["fs", fs])
-        if bg in flagged: t.append(["ov", 1])
-        dn = [[r[1], r[0]] for r in site.get("denied") or [] if has(r[2], key)]
-        if dn: t.append(["re", dn])
-        vs = sum(1 for r in visits if has(r[1], key))
-        if vs: t.append(["vi", vs])
-        out[nm] = {"bg": bg, "v": vote_summary(m[8]) if m else None, "t": t}
-    return out
+    return {"C": P.get("c") or {}, "flagged": {f["bg"] for f in ((P.get("flags") or {}).get("list") or [])}, "firm_money": firm_money, "staff": staff,
+            "denied": site.get("denied") or [], "visits": (site.get("statements_visits") or []) + [r for r in site.get("statements") or [] if r[2] == "visit"]}
+
+def person_ties(ctx, key, m=None):
+    """[[code, detail]] for one person (key = person_key; m = their member row when they are in Congress). dm detention-company
+    committee or staff money; jf joint fundraiser that received it; lf political money from a lobbying firm hired by a detention
+    or ICE flight company; fs former staff now lobby at such a firm; ov the overlap rule on Politicians; re refused entry to an
+    ICE facility; vi published oversight visits."""
+    first, last = key.split(); bg = m[0] if m else ""; t = []
+    def has(s): return f" {key} " in " " + re.sub(r"\s+", " ", re.sub(r"[^a-z\s'-]", " ", _pnorm(s))) + " "
+    if m and ((m[9] or 0) + (m[10] or 0) > 0 or (m[13] or 0) > 0): t.append(["dm", [(m[9] or 0) + (m[10] or 0), m[13] or 0]])
+    if bg and (ctx["C"].get(bg) or {}).get("jfc"): t.append(["jf", [j[0] for j in ctx["C"][bg]["jfc"]]])
+    if key in ctx["firm_money"]: t.append(["lf", ctx["firm_money"][key]])
+    fs = []
+    for fn, posts, cos in ctx["staff"]:
+        if staff_hit(posts, first, last) and [fn, cos] not in fs: fs.append([fn, cos])
+    if fs: t.append(["fs", fs])
+    if bg in ctx["flagged"]: t.append(["ov", 1])
+    dn = [[r[1], r[0]] for r in ctx["denied"] if has(r[2])]
+    if dn: t.append(["re", dn])
+    vs = sum(1 for r in ctx["visits"] if has(r[1]))
+    if vs: t.append(["vi", vs])
+    return t
+
+def donor_key(s):
+    """FEC writes donors LAST, FIRST MIDDLE (with titles); the same first-and-last key as person_key."""
+    s = re.sub(r"\b(mr|mrs|ms|dr|col|hon)\b\.?", " ", _pnorm(s))
+    if "," in s: last, rest = s.split(",", 1); s = rest + " " + last
+    return person_key(s)
+
+def people_index(site, states, donors):
+    """One card for every named person on the page, so a name opens in place instead of on another tab.
+    {"p": {id: {"n": [names as shown], "r": [roles], "t": ties, "v": vote summary}}, "nk": {name as shown: id}, "dn": {FEC donor name: id}}. id is the Bioguide id for a member
+    (and for anyone whose first and last name match exactly one member), otherwise the first-and-last-name key.
+    Records are joined by first and last name only (person_key), except members (by Bioguide id) and governors (by state), so a card
+    that joins records from different states, or a donor gift, says the match is by name and may be a different person. Roles:
+    m member [bg]; g governor now [state, party, start, site]; gw governor at the time [state, party, start, end]; l sheriff or jail
+    head [facility code, facility, state, title, office, source]; a 287(g) signer [state, agency, county, signed, agreement, title];
+    v lobbyist with a past government post [company, post, firms, first year, last year]; d named in a dispute [dispute date, state,
+    place, role en, role es]; w wrote a disputed law [dispute date, state, law en, law es, url, role en, role es]; s sponsored a federal
+    enforcement law [law, bill, url, state]; $ gave to a candidate or committee [gifts, $, [[committee, $]] top 3, employer, job, state]."""
+    P = site.get("pol") or {}; M = P.get("m") or []
+    out, nk, mk = {}, {}, {}
+    for m in M: mk.setdefault(person_key(re.sub(r'\s*"[^"]*"', "", m[1])), []).append(m[0])
+    def pid(key): return mk[key][0] if len(mk.get(key, [])) == 1 else key     # a name shared by two members stays apart from both
+    def add(nm, role, key=None):
+        key = key or person_key(nm)
+        if not key: return
+        i = role[1] if role[0] == "m" else pid(key)
+        e = out.setdefault(i, {"n": [], "r": [], "k": key})
+        if nm not in e["n"]: e["n"].append(nm)
+        if role not in e["r"]: e["r"].append(role)
+        if role[0] != "m" or nm not in nk: nk[nm] = i
+    for m in M: add(m[1], ["m", m[0]], person_key(re.sub(r'\s*"[^"]*"', "", m[1])))
+    for g in P.get("gov") or []: add(g[1], ["g", g[0], g[2], g[3], g[4]])
+    for st, ts in (site.get("gov_terms") or {}).items():
+        for t in ts: add(t[0], ["gw", st, t[1], t[2], t[3]])
+    for r in P.get("local") or []: add(r[3], ["l", r[0], r[1], r[2], r[4], r[5], r[6]])
+    for st, rows in (states or {}).items():
+        for r in rows if isinstance(rows, list) else []:
+            w = r[8] if len(r) > 8 else None
+            if w and w[0] and w[2] == "s": add(w[0], ["a", st, r[0], r[1], r[3], r[7], w[1]])
+    for r in P.get("rev") or []: add(r[1], ["v", r[0], r[2], r[3], r[4], r[5]])
+    for d in site.get("disputes") or []:
+        for o in d[16]: add(o[0], ["d", d[0], d[1], d[2], o[1], o[2]])
+        for l in d[17]:
+            for a in l[3]: add(a[0], ["w", d[0], d[1], l[0], l[1], l[2], a[1], a[2]])
+    for s in site.get("law_sponsors") or []: add(s[2], ["s", s[0], s[1], s[5], s[4]])
+    gifts = {}
+    for r in (donors or {}).get("rows") or []:
+        if not r[2]: continue
+        k = pid(donor_key(r[2]))
+        if k in out: gifts.setdefault(k, {}).setdefault(r[2], []).append(r)
+    dn = {}
+    for k, by in gifts.items():
+        for nm, rs in by.items():
+            rec = {}
+            for r in rs: rec[r[7]] = rec.get(r[7], 0) + (r[6] or 0)
+            top = sorted(rec.items(), key=lambda kv: -kv[1])[:3]
+            out[k]["r"].append(["$", len(rs), round(sum(r[6] or 0 for r in rs)), [[c, round(u)] for c, u in top], rs[0][3] or "", rs[0][4] or "", rs[0][5] or ""])
+            dn[nm] = k
+    ctx, MB = tie_context(site), {m[0]: m for m in M}
+    for k, e in out.items():
+        m = next((MB[r[1]] for r in e["r"] if r[0] == "m"), None)
+        e["t"] = person_ties(ctx, e.pop("k"), m)
+        if m: e["v"] = vote_summary(m[8])
+        sts = {r[1] for r in e["r"] if r[0] in ("g", "gw", "a")} | {r[3] for r in e["r"] if r[0] == "l"} | {r[6] for r in e["r"] if r[0] == "$" and r[6]} | {MB[r[1]][4] for r in e["r"] if r[0] == "m"}
+        ks = {r[0] for r in e["r"]}         # elected officials: members, governors, the laws they sponsor and the disputes that name them
+        one = len(ks) == 1 or ks <= {"m", "s", "d", "w", "g", "gw"}   # (a dispute can be filed in another state, so its state is not compared)
+        if not one or len(sts - {"", "US"}) > 1: e["x"] = 1   # joined across other lists by first and last name only: may be different people
+    return {"p": out, "nk": nk, "dn": dn}
 
 def governor_changes(ref, current, terms):
     """The weekly check found a different governor in a state: the outgoing one must be in governor_terms.csv, or every
@@ -2182,7 +2260,7 @@ def main():
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")
     if site.get("a287"):     # the long agreement lists and the contract records go in a third file, fetched when a tab that needs them opens
         import hashlib
-        more = json.dumps({"states": site["a287"]["states"], "gone": site["a287"].get("gone", []), "awards": site.get("money", {}).pop("awards", None), "donors": site.get("money", {}).pop("donors", None)}, separators=(",", ":"))
+        more = json.dumps({"persons": people_index(site, site["a287"]["states"], (site.get("money") or {}).get("donors")), "states": site["a287"]["states"], "gone": site["a287"].get("gone", []), "awards": site.get("money", {}).pop("awards", None), "donors": site.get("money", {}).pop("donors", None)}, separators=(",", ":"))
         site["a287"]["states"], site["a287"]["gone"], site["lazy"] = {}, [], hashlib.sha1(more.encode()).hexdigest()[:12]
         (ROOT / "site" / "more-data.js").write_text(f'window.DATA_MORE={{"v":"{site["lazy"]}","d":{more}}};', encoding="utf-8")
     if flights:      # the long lists and the world map go in a second file the page fetches when the flights tab opens; both carry one stamp
