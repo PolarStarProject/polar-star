@@ -1635,6 +1635,53 @@ def social_list(ref):
     meta = json.loads((ref / "social_meta.json").read_text(encoding="utf-8")) if (ref / "social_meta.json").exists() else {}
     return {"checked": meta.get("checked", ""), "orgs": sorted(orgs.values(), key=lambda o: (o[2], o[0].lower()))}
 
+ORG_TYPES = ["legal", "kids", "women", "lgbtq", "bond", "visitation", "services", "faith", "community", "advocacy", "research", "news"]
+ORG_IDS = {"EIN", "PROJECT", "GOV", "UNIV", "FAITH"}
+ORG_COLS = ["org", "types", "scope", "states", "website", "phone", "phone_source", "languages", "id_type", "ein", "ein_source", "desc_en", "desc_es", "notes"]
+ORG_GRACE = 21
+
+def family_orgs(ref, social, today):
+    """Organizations that help detained people and their families (family_orgs.csv, by hand, each with its website and its IRS
+    record or other identity), shown only while family_orgs_check.py passes them: the website loads and is still theirs, the phone
+    is still on the page named, the IRS record exists. A row that breaks the rules stops the build; one that fails the weekly
+    check is hidden. An organization's Bluesky and Instagram accounts (social_list) are attached by website.
+    -> {"checked", "hidden": [names], "orgs": [[name, [types], scope, [states], website, phone, [languages], desc_en, desc_es, [[platform, url]]]]}"""
+    f = Path(ref) / "family_orgs.csv"
+    if not f.exists(): return {}
+    rows = list(csv.DictReader(open(f, encoding="utf-8"), delimiter="|"))
+    if rows and list(rows[0].keys()) != ORG_COLS: raise ValueError("family_orgs.csv: columns must be " + "|".join(ORG_COLS))
+    seen = set()
+    for r in rows:
+        bad = []
+        if r["org"] in seen: bad.append("listed twice")
+        seen.add(r["org"])
+        ty = r["types"].split(";")
+        if not r["types"] or any(x not in ORG_TYPES for x in ty): bad.append(f"types must be from {ORG_TYPES}")
+        st = [x for x in r["states"].split(";") if x]
+        if r["scope"] not in ("national", "state") or (r["scope"] == "state" and not st) or any(x not in US_STATE_CODES or x == "US" for x in st): bad.append("scope/states")
+        if not r["website"].startswith("https://"): bad.append("website must be https")
+        if r["phone"] and not r["phone_source"].startswith("https://"): bad.append("a phone needs the page it was read from")
+        if r["id_type"] and r["id_type"] not in ORG_IDS: bad.append(f"id_type must be one of {sorted(ORG_IDS)} or blank")
+        if r["id_type"] in ("EIN", "PROJECT") and not (re.fullmatch(r"\d\d-\d{7}", r["ein"]) and r["ein_source"].startswith("https://")): bad.append("an IRS number (NN-NNNNNNN) and its source")
+        if not (r["desc_en"].strip() and r["desc_es"].strip()): bad.append("a description in English and Spanish")
+        if bad: raise ValueError(f"family_orgs.csv: {r['org']}: " + "; ".join(bad))
+    cf = Path(ref) / "family_orgs_checked.csv"
+    chk = {r["org"]: r for r in csv.DictReader(open(cf, encoding="utf-8"), delimiter="|")} if cf.exists() else {}
+    def shown(r):
+        c = chk.get(r["org"])
+        if not r["id_type"] or not c: return False
+        if c["ok"] == "1": return True
+        return bool(c.get("last_ok")) and (dt.date.fromisoformat(today) - dt.date.fromisoformat(c["last_ok"])).days <= ORG_GRACE and c.get("reason", "").startswith("fetch")
+    acc = {}
+    for o in (social or {}).get("orgs") or []: acc[urllib.parse.urlparse(o[4]).netloc.lower().removeprefix("www.")] = o[5]
+    out, hidden = [], []
+    for r in rows:
+        if not shown(r): hidden.append(r["org"]); continue
+        host = urllib.parse.urlparse(r["website"]).netloc.lower().removeprefix("www.")
+        out.append([r["org"], r["types"].split(";"), r["scope"], [x for x in r["states"].split(";") if x], r["website"], r["phone"], [x for x in r["languages"].split(";") if x], r["desc_en"], r["desc_es"], acc.get(host, [])])
+    if hidden: print("FAMILY ORGANIZATIONS HIDDEN (no identity on file, or not passing the weekly check): " + "; ".join(hidden), file=sys.stderr)
+    return {"checked": max((c["checked"] for c in chk.values()), default=""), "hidden": hidden, "orgs": sorted(out, key=lambda o: (o[2] != "national", o[0].lower()))}
+
 DISPUTE_KINDS = {"lawsuit", "law", "order", "charge", "investigation"}
 DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url", "final"]
 LAWCOM = re.compile(r"^(House|Senate) Committee on (the Judiciary|Homeland Security)(?!.*Appropriations)")   # the committees that write immigration law
@@ -2254,6 +2301,7 @@ def main():
         (ROOT / "data" / "watch" / "officials_candidates.json").write_text(json.dumps(fl, indent=1), encoding="utf-8")
         site["pol"]["flags"] = {"min": rules.get("officials_min_usd", 0), **({"list": fl} if rules.get("officials_published") else {"pending": len(fl)})}
     site["social"] = social_list(ref)
+    site["family_orgs"] = family_orgs(ref, site["social"], today)
     site["disputes"] = disputes_list(ref, site["facilities"]); site["gov_terms"] = governor_terms(ref)
     for st, old, new in governor_changes(ref, {r["state"]: r["name"] for r in rd_pipe(ref / "governors.csv")} if (ref / "governors.csv").exists() else {}, site["gov_terms"]): print(f"GOVERNOR CHANGE recorded: {st} {old} -> {new}")
     if (ref / "federal_law_sponsors.csv").exists():                  # who sponsored the enforcement laws on Politicians; by hand, from congress.gov

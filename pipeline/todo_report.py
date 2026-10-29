@@ -58,6 +58,8 @@ def sections(root, today):
     manual = {r["key"] for r in rd(ref / "hotlines_manual.csv")}
     hid = [f"`{k}`: {r['reason'] or 'not confirmed'}" for k, r in sorted(auto.items()) if r["ok"] != "1" and k not in manual]
     if hid: out.append(("Help lines hidden this week (not confirmed, no check by hand)", hid))
+    orgs = [f"{r['org']}: {r['reason'] or 'not confirmed'}" for r in rd(ref / "family_orgs_checked.csv") if r["ok"] != "1"]
+    if orgs: out.append(("Organizations hidden on the Organizations tab (fix the row in family_orgs.csv, or remove it)", orgs))
     stale = jload(root / "data" / "health.json").get("stale") or []
     if stale: out.append(("Sources older than they should be", stale))
     if missing: out.append(("Court dockets not found yet (they are retried each week)", missing))

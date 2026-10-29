@@ -37,3 +37,10 @@ def test_lists_only_what_needs_a_person(tmp):
 
 def test_a_quiet_week_says_so(tmp):
     assert "Nothing needs attention" in render([], dt.date(2026, 10, 27))
+
+
+def test_hidden_organizations_are_listed(tmp):
+    ref = tmp / "data" / "reference"; ref.mkdir(parents=True)
+    (ref / "family_orgs_checked.csv").write_text("org|ok|reason|checked|last_ok\nA|1||2026-10-28|2026-10-28\nB|0|website now goes to x.com|2026-10-28|\n", encoding="utf-8")
+    secs = dict(sections(tmp, dt.date(2026, 10, 28)))
+    assert [v for k, v in secs.items() if k.startswith("Organizations hidden")] == [["B: website now goes to x.com"]]
