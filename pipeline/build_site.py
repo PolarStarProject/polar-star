@@ -675,7 +675,7 @@ def source_rows(rows, dyn, today):
         d = dyn.get(r["key"]) or r["read"]; age = (dt.date.fromisoformat(today) - dt.date.fromisoformat(d)).days
         old = int(r["max_age_days"]) > 0 and age > int(r["max_age_days"])
         if old: stale.append(f'{r["what_en"]} ({d}, {age} days)')
-        out.append([r["what_en"], r["what_es"], r["publisher"], d, r["url"], int(bool(r["key"])), int(old)])
+        out.append([r["what_en"], r["what_es"], r["publisher"], d, r["url"], int(bool(r["key"])), int(old), r["key"]])
     return out, stale
 
 
@@ -1635,6 +1635,53 @@ def social_list(ref):
     meta = json.loads((ref / "social_meta.json").read_text(encoding="utf-8")) if (ref / "social_meta.json").exists() else {}
     return {"checked": meta.get("checked", ""), "orgs": sorted(orgs.values(), key=lambda o: (o[2], o[0].lower()))}
 
+ORG_TYPES = ["legal", "kids", "women", "lgbtq", "bond", "visitation", "services", "faith", "community", "advocacy", "research", "news"]
+ORG_IDS = {"EIN", "PROJECT", "GOV", "UNIV", "FAITH"}
+ORG_COLS = ["org", "types", "scope", "states", "website", "phone", "phone_source", "languages", "id_type", "ein", "ein_source", "desc_en", "desc_es", "notes"]
+ORG_GRACE = 21
+
+def family_orgs(ref, social, today):
+    """Organizations that help detained people and their families (family_orgs.csv, by hand, each with its website and its IRS
+    record or other identity), shown only while family_orgs_check.py passes them: the website loads and is still theirs, the phone
+    is still on the page named, the IRS record exists. A row that breaks the rules stops the build; one that fails the weekly
+    check is hidden. An organization's Bluesky and Instagram accounts (social_list) are attached by website.
+    -> {"checked", "hidden": [names], "orgs": [[name, [types], scope, [states], website, phone, [languages], desc_en, desc_es, [[platform, url]]]]}"""
+    f = Path(ref) / "family_orgs.csv"
+    if not f.exists(): return {}
+    rows = list(csv.DictReader(open(f, encoding="utf-8"), delimiter="|"))
+    if rows and list(rows[0].keys()) != ORG_COLS: raise ValueError("family_orgs.csv: columns must be " + "|".join(ORG_COLS))
+    seen = set()
+    for r in rows:
+        bad = []
+        if r["org"] in seen: bad.append("listed twice")
+        seen.add(r["org"])
+        ty = r["types"].split(";")
+        if not r["types"] or any(x not in ORG_TYPES for x in ty): bad.append(f"types must be from {ORG_TYPES}")
+        st = [x for x in r["states"].split(";") if x]
+        if r["scope"] not in ("national", "state") or (r["scope"] == "state" and not st) or any(x not in US_STATE_CODES or x == "US" for x in st): bad.append("scope/states")
+        if not r["website"].startswith("https://"): bad.append("website must be https")
+        if r["phone"] and not r["phone_source"].startswith("https://"): bad.append("a phone needs the page it was read from")
+        if r["id_type"] and r["id_type"] not in ORG_IDS: bad.append(f"id_type must be one of {sorted(ORG_IDS)} or blank")
+        if r["id_type"] in ("EIN", "PROJECT") and not (re.fullmatch(r"\d\d-\d{7}", r["ein"]) and r["ein_source"].startswith("https://")): bad.append("an IRS number (NN-NNNNNNN) and its source")
+        if not (r["desc_en"].strip() and r["desc_es"].strip()): bad.append("a description in English and Spanish")
+        if bad: raise ValueError(f"family_orgs.csv: {r['org']}: " + "; ".join(bad))
+    cf = Path(ref) / "family_orgs_checked.csv"
+    chk = {r["org"]: r for r in csv.DictReader(open(cf, encoding="utf-8"), delimiter="|")} if cf.exists() else {}
+    def shown(r):
+        c = chk.get(r["org"])
+        if not r["id_type"] or not c: return False
+        if c["ok"] == "1": return True
+        return bool(c.get("last_ok")) and (dt.date.fromisoformat(today) - dt.date.fromisoformat(c["last_ok"])).days <= ORG_GRACE and c.get("reason", "").startswith("fetch")
+    acc = {}
+    for o in (social or {}).get("orgs") or []: acc[urllib.parse.urlparse(o[4]).netloc.lower().removeprefix("www.")] = o[5]
+    out, hidden = [], []
+    for r in rows:
+        if not shown(r): hidden.append(r["org"]); continue
+        host = urllib.parse.urlparse(r["website"]).netloc.lower().removeprefix("www.")
+        out.append([r["org"], r["types"].split(";"), r["scope"], [x for x in r["states"].split(";") if x], r["website"], r["phone"], [x for x in r["languages"].split(";") if x], r["desc_en"], r["desc_es"], acc.get(host, [])])
+    if hidden: print("FAMILY ORGANIZATIONS HIDDEN (no identity on file, or not passing the weekly check): " + "; ".join(hidden), file=sys.stderr)
+    return {"checked": max((c["checked"] for c in chk.values()), default=""), "hidden": hidden, "orgs": sorted(out, key=lambda o: (o[2] != "national", o[0].lower()))}
+
 DISPUTE_KINDS = {"lawsuit", "law", "order", "charge", "investigation"}
 DISPUTE_COLS = ["id", "date", "state", "place", "kind", "started_by", "federal_party", "local_party", "officials", "what_en", "what_es", "status_en", "status_es", "status_date", "facility_codes", "source_url", "status_url", "final"]
 LAWCOM = re.compile(r"^(House|Senate) Committee on (the Judiciary|Homeland Security)(?!.*Appropriations)")   # the committees that write immigration law
@@ -1738,8 +1785,7 @@ def dispute_people(site):
     Politicians; re refused entry to an ICE facility; vi published oversight visits."""
     D, P = site.get("disputes") or [], site.get("pol") or {}
     if not D: return {}
-    M, C = P.get("m") or [], P.get("c") or {}
-    flagged = {f["bg"] for f in ((P.get("flags") or {}).get("list") or [])}
+    M = P.get("m") or []
     names = set()
     for d in D:
         names.update(o[0] for o in d[16]); names.update(a[0] for l in d[17] for a in l[3])
@@ -1747,35 +1793,120 @@ def dispute_people(site):
         names.update(t[0] for t in (site.get("gov_terms") or {}).get(d[1], []))
         names.update(m[1] for m in M if m[4] == d[1] and m[11] and any(LAWCOM.match(c) for c in (m[7] or [])))
     names.update(s[2] for s in site.get("law_sponsors") or [])
+    ctx, out = tie_context(site), {}
+    for nm in sorted(names):
+        key = person_key(nm)
+        if not key: continue
+        m = next((m for m in M if _pnorm(m[1]) == _pnorm(nm) or _pnorm(re.sub(r'\s*"[^"]*"', "", m[1])) == _pnorm(nm)), None)
+        out[nm] = {"bg": m[0] if m else "", "v": vote_summary(m[8]) if m else None, "t": person_ties(ctx, key, m)}
+    return out
+
+def tie_context(site):
+    """What person_ties checks a name against, worked out once per build."""
+    P = site.get("pol") or {}
     firm_money, staff = {}, []
     for fn, c in ((site.get("firms") or {}).get("cards") or {}).items():
         for n, k, u, g in c.get("money") or []:
             key = person_key(re.sub(r"\s*\([A-Z]{2}(-\d+)?\)\s*$", "", n))
             if key: firm_money.setdefault(key, []).append([fn, u])
         staff += [[fn, posts, cos] for lob, posts, cos in c.get("former") or []]
-    visits = (site.get("statements_visits") or []) + [r for r in site.get("statements") or [] if r[2] == "visit"]
-    def has(s, key): return f" {key} " in " " + re.sub(r"\s+", " ", re.sub(r"[^a-z\s'-]", " ", _pnorm(s))) + " "
-    out = {}
-    for nm in sorted(names):
-        key = person_key(nm)
-        if not key: continue
-        first, last = key.split()
-        m = next((m for m in M if _pnorm(m[1]) == _pnorm(nm) or _pnorm(re.sub(r'\s*"[^"]*"', "", m[1])) == _pnorm(nm)), None)
-        bg = m[0] if m else ""; t = []
-        if m and ((m[9] or 0) + (m[10] or 0) > 0 or (m[13] or 0) > 0): t.append(["dm", [(m[9] or 0) + (m[10] or 0), m[13] or 0]])
-        if bg and (C.get(bg) or {}).get("jfc"): t.append(["jf", [j[0] for j in C[bg]["jfc"]]])
-        if key in firm_money: t.append(["lf", firm_money[key]])
-        fs = []
-        for fn, posts, cos in staff:
-            if staff_hit(posts, first, last) and [fn, cos] not in fs: fs.append([fn, cos])
-        if fs: t.append(["fs", fs])
-        if bg in flagged: t.append(["ov", 1])
-        dn = [[r[1], r[0]] for r in site.get("denied") or [] if has(r[2], key)]
-        if dn: t.append(["re", dn])
-        vs = sum(1 for r in visits if has(r[1], key))
-        if vs: t.append(["vi", vs])
-        out[nm] = {"bg": bg, "v": vote_summary(m[8]) if m else None, "t": t}
-    return out
+    return {"C": P.get("c") or {}, "flagged": {f["bg"] for f in ((P.get("flags") or {}).get("list") or [])}, "firm_money": firm_money, "staff": staff,
+            "denied": site.get("denied") or [], "visits": (site.get("statements_visits") or []) + [r for r in site.get("statements") or [] if r[2] == "visit"]}
+
+def person_ties(ctx, key, m=None):
+    """[[code, detail]] for one person (key = person_key; m = their member row when they are in Congress). dm detention-company
+    committee or staff money; jf joint fundraiser that received it; lf political money from a lobbying firm hired by a detention
+    or ICE flight company; fs former staff now lobby at such a firm; ov the overlap rule on Politicians; re refused entry to an
+    ICE facility; vi published oversight visits."""
+    first, last = key.split(); bg = m[0] if m else ""; t = []
+    def has(s): return f" {key} " in " " + re.sub(r"\s+", " ", re.sub(r"[^a-z\s'-]", " ", _pnorm(s))) + " "
+    if m and ((m[9] or 0) + (m[10] or 0) > 0 or (m[13] or 0) > 0): t.append(["dm", [(m[9] or 0) + (m[10] or 0), m[13] or 0]])
+    if bg and (ctx["C"].get(bg) or {}).get("jfc"): t.append(["jf", [j[0] for j in ctx["C"][bg]["jfc"]]])
+    if key in ctx["firm_money"]: t.append(["lf", ctx["firm_money"][key]])
+    fs = []
+    for fn, posts, cos in ctx["staff"]:
+        if staff_hit(posts, first, last) and [fn, cos] not in fs: fs.append([fn, cos])
+    if fs: t.append(["fs", fs])
+    if bg in ctx["flagged"]: t.append(["ov", 1])
+    dn = [[r[1], r[0]] for r in ctx["denied"] if has(r[2])]
+    if dn: t.append(["re", dn])
+    vs = sum(1 for r in ctx["visits"] if has(r[1]))
+    if vs: t.append(["vi", vs])
+    return t
+
+def donor_key(s):
+    """FEC writes donors LAST, FIRST MIDDLE (with titles); the same first-and-last key as person_key."""
+    s = re.sub(r"\b(mr|mrs|ms|dr|col|hon)\b\.?", " ", _pnorm(s))
+    if "," in s: last, rest = s.split(",", 1); s = rest + " " + last
+    return person_key(s)
+
+def people_index(site, states, donors):
+    """One card for every named person on the page, so a name opens in place instead of on another tab.
+    {"p": {id: {"n": [names as shown], "r": [roles], "t": ties, "v": vote summary}}, "nk": {name as shown: id}, "dn": {FEC donor name: id}}. id is the Bioguide id for a member
+    (and for anyone whose first and last name match exactly one member), otherwise the first-and-last-name key.
+    Records are joined by first and last name only (person_key), except members (by Bioguide id) and governors (by state), so a card
+    that joins records from different states, or a donor gift, says the match is by name and may be a different person. Roles:
+    m member [bg]; g governor now [state, party, start, site]; gw governor at the time [state, party, start, end]; l sheriff or jail
+    head [facility code, facility, state, title, office, source]; a 287(g) signer [state, agency, county, signed, agreement, title];
+    v lobbyist with a past government post [company, post, firms, first year, last year]; d named in a dispute [dispute date, state,
+    place, role en, role es] (also the governor in office when it began); w wrote a disputed law [dispute date, state, law en, law es, url, role en, role es]; s sponsored a federal
+    enforcement law [law, bill, url, state]; $ gave to a candidate or committee [gifts, $, [[committee, $]] top 3, employer, job, state]."""
+    P = site.get("pol") or {}; M = P.get("m") or []
+    out, nk, mk = {}, {}, {}
+    for m in M: mk.setdefault(person_key(re.sub(r'\s*"[^"]*"', "", m[1])), []).append(m[0])
+    def pid(key): return mk[key][0] if len(mk.get(key, [])) == 1 else key     # a name shared by two members stays apart from both
+    def add(nm, role, key=None):
+        key = key or person_key(nm)
+        if not key: return
+        i = role[1] if role[0] == "m" else pid(key)
+        e = out.setdefault(i, {"n": [], "r": [], "k": key})
+        if nm not in e["n"]: e["n"].append(nm)
+        if role not in e["r"]: e["r"].append(role)
+        if role[0] != "m" or nm not in nk: nk[nm] = i
+    for m in M: add(m[1], ["m", m[0]], person_key(re.sub(r'\s*"[^"]*"', "", m[1])))
+    for g in P.get("gov") or []: add(g[1], ["g", g[0], g[2], g[3], g[4]])
+    for st, ts in (site.get("gov_terms") or {}).items():
+        for t in ts: add(t[0], ["gw", st, t[1], t[2], t[3]])
+    for r in P.get("local") or []: add(r[3], ["l", r[0], r[1], r[2], r[4], r[5], r[6]])
+    for st, rows in (states or {}).items():
+        for r in rows if isinstance(rows, list) else []:
+            w = r[8] if len(r) > 8 else None
+            if w and w[0] and w[2] == "s": add(w[0], ["a", st, r[0], r[1], r[3], r[7], w[1]])
+    for r in P.get("rev") or []: add(r[1], ["v", r[0], r[2], r[3], r[4], r[5]])
+    for d in site.get("disputes") or []:
+        for o in d[16]: add(o[0], ["d", d[0], d[1], d[2], o[1], o[2]])
+        for l in d[17]:
+            for a in l[3]: add(a[0], ["w", d[0], d[1], l[0], l[1], l[2], a[1], a[2]])
+    G, GT = {g[0]: g for g in P.get("gov") or []}, site.get("gov_terms") or {}
+    for d in site.get("disputes") or []:                       # the governor in office when the dispute began, unless already named in it
+        th = next((t for t in GT.get(d[1], []) if t[2] <= d[0] < t[3]), None)
+        g = G.get(d[1])
+        nm = th[0] if th else (g[1] if g and (not g[3] or g[3] <= d[0]) else "")
+        if nm and not any(o[0] == nm for o in d[16]): add(nm, ["d", d[0], d[1], d[2], "governor at the time", "gobernador(a) en ese momento"])
+    for s in site.get("law_sponsors") or []: add(s[2], ["s", s[0], s[1], s[5], s[4]])
+    gifts = {}
+    for r in (donors or {}).get("rows") or []:
+        if not r[2]: continue
+        k = pid(donor_key(r[2]))
+        if k in out: gifts.setdefault(k, {}).setdefault(r[2], []).append(r)
+    dn = {}
+    for k, by in gifts.items():
+        for nm, rs in by.items():
+            rec = {}
+            for r in rs: rec[r[7]] = rec.get(r[7], 0) + (r[6] or 0)
+            top = sorted(rec.items(), key=lambda kv: -kv[1])[:3]
+            out[k]["r"].append(["$", len(rs), round(sum(r[6] or 0 for r in rs)), [[c, round(u)] for c, u in top], rs[0][3] or "", rs[0][4] or "", rs[0][5] or ""])
+            dn[nm] = k
+    ctx, MB = tie_context(site), {m[0]: m for m in M}
+    for k, e in out.items():
+        m = next((MB[r[1]] for r in e["r"] if r[0] == "m"), None)
+        e["t"] = person_ties(ctx, e.pop("k"), m)
+        if m: e["v"] = vote_summary(m[8])
+        sts = {r[1] for r in e["r"] if r[0] in ("g", "gw", "a")} | {r[3] for r in e["r"] if r[0] == "l"} | {r[6] for r in e["r"] if r[0] == "$" and r[6]} | {MB[r[1]][4] for r in e["r"] if r[0] == "m"}
+        ks = {r[0] for r in e["r"]}         # elected officials: members, governors, the laws they sponsor and the disputes that name them
+        one = len(ks) == 1 or ks <= {"m", "s", "d", "w", "g", "gw"}   # (a dispute can be filed in another state, so its state is not compared)
+        if not one or len(sts - {"", "US"}) > 1: e["x"] = 1   # joined across other lists by first and last name only: may be different people
+    return {"p": out, "nk": nk, "dn": dn}
 
 def governor_changes(ref, current, terms):
     """The weekly check found a different governor in a state: the outgoing one must be in governor_terms.csv, or every
@@ -1790,6 +1921,21 @@ def governor_changes(ref, current, terms):
     if changed or set(current) - set(known):
         f.write_text("state|name\n" + "".join(f"{st}|{nm}\n" for st, nm in sorted({**known, **current}.items())), encoding="utf-8")
     return changed
+
+def state_population(ref):
+    """Residents by state (Census Bureau, Vintage 2025, July 1, 2025), kept by hand in state_population.csv, for rates per
+    100,000 on Your state. The US row must equal the 50 states plus DC (Puerto Rico is outside the US total), so a mistyped
+    number fails the build. {"n": {state: residents}, "as_of", "source"}."""
+    f = Path(ref) / "state_population.csv"
+    if not f.exists(): return {}
+    rows = list(csv.DictReader(open(f, encoding="utf-8"), delimiter="|"))
+    n = {r["state"]: int(r["population"]) for r in rows}
+    if any(k not in US_STATE_CODES for k in n) or len(n) != len(rows) or not all(r["source"].startswith("https://") for r in rows):
+        raise ValueError("state_population.csv: unknown or repeated state, or a source that is not https")
+    us = n.pop("US", None)
+    if us is None or len([k for k in n if k != "PR"]) != 51 or sum(v for k, v in n.items() if k != "PR") != us:
+        raise ValueError("state_population.csv: the 50 states and DC must add up to the US row")
+    return {"n": n, "as_of": rows[0]["as_of"], "source": rows[0]["source"]}
 
 def governor_terms(ref):
     """Governors who left office since January 2025, kept by hand with a source each (data/reference/governor_terms.csv),
@@ -2108,6 +2254,7 @@ def main():
         dyn["accounts"] = jm("agency_object_class_meta.json").get("read", "")
         dyn["cpac"] = jm("country_pacs_meta.json").get("read", ""); dyn["fara"] = jm("fara_meta.json").get("read", ""); dyn["officials"] = jm("officials_meta.json").get("checked", "")
         dyn["moa"] = jm("287g_agreements_meta.json").get("read", ""); dyn["hotlines"] = max((r["checked"] for r in rdx("hotlines_checked.csv")), default="")
+        dyn["familyorgs"] = (site.get("family_orgs") or {}).get("checked", "")
         site["sources"], stale = source_rows(SRC_ROWS, dyn, today)
     layers = write_layers(site, flights, ROOT / "site" / "layers")
     pdm = {}
@@ -2161,6 +2308,7 @@ def main():
         (ROOT / "data" / "watch" / "officials_candidates.json").write_text(json.dumps(fl, indent=1), encoding="utf-8")
         site["pol"]["flags"] = {"min": rules.get("officials_min_usd", 0), **({"list": fl} if rules.get("officials_published") else {"pending": len(fl)})}
     site["social"] = social_list(ref)
+    site["family_orgs"] = family_orgs(ref, site["social"], today)
     site["disputes"] = disputes_list(ref, site["facilities"]); site["gov_terms"] = governor_terms(ref)
     for st, old, new in governor_changes(ref, {r["state"]: r["name"] for r in rd_pipe(ref / "governors.csv")} if (ref / "governors.csv").exists() else {}, site["gov_terms"]): print(f"GOVERNOR CHANGE recorded: {st} {old} -> {new}")
     if (ref / "federal_law_sponsors.csv").exists():                  # who sponsored the enforcement laws on Politicians; by hand, from congress.gov
@@ -2169,6 +2317,7 @@ def main():
         if laws and any(r["law"] not in laws for r in fs): raise ValueError("federal_law_sponsors.csv: a law that is not among the votes on Politicians")
         site["law_sponsors"] = [[r["law"], r["bill"], r["sponsor"], r["chamber"], r["state"], r["url"]] for r in fs]
     site["hotlines"] = hotlines(ref, today)
+    site["state_pop"] = state_population(ref)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
     fc = firm_cards(ref)
@@ -2182,6 +2331,9 @@ def main():
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")
     if site.get("a287"):     # the long agreement lists and the contract records go in a third file, fetched when a tab that needs them opens
         import hashlib
+        pj = json.dumps(people_index(site, site["a287"]["states"], (site.get("money") or {}).get("donors")), separators=(",", ":"))   # the person cards: a small file of their own, fetched the first time a name is opened
+        site["plazy"] = hashlib.sha1(pj.encode()).hexdigest()[:12]
+        (ROOT / "site" / "persons-data.js").write_text(f'window.PERSONS={{"v":"{site["plazy"]}","d":{pj}}};', encoding="utf-8")
         more = json.dumps({"states": site["a287"]["states"], "gone": site["a287"].get("gone", []), "awards": site.get("money", {}).pop("awards", None), "donors": site.get("money", {}).pop("donors", None)}, separators=(",", ":"))
         site["a287"]["states"], site["a287"]["gone"], site["lazy"] = {}, [], hashlib.sha1(more.encode()).hexdigest()[:12]
         (ROOT / "site" / "more-data.js").write_text(f'window.DATA_MORE={{"v":"{site["lazy"]}","d":{more}}};', encoding="utf-8")
