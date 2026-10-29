@@ -47,6 +47,7 @@ STEPS = [  # name, command after "python", required
     ("firmbase",   ["pipeline/firm_base.py"], False),
     ("sec",        ["pipeline/sec_watch.py"], False),
     ("social",     ["pipeline/social_check.py"], False),
+    ("familyorgs", ["pipeline/family_orgs_check.py"], False),
     ("officials",  ["pipeline/officials_check.py"], False),
     ("hotlines",   ["pipeline/hotlines_check.py"], False),
     ("disputes",   ["pipeline/disputes_check.py"], False),
