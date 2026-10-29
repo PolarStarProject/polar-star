@@ -1869,6 +1869,21 @@ def governor_changes(ref, current, terms):
         f.write_text("state|name\n" + "".join(f"{st}|{nm}\n" for st, nm in sorted({**known, **current}.items())), encoding="utf-8")
     return changed
 
+def state_population(ref):
+    """Residents by state (Census Bureau, Vintage 2025, July 1, 2025), kept by hand in state_population.csv, for rates per
+    100,000 on Your state. The US row must equal the 50 states plus DC (Puerto Rico is outside the US total), so a mistyped
+    number fails the build. {"n": {state: residents}, "as_of", "source"}."""
+    f = Path(ref) / "state_population.csv"
+    if not f.exists(): return {}
+    rows = list(csv.DictReader(open(f, encoding="utf-8"), delimiter="|"))
+    n = {r["state"]: int(r["population"]) for r in rows}
+    if any(k not in US_STATE_CODES for k in n) or len(n) != len(rows) or not all(r["source"].startswith("https://") for r in rows):
+        raise ValueError("state_population.csv: unknown or repeated state, or a source that is not https")
+    us = n.pop("US", None)
+    if us is None or len([k for k in n if k != "PR"]) != 51 or sum(v for k, v in n.items() if k != "PR") != us:
+        raise ValueError("state_population.csv: the 50 states and DC must add up to the US row")
+    return {"n": n, "as_of": rows[0]["as_of"], "source": rows[0]["source"]}
+
 def governor_terms(ref):
     """Governors who left office since January 2025, kept by hand with a source each (data/reference/governor_terms.csv),
     so an entry can name the governor at the time when it differs from the governor now: {state: [[name, party, start, end]]}."""
@@ -2247,6 +2262,7 @@ def main():
         if laws and any(r["law"] not in laws for r in fs): raise ValueError("federal_law_sponsors.csv: a law that is not among the votes on Politicians")
         site["law_sponsors"] = [[r["law"], r["bill"], r["sponsor"], r["chamber"], r["state"], r["url"]] for r in fs]
     site["hotlines"] = hotlines(ref, today)
+    site["state_pop"] = state_population(ref)
     site["contractors"] = vendors(ref)
     if site.get("pol"): site["pol"].update(state_officials(site, ref))
     fc = firm_cards(ref)
