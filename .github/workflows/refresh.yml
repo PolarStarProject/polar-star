@@ -97,6 +97,7 @@ jobs:
           mkdir -p _site && cp -r site/layers _site/ 2>/dev/null || true
           cp site/flights-data.js _site/
           cp site/more-data.js _site/
+          cp site/persons-data.js _site/
           cp site/watch.xml _site/
           printf 'User-agent: *\nAllow: /\nSitemap: https://polarstarproject.org/sitemap.xml\n' > _site/robots.txt
           printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://polarstarproject.org/</loc></url></urlset>\n' > _site/sitemap.xml

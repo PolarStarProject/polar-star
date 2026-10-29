@@ -52,3 +52,8 @@ def test_dispute_people_unchanged_by_the_shared_tie_code():
              firms={"cards": {"SOME FIRM": {"money": [], "former": [["Jane Roe", "Chief of Staff, Rep. Jesús García", []]]}}})
     d = dispute_people(s)["Jesús García"]
     assert d["bg"] == "C3" and d["t"] == [["fs", [["SOME FIRM", []]]]]
+
+def test_governor_in_office_when_a_dispute_began_gets_it_on_their_card():
+    D = [["2026-03-01", "NJ", "Newark", 0,0,0,0,0,0,0,0,0,0,0,0,0, [], [], False, [], []], ["2025-06-01", "NJ", "Elizabeth", 0,0,0,0,0,0,0,0,0,0,0,0,0, [], [], False, [], []]]
+    x = people_index(site(disputes=D, gov_terms={"NJ": [["Phil Murphy", "D", "2018-01-16", "2026-01-20"]]}), {}, None)["p"]
+    assert [r[1] for r in x["D4"]["r"] if r[0] == "d"] == ["2026-03-01"] and [r[1] for r in x["phil murphy"]["r"] if r[0] == "d"] == ["2025-06-01"]

@@ -426,6 +426,14 @@ def test_built_page_and_its_second_data_file_carry_the_same_stamp():
     assert page and f'"v":"{page.group(1)}"' in (site / "more-data.js").read_text(encoding="utf-8")[:60]     # else the agreements list and contract records would not load
 
 
+def test_built_page_and_its_person_file_carry_the_same_stamp():
+    import re, pathlib
+    site = pathlib.Path(__file__).resolve().parent.parent / "site"
+    if not (site / "index.html").exists() or not (site / "persons-data.js").exists(): return     # nothing built yet
+    page = re.search(r'"plazy":"([0-9a-f]{12})"', (site / "index.html").read_text(encoding="utf-8"))
+    assert page and f'"v":"{page.group(1)}"' in (site / "persons-data.js").read_text(encoding="utf-8")[:60]   # else no name would open its card
+
+
 def test_everything_else_is_listed_by_code_and_always_adds_up():
     import money_usaspending as m
     codes = [("S206", "GUARD", 9e9), ("R425", "ENGINEERING  SUPPORT", 400e6), ("Z1AA", "REPAIR OF OFFICES", 30e6), ("9999", "TINY", 1e6), ("8888", "CANCELLED", -6e6), (None, "x", 5)]
