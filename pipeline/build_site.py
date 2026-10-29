@@ -675,7 +675,7 @@ def source_rows(rows, dyn, today):
         d = dyn.get(r["key"]) or r["read"]; age = (dt.date.fromisoformat(today) - dt.date.fromisoformat(d)).days
         old = int(r["max_age_days"]) > 0 and age > int(r["max_age_days"])
         if old: stale.append(f'{r["what_en"]} ({d}, {age} days)')
-        out.append([r["what_en"], r["what_es"], r["publisher"], d, r["url"], int(bool(r["key"])), int(old)])
+        out.append([r["what_en"], r["what_es"], r["publisher"], d, r["url"], int(bool(r["key"])), int(old), r["key"]])
     return out, stale
 
 
@@ -1849,7 +1849,7 @@ def people_index(site, states, donors):
     m member [bg]; g governor now [state, party, start, site]; gw governor at the time [state, party, start, end]; l sheriff or jail
     head [facility code, facility, state, title, office, source]; a 287(g) signer [state, agency, county, signed, agreement, title];
     v lobbyist with a past government post [company, post, firms, first year, last year]; d named in a dispute [dispute date, state,
-    place, role en, role es]; w wrote a disputed law [dispute date, state, law en, law es, url, role en, role es]; s sponsored a federal
+    place, role en, role es] (also the governor in office when it began); w wrote a disputed law [dispute date, state, law en, law es, url, role en, role es]; s sponsored a federal
     enforcement law [law, bill, url, state]; $ gave to a candidate or committee [gifts, $, [[committee, $]] top 3, employer, job, state]."""
     P = site.get("pol") or {}; M = P.get("m") or []
     out, nk, mk = {}, {}, {}
@@ -1877,6 +1877,12 @@ def people_index(site, states, donors):
         for o in d[16]: add(o[0], ["d", d[0], d[1], d[2], o[1], o[2]])
         for l in d[17]:
             for a in l[3]: add(a[0], ["w", d[0], d[1], l[0], l[1], l[2], a[1], a[2]])
+    G, GT = {g[0]: g for g in P.get("gov") or []}, site.get("gov_terms") or {}
+    for d in site.get("disputes") or []:                       # the governor in office when the dispute began, unless already named in it
+        th = next((t for t in GT.get(d[1], []) if t[2] <= d[0] < t[3]), None)
+        g = G.get(d[1])
+        nm = th[0] if th else (g[1] if g and (not g[3] or g[3] <= d[0]) else "")
+        if nm and not any(o[0] == nm for o in d[16]): add(nm, ["d", d[0], d[1], d[2], "governor at the time", "gobernador(a) en ese momento"])
     for s in site.get("law_sponsors") or []: add(s[2], ["s", s[0], s[1], s[5], s[4]])
     gifts = {}
     for r in (donors or {}).get("rows") or []:
@@ -2248,6 +2254,7 @@ def main():
         dyn["accounts"] = jm("agency_object_class_meta.json").get("read", "")
         dyn["cpac"] = jm("country_pacs_meta.json").get("read", ""); dyn["fara"] = jm("fara_meta.json").get("read", ""); dyn["officials"] = jm("officials_meta.json").get("checked", "")
         dyn["moa"] = jm("287g_agreements_meta.json").get("read", ""); dyn["hotlines"] = max((r["checked"] for r in rdx("hotlines_checked.csv")), default="")
+        dyn["familyorgs"] = (site.get("family_orgs") or {}).get("checked", "")
         site["sources"], stale = source_rows(SRC_ROWS, dyn, today)
     layers = write_layers(site, flights, ROOT / "site" / "layers")
     pdm = {}
@@ -2324,7 +2331,10 @@ def main():
     hp.write_text(json.dumps(hist, indent=1), encoding="utf-8")
     if site.get("a287"):     # the long agreement lists and the contract records go in a third file, fetched when a tab that needs them opens
         import hashlib
-        more = json.dumps({"persons": people_index(site, site["a287"]["states"], (site.get("money") or {}).get("donors")), "states": site["a287"]["states"], "gone": site["a287"].get("gone", []), "awards": site.get("money", {}).pop("awards", None), "donors": site.get("money", {}).pop("donors", None)}, separators=(",", ":"))
+        pj = json.dumps(people_index(site, site["a287"]["states"], (site.get("money") or {}).get("donors")), separators=(",", ":"))   # the person cards: a small file of their own, fetched the first time a name is opened
+        site["plazy"] = hashlib.sha1(pj.encode()).hexdigest()[:12]
+        (ROOT / "site" / "persons-data.js").write_text(f'window.PERSONS={{"v":"{site["plazy"]}","d":{pj}}};', encoding="utf-8")
+        more = json.dumps({"states": site["a287"]["states"], "gone": site["a287"].get("gone", []), "awards": site.get("money", {}).pop("awards", None), "donors": site.get("money", {}).pop("donors", None)}, separators=(",", ":"))
         site["a287"]["states"], site["a287"]["gone"], site["lazy"] = {}, [], hashlib.sha1(more.encode()).hexdigest()[:12]
         (ROOT / "site" / "more-data.js").write_text(f'window.DATA_MORE={{"v":"{site["lazy"]}","d":{more}}};', encoding="utf-8")
     if flights:      # the long lists and the world map go in a second file the page fetches when the flights tab opens; both carry one stamp
