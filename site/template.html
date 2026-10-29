@@ -1310,10 +1310,10 @@ const T = {
 let lang = (navigator.language||"en").startsWith("es") ? "es" : "en", current = null;
 try { const saved = localStorage.getItem("lang"); if (saved === "en" || saved === "es") lang = saved; } catch (e) {}   // the reader's own choice of language, kept on their device only
 // The address carries the open tab and facility (#find/PIC) so Back works and a page can be shared. Nothing about the reader is in it.
-let curView = "fam", routing = false;
+let curView = "fam", routing = false, foSt = "", foTy = new Set();   // foSt/foTy: the Organizations filters (the state is in the address: #orgs/TX)
 const VIEWS = ["fam", "find", "flights", "orgs", "agree", "co", "ven", "opm", "pol", "state", "life", "over", "disp", "watch", "news", "money", "trends", "about", "legal", "research"];
-function route(){ if (routing) return; try { const h = "#" + curView + (curView === "find" && current ? "/" + current : curView === "pol" && polSel ? "/" + polSel : curView === "state" && svSt ? "/" + svSt : ST[curView] ? "/" + ST[curView] : ""); if (location.hash !== h) history.pushState(null, "", h); } catch (e) {} }
-function applyHash(){ const [v, code] = (location.hash || "").slice(1).split("/"); routing = true; try { const ok = VIEWS.includes(v) && !$("tab-" + v).hidden && ($("views").hidden ? v === "fam" || v === "find" : true); showView(ok ? v : "fam"); if (ok && v === "find" && code && F[code]){ showFacility(code); requestAnimationFrame(() => { $("detail").scrollIntoView(); $("f-name").focus({preventScroll:true}); }); } if (ok && ST[v] && code) stShow(v, code, true); if (ok && v === "pol" && polSel !== (code || "")){ polSel = code || ""; polRender(); } if (ok && v === "state" && code && code !== svSt){ svSt = code; stateRender(); } } finally { routing = false; } }
+function route(){ if (routing) return; try { const h = "#" + curView + (curView === "find" && current ? "/" + current : curView === "pol" && polSel ? "/" + polSel : curView === "state" && svSt ? "/" + svSt : curView === "orgs" && foSt ? "/" + foSt : ST[curView] ? "/" + ST[curView] : ""); if (location.hash !== h) history.pushState(null, "", h); } catch (e) {} }
+function applyHash(){ const [v, code] = (location.hash || "").slice(1).split("/"); routing = true; try { const ok = VIEWS.includes(v) && !$("tab-" + v).hidden && ($("views").hidden ? v === "fam" || v === "find" : true); showView(ok ? v : "fam"); if (ok && v === "find" && code && F[code]){ showFacility(code); requestAnimationFrame(() => { $("detail").scrollIntoView(); $("f-name").focus({preventScroll:true}); }); } if (ok && ST[v] && code) stShow(v, code, true); if (ok && v === "pol" && polSel !== (code || "")){ polSel = code || ""; polRender(); } if (ok && v === "state" && code && code !== svSt){ svSt = code; stateRender(); } if (ok && v === "orgs" && (code || "") !== foSt){ foSt = /^[A-Z]{2}$/.test(code || "") ? code : ""; foRender(); } } finally { routing = false; } }
 window.addEventListener("popstate", applyHash);
 const $ = id => document.getElementById(id), F = DATA.facilities;
 // Federal records spell company and committee names in capitals ("THE GEO GROUP, INC."). For reading, names are shown in
@@ -3290,7 +3290,6 @@ function dpRender(){ const D = DATA.disputes || [], t = T[lang], st = $("dp-st")
       ...L.map(d => { const g = G.find(x => x[0] === d[1]), th = ((DATA.gov_terms || {})[d[1]] || []).find(x => x[2] <= d[0] && d[0] < x[3]), ppl = [...d[16].map(o => o[0]), ...d[17].flatMap(l => l[3].map(a => a[0])), g ? g[1] : "", th ? th[0] : ""].filter(Boolean);
         return [d[0], d[1], d[2], d[3], d[4], d[5], d[6], es0(d, 7), es0(d, 9), d[11], d[18] ? "yes" : "", d[12].join(";"), d[16].map(o => `${o[0]} (${o[1]})`).join("; "), d[17].map(l => l[0]).join("; "), d[17].map(l => l[3].map(a => `${a[0]} (${a[1]})`).join(", ")).join("; "), g ? g[1] : "", th ? th[0] : "", [...new Set(ppl)].map(mk).join("; "), d[13], d[14]]; })]; })); }
 const es0 = (d, i) => lang === "es" ? d[i + 1] : d[i];
-let foSt = "", foTy = new Set();
 function foItem(o, st){ const t = T[lang], li = el("li"), a = el("a","strong",o[0]); a.href = o[4]; a.target = "_blank"; a.rel = "noopener"; li.append(a);
   li.append(el("span","muted",o[1].map(k => t.fo_t[k] || k).join(" · ")));
   li.append(el("span","",o[2] === "national" ? (o[3].length ? t.fo_offices(o[3].map(SN).join(", ")) : t.fo_natl) : t.fo_in(o[3].map(SN).join(", "))));
@@ -3304,7 +3303,7 @@ function foRender(){ const t = T[lang], F = DATA.family_orgs || {}, O = F.orgs |
     keys.filter(k => used.has(k)).forEach(k => { const b = el("button","chip",t.fo_t[k]); b.type = "button"; b.setAttribute("aria-pressed", foTy.has(k)); b.onclick = () => { foTy.has(k) ? foTy.delete(k) : foTy.add(k); foRender(); }; g.append(b); }); return g; };
   const chips = el("div"); chips.append(group(t.fo_who, WHO), group(t.fo_what, Object.keys(t.fo_t).filter(k => !WHO.includes(k))));
   const [w, sel] = pickBox(t.fo_st), sts = [...new Set(O.flatMap(o => o[3]))].sort((a, b) => SN(a).localeCompare(SN(b)));
-  [["", t.fo_st_any], ...sts.map(k => [k, SN(k)])].forEach(([v, x]) => sel.append(Object.assign(el("option","",x), {value:v}))); sel.value = foSt; sel.onchange = () => { foSt = sel.value; foRender(); };
+  [["", t.fo_st_any], ...sts.map(k => [k, SN(k)])].forEach(([v, x]) => sel.append(Object.assign(el("option","",x), {value:v}))); sel.value = foSt; sel.onchange = () => { foSt = sel.value; foRender(); route(); };
   box.append(chips, w); if (foTy.size > 1) box.append(el("p","muted",t.fo_and));
   const R = O.filter(o => [...foTy].every(k => o[1].includes(k)) && (!foSt || o[2] === "national" || o[3].includes(foSt))).sort((a, b) => (foSt ? (b[3].includes(foSt) - a[3].includes(foSt)) : 0) || ((a[2] !== "national") - (b[2] !== "national")) || a[0].localeCompare(b[0]));
   $("fo-n").textContent = R.length ? t.fo_n(R.length, foSt ? SN(foSt) : "") : t.fo_none; const ul = $("fo-list"); ul.replaceChildren(...R.map(o => foItem(o))); capList(ul);
